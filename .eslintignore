@@ -1,0 +1,8 @@
+node_modules
+.next
+dist
+pnpm-lock.yaml
+Dockerfile
+package.json
+*.md
+

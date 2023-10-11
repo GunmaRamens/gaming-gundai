@@ -1,0 +1,13 @@
+{
+    "name": "名前",
+    "manifest_version": 2,
+    "version": "1.0",
+    "browser_action": {},
+
+    "content_scripts": [
+        {
+            "matches": ["https://www.google.com/", "https://www.google.com/"],
+            "js": ["content.js"]
+        }
+    ]
+}
