@@ -1,6 +1,6 @@
 {
-    "name": "gaming-moodle",
-    "description": "Moodle LMS Gaming Edition",
+    "name": "gunma-univ-gaming-edition",
+    "description": "The browser extension of Gunma University Gaming Edition",
     "license": "MIT",
     "version": "1.0.0",
     "scripts": {
