@@ -4,6 +4,9 @@
     }
 }
 .rainbow {
+
+    animation-duration: 0.7s;
+
     background: linear-gradient(to right, Magenta, yellow, Cyan, Magenta) 0% center/200%;
     animation-name: gaming;
     animation-timing-function: linear;

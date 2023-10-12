@@ -10,8 +10,12 @@
     },
     "content_scripts": [
         {
-            "matches": ["*://idp.gunma-u.ac.jp/pub/login.cgi*"],
+            "matches": ["*://idp.gunma-u.ac.jp/pub/login.cgi*","*://idp.gunma-u.ac.jp/pub/allotplogin_force.cgi*"],
             "js": ["sso.js"]
+        },
+        {
+            "matches": ["*://mdl.media.gunma-u.ac.jp/*"],
+            "js": ["moodle.js"]
         }
     ]
 }

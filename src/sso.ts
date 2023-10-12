@@ -2,12 +2,11 @@ import "./styles/gaming.scss";
 import "./styles/sso.scss";
 
 import addClass from "./utils/addClass";
+import changeQueryInnerHTML from "./utils/changeQueryInnerHTML";
 
 window.addEventListener("load", () => {
-    [".header_column", ".input_form", ".input_column"].forEach((query) => {
-        addClass(query, "rainbow");
-    });
+    
+    addClass([".header_column", ".input_form", ".input_column"], ["rainbow"]);
 
-    const title = document.querySelector(".product")
-    if (title) title.innerHTML = "群馬大学ゲーミングサインオンシステム";
+    changeQueryInnerHTML([".product"], "群馬大学ゲーミングサインオンシステム");
 });
