@@ -3,7 +3,7 @@ import "./styles/sso.scss";
 
 import { addClass } from "./utils/addClass";
 import changeQueryInnerHTML from "./utils/changeQueryInnerHTML";
-import isEnabled from "./utils/isEnabled";
+import getIsEnabled from "./utils/getIsEnabled";
 
 const EnableRainbow = () => {
     addClass([".header_column", ".input_form", ".input_column"], ["rainbow-bg"]);
@@ -11,7 +11,7 @@ const EnableRainbow = () => {
 };
 
 window.addEventListener("load", async () => {
-    const isEnable = await isEnabled();
+    const isEnable = await getIsEnabled();
     if (isEnable) {
         EnableRainbow();
     }

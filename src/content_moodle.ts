@@ -4,7 +4,7 @@ import "./styles/gaming.scss";
 
 import { addRainbowBg, addRainbowText, removeRainbowBg } from "./utils/addClass";
 import changeQueryInnerHTML from "./utils/changeQueryInnerHTML";
-import isEnabled from "./utils/isEnabled";
+import getIsEnabled from "./utils/getIsEnabled";
 
 const EnableRainbow = () => {
     changeQueryInnerHTML([".page-header-headings h1"], "群馬大学Gaming Leaning System");
@@ -23,7 +23,7 @@ const DisableRainbow = () => {
 };
 
 window.addEventListener("load", async () => {
-    const isEnable = await isEnabled();
+    const isEnable = await getIsEnabled();
     if (isEnable) {
         EnableRainbow();
     } else {
