@@ -36,13 +36,15 @@ pnpm run build
 
 ## Technology Stack
 
+- core-js
+- ESLint
 - Node.js
 - pnpm
-- TypeScript
-- Webpack
-- Sass
-- ESLint
 - Prettier
+- Sass
+- TypeScript
+- Volta
+- Webpack
 
 
 ## Special Thanks
