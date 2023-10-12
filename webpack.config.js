@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const Path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
-const ESLintWebpackPlugin = require("eslint-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -40,6 +40,11 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader",
+            },
         ],
     },
 
@@ -47,6 +52,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [{ from: ".", to: ".", context: "public" }],
         }),
-        new ESLintWebpackPlugin(),
+        new ESLintPlugin(),
     ],
+    //devtool: "source-map",
 };
