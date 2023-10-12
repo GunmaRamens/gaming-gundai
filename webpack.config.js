@@ -3,10 +3,10 @@ const Path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 
-
 module.exports = {
     entry: {
-        content: "./src/content.ts",
+        sso: "./src/sso.ts",
+        background: "./src/background.ts",
     },
 
     output: {
@@ -24,6 +24,20 @@ module.exports = {
                 test: /\.ts$/,
                 loader: "ts-loader",
                 exclude: "/node_modules/",
+            },
+            {
+                test: /\.(css|sass|scss)/,
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: { url: false },
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {},
+                    },
+                ],
             },
         ],
     },

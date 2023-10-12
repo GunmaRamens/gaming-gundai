@@ -1,0 +1,19 @@
+@keyframes gaming {
+    100% {
+        background-position-x: 200%;
+    }
+}
+.rainbow {
+    background: linear-gradient(to right, Magenta, yellow, Cyan, Magenta) 0% center/200%;
+    animation-name: gaming;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    text-shadow: 0 0 2px white;
+    
+    /*
+    &:hover {
+        animation: none;
+        background: white;
+    }
+    */
+}

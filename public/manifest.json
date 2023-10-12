@@ -1,13 +1,17 @@
 {
-    "name": "名前",
-    "manifest_version": 2,
-    "version": "1.0",
-    "browser_action": {},
+    "name": "Gaming Gunma University",
+    "manifest_version": 3,
+    "version": "0.1",
+    "icons":{},
 
+
+    "background": {
+        "service_worker": "background.js"
+    },
     "content_scripts": [
         {
-            "matches": ["https://www.google.com/", "https://www.google.com/"],
-            "js": ["content.js"]
+            "matches": ["*://idp.gunma-u.ac.jp/pub/login.cgi*"],
+            "js": ["sso.js"]
         }
     ]
 }
