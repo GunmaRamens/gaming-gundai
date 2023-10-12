@@ -1,9 +1,10 @@
 {
-    "name": "Gaming Gunma University",
     "manifest_version": 3,
+    "name": "Gaming Gunma University",
     "version": "0.1",
-    "icons":{},
-
+    "description": "辺境にある群馬大学をゲーミングでエキサイティングにします",
+    "default_locale": "ja",
+    "author": "shun819.mail@gmail.com",
 
     "background": {
         "service_worker": "background.js"
