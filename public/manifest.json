@@ -3,7 +3,6 @@
     "name": "Gaming Gunma University",
     "version": "0.1",
     "description": "辺境にある群馬大学をゲーミングでエキサイティングにします",
-    "default_locale": "ja",
     "author": "shun819.mail@gmail.com",
 
     "background": {

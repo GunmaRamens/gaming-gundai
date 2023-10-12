@@ -3,8 +3,7 @@
         background-position-x: 200%;
     }
 }
-.rainbow {
-
+.rainbow-bg {
     animation-duration: 0.7s;
 
     background: linear-gradient(to right, Magenta, yellow, Cyan, Magenta) 0% center/200%;
@@ -12,11 +11,20 @@
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     text-shadow: 0 0 2px white;
-    
-    /*
-    &:hover {
-        animation: none;
-        background: white;
-    }
-    */
+}
+
+.rainbow-text {
+    animation-duration: 0.7s;
+
+    background: linear-gradient(to right, Magenta, yellow, Cyan, Magenta) 0% center/200%;
+    animation-name: gaming;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    // For Text
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    color: transparent;
 }
