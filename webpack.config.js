@@ -5,8 +5,8 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
     entry: {
-        sso: "./src/sso.ts",
-        moodle: "./src/moodle.ts",
+        sso: "./src/content_sso.ts",
+        moodle: "./src/content_moodle.ts",
         background: "./src/background.ts",
     },
 

@@ -5,8 +5,13 @@
     "description": "辺境にある群馬大学をゲーミングでエキサイティングにします",
     "author": "shun819.mail@gmail.com",
 
+    "permissions": ["storage"],
+    "action": {
+        "default_title": "Gaming Gunma University"
+    },
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "background.js",
+        "type": "module"
     },
     "content_scripts": [
         {
