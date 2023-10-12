@@ -7,9 +7,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.action.onClicked.addListener(async () => {
     const isEnable = await getIsEnabled();
-    if (isEnable) {
-        chrome.storage.local.set({ enabled: !isEnable });
-        chrome.action.setBadgeText({ text: isEnable ? "OFF" : "ON" });
-        console.log("enabled:", !isEnable);
-    }
+    chrome.storage.local.set({ enabled: !isEnable });
+    chrome.action.setBadgeText({ text: isEnable ? "OFF" : "ON" });
+    console.log("enabled:", !isEnable);
 });
