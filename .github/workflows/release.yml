@@ -1,0 +1,37 @@
+name: release
+
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+    relese:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - name: Set up Volta
+              uses: volta-cli/action@v4
+
+            - name: Install dependencies
+              run: |
+                volta install node
+                volta install pnpm
+                pnpm install
+                pnpm run build
+
+            - name: Compress files
+              uses: vimtor/action-zip@v1.1
+              with:
+                files: dist/
+                dest: gaming-gundai.zip
+
+            - name: Release
+              uses: softprops/action-gh-release@v1
+              if: startsWith(github.ref, 'refs/tags/')
+              with:
+                files: gaming-gundai.zip
+
