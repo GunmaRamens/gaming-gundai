@@ -1,16 +1,55 @@
-## 群馬大学 ゲーミングエディション
+## Gunma University Gaming Edition
 
 関東の最も辺境の地にある緑あふれる群馬大学。
 
 せめてウェブサービスだけでも綺羅びやかにしようではないかという、とある学部生のささやかなプロジェクト。
 
+## How to Build and Install
 
-## 参考文献
-### インスパイア元
+### Build
 
-[appare45/gaming-manaba](https://github.com/appare45/gaming-manaba)様を~~丸パクリ~~参考にさせていただきました。
+1. Install volta
 
-### 構築にあたって
+2. Clone this repository.
+
+```bash
+git clone https://github.com/Hayao0819/gaming-gundai.git
+cd gaming-gundai
+```
+
+3. Install dependencies.
+
+```bash
+volta install node
+volta install pnpm
+pnpm install
+```
+
+4. Build
+
+```bash
+pnpm run build
+```
+
+5. Load dist directory to Chrome.
+
+
+## Technology Stack
+
+- Node.js
+- pnpm
+- TypeScript
+- Webpack
+- Sass
+- ESLint
+- Prettier
+
+
+## Special Thanks
+
+- [appare45/gaming-manaba](https://github.com/appare45/gaming-manaba)
+
+## References
 
 - [入門者/初心者にもわかるwebpack 5の基礎\(Babel編\) \| アールエフェクト](https://reffect.co.jp/html/webpack-babel-loader-setting-for-beginner/)
 - [最新版で学ぶwebpack 5入門 \- スタイルシート\(CSS/Sass\)を取り込む方法 \- ICS MEDIA](https://ics.media/entry/17376/)
