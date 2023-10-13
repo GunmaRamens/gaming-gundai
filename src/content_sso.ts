@@ -5,3 +5,9 @@ import SSO from "./SSO";
 import runIfEnabled from "./utils/runIfEnabled";
 
 window.addEventListener("load", async () => await runIfEnabled(SSO.EnableRainbow));
+
+chrome.runtime.onMessage.addListener((message) => {
+    if (message === "reload") {
+        location.reload();
+    }
+});

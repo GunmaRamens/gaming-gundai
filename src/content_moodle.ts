@@ -7,6 +7,10 @@ import runIfEnabled from "./utils/runIfEnabled";
 
 window.addEventListener("load", async () => await runIfEnabled(Moodle.EnableRainbow));
 
+chrome.runtime.onMessage.addListener((message) => {
+    if (message === "reload") location.reload();
+});
+
 // あとでリロード無しでゲーミングモード解除を実装する
 /*
 chrome.action.onClicked.addListener(async () => {
