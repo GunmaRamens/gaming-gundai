@@ -1,4 +1,6 @@
+import { storage } from "./storage";
+
 export default async function getIsEnabled() {
-    const config = await chrome.storage.local.get("enabled");
+    const config = await storage.get("enabled");
     return config.enabled;
 }
