@@ -1,6 +1,5 @@
 node_modules
 .next
-public
 pnpm-lock.yaml
 Dockerfile
 package.json

@@ -7,6 +7,7 @@ module.exports = {
     entry: {
         sso: "./src/content_sso.ts",
         moodle: "./src/content_moodle.ts",
+        kyomu: "./src/content_kyomu.ts",
         background: "./src/background.ts",
     },
 
@@ -50,7 +51,10 @@ module.exports = {
 
     plugins: [
         new CopyPlugin({
-            patterns: [{ from: ".", to: ".", context: "public" }],
+            patterns: [
+                { from: ".", to: ".", context: "public" },
+                { from: ".", to: "./assets", context: "src/assets" },
+            ],
         }),
         new ESLintPlugin(),
     ],
