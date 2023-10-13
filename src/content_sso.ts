@@ -2,11 +2,6 @@ import "./styles/gaming.scss";
 import "./styles/sso.scss";
 
 import SSO from "./SSO";
-import getIsEnabled from "./utils/getIsEnabled";
+import runIfEnabled from "./utils/runIfEnabled";
 
-window.addEventListener("load", async () => {
-    const isEnable = await getIsEnabled();
-    if (isEnable) {
-        SSO.EnableRainbow();
-    }
-});
+window.addEventListener("load", async () => await runIfEnabled(SSO.EnableRainbow));

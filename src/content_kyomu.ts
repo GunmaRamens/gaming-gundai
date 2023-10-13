@@ -2,11 +2,6 @@ import "./styles/gaming.scss";
 import "./styles/kyomu.scss";
 
 import Kyomu from "./Kyomu";
-import getIsEnabled from "./utils/getIsEnabled";
+import runIfEnabled from "./utils/runIfEnabled";
 
-window.addEventListener("load", async () => {
-    const isEnable = await getIsEnabled();
-    if (isEnable) {
-        Kyomu.EnableRainbow();
-    }
-});
+window.addEventListener("load", async () => await runIfEnabled(Kyomu.EnableRainbow));

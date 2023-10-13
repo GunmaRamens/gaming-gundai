@@ -3,16 +3,9 @@ import "./styles/moodle.scss";
 import "./styles/gaming.scss";
 
 import Moodle from "./Moodle";
-import getIsEnabled from "./utils/getIsEnabled";
+import runIfEnabled from "./utils/runIfEnabled";
 
-window.addEventListener("load", async () => {
-    const isEnable = await getIsEnabled();
-    if (isEnable) {
-        Moodle.EnableRainbow();
-    } else {
-        Moodle.DisableRainbow();
-    }
-});
+window.addEventListener("load", async () => await runIfEnabled(Moodle.EnableRainbow));
 
 // あとでリロード無しでゲーミングモード解除を実装する
 /*
