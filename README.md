@@ -12,8 +12,6 @@ Please use this project at your own risk.
 
 ## How to Build and Install
 
-### Build
-
 1. Install volta
 
 2. Clone this repository.
@@ -26,9 +24,7 @@ cd gaming-gundai
 3. Install dependencies.
 
 ```bash
-volta install node
-volta install pnpm
-pnpm install
+./devtools.sh init
 ```
 
 4. Build
