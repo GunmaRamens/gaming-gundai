@@ -4,6 +4,12 @@
 
 せめてウェブサービスだけでも綺羅びやかにしようではないかという、とある学部生のささやかなプロジェクト。
 
+## Warning
+
+This project is not accepted by Gunma University.
+
+Please use this project at your own risk.
+
 ## How to Build and Install
 
 ### Build
@@ -33,6 +39,12 @@ pnpm run build
 
 5. Load dist directory to Chrome.
 
+## LICENSE
+
+You can choose one of the following licenses.
+
+[MIT](./LICENSE.txt)
+[MIT-SUSHI](./SUSHI.md)
 
 ## Technology Stack
 
