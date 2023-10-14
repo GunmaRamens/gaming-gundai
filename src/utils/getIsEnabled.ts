@@ -1,6 +1,6 @@
-import { storage } from "./storage";
+import Storage from "./Storage";
 
-export default async function getIsEnabled() {
-    const config = await storage.get("enabled");
+export default async function GetIsEnabled() {
+    const config = await Storage.get("enabled");
     return config.enabled;
 }

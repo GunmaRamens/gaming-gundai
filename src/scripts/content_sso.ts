@@ -1,5 +1,5 @@
 import { SSO } from "../class";
-import loadGamingWebsite from "../utils/loadGamingWebsite";
+import loadGamingWebsite from "../utils/LoadGamingWebsite";
 
 //window.addEventListener("load", async () => await runFuncIfEnabled(SSO.EnableRainbow));
 

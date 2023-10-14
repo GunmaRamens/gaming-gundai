@@ -1,1 +1,2 @@
-export const storage = chrome.storage.sync;
+export const Storage = chrome.storage.sync;
+export default Storage;

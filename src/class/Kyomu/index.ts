@@ -1,5 +1,5 @@
-import { addRainbowBg, addRainbowText } from "../../utils/addClass";
-import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
+import { addRainbowBg, addRainbowText } from "../../utils/AddClass";
+import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import GundaiWebSite from "../GundaiWebsite";
 
 const EnableRainbow = () => {

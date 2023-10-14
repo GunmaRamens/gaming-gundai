@@ -1,4 +1,4 @@
-export function addClass(queries: string[], classNames: string[]) {
+export function AddClass(queries: string[], classNames: string[]) {
     queries.forEach((query) => {
         const elements = document.querySelectorAll(query);
         elements.forEach((element) => {
@@ -8,7 +8,7 @@ export function addClass(queries: string[], classNames: string[]) {
     });
 }
 
-export function removeClass(queries: string[], classNames: string[]) {
+export function RemoveClass(queries: string[], classNames: string[]) {
     queries.forEach((query) => {
         const elements = document.querySelectorAll(query);
         elements.forEach((element) => {
@@ -19,17 +19,17 @@ export function removeClass(queries: string[], classNames: string[]) {
 }
 
 export function addRainbowBg(...queries: string[]) {
-    addClass(queries, ["rainbow-bg"]);
+    AddClass(queries, ["rainbow-bg"]);
 }
 
 export function addRainbowText(...queries: string[]) {
-    addClass(queries, ["rainbow-text"]);
+    AddClass(queries, ["rainbow-text"]);
 }
 
-export function removeRainbowBg(...queries: string[]) {
-    removeClass(queries, ["rainbow-bg"]);
+export function RemoveRainbowBg(...queries: string[]) {
+    RemoveClass(queries, ["rainbow-bg"]);
 }
 
-export function removeRainbowText(...queries: string[]) {
-    removeClass(queries, ["rainbow-text"]);
+export function RemoveRainbowText(...queries: string[]) {
+    RemoveClass(queries, ["rainbow-text"]);
 }

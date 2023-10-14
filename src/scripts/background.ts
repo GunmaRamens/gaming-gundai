@@ -1,14 +1,14 @@
-import getIsEnabled from "../utils/getIsEnabled";
-import { storage } from "../utils/storage";
+import getIsEnabled from "../utils/GetIsEnabled";
+import Storage from "../utils/Storage";
 
 chrome.runtime.onInstalled.addListener(() => {
-    storage.set({ enabled: true });
+    Storage.set({ enabled: true });
     chrome.action.setBadgeText({ text: "ON" });
 });
 
 chrome.action.onClicked.addListener(async (tab) => {
     const isEnable = await getIsEnabled();
-    storage.set({ enabled: !isEnable });
+    Storage.set({ enabled: !isEnable });
     chrome.action.setBadgeText({ text: isEnable ? "OFF" : "ON" });
     console.log("enabled:", !isEnable);
 

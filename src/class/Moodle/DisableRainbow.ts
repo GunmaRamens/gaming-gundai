@@ -1,12 +1,12 @@
-import { removeRainbowBg } from "../../utils/addClass";
-import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
+import { RemoveRainbowBg } from "../../utils/AddClass";
+import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import { HeaderAppendText } from "./common";
 
 export const DisableRainbow = () => {
     changeQueryInnerHTML(["#instance-320-header"], "現在のログイン人数");
-    removeRainbowBg(".navbar", ".addinghtml");
-    removeRainbowBg(".page-header-headings h1");
-    removeRainbowBg("a");
+    RemoveRainbowBg(".navbar", ".addinghtml");
+    RemoveRainbowBg(".page-header-headings h1");
+    RemoveRainbowBg("a");
 
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
         if (e.innerHTML.includes(HeaderAppendText)) e.innerHTML.replace(HeaderAppendText, "");

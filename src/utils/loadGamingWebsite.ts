@@ -1,6 +1,7 @@
 import GundaiWebSite from "../class/GundaiWebsite";
-import runFuncIfEnabled from "./runFuncIfEnabled";
+import RunFuncIfEnabled from "./RunFuncIfEnabled";
 
-export default function loadGamingWebsite(website: GundaiWebSite) {
-    window.addEventListener("load", async () => await runFuncIfEnabled(website.EnableRainbow));
+// ウィンドウが読み込まれたらGundaiWebsiteのEnableRainbowを実行する
+export default function LoadGamingWebsite(website: GundaiWebSite) {
+    window.addEventListener("load", async () => await RunFuncIfEnabled(website.EnableRainbow));
 }
