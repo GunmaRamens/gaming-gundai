@@ -5,7 +5,6 @@
     "version": "1.1.0",
     "scripts": {
         "build": "webpack --mode production",
-        "watch": "webpack --mode development --watch",
         "lint": "prettier --check . && eslint . ",
         "lint:fix": "prettier --write . && eslint . --fix"
     },
