@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require("path");
-const fs = require("fs");
-const CopyPlugin = require("copy-webpack-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin");
+import CopyPlugin from "copy-webpack-plugin";
+import ESLintPlugin from "eslint-webpack-plugin";
+import fs from "fs";
+import path from "path";
 
 const loadFilesInScripts = function () {
     const dir = path.join(__dirname, "src/scripts");
