@@ -2,8 +2,7 @@ import GundaiWebSite from "../GundaiWebsite";
 import DisableRainbow from "./DisableRainbow";
 import EnableRainbow from "./EnableRainbow";
 
-export const HeaderAppendText = " Gaming Edition🎮";
-
+/*
 export default class Moodle extends GundaiWebSite {
     constructor() {
         super();
@@ -11,3 +10,6 @@ export default class Moodle extends GundaiWebSite {
         this.DisableRainbow = DisableRainbow;
     }
 }
+*/
+
+export const Moodle = new GundaiWebSite(EnableRainbow, DisableRainbow);

@@ -1,10 +1,8 @@
 export default class GundaiWebSite {
-    HeaderAppendText: string;
     EnableRainbow: () => void;
-    DisableRainbow: () => void;
-    constructor() {
-        this.HeaderAppendText = "";
-        this.EnableRainbow = () => {};
-        this.DisableRainbow = () => {};
+    DisableRainbow?: () => void;
+    constructor(enable: () => void, disable?: () => void) {
+        this.EnableRainbow = enable;
+        this.DisableRainbow = disable;
     }
 }

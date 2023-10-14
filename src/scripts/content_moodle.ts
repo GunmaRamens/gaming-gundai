@@ -1,8 +1,8 @@
-import Moodle from "../class/Moodle";
+import { Moodle } from "../class";
 import loadGamingWebsite from "../utils/loadGamingWebsite";
 
 //window.addEventListener("load", async () => await runFuncIfEnabled(Moodle.EnableRainbow));
-loadGamingWebsite(new Moodle());
+loadGamingWebsite(Moodle);
 
 // あとでリロード無しでゲーミングモード解除を実装する
 /*

@@ -1,4 +1,4 @@
-import Kyomu from "../class/Kyomu";
+import { Kyomu } from "../class";
 import loadGamingWebsite from "../utils/loadGamingWebsite";
 
-loadGamingWebsite(new Kyomu());
+loadGamingWebsite(Kyomu);

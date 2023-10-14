@@ -1,6 +1,6 @@
 import { removeRainbowBg } from "../../utils/addClass";
 import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
-import { HeaderAppendText } from ".";
+import { HeaderAppendText } from "./common";
 
 export const DisableRainbow = () => {
     changeQueryInnerHTML(["#instance-320-header"], "現在のログイン人数");

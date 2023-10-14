@@ -1,6 +1,6 @@
 import { addRainbowBg, addRainbowText } from "../../utils/addClass";
 import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
-import { HeaderAppendText } from ".";
+import { HeaderAppendText } from "./common";
 
 export const EnableRainbow = () => {
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
