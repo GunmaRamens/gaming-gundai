@@ -15,3 +15,9 @@ chrome.action.onClicked.addListener(async (tab) => {
     if (tab.id === undefined) return;
     chrome.tabs.sendMessage(tab.id, "reload").catch((e) => console.error(e));
 });
+
+chrome.runtime.onStartup.addListener(async () => {
+    const isEnable = await getIsEnabled();
+    chrome.action.setBadgeText({ text: isEnable ? "ON" : "OFF" });
+    console.log("enabled:", isEnable);
+});
