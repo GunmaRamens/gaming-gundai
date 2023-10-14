@@ -21,15 +21,18 @@
     "content_scripts": [
         {
             "matches": ["*://idp.gunma-u.ac.jp/pub/login.cgi*", "*://idp.gunma-u.ac.jp/pub/allotplogin_force.cgi*"],
-            "js": ["sso.js"]
+            "js": ["common.js", "sso.js"]
         },
         {
             "matches": ["*://mdl.media.gunma-u.ac.jp/*"],
-            "js": ["moodle.js"]
+            "js": ["common.js", "moodle.js"]
         },
         {
             "matches": ["*://*.kyomu-sys.gunma-u.ac.jp/*"],
-            "js": ["kyomu.js"]
+            "js": ["common.js","kyomu.js"]
+        },{
+            "matches": ["*://www.media.gunma-u.ac.jp/*"],
+            "js": ["common.js","media.js"]
         }
     ]
 }

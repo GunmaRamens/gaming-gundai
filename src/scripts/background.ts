@@ -1,5 +1,5 @@
-import getIsEnabled from "./utils/getIsEnabled";
-import { storage } from "./utils/storage";
+import getIsEnabled from "../utils/getIsEnabled";
+import { storage } from "../utils/storage";
 
 chrome.runtime.onInstalled.addListener(() => {
     storage.set({ enabled: true });

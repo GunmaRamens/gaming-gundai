@@ -1,5 +1,5 @@
-import { addRainbowBg, addRainbowText } from "../utils/addClass";
-import changeQueryInnerHTML from "../utils/changeQueryInnerHTML";
+import { addRainbowBg, addRainbowText } from "../../utils/addClass";
+import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { HeaderAppendText } from ".";
 
 export const EnableRainbow = () => {

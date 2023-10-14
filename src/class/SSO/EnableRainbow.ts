@@ -1,5 +1,5 @@
-import { addClass } from "../utils/addClass";
-import changeQueryInnerHTML from "../utils/changeQueryInnerHTML";
+import { addClass } from "../../utils/addClass";
+import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 
 export const EnableRainbow = () => {
     addClass([".header_column", ".input_form", ".input_column"], ["rainbow-bg"]);

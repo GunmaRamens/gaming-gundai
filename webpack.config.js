@@ -1,18 +1,25 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const Path = require("path");
+const path = require("path");
+const fs = require("fs");
 const CopyPlugin = require("copy-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
+const loadFilesInScripts = function () {
+    const dir = path.join(__dirname, "src/scripts");
+    const files = fs.readdirSync(dir);
+    const entry = {};
+    files.forEach(function (file) {
+        const name = file.replace(".ts", "").replace("content_", "");
+        entry[name] = path.join(dir, file);
+    });
+    return entry;
+};
+
 module.exports = {
-    entry: {
-        sso: "./src/content_sso.ts",
-        moodle: "./src/content_moodle.ts",
-        kyomu: "./src/content_kyomu.ts",
-        background: "./src/background.ts",
-    },
+    entry: loadFilesInScripts(),
 
     output: {
-        path: Path.join(__dirname, "dist"),
+        path: path.join(__dirname, "dist"),
         clean: true,
     },
 

@@ -1,5 +1,5 @@
-import { removeRainbowBg } from "../utils/addClass";
-import changeQueryInnerHTML from "../utils/changeQueryInnerHTML";
+import { removeRainbowBg } from "../../utils/addClass";
+import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { HeaderAppendText } from ".";
 
 export const DisableRainbow = () => {
