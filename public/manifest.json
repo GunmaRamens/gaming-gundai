@@ -29,10 +29,11 @@
         },
         {
             "matches": ["*://*.kyomu-sys.gunma-u.ac.jp/*"],
-            "js": ["common.js","kyomu.js"]
-        },{
+            "js": ["common.js", "kyomu.js"]
+        },
+        {
             "matches": ["*://www.media.gunma-u.ac.jp/*"],
-            "js": ["common.js","media.js"]
+            "js": ["common.js", "media.js"]
         }
     ]
 }
