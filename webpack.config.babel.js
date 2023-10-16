@@ -24,6 +24,7 @@ module.exports = {
 
     resolve: {
         extensions: [".ts", ".js"],
+        roots: [path.resolve(__dirname, "node_modules"), path.resolve(__dirname, "src")],
     },
 
     module: {
@@ -64,5 +65,6 @@ module.exports = {
         }),
         new ESLintPlugin(),
     ],
-    //devtool: "source-map",
+
+    devtool: "source-map",
 };
