@@ -39,6 +39,16 @@ const EnableRainbow = () => {
 
     // 受信メッセージ一覧
     AddRainbowBg("#ctl00_phContents_ctlMesReceive_gridMes tr");
+
+    // リンクを挿入
+    if (["/portal/login.aspx", "/portal/"].includes(location.pathname.toLowerCase())) {
+        const linkHTML =
+            '<tr><td align="center">ゲーミング群馬大学についての問い合わせは<a href="https://twitter.com/Hayao0819" style="font-size: small;">@Hayao0819</a>までお願いします。</td></tr>';
+        document.querySelectorAll(".footerTable").forEach((e) => {
+            const tbody = e.querySelector("tbody");
+            if (tbody) tbody.innerHTML += linkHTML;
+        });
+    }
 };
 
 export const Kyomu = new GundaiWebSite(EnableRainbow);
