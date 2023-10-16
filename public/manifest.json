@@ -34,6 +34,10 @@
         {
             "matches": ["*://www.media.gunma-u.ac.jp/*"],
             "js": ["common.js", "media.js"]
+        },
+        {
+            "matches": ["*://opac.lib.gunma-u.ac.jp/*"],
+            "js": ["common.js", "mylib.js"]
         }
     ]
 }

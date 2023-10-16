@@ -7,7 +7,7 @@ import GundaiWebSite from "../GundaiWebsite";
 
 const EnableRainbow = () => {
     AddClass([".header_column", ".input_form", ".input_column"], ["rainbow-bg"]);
-    changeQueryInnerHTML([".product"], "群馬大学ゲーミングサインオンシステム");
+    changeQueryInnerHTML(".product", "群馬大学ゲーミングサインオンシステム");
 };
 
 export const SSO = new GundaiWebSite(EnableRainbow);

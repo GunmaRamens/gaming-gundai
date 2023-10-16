@@ -4,7 +4,7 @@ import GundaiWebSite from "../GundaiWebsite";
 import { MoodleAdditionalInfo } from "./type";
 
 export default function DisableRainbowFunc(this: GundaiWebSite<MoodleAdditionalInfo>) {
-    changeQueryInnerHTML(["#instance-320-header"], "現在のログイン人数");
+    changeQueryInnerHTML("#instance-320-header", "現在のログイン人数");
     RemoveRainbowBg(".navbar", ".addinghtml");
     RemoveRainbowBg(".page-header-headings h1");
     RemoveRainbowBg("a");

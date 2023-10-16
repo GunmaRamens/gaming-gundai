@@ -28,14 +28,14 @@ const EnableRainbow = () => {
     AddRainbowBg(".top_title_header", ".top_now_title");
 
     // トップページのウェルカムメッセージ
-    ChangeQueryInnerHTML(["#loginHeader_lblWelcome_1_lbl"], "よおこそ、群馬大学ゲーミング教務システムへ");
+    ChangeQueryInnerHTML("#loginHeader_lblWelcome_1_lbl", "よおこそ、群馬大学ゲーミング教務システムへ");
     ChangeQueryInnerHTML(
-        ["#loginHeader_lblWelcome_2_lbl"],
+        "#loginHeader_lblWelcome_2_lbl",
         "このサイトでは、プレーヤーの群馬大学での𝑮𝒂𝒎𝒊𝒏𝒈 𝑳𝒊𝒇𝒆 𝑺𝒕𝒚𝒍𝒆をいい感じにします",
     );
 
     // トップページのお知らせ
-    ChangeQueryInnerHTML(["#AllAnnualList_LblTitle"], "ゲーミング ライフ スタイル");
+    ChangeQueryInnerHTML("#AllAnnualList_LblTitle", "ゲーミング ライフ スタイル");
 
     // 受信メッセージ一覧
     AddRainbowBg("#ctl00_phContents_ctlMesReceive_gridMes tr");

@@ -9,7 +9,7 @@ export default function EnableRainbowFunc(this: GundaiWebSite<MoodleAdditionalIn
         if (!e.innerHTML.includes(headerText)) e.innerHTML = e.innerHTML + headerText;
     });
 
-    changeQueryInnerHTML(["#instance-320-header"], "現在のプレイ人数");
+    changeQueryInnerHTML("#instance-320-header", "現在のプレイ人数");
     AddRainbowBg(".navbar", ".addinghtml");
     AddRainbowText(".page-header-headings h1");
     AddRainbowText("a");
