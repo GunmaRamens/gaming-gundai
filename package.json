@@ -4,7 +4,8 @@
     "license": "MIT",
     "version": "1.1.0",
     "scripts": {
-        "build": "webpack --mode production",
+        "build": "pnpm webpack --mode production",
+        "watch": "pnpm webpack --mode development --watch",
         "lint": "prettier --check . && eslint . ",
         "lint:fix": "prettier --write . && eslint . --fix"
     },
