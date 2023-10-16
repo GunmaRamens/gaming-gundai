@@ -1,3 +1,5 @@
+// 教務は学生の未来を担い、ゲーミングは学生の人生に彩りを加える
+// この二つのシステムを統合することで、学生の人生をより豊かにすることができる
 import { addRainbowBg, addRainbowText } from "../../utils/AddClass";
 import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import GundaiWebSite from "../GundaiWebsite";
