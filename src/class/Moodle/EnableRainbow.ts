@@ -3,7 +3,7 @@ import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import GundaiWebSite from "../GundaiWebsite";
 import { MoodleAdditionalInfo } from "./type";
 
-export const EnableRainbowFunc = function (this: GundaiWebSite<MoodleAdditionalInfo>) {
+export default function EnableRainbowFunc(this: GundaiWebSite<MoodleAdditionalInfo>) {
     const headerText = this.AdditionalInfo.headerText;
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
         if (!e.innerHTML.includes(headerText)) e.innerHTML = e.innerHTML + headerText;
@@ -27,6 +27,4 @@ export const EnableRainbowFunc = function (this: GundaiWebSite<MoodleAdditionalI
         supportSection.innerHTML =
             supportSection.innerHTML +
             `<a href="https://twitter.com/Hayao0819" target="blank" class="rainbow-text">Gaming Edition開発者に連絡する<i class="icon fa fa-external-link fa-fw ml-1" aria-hidden="true"></i></a>`;
-};
-
-export default EnableRainbowFunc;
+}
