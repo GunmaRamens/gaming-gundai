@@ -1,7 +1,7 @@
 // 教務は学生の未来を担い、ゲーミングは学生の人生に彩りを加える
 // この二つのシステムを統合することで、学生の人生をより豊かにすることができる
-import { addRainbowBg, addRainbowText } from "../../utils/AddClass";
-import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
+import { AddRainbowBg, AddRainbowText } from "../../utils/AddClass";
+import ChangeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import GundaiWebSite from "../GundaiWebsite";
 
 const EnableRainbow = () => {
@@ -13,32 +13,32 @@ const EnableRainbow = () => {
     }
 
     // ページ遷移リンク
-    addRainbowText(".commonTopPageLink", ".commonTopPageLinkWithPadding");
+    AddRainbowText(".commonTopPageLink", ".commonTopPageLinkWithPadding");
 
-    addRainbowText(
+    AddRainbowText(
         "#CtlInfLstBfrLginEmrgncy_LblTitle",
         "#CtlInfLstBfrLginNrml_LblTitle",
         "#AllAnnualList_LblTitle",
         "#JeLblSyllabiHeader_lbl",
     );
-    addRainbowBg(".infoListEntryOrgName");
-    addRainbowBg(".infoListBeforeLoginGrid");
+    AddRainbowBg(".infoListEntryOrgName");
+    AddRainbowBg(".infoListBeforeLoginGrid");
 
     // ログイン後のトップページ
-    addRainbowBg(".top_title_header", ".top_now_title");
+    AddRainbowBg(".top_title_header", ".top_now_title");
 
     // トップページのウェルカムメッセージ
-    changeQueryInnerHTML(["#loginHeader_lblWelcome_1_lbl"], "よおこそ、群馬大学ゲーミング教務システムへ");
-    changeQueryInnerHTML(
+    ChangeQueryInnerHTML(["#loginHeader_lblWelcome_1_lbl"], "よおこそ、群馬大学ゲーミング教務システムへ");
+    ChangeQueryInnerHTML(
         ["#loginHeader_lblWelcome_2_lbl"],
         "このサイトでは、プレーヤーの群馬大学での𝑮𝒂𝒎𝒊𝒏𝒈 𝑳𝒊𝒇𝒆 𝑺𝒕𝒚𝒍𝒆をいい感じにします",
     );
 
     // トップページのお知らせ
-    changeQueryInnerHTML(["#AllAnnualList_LblTitle"], "ゲーミング ライフ スタイル");
+    ChangeQueryInnerHTML(["#AllAnnualList_LblTitle"], "ゲーミング ライフ スタイル");
 
     // 受信メッセージ一覧
-    addRainbowBg("#ctl00_phContents_ctlMesReceive_gridMes tr");
+    AddRainbowBg("#ctl00_phContents_ctlMesReceive_gridMes tr");
 };
 
 export const Kyomu = new GundaiWebSite(EnableRainbow);

@@ -18,11 +18,11 @@ export function RemoveClass(queries: string[], classNames: string[]) {
     });
 }
 
-export function addRainbowBg(...queries: string[]) {
+export function AddRainbowBg(...queries: string[]) {
     AddClass(queries, ["rainbow-bg"]);
 }
 
-export function addRainbowText(...queries: string[]) {
+export function AddRainbowText(...queries: string[]) {
     AddClass(queries, ["rainbow-text"]);
 }
 

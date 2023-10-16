@@ -1,4 +1,4 @@
-import { addRainbowBg, addRainbowText } from "../../utils/AddClass";
+import { AddRainbowBg, AddRainbowText } from "../../utils/AddClass";
 import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import GundaiWebSite from "../GundaiWebsite";
 import { MoodleAdditionalInfo } from "./type";
@@ -10,9 +10,9 @@ export const EnableRainbowFunc = function (this: GundaiWebSite<MoodleAdditionalI
     });
 
     changeQueryInnerHTML(["#instance-320-header"], "現在のプレイ人数");
-    addRainbowBg(".navbar", ".addinghtml");
-    addRainbowText(".page-header-headings h1");
-    addRainbowText("a");
+    AddRainbowBg(".navbar", ".addinghtml");
+    AddRainbowText(".page-header-headings h1");
+    AddRainbowText("a");
 
     document.querySelectorAll(".logo").forEach((e) => {
         if (e.getAttribute("src")) e.setAttribute("src", chrome.runtime.getURL("assets/GULMS.png"));
