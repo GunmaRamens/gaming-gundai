@@ -4,13 +4,13 @@
 // GundaiWebSiteはゲーミング化するウェブサイトを定義したクラス
 // 型変数とAdditionalInfoプロパティによって任意の情報を追加できる
 export default class GundaiWebSite<T> {
-    EnableRainbow?: () => void;
-    DisableRainbow?: () => void;
     constructor(enable?: () => void, disable?: () => void) {
-        this.EnableRainbow = enable;
-        this.DisableRainbow = disable;
+        if (enable) this.EnableRainbow = enable;
+        if (disable) this.DisableRainbow = disable;
         this.AdditionalInfo = {} as T;
     }
+    EnableRainbow() {}
+    DisableRainbow() {}
     AdditionalInfo: T;
 }
 
