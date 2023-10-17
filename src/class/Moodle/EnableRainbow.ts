@@ -1,10 +1,16 @@
-import { AddRainbowBg, AddRainbowText } from "../../utils/AddClass";
+import { AddRainbowBg, AddRainbowText, AddRainbowTextWithShadow } from "../../utils/AddClass";
 import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import GundaiWebSite from "../GundaiWebsite";
 import { MoodleAdditionalInfo } from "./type";
 
 export const EnableRainbowText = () => {
     AddRainbowText(".page-header-headings h1");
+
+    // 科目リスト
+    if (document.getElementById("inst301")) {
+        AddRainbowTextWithShadow("#inst301 a");
+    }
+
     AddRainbowText("a");
 };
 
@@ -31,6 +37,8 @@ export const ReplaceImagesToGamimg = () => {
 };
 
 export const ReplaceTextToGaimgFunc = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
+    if (!moodle) return () => {};
+
     return () => {
         const headerText = moodle.AdditionalInfo.headerText;
 
