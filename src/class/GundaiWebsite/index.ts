@@ -21,6 +21,7 @@ export default class GundaiWebSite<T> {
     constructor(enable?: () => void, disable?: () => void) {
         if (enable) this.EnableRainbow = enable;
         if (disable) this.DisableRainbow = disable;
+
         this.additionalInfo = {} as T;
         this.classes = {
             RainbowText: [],
@@ -28,6 +29,9 @@ export default class GundaiWebSite<T> {
             RainbowBg: [],
             RainbowBgShadow: [],
         };
+
+        this.EnableRainbow.bind(this);
+        this.DisableRainbow.bind(this);
     }
     EnableRainbow() {}
     DisableRainbow() {}
