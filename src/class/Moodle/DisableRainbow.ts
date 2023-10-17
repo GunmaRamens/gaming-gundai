@@ -1,10 +1,10 @@
-import { RemoveRainbowBg } from "../../utils/AddClass";
 import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
+import { Moodle } from "./type";
 
-export const DisableRainbowBg = () => {
-    RemoveRainbowBg(".navbar", ".addinghtml");
-    RemoveRainbowBg(".page-header-headings h1");
-    RemoveRainbowBg("a");
+export const DisableRainbowBg = (moodle: Moodle) => {
+    moodle.RemoveRainbowBg(".navbar", ".addinghtml");
+    moodle.RemoveRainbowBg(".page-header-headings h1");
+    moodle.RemoveRainbowBg("a");
 };
 
 export const ReplaceImagesToDefault = () => {

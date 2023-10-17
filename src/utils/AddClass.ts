@@ -1,25 +1,46 @@
-export function AddClass(queries: string[], classNames: string[]) {
-    queries.forEach((query) => {
-        const elements = document.querySelectorAll(query);
-        elements.forEach((element) => {
-            //console.log("adding classes to", element);
-            element.classList.add(...classNames);
-        });
-    });
-}
+export type Elements = HTMLElement | NodeListOf<HTMLElement> | string;
 
-export function RemoveClass(queries: string[], classNames: string[]) {
-    queries.forEach((query) => {
-        const elements = document.querySelectorAll(query);
-        elements.forEach((element) => {
-            //console.log("removing classes from", element);
-            classNames.forEach((className) => {
-                if (element.classList.contains(className)) element.classList.remove(className);
+export function AddClass(elements: Elements[], classNames: string[]) {
+    elements.forEach((element) => {
+        if (typeof element === "string") {
+            const elements = document.querySelectorAll(element);
+            elements.forEach((element) => {
+                //console.log("adding classes to", element);
+                element.classList.add(...classNames);
             });
-        });
+        } else {
+            let list: HTMLElement[];
+            if (element instanceof HTMLElement) list = [element];
+            else list = Array.from(element);
+
+            list.forEach((element) => {
+                //console.log("adding classes to", element);
+                element.classList.add(...classNames);
+            });
+        }
     });
 }
 
+export function RemoveClass(elements: Elements[], classNames: string[]) {
+    elements.forEach((element) => {
+        if (typeof element === "string") {
+            const elements = document.querySelectorAll(element);
+            elements.forEach((element) => {
+                element.classList.remove(...classNames);
+            });
+        } else {
+            let list: HTMLElement[];
+            if (element instanceof HTMLElement) list = [element];
+            else list = Array.from(element);
+
+            list.forEach((element) => {
+                element.classList.remove(...classNames);
+            });
+        }
+    });
+}
+
+/*
 export function AddRainbowBg(...queries: string[]) {
     AddClass(queries, ["rainbow-bg"]);
 }
@@ -47,3 +68,4 @@ export function RemoveRainbowBgWithShadow(...queries: string[]) {
 export function RemoveRainbowText(...queries: string[]) {
     RemoveClass(queries, ["rainbow-text", "rainbow-text-shadow"]);
 }
+*/

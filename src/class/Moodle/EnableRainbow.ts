@@ -1,21 +1,21 @@
-import { AddRainbowBg, AddRainbowText, AddRainbowTextWithShadow } from "../../utils/AddClass";
 import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import GundaiWebSite from "../GundaiWebsite";
+import { Moodle } from "./type";
 import { MoodleAdditionalInfo } from "./type";
 
-export const EnableRainbowText = () => {
-    AddRainbowText(".page-header-headings h1");
+export const EnableRainbowText = (moodle: Moodle) => {
+    moodle.AddRainbowText(".page-header-headings h1");
 
     // 科目リスト
     if (document.getElementById("inst301")) {
-        AddRainbowTextWithShadow("#inst301 a");
+        moodle.AddRainbowTextWithShadow("#inst301 a");
     }
 
-    AddRainbowText("a");
+    moodle.AddRainbowText("a");
 };
 
-export const EnableRainbowBg = () => {
-    AddRainbowBg(".navbar", ".addinghtml");
+export const EnableRainbowBg = (moodle: Moodle) => {
+    moodle.AddRainbowBg(".navbar", ".addinghtml");
 };
 
 export const InjectLink = () => {
@@ -36,19 +36,17 @@ export const ReplaceImagesToGamimg = () => {
     });
 };
 
-export const ReplaceTextToGaimgFunc = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
+export const ReplaceTextToGaimg = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
     if (!moodle) return () => {};
 
-    return () => {
-        const headerText = moodle.AdditionalInfo.headerText;
+    const headerText = moodle.additionalInfo.headerText;
 
-        document.querySelectorAll(".page-header-headings h1").forEach((e) => {
-            if (!e.innerHTML.includes(headerText)) e.innerHTML = e.innerHTML + headerText;
-        });
-        document.querySelectorAll(".page-header-headings h1").forEach((e) => {
-            if (!e.innerHTML.includes(headerText)) e.innerHTML = e.innerHTML + headerText;
-        });
+    document.querySelectorAll(".page-header-headings h1").forEach((e) => {
+        if (!e.innerHTML.includes(headerText)) e.innerHTML = e.innerHTML + headerText;
+    });
+    document.querySelectorAll(".page-header-headings h1").forEach((e) => {
+        if (!e.innerHTML.includes(headerText)) e.innerHTML = e.innerHTML + headerText;
+    });
 
-        changeQueryInnerHTML("#instance-320-header", "現在のプレイ人数");
-    };
+    changeQueryInnerHTML("#instance-320-header", "現在のプレイ人数");
 };

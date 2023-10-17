@@ -1,8 +1,9 @@
-import { AddRainbowBg, AddRainbowText } from "../../utils/AddClass";
 import ChangeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import GundaiWebSite from "../GundaiWebsite";
 
-export const MyLibrary = new GundaiWebSite(() => {
+export const MyLibrary = new GundaiWebSite();
+
+MyLibrary.EnableRainbow = function () {
     if (location.pathname == "/portal/portal/selectLogin/") {
         //document.getElementById("explanation")
         ChangeQueryInnerHTML(
@@ -12,11 +13,11 @@ export const MyLibrary = new GundaiWebSite(() => {
         ChangeQueryInnerHTML("#ssoLoginTitle", "全学ゲーミングアカウントでログイン");
 
         // フッターをレインボー
-        AddRainbowBg("#footer");
+        this.AddRainbowBg("#footer");
         document.getElementById("footer")!.id = "";
     }
 
     // ヘッダーとタイトルをレインボー
-    AddRainbowBg("#header", "h2");
-    AddRainbowText("#lblTitle", "#mainTitle");
-});
+    this.AddRainbowBg("#header", "h2");
+    this.AddRainbowText("#lblTitle", "#mainTitle");
+};
