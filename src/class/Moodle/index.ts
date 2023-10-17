@@ -2,27 +2,27 @@
 // 個人の信頼性は家庭の構築において重要な要素である
 import GundaiWebSite from "../GundaiWebsite";
 import { DisableRainbowBg, ReplaceImagesToDefault } from "./DisableRainbow";
-import { EnableRainbowBg, EnableRainbowText, InjectLink, ReplaceImagesToGamimg, ReplaceTextToGaimgFunc } from "./EnableRainbow";
+import { EnableRainbowBg, EnableRainbowText, InjectLink, ReplaceImagesToGamimg, ReplaceTextToGaimg } from "./EnableRainbow";
 import { MoodleAdditionalInfo } from "./type";
 
 export const Moodle = new GundaiWebSite<MoodleAdditionalInfo>();
-Moodle.AdditionalInfo = {
+Moodle.additionalInfo = {
     headerText: " Gaming Edition🎮",
 };
 
 Moodle.EnableRainbow = function () {
-    EnableRainbowBg();
-    EnableRainbowText();
+    EnableRainbowBg(this);
+    EnableRainbowText(this);
     InjectLink();
     ReplaceImagesToGamimg();
-    ReplaceTextToGaimgFunc(this)();
+    ReplaceTextToGaimg(this);
 };
 
 Moodle.DisableRainbow = function () {
-    DisableRainbowBg();
+    DisableRainbowBg(this);
     ReplaceImagesToDefault();
 
-    const headerText = this.AdditionalInfo.headerText;
+    const headerText = this.additionalInfo.headerText;
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
         if (e.innerHTML.includes(headerText)) e.innerHTML.replace(headerText, "");
     });

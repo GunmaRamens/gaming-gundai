@@ -10,3 +10,6 @@
 -   [chibat/chrome\-extension\-typescript\-starter: Chrome Extension TypeScript Starter](https://github.com/chibat/chrome-extension-typescript-starter)
 -   [TypeScriptで document\.getElementById\("hoge"\)\.value をすると出るThe property ‘hoge' does not exist on value of type 'HTMLElement' というエラーを解消する \- Qiita](https://qiita.com/Sekky0905/items/a88721f2af41050c93f2#typescript%E3%81%A7-documentgetelementbyidhogevalue-%E3%82%92%E3%81%99%E3%82%8B%E3%81%A8%E5%87%BA%E3%82%8Bthe-property-hoge-does-not-exist-on-value-of-type-htmlelement-%E3%81%A8%E3%81%84%E3%81%86%E3%82%A8%E3%83%A9%E3%83%BC%E3%82%92%E8%A7%A3%E6%B6%88%E3%81%99%E3%82%8B)
 -   [Step by Stepで始めるESLint \- Qiita](https://qiita.com/howdy39/items/6e2c75861bc5a14b2acf)
+-   [javascriptでthisがundefinedになる実例が分からない](https://teratail.com/questions/331287)
+-   ['this' is undefined in JavaScript class methods \- Stack Overflow](https://stackoverflow.com/questions/4011793/this-is-undefined-in-javascript-class-methods)
+-   [JavaScript の this を理解する多分一番分かりやすい説明 \#JavaScript \- Qiita](https://qiita.com/takkyun/items/c6e2f2cf25327299cf03)

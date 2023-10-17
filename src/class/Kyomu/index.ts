@@ -1,10 +1,11 @@
 // 教務は学生の未来を担い、ゲーミングは学生の人生に彩りを加える
 // この二つのシステムを統合することで、学生の人生をより豊かにすることができる
-import { AddRainbowBg, AddRainbowText } from "../../utils/AddClass";
 import ChangeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import GundaiWebSite from "../GundaiWebsite";
 
-const EnableRainbow = () => {
+export const Kyomu = new GundaiWebSite();
+
+Kyomu.EnableRainbow = function () {
     // ログインボタン
     // https://qiita.com/Sekky0905/items/a88721f2af41050c93f2
     const loginBtn: HTMLInputElement = <HTMLInputElement>document.getElementById("ctl21_btnLoginShibbolethGunma");
@@ -13,19 +14,19 @@ const EnableRainbow = () => {
     }
 
     // ページ遷移リンク
-    AddRainbowText(".commonTopPageLink", ".commonTopPageLinkWithPadding");
+    this.AddRainbowText(".commonTopPageLink", ".commonTopPageLinkWithPadding");
 
-    AddRainbowText(
+    this.AddRainbowText(
         "#CtlInfLstBfrLginEmrgncy_LblTitle",
         "#CtlInfLstBfrLginNrml_LblTitle",
         "#AllAnnualList_LblTitle",
         "#JeLblSyllabiHeader_lbl",
     );
-    AddRainbowBg(".infoListEntryOrgName");
-    AddRainbowBg(".infoListBeforeLoginGrid");
+    this.AddRainbowBg(".infoListEntryOrgName");
+    this.AddRainbowBg(".infoListBeforeLoginGrid");
 
     // ログイン後のトップページ
-    AddRainbowBg(".top_title_header", ".top_now_title");
+    this.AddRainbowBg(".top_title_header", ".top_now_title");
 
     // トップページのウェルカムメッセージ
     ChangeQueryInnerHTML("#loginHeader_lblWelcome_1_lbl", "よおこそ、群馬大学ゲーミング教務システムへ");
@@ -38,7 +39,7 @@ const EnableRainbow = () => {
     ChangeQueryInnerHTML("#AllAnnualList_LblTitle", "ゲーミング ライフ スタイル");
 
     // 受信メッセージ一覧
-    AddRainbowBg("#ctl00_phContents_ctlMesReceive_gridMes tr");
+    this.AddRainbowBg("#ctl00_phContents_ctlMesReceive_gridMes tr");
 
     // リンクを挿入
     if (["/portal/login.aspx", "/portal/"].includes(location.pathname.toLowerCase())) {
@@ -50,5 +51,3 @@ const EnableRainbow = () => {
         });
     }
 };
-
-export const Kyomu = new GundaiWebSite(EnableRainbow);
