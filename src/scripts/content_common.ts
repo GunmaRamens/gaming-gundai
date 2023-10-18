@@ -1,4 +1,4 @@
-import "/styles/gaming.scss";
+import "/styles/gaming.css";
 
 chrome.runtime.onMessage.addListener((message) => {
     if (message === "reload") {
