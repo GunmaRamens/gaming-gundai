@@ -15,7 +15,10 @@ const loadFilesInScripts = function () {
 };
 
 module.exports = {
-    entry: loadFilesInScripts(),
+    entry: {
+        popup: "./src/popup.tsx",
+        ...loadFilesInScripts(),
+    },
 
     output: {
         path: path.join(__dirname, "dist"),
@@ -23,14 +26,14 @@ module.exports = {
     },
 
     resolve: {
-        extensions: [".ts", ".js"],
+        extensions: [".ts", ".tsx", ".js", ".jsx"],
         roots: [path.resolve(__dirname, "node_modules"), path.resolve(__dirname, "src")],
     },
 
     module: {
         rules: [
             {
-                test: /\.ts$/,
+                test: /\.(ts|tsx)$/,
                 loader: "ts-loader",
                 exclude: "/node_modules/",
             },
@@ -49,7 +52,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
             },

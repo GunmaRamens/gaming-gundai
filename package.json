@@ -12,6 +12,7 @@
     "devDependencies": {
         "@babel/core": "^7.23.2",
         "@babel/preset-env": "^7.23.2",
+        "@babel/preset-react": "^7.22.15",
         "@babel/register": "^7.22.15",
         "@types/chrome": "^0.0.246",
         "@types/node": "^20.8.4",
@@ -39,5 +40,9 @@
     },
     "volta": {
         "node": "18.18.1"
+    },
+    "dependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     }
 }
