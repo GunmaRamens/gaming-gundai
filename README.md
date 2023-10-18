@@ -48,8 +48,10 @@ You can choose one of the following licenses.
 - ESLint
 - Node.js
 - pnpm
+- PostCSS
 - Prettier
-- Sass
+- React
+- Tailwind CSS
 - TypeScript
 - Volta
 - Webpack
