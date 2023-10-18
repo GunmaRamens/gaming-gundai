@@ -39,7 +39,7 @@ module.exports = {
                 exclude: "/node_modules/",
             },
             {
-                test: /\.(css|sass|scss)/,
+                test: /\.(css|sass|scss|pcss)/,
                 use: [
                     "style-loader",
                     {
