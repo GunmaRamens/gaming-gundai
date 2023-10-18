@@ -11,6 +11,7 @@ const rainbowTextShadow = "rainbow-text-shadow";
 // GundaiWebSiteはゲーミング化するウェブサイトを定義したクラス
 // 型変数とAdditionalInfoプロパティによって任意の情報を追加できる
 export default class GundaiWebSite<T> {
+    additionalInfo: T;
     classes: {
         RainbowText: string[];
         RainbowTextShadow: string[];
@@ -35,7 +36,8 @@ export default class GundaiWebSite<T> {
     }
     EnableRainbow() {}
     DisableRainbow() {}
-    additionalInfo: T;
+    EnableHiddenFunction() {}
+    DisableHiddenFunction() {}
 
     AddRainbowBg(...elements: Elements[]) {
         AddClass(elements, [rainbowBg, ...this.classes.RainbowBg]);

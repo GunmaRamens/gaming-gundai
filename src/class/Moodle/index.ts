@@ -27,3 +27,8 @@ Moodle.DisableRainbow = function () {
         if (e.innerHTML.includes(headerText)) e.innerHTML.replace(headerText, "");
     });
 };
+
+Moodle.EnableHiddenFunction = () => {
+    const playCountUnderTextElement = document.querySelectorAll(".card-text .no-overflow")[0].getElementsByTagName("p")[1];
+    playCountUnderTextElement.innerHTML = "想定最大利用者乳首数：4,000";
+};
