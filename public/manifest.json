@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "ゲーミング群馬大学 - Gaming Gunma University - RGBな群馬大学を目指して",
-    "version": "1.1.0",
+    "name": "ゲーミング群馬大学 -Gaming Gunma University-",
+    "version": "1.2.0",
     "description": "辺境の地にある群馬大学のウェブサイトをゲーミングでエキサイティングにします",
     "author": "shun819.mail@gmail.com",
     "permissions": ["storage"],
