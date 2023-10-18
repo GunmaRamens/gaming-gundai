@@ -1,6 +1,7 @@
 import CopyPlugin from "copy-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import fs from "fs";
+import HtmlPlugin from "html-webpack-plugin";
 import path from "path";
 
 const loadFilesInScripts = function () {
@@ -16,7 +17,7 @@ const loadFilesInScripts = function () {
 
 module.exports = {
     entry: {
-        popup: "./src/popup.tsx",
+        popup: "./src/popup/index.tsx",
         ...loadFilesInScripts(),
     },
 
@@ -60,13 +61,18 @@ module.exports = {
     },
 
     plugins: [
+        new ESLintPlugin(),
         new CopyPlugin({
             patterns: [
                 { from: ".", to: ".", context: "public" },
                 { from: ".", to: "./assets", context: "src/assets" },
             ],
         }),
-        new ESLintPlugin(),
+        new HtmlPlugin({
+            template: "./src/popup/index.html",
+            filename: "popup.html",
+            chunks: ["popup"],
+        }),
     ],
 
     devtool: "source-map",
