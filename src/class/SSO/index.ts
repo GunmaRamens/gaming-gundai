@@ -3,7 +3,7 @@
 
 import { AddClass } from "../../utils/AddClass";
 import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
-import GundaiWebSite from "../GundaiWebsite";
+import { GundaiWebSite } from "../UnivWebsite";
 
 const EnableRainbow = () => {
     AddClass([".header_column", ".input_form", ".input_column"], ["rainbow-bg"]);
