@@ -1,11 +1,31 @@
-import getIsEnabled from "../utils/GetIsEnabled";
-import Storage from "../utils/Storage";
+//import Storage from "../utils/Storage";
+
+import { WebSites } from "../class";
+import IsTrue from "../utils/IsTrue";
 
 chrome.runtime.onInstalled.addListener(() => {
-    Storage.set({ enabled: true });
-    chrome.action.setBadgeText({ text: "ON" });
+    WebSites.forEach(async (site) => {
+        const isEnabled = await site.GetStorage("enabled");
+        if (IsTrue(isEnabled)) chrome.action.setBadgeText({ text: "ON" });
+    });
 });
 
+type WebsiteMsg = {
+    website: string;
+    action: "enable" | "disable";
+};
+type Message = WebsiteMsg | string;
+chrome.runtime.onMessage.addListener((message: Message): void => {
+    if (typeof message === "string" && message === "reload") {
+        location.reload();
+        return;
+    }
+    if (message === undefined) return;
+
+    const { website, action } = message as WebsiteMsg;
+});
+
+/*
 chrome.action.onClicked.addListener(async (tab) => {
     const isEnable = await getIsEnabled();
     Storage.set({ enabled: !isEnable });
@@ -21,3 +41,4 @@ chrome.runtime.onStartup.addListener(async () => {
     chrome.action.setBadgeText({ text: isEnable ? "ON" : "OFF" });
     console.log("enabled:", isEnable);
 });
+*/

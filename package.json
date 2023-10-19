@@ -5,9 +5,7 @@
     "version": "1.1.0",
     "scripts": {
         "build": "pnpm webpack --mode production",
-        "build:react": "pnpm webpack --mode production --config webpack.react.config.babel.js",
         "watch": "pnpm webpack --mode development --watch",
-        "watch:react": "pnpm webpack --mode development --watch --config webpack.react.config.babel.js",
         "lint": "prettier --check . && eslint . ",
         "lint:fix": "prettier --write . && eslint . --fix"
     },
