@@ -1,4 +1,3 @@
-import { Center } from "@chakra-ui/react";
 import { DetailedHTMLProps } from "react";
 
 import SwitchItem from "./SwitchItem";
@@ -8,9 +7,9 @@ type MainProps = DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElemen
 export default function Main(props: MainProps) {
     return (
         <main {...props}>
-            <Center>
+            <div>
                 <SwitchItem></SwitchItem>
-            </Center>
+            </div>
         </main>
     );
 }

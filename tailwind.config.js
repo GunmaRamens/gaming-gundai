@@ -9,7 +9,13 @@ module.exports = {
             },
         },
     },
+    daisyui: {
+        themes: ["dark"],
+        prefix: "daisy-",
+    },
     plugins: [
+        require("@tailwindcss/typography"),
+        require("daisyui"),
         function ({ addVariant }) {
             addVariant("child", "& > *");
         },
