@@ -1,5 +1,11 @@
+import { ChakraProvider } from "@chakra-ui/react";
+
 import Layout from "./components/Layout";
 
 export default function Popup() {
-    return <Layout></Layout>;
+    return (
+        <ChakraProvider>
+            <Layout></Layout>
+        </ChakraProvider>
+    );
 }

@@ -1,12 +1,16 @@
+import { Container } from "@chakra-ui/react";
+
+import Footer from "./Footer";
+import Header from "./Header";
+import Main from "./Main";
+
 export const Layout = ({ children }: { children?: React.ReactNode }) => {
     return (
-        <>
-            <header>
-                <h1>Popup</h1>
-            </header>
-            <main>{children}</main>
-            <footer></footer>
-        </>
+        <Container width="600px">
+            <Header></Header>
+            <Main>{children}</Main>
+            <Footer></Footer>
+        </Container>
     );
 };
 
