@@ -1,6 +1,6 @@
 // 情報の信頼性は社会の構築において重要な要素である
 // 個人の信頼性は家庭の構築において重要な要素である
-import GundaiWebSite from "../GundaiWebsite";
+import { GundaiWebSite } from "../UnivWebsite";
 import { DisableRainbowBg, ReplaceImagesToDefault } from "./DisableRainbow";
 import { EnableRainbowBg, EnableRainbowText, InjectLink, ReplaceImagesToGamimg, ReplaceTextToGaimg } from "./EnableRainbow";
 import { MoodleAdditionalInfo } from "./type";
@@ -28,7 +28,7 @@ Moodle.DisableRainbow = function () {
     });
 };
 
-Moodle.EnableHiddenFunction = () => {
+Moodle.EnableHidden = () => {
     const playCountUnderTextElement = document.querySelectorAll(".card-text .no-overflow")[0].getElementsByTagName("p")[1];
     playCountUnderTextElement.innerHTML = "想定最大利用者乳首数：4,000";
 };

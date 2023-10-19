@@ -8,9 +8,9 @@ const rainbowText = "rainbow-text";
 const rainbowBgShadow = "rainbow-bg-shadow";
 const rainbowTextShadow = "rainbow-text-shadow";
 
-// GundaiWebSiteはゲーミング化するウェブサイトを定義したクラス
+// UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
 // 型変数とAdditionalInfoプロパティによって任意の情報を追加できる
-export default class GundaiWebSite<T> {
+export class UnivWebsite<T> {
     additionalInfo: T;
     classes: {
         RainbowText: string[];
@@ -35,21 +35,21 @@ export default class GundaiWebSite<T> {
         this.DisableRainbow.bind(this);
     }
     EnableRainbow() {}
+    EnableHidden() {}
     DisableRainbow() {}
-    EnableHiddenFunction() {}
-    DisableHiddenFunction() {}
+    DisableHidden() {}
 
     Enable() {
         document.documentElement.dataset.gaming_gundai = "true";
 
         this.EnableRainbow();
-        //this.EnableHiddenFunction();
+        //this.EnableHidden();
     }
     Disable() {
         document.documentElement.dataset.gaming_gundai = "false";
 
         this.DisableRainbow();
-        //this.DisableHiddenFunction();
+        //this.DisableHidden();
     }
 
     AddRainbowBg(...elements: Elements[]) {
@@ -78,5 +78,7 @@ export default class GundaiWebSite<T> {
         RemoveClass(elements, [rainbowText, rainbowTextShadow, ...this.classes.RainbowTextShadow]);
     }
 }
+
+export class GundaiWebSite<T> extends UnivWebsite<T> {}
 
 // 型変数使うとかっこいいよね
