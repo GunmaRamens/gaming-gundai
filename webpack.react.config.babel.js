@@ -69,6 +69,12 @@ module.exports = () => {
                         priority: 0,
                     },
                     {
+                        from: "manifest.react.json",
+                        to: "manifest.json",
+                        context: "public",
+                        priority: 0,
+                    },
+                    {
                         from: ".",
                         to: "./assets",
                         context: "src/assets",

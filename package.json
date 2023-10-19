@@ -5,6 +5,7 @@
     "version": "1.1.0",
     "scripts": {
         "build": "pnpm webpack --mode production",
+        "build:react" : "pnpm webpack --mode production --env manifest=react",
         "watch": "pnpm webpack --mode development --watch",
         "lint": "prettier --check . && eslint . ",
         "lint:fix": "prettier --write . && eslint . --fix"
