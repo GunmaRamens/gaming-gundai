@@ -1,4 +1,26 @@
-.menu-action-text {
-    font-weight: bold;
-    font-size: large;
+[data-gaming_gundai="true"] {
+    .menu-action-text,
+    .dropdown-menu {
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .moremenu .show > .nav-link.rainbow-text,
+    .moremenu .active > .nav-link.rainbow-text,
+    .moremenu .nav-link.show.rainbow-text,
+    .moremenu .nav-link.active.rainbow-text {
+        animation-duration: 0.7s;
+
+        background: linear-gradient(to right, Magenta, yellow, Cyan, Magenta) 0% center/200%;
+        animation-name: gaming;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+
+        // For Text
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+        color: transparent;
+    }
 }

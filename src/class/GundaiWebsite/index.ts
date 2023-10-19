@@ -39,6 +39,19 @@ export default class GundaiWebSite<T> {
     EnableHiddenFunction() {}
     DisableHiddenFunction() {}
 
+    Enable() {
+        document.documentElement.dataset.gaming_gundai = "true";
+
+        this.EnableRainbow();
+        //this.EnableHiddenFunction();
+    }
+    Disable() {
+        document.documentElement.dataset.gaming_gundai = "false";
+
+        this.DisableRainbow();
+        //this.DisableHiddenFunction();
+    }
+
     AddRainbowBg(...elements: Elements[]) {
         AddClass(elements, [rainbowBg, ...this.classes.RainbowBg]);
     }

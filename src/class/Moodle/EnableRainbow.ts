@@ -37,8 +37,6 @@ export const ReplaceImagesToGamimg = () => {
 };
 
 export const ReplaceTextToGaimg = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
-    if (!moodle) return () => {};
-
     const headerText = moodle.additionalInfo.headerText;
 
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
