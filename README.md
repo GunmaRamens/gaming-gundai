@@ -10,7 +10,13 @@ This project is not accepted by Gunma University.
 
 Please use this project at your own risk.
 
-## How to Build and Install
+## Install
+
+### Stable Version
+
+[Chrome Web Store](https://chromewebstore.google.com/detail/gaming-gunma-university/fifbnlkbedonackjjbegkjmekchdcfhk?hl=ja)
+
+### Manually build and install
 
 1. Install volta
 
