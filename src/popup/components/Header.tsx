@@ -7,7 +7,9 @@ export default function Header(props: HeaderProps) {
     return (
         <header {...props}>
             <Center>
-                <Heading size="sm">Gaming Gunma University</Heading>
+                <Heading size="lg" className="rainbow-text w-full">
+                    Gaming Gunma University
+                </Heading>
             </Center>
         </header>
     );

@@ -6,7 +6,7 @@ import Main from "./Main";
 
 export const Layout = ({ children }: { children?: React.ReactNode }) => {
     return (
-        <Container width="600px">
+        <Container width="400px" height="600px" bgColor="teal.900" color="gray.50">
             <Header></Header>
             <Main>{children}</Main>
             <Footer></Footer>
