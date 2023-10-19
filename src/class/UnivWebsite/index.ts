@@ -34,11 +34,14 @@ export class UnivWebsite<T> {
         this.EnableRainbow.bind(this);
         this.DisableRainbow.bind(this);
     }
+
+    // これらのメソッドは継承先でオーバーライドする
     EnableRainbow() {}
     EnableHidden() {}
     DisableRainbow() {}
     DisableHidden() {}
 
+    // 上記の関数を実行するためのラッパー
     Enable() {
         document.documentElement.dataset.gaming_gundai = "true";
 
@@ -52,6 +55,7 @@ export class UnivWebsite<T> {
         //this.DisableHidden();
     }
 
+    // スタイル適用のためのメソッド
     AddRainbowBg(...elements: Elements[]) {
         AddClass(elements, [rainbowBg, ...this.classes.RainbowBg]);
     }
