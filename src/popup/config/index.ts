@@ -1,20 +1,15 @@
 export interface FrontConfig {
     name: string;
-    key: string;
-    value: boolean;
+    id: string;
 }
 
 export const FrontConfigs: FrontConfig[] = [
     {
         name: "Moodle",
-
-        key: "moodle",
-        value: true,
+        id: "moodle",
     },
     {
         name: "教務システム",
-
-        key: "kyoumu",
-        value: true,
+        id: "kyoumu",
     },
 ];

@@ -10,4 +10,4 @@ const EnableRainbow = () => {
     changeQueryInnerHTML(".product", "群馬大学ゲーミングサインオンシステム");
 };
 
-export const SSO = new GundaiWebSite(EnableRainbow);
+export const SSO = new GundaiWebSite("sso", EnableRainbow);

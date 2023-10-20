@@ -3,7 +3,7 @@
 import ChangeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import { GundaiWebSite } from "../UnivWebsite";
 
-export const Kyomu = new GundaiWebSite();
+export const Kyomu = new GundaiWebSite("kyomu");
 
 Kyomu.EnableRainbow = function () {
     // ログインボタン

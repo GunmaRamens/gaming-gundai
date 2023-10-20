@@ -2,7 +2,8 @@
 // 無駄を以て物を成す者は、無駄を以て物を滅ぼす者に勝る。x
 
 import { AddClass, Elements, RemoveClass } from "../../utils/AddClass";
-import Storage from "../../utils/Storage";
+import { StorageTool } from "../StorageTool";
+//import Storage from "../../utils/Storage";
 
 const rainbowBg = "rainbow-bg";
 const rainbowText = "rainbow-text";
@@ -12,7 +13,7 @@ const rainbowTextShadow = "rainbow-text-shadow";
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
 // 型変数とAdditionalInfoプロパティによって任意の情報を追加できる
 export class UnivWebsite<T> {
-    name: string;
+    id: string;
 
     additionalInfo: T;
     classes: {
@@ -22,7 +23,8 @@ export class UnivWebsite<T> {
         RainbowBgShadow: string[];
     };
 
-    constructor(enable?: () => void, disable?: () => void) {
+    constructor(id: string, enable?: () => void, disable?: () => void) {
+        this.id = id;
         if (enable) this.EnableRainbow = enable;
         if (disable) this.DisableRainbow = disable;
 
@@ -34,10 +36,10 @@ export class UnivWebsite<T> {
             RainbowBgShadow: [],
         };
 
-        this.name = "unknown";
-
         this.EnableRainbow.bind(this);
         this.DisableRainbow.bind(this);
+        this.EnableHidden.bind(this);
+        this.DisableHidden.bind(this);
     }
 
     // これらのメソッドは継承先でオーバーライドする
@@ -50,38 +52,26 @@ export class UnivWebsite<T> {
     Enable() {
         // CSSのためにHTML要素にデータ属性を追加
         document.documentElement.dataset.gaming_gundai = "true";
-
-        this.UpdateStorage("enabled", true);
-
+        this.WriteStorage("enabled", "true");
         this.EnableRainbow();
         //this.EnableHidden();
     }
     Disable() {
         // CSSのためにHTML要素にデータ属性を追加
         document.documentElement.dataset.gaming_gundai = "false";
-
-        this.UpdateStorage("enabled", false);
-
+        this.WriteStorage("enabled", "false");
         this.DisableRainbow();
         //this.DisableHidden();
     }
 
-    // Storage
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    UpdateStorage(key: string, value: any) {
-        const newData = { [key]: value };
-        const currentData = Storage.get(this.name);
-        if (currentData == undefined) {
-            Storage.set(newData);
-            return;
-        } else {
-            Storage.set({ ...currentData, ...newData });
-        }
+    // StorageTool
+    async WriteStorage(key: string, value: string) {
+        const storage = new StorageTool(this.id);
+        await storage.UpdateStorage(key, value);
     }
-    GetStorage(key: string) {
-        const data = Storage.get(this.name).then((data) => data[key]);
-        console.log(data);
-        return data;
+    async ReadStorage(key: string) {
+        const storage = new StorageTool(this.id);
+        return await storage.GetStorage(key);
     }
 
     // スタイル適用のためのメソッド

@@ -5,7 +5,7 @@ import { DisableRainbowBg, ReplaceImagesToDefault } from "./DisableRainbow";
 import { EnableRainbowBg, EnableRainbowText, InjectLink, ReplaceImagesToGamimg, ReplaceTextToGaimg } from "./EnableRainbow";
 import { MoodleAdditionalInfo } from "./type";
 
-export const Moodle = new GundaiWebSite<MoodleAdditionalInfo>();
+export const Moodle = new GundaiWebSite<MoodleAdditionalInfo>("moodle");
 Moodle.additionalInfo = {
     headerText: " Gaming Edition🎮",
 };

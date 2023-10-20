@@ -1,44 +1,61 @@
 //import Storage from "../utils/Storage";
 
-import { WebSites } from "../class";
-import IsTrue from "../utils/IsTrue";
+//import { WebSites } from "../class";
 
+//import { WebSites } from "../class";
+//import IsTrue from "../utils/IsTrue";
+/*
 chrome.runtime.onInstalled.addListener(() => {
     WebSites.forEach(async (site) => {
-        const isEnabled = await site.GetStorage("enabled");
-        if (IsTrue(isEnabled)) chrome.action.setBadgeText({ text: "ON" });
+        //const isEnabled = await site.GetStorage("enabled");
+        //if (IsTrue(isEnabled)) chrome.action.setBadgeText({ text: "ON" });
     });
 });
+*/
 
-type WebsiteMsg = {
-    website: string;
-    action: "enable" | "disable";
-};
-type Message = WebsiteMsg | string;
+type Message = "reload";
 chrome.runtime.onMessage.addListener((message: Message): void => {
+    // リロードメッセージ
     if (typeof message === "string" && message === "reload") {
         location.reload();
         return;
     }
-    if (message === undefined) return;
-
-    const { website, action } = message as WebsiteMsg;
 });
 
 /*
-chrome.action.onClicked.addListener(async (tab) => {
-    const isEnable = await getIsEnabled();
-    Storage.set({ enabled: !isEnable });
-    chrome.action.setBadgeText({ text: isEnable ? "OFF" : "ON" });
-    console.log("enabled:", !isEnable);
-
-    if (tab.id === undefined) return;
-    chrome.tabs.sendMessage(tab.id, "reload").catch((e) => console.error(e));
+Object.keys(WebSites).forEach(async (key) => {
+    const data = await WebSites[key].ReadStorage("enabled");
+    console.log(data);
 });
+*/
 
-chrome.runtime.onStartup.addListener(async () => {
-    const isEnable = await getIsEnabled();
-    chrome.action.setBadgeText({ text: isEnable ? "ON" : "OFF" });
-    console.log("enabled:", isEnable);
+// 以下ストレージ
+/*
+type WebsiteMsg = {
+    id: string;
+    action: "enable" | "disable";
+};
+type Message = WebsiteMsg | "reload";
+chrome.runtime.onMessage.addListener((message: Message): void => {
+    // リロードメッセージ
+    if (typeof message === "string" && message === "reload") {
+        location.reload();
+        return;
+    }
+
+    // ウェブサイトメッセージ
+    if (message === undefined) return;
+    const { id, action } = message as WebsiteMsg;
+    if (id === undefined || action === undefined) return;
+    const site = WebSites.find((site) => site.id === id);
+    if (site === undefined) return;
+    switch (action) {
+        case "enable":
+            site.Enable();
+            break;
+        case "disable":
+            site.Disable();
+            break;
+    }
 });
 */
