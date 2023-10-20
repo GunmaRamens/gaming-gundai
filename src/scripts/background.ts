@@ -1,8 +1,6 @@
 //import Storage from "../utils/Storage";
 
 //import { WebSites } from "../class";
-
-//import { WebSites } from "../class";
 //import IsTrue from "../utils/IsTrue";
 /*
 chrome.runtime.onInstalled.addListener(() => {
@@ -12,7 +10,7 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 });
 */
-
+/*
 type Message = "reload";
 chrome.runtime.onMessage.addListener((message: Message): void => {
     // リロードメッセージ
@@ -20,12 +18,6 @@ chrome.runtime.onMessage.addListener((message: Message): void => {
         location.reload();
         return;
     }
-});
-
-/*
-Object.keys(WebSites).forEach(async (key) => {
-    const data = await WebSites[key].ReadStorage("enabled");
-    console.log(data);
 });
 */
 

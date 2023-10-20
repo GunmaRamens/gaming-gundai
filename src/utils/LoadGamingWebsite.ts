@@ -8,6 +8,8 @@ export default function LoadGamingWebsite(website: UnivWebsite<unknown>) {
         const isEnabled = await website.ReadStorage("enabled");
         if (IsTrue(isEnabled)) {
             website.Enable();
+        } else {
+            website.Disable();
         }
     });
 }

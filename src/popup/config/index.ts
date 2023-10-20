@@ -10,6 +10,6 @@ export const FrontConfigs: FrontConfig[] = [
     },
     {
         name: "教務システム",
-        id: "kyoumu",
+        id: "kyomu",
     },
 ];

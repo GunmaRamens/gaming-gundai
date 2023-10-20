@@ -1,19 +1,21 @@
 //import { useEffect } from "react";
 
+import { useEffect, useState } from "react";
+
 import { WebSites } from "../../class";
-//import { useStorage } from "../../utils/Storage";
+import IsTrue from "../../utils/IsTrue";
 import { FrontConfigs } from "../config";
 
 export default function SwitchItem() {
-    /*
+    const [enabled, setEnabled] = useState({} as { [key: string]: string });
+
     useEffect(() => {
-        Object.keys(WebSites).forEach((key) => {
-            WebSites[key].ReadStorage("enabled").then((value) => {
-                console.log(JSON.parse(value));
-            });
+        console.log("Render SwitchItem");
+        Object.keys(WebSites).forEach(async (key) => {
+            const value = (await WebSites[key].ReadStorage("enabled")) as string;
+            setEnabled((enabled) => ({ ...enabled, [key]: value }));
         });
     });
-    */
 
     return FrontConfigs.map((config) => {
         return (
@@ -22,10 +24,14 @@ export default function SwitchItem() {
                     <input
                         type="checkbox"
                         className=" daisy-toggle daisy-toggle-info"
-                        onChange={async (e) => {
-                            await WebSites[config.id].WriteStorage("enabled", e.target.checked.toString());
+                        onChange={(e) => {
+                            setEnabled((enabled) => ({ ...enabled, [config.id]: e.target.checked.toString() }));
+                            WebSites[config.id].WriteStorage("enabled", e.target.checked.toString());
+                            chrome.runtime.sendMessage("reload");
                         }}
-                        //defaultChecked={enabled?.[config.id]}
+                        checked={(function () {
+                            return IsTrue(enabled[config.id]);
+                        })()}
                     />
                 </div>
                 <div className="w-1/2">

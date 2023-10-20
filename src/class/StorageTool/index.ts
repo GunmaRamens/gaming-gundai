@@ -15,8 +15,9 @@ export class StorageTool {
         Storage.set({ [this.id]: newData });
     }
     async GetStorage(key: string) {
-        const data = await Storage.get(this.id).then((data) => JSON.parse(data[this.id]));
-        console.log(data[key]);
-        return data[key];
+        const rawdata = (await Storage.get(this.id))[this.id];
+
+        if (rawdata === undefined) return undefined;
+        return rawdata[key];
     }
 }
