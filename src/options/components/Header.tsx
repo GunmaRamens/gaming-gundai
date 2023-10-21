@@ -1,8 +1,9 @@
 import { Menu, Navbar } from "react-daisyui";
+import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export default function Header() {
     return (
-        <Navbar>
+        <Navbar className="child-all:text-2xl bg-base-300">
             <NavbarStart />
             <NavbarCenter />
             <NavbarEnd />
@@ -15,7 +16,7 @@ export default function Header() {
 function NavbarStart() {
     return (
         <Navbar.Start>
-            <a className="rainbow-text daisy-btn daisy-btn-ghost text-xl normal-case">Gaming Gunma University</a>
+            <a className="rainbow-text daisy-btn daisy-btn-ghost normal-case">Gaming Gunma University</a>
         </Navbar.Start>
     );
 }
@@ -25,7 +26,7 @@ function NavbarCenter() {
         <Navbar.Center>
             <Menu>
                 <Menu.Item>
-                    <a href="https://twitter.com/Hayao0819">Twitter</a>
+                    <p>Settings</p>
                 </Menu.Item>
             </Menu>
         </Navbar.Center>
@@ -33,5 +34,20 @@ function NavbarCenter() {
 }
 
 function NavbarEnd() {
-    return <Navbar.End></Navbar.End>;
+    return (
+        <Navbar.End>
+            <Menu horizontal>
+                <Menu.Item>
+                    <a href="https://twitter.com/Hayao0819">
+                        <FaTwitter />
+                    </a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a href="https://github.com/Hayao0819/gaming-gundai">
+                        <FaGithub />
+                    </a>
+                </Menu.Item>
+            </Menu>
+        </Navbar.End>
+    );
 }
