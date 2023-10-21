@@ -4,9 +4,14 @@
         "es2021": true,
         "node": true
     },
-    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+        "plugin:tailwindcss/recommended"
+    ],
     "parser": "@typescript-eslint/parser",
-    "plugins": ["prettier", "@typescript-eslint", "simple-import-sort"],
+    "plugins": ["prettier", "@typescript-eslint", "simple-import-sort", "tailwindcss"],
     "rules": {
         "simple-import-sort/imports": "warn",
         "simple-import-sort/exports": "warn",

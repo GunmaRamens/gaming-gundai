@@ -19,6 +19,7 @@ module.exports = () => {
     return {
         entry: {
             popup: "./src/popup/index.tsx",
+            options: "./src/options/index.tsx",
             ...loadFilesInScripts(),
         },
 
@@ -79,6 +80,11 @@ module.exports = () => {
                 template: "./src/popup/index.html",
                 filename: "popup.html",
                 chunks: ["popup"],
+            }),
+            new HtmlPlugin({
+                template: "./src/options/index.html",
+                filename: "options.html",
+                chunks: ["options"],
             }),
         ],
 

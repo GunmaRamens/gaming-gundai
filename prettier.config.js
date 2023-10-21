@@ -7,6 +7,14 @@ module.exports = {
     printWidth: 130,
     htmlWhitespaceSensitivity: "ignore",
     plugins: [],
-
-    overrides: [],
+    /*
+    overrides: [
+        {
+            files: "*.pcss",
+            options: {
+                parser: "css",
+            },
+        },
+    ],
+    */
 };
