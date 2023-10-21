@@ -4,10 +4,10 @@ import "/styles/gaming.scss";
 
 import { createRoot } from "react-dom/client";
 
-import Layout from "./components/Lauout";
+import Page from "./pages";
 
 function Options() {
-    return <Layout />;
+    return <Page />;
 }
 
 const rootElement = document.getElementById("options-root");

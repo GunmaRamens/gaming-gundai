@@ -3,11 +3,13 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 
 export default function Header() {
     return (
-        <Navbar className="child-all:text-2xl bg-base-300">
-            <NavbarStart />
-            <NavbarCenter />
-            <NavbarEnd />
-        </Navbar>
+        <header>
+            <Navbar className="bg-base-300 child-all:text-2xl">
+                <NavbarStart />
+                <NavbarCenter />
+                <NavbarEnd />
+            </Navbar>
+        </header>
     );
 }
 
