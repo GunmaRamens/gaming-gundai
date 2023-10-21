@@ -1,9 +1,9 @@
 import { Menu, Navbar } from "react-daisyui";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 
-export default function Header() {
+export default function Header({ className }: { className?: string }) {
     return (
-        <header>
+        <header className={className}>
             <Navbar className="bg-base-300 child-all:text-2xl">
                 <NavbarStart />
                 <NavbarCenter />
