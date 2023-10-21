@@ -51,12 +51,15 @@ You can choose one of the following licenses.
 ## Technology Stack
 
 - core-js
+- daisy UI (React)
 - ESLint
 - Node.js
 - pnpm
 - PostCSS
 - Prettier
 - React
+- Sass
+- Stylelint
 - Tailwind CSS
 - TypeScript
 - Volta
