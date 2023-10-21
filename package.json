@@ -6,8 +6,9 @@
     "scripts": {
         "build": "pnpm webpack --mode production",
         "watch": "pnpm webpack --mode development --watch",
+        "fmt": "prettier --write '**/*.{js,json,md,html,sh}'",
         "lint": "prettier --check . && eslint . ",
-        "lint:fix": "prettier --write . && eslint . --fix"
+        "lint:fix": "pnpm fmt && eslint . --fix"
     },
     "devDependencies": {
         "@babel/core": "^7.23.2",
@@ -44,6 +45,7 @@
         "postcss-nested": "^6.0.1",
         "postcss-scss": "^4.0.9",
         "prettier": "^3.0.3",
+        "prettier-plugin-sh": "^0.13.1",
         "sass": "^1.69.4",
         "sass-loader": "^13.3.2",
         "style-loader": "^3.3.3",

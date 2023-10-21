@@ -7,5 +7,5 @@ module.exports = {
     endOfLine: "lf",
     printWidth: 130,
     htmlWhitespaceSensitivity: "ignore",
-    plugins: ["stylelint-prettier"],
+    plugins: ["stylelint-prettier", "prettier-plugin-sh"],
 };

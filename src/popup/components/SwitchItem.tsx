@@ -27,7 +27,7 @@ export function OldSwitchItem() {
 
     return FrontConfigs.map((config) => {
         return (
-            <div className="flex w-full justify-center child:text-center my-5" key={config.id}>
+            <div className="my-5 flex w-full justify-center child:text-center" key={config.id}>
                 <div className="w-1/2">
                     <input
                         type="checkbox"
@@ -61,7 +61,7 @@ export function SwitchItem({ config }: { config: FrontConfig }) {
     }, []);
 
     return (
-        <div className="flex w-full justify-center child:text-center my-5">
+        <div className="my-5 flex w-full justify-center child:text-center">
             <div className="w-1/2">
                 <input
                     type="checkbox"
