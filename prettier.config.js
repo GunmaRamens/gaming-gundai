@@ -1,3 +1,4 @@
+/** @type {import("prettier").Config} */
 module.exports = {
     tabWidth: 4,
     singleQuote: false,
@@ -7,14 +8,4 @@ module.exports = {
     printWidth: 130,
     htmlWhitespaceSensitivity: "ignore",
     plugins: [],
-    /*
-    overrides: [
-        {
-            files: "*.pcss",
-            options: {
-                parser: "css",
-            },
-        },
-    ],
-    */
 };

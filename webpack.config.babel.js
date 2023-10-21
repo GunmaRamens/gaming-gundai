@@ -1,4 +1,5 @@
 import CopyPlugin from "copy-webpack-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import fs from "fs";
 import HtmlPlugin from "html-webpack-plugin";
@@ -43,12 +44,14 @@ module.exports = () => {
                 {
                     test: /\.(css|sass|scss|pcss)/,
                     use: [
+                        CssMinimizerPlugin.loader,
                         "style-loader",
                         {
                             loader: "css-loader",
                             options: { url: false },
                         },
                         "postcss-loader",
+                        "sass-loader",
                     ],
                 },
                 {
