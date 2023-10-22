@@ -7,7 +7,7 @@ type MainProps = DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElemen
 export default function Main(props: MainProps) {
     return (
         <main {...props}>
-            <Switches />
+            <Switches className="w-full justify-center child:w-1/2 child:text-center" />
         </main>
     );
 }
