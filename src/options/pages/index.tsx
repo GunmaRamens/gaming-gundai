@@ -1,10 +1,12 @@
+import Heading from "../../components/Heading";
+import { Switches } from "../../components/Switches";
 import Layout from "../components/Lauout";
 
 export default function Page() {
     return (
         <Layout>
-            <h2 className="prose prose-2xl font-bold">Settings</h2>
-            <p>Coming soon...</p>
+            <Heading.h2>Websites</Heading.h2>
+            <Switches />
         </Layout>
     );
 }
