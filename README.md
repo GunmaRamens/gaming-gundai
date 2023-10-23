@@ -2,9 +2,9 @@
 
 ![](https://img.shields.io/github/actions/workflow/status/GunmaRamens/gaming-gundai/check.yml?style=flat-square
 )
-![](https://img.shields.io/github/release-date-pre/GunmaRamens/gaming-gundai
+![](https://img.shields.io/github/release-date-pre/GunmaRamens/gaming-gundai?style=flat-square
 )
-![](https://img.shields.io/github/license/GunmaRamens/gaming-gundai
+![](https://img.shields.io/github/license/GunmaRamens/gaming-gundai?style=flat-square
 )
 
 関東の最も辺境の地にある緑あふれる群馬大学。
