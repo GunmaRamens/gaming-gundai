@@ -1,7 +1,7 @@
 //import { useEffect } from "react";
 
 import classNames from "classnames";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { WebSites } from "../class";
 import { FrontConfig } from "../popup/config";
@@ -11,9 +11,11 @@ export function SwitchItem({ config, className }: { config: FrontConfig; classNa
     const [enabled, setEnabled] = useState(false);
 
     console.log(`Render SwitchItem with ${config.name}`);
-    WebSites[config.id].ReadStorage("enabled").then((value) => {
-        setEnabled(IsTrue(value));
-    });
+    useEffect(() => {
+        WebSites[config.id].ReadStorage("enabled").then((value) => {
+            setEnabled(IsTrue(value));
+        });
+    }, []);
 
     const genericChangeHandle = useCallback(() => {
         return (e: React.ChangeEvent<HTMLInputElement>) => {
