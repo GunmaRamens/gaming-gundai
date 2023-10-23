@@ -4,15 +4,24 @@
         "es2021": true,
         "node": true
     },
-    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:tailwindcss/recommended",
+        "plugin:prettier/recommended"
+    ],
     "parser": "@typescript-eslint/parser",
-    "plugins": ["prettier", "@typescript-eslint", "simple-import-sort"],
+    "plugins": ["@typescript-eslint", "tailwindcss", "unused-imports", "prettier", "simple-import-sort"],
     "rules": {
         "simple-import-sort/imports": "warn",
         "simple-import-sort/exports": "warn",
         "@typescript-eslint/no-non-null-assertion": "off",
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": ["error"],
-        "prettier/prettier": "warn"
-    }
+        "prettier/prettier": "warn",
+        "react/react-in-jsx-scope": "off",
+        "unused-imports/no-unused-imports": "error"
+    },
+    "root": true
 }

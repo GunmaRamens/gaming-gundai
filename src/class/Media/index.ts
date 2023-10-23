@@ -3,7 +3,7 @@
 import { AddClass } from "../../utils/AddClass";
 import { GundaiWebSite } from "../UnivWebsite";
 
-export const Media = new GundaiWebSite();
+export const Media = new GundaiWebSite("media");
 Media.EnableRainbow = function () {
     this.AddRainbowBgWithShadow(".banner_list li");
     AddClass([".banner_list li a"], ["rainbow-bg-shadow"]);

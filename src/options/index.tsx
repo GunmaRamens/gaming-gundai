@@ -4,14 +4,14 @@ import "/styles/gaming.scss";
 
 import { createRoot } from "react-dom/client";
 
-import Layout from "./components/Layout";
+import Page from "./pages";
 
-function Popup() {
-    return <Layout></Layout>;
+function Options() {
+    return <Page />;
 }
 
-const rootElement = document.getElementById("popup-root");
+const rootElement = document.getElementById("options-root");
 if (rootElement) {
     const root = createRoot(rootElement);
-    root.render(<Popup />);
+    root.render(<Options />);
 }

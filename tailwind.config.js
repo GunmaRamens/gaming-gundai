@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+    content: ["./src/**/*.{html,js,jsx,ts,tsx}", "node_modules/daisyui/dist/**/*.js", "node_modules/react-daisyui/dist/**/*.js"],
     theme: {
         extend: {
             minWidth: {
@@ -11,13 +11,14 @@ module.exports = {
     },
     daisyui: {
         themes: ["dark"],
-        prefix: "daisy-",
+        //prefix: "daisy-", // React daisyUI does not support prefix
     },
     plugins: [
         require("@tailwindcss/typography"),
         require("daisyui"),
         function ({ addVariant }) {
             addVariant("child", "& > *");
+            addVariant("child-all", "& *");
         },
     ],
 };

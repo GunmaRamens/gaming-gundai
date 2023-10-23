@@ -1,7 +1,15 @@
 import { UnivWebsite } from "../class/UnivWebsite";
-import RunFuncIfEnabled from "./RunFuncIfEnabled";
+import IsTrue from "./IsTrue";
+//import RunFuncIfEnabled from "./RunFuncIfEnabled";
 
 // ウィンドウが読み込まれたらGundaiWebsiteのEnableRainbowを実行する
 export default function LoadGamingWebsite(website: UnivWebsite<unknown>) {
-    window.addEventListener("load", () => RunFuncIfEnabled(() => website.Enable()));
+    window.addEventListener("load", async () => {
+        const isEnabled = await website.ReadStorage("enabled");
+        if (IsTrue(isEnabled)) {
+            website.Enable();
+        } else {
+            website.Disable();
+        }
+    });
 }

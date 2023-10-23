@@ -1,7 +1,7 @@
 import ChangeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
 import { GundaiWebSite } from "../UnivWebsite";
 
-export const MyLibrary = new GundaiWebSite();
+export const MyLibrary = new GundaiWebSite("mylibrary");
 
 MyLibrary.EnableRainbow = function () {
     if (location.pathname == "/portal/portal/selectLogin/") {

@@ -1,4 +1,5 @@
 import CopyPlugin from "copy-webpack-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import fs from "fs";
 import HtmlPlugin from "html-webpack-plugin";
@@ -19,6 +20,7 @@ module.exports = () => {
     return {
         entry: {
             popup: "./src/popup/index.tsx",
+            options: "./src/options/index.tsx",
             ...loadFilesInScripts(),
         },
 
@@ -42,12 +44,14 @@ module.exports = () => {
                 {
                     test: /\.(css|sass|scss|pcss)/,
                     use: [
+                        CssMinimizerPlugin.loader,
                         "style-loader",
                         {
                             loader: "css-loader",
                             options: { url: false },
                         },
                         "postcss-loader",
+                        "sass-loader",
                     ],
                 },
                 {
@@ -80,8 +84,18 @@ module.exports = () => {
                 filename: "popup.html",
                 chunks: ["popup"],
             }),
+            new HtmlPlugin({
+                template: "./src/options/index.html",
+                filename: "options.html",
+                chunks: ["options"],
+            }),
         ],
 
         devtool: "source-map",
+
+        performance: {
+            maxEntrypointSize: 2000000,
+            maxAssetSize: 2000000,
+        },
     };
 };

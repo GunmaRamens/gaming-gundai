@@ -13,11 +13,11 @@ print_usage() {
     echo
 }
 
-init_command(){
+init_command() {
     echo "Setup GitHooks" >&2
     git config core.hooksPath .githooks
 
-    if ! which volta 2>/dev/null 1>&2; then
+    if ! which volta 2> /dev/null 1>&2; then
         echo "Please install Volta at first" >&2
         echo "https://volta.sh/" >&2
         exit 1
@@ -35,39 +35,40 @@ main() {
     _short="" _long="" _noarg=""
     while true; do
         case "${1-""}" in
-        "-h" | "--help")
-            print_usage
-            shift 1
-            exit 0
-            ;;
-        "")
-            break
-            ;;
-        *)
-            _noarg="${_noarg-""}${1} "
-            shift 1
-            ;;
+            "-h" | "--help")
+                print_usage
+                shift 1
+                exit 0
+                ;;
+            "")
+                break
+                ;;
+            *)
+                _noarg="${_noarg-""}${1} "
+                shift 1
+                ;;
         esac
     done
     eval set -- "${_noarg}"
     while true; do
         case "${1-""}" in
-        "init")
-            init_command
-            shift 1
-            ;;
-        "help")
-            print_usage
-            shift 1
-            exit 0
-            ;;
-        "")
-            break
-            ;;
-        *)
-            echo "Unknown option: $1" >&2
-            print_usage >&2
-            exit 1
+            "init")
+                init_command
+                shift 1
+                ;;
+            "help")
+                print_usage
+                shift 1
+                exit 0
+                ;;
+            "")
+                break
+                ;;
+            *)
+                echo "Unknown option: $1" >&2
+                print_usage >&2
+                exit 1
+                ;;
         esac
     done
 }
