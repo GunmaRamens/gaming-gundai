@@ -31,7 +31,7 @@ function NavbarCenter() {
 function NavbarEnd() {
     return (
         <Navbar.End>
-            <Menu horizontal>
+            <Menu horizontal className="hidden sm:flex">
                 <Menu.Item>
                     <Link to="/about">
                         <FaInfo />
