@@ -11,6 +11,9 @@
         "source.fixAll": true
     },
     "[shellscript]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
 }
