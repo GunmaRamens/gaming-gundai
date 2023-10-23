@@ -1,5 +1,12 @@
 ## Gunma University Gaming Edition
 
+![](https://img.shields.io/github/actions/workflow/status/GunmaRamens/gaming-gundai/check.yml?style=flat-square
+)
+![](https://img.shields.io/github/release-date-pre/GunmaRamens/gaming-gundai
+)
+![](https://img.shields.io/github/license/GunmaRamens/gaming-gundai
+)
+
 関東の最も辺境の地にある緑あふれる群馬大学。
 
 せめてウェブサービスだけでも綺羅びやかにしようではないかという、とある学部生のささやかなプロジェクト。
