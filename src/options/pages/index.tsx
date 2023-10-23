@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import Heading from "../../components/Heading";
 import { Switches } from "../../components/Switches";
-import Layout from "../components/Lauout";
+import Layout from "../components/Layout";
 
 export default function Page() {
     return (
