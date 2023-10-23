@@ -14,12 +14,10 @@ export default function Header({ className }: { className?: string }) {
     );
 }
 
-/* eslint-disable tailwindcss/no-custom-classname */
-// Todo: Make rainbow-text tailwindcss compatible
 function NavbarStart() {
     return (
         <Navbar.Start>
-            <a className="rainbow-text daisy-btn daisy-btn-ghost normal-case">Gaming Gunma University</a>
+            <a className="rainbow-text btn btn-ghost normal-case">Gaming Gunma University</a>
         </Navbar.Start>
     );
 }

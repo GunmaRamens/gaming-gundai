@@ -21,7 +21,19 @@
         "@typescript-eslint/no-unused-vars": ["error"],
         "prettier/prettier": "warn",
         "react/react-in-jsx-scope": "off",
-        "unused-imports/no-unused-imports": "error"
+        "unused-imports/no-unused-imports": "error",
+        "tailwindcss/no-custom-classname": [
+            "warn",
+            {
+                "cssFiles": ["**/*.css", "**/*.pcss", "!**/node_modules", "!**/.*", "!**/dist", "!**/build"],
+                "whitelist": ["rainbow\\-bg","rainbow\\-text", "rainbow\\-bg-shadow", "rainbow\\-text-shadow"]
+            }
+        ]
     },
-    "root": true
+    "root": true,
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    }
 }
