@@ -3,11 +3,16 @@ import "/styles/tailwind.css";
 import "/styles/gaming.scss";
 
 import { createRoot } from "react-dom/client";
+import { HashRouter } from "react-router-dom";
 
-import Page from "./pages";
+import Layout from "./components/Layout";
 
 function Options() {
-    return <Page />;
+    return (
+        <HashRouter>
+            <Layout />
+        </HashRouter>
+    );
 }
 
 const rootElement = document.getElementById("options-root");

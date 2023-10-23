@@ -1,10 +1,11 @@
 import { Menu, Navbar } from "react-daisyui";
 import { FaGithub, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Header({ className }: { className?: string }) {
     return (
         <header className={className}>
-            <Navbar className="bg-base-300 child-all:text-2xl">
+            <Navbar className="bg-base-300 child-all:text-xl">
                 <NavbarStart />
                 <NavbarCenter />
                 <NavbarEnd />
@@ -26,9 +27,12 @@ function NavbarStart() {
 function NavbarCenter() {
     return (
         <Navbar.Center>
-            <Menu>
+            <Menu horizontal>
                 <Menu.Item>
-                    <p>Settings</p>
+                    <Link to="/">Settings</Link>
+                </Menu.Item>
+                <Menu.Item>
+                    <Link to="/about">About</Link>
                 </Menu.Item>
             </Menu>
         </Navbar.Center>

@@ -1,12 +1,12 @@
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 import Heading from "../../components/Heading";
 import { Switches } from "../../components/Switches";
-import Layout from "../components/Layout";
 
-export default function Page() {
+export default function Top() {
     return (
-        <Layout>
+        <>
             <ConfigSection name="Websites" desc="有効化するウェブサイトを設定します">
                 <Switches className="child:m-2" />
             </ConfigSection>
@@ -14,7 +14,8 @@ export default function Page() {
             <ConfigSection name="Quick Switch" desc="有効化するとアイコンのクリックでオンオフを一括で設定します">
                 <QuickSwitch className="child:m-2" />
             </ConfigSection>
-        </Layout>
+            <Link to="/hoge">hoge</Link>
+        </>
     );
 }
 
