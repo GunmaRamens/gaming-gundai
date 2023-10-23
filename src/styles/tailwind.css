@@ -7,3 +7,9 @@
         @apply transition-none;
     }
 }
+
+@layer utilities {
+    p {
+        @apply leading-loose my-1;
+    }
+}

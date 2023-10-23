@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 import About from "../pages/About";
 import Top from "../pages/Top";
+import Why from "../pages/Why";
 
 export default function Main(props: { className?: string }) {
     return (
@@ -20,6 +21,7 @@ export default function Main(props: { className?: string }) {
                     }}
                 />
                 <Route path="/about" Component={About} />
+                <Route path="/why" Component={Why} />
             </Routes>
         </main>
     );
