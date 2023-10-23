@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { Link } from "react-router-dom";
 
 import Heading from "../../components/Heading";
 import { Switches } from "../../components/Switches";
@@ -14,17 +13,23 @@ export default function Top() {
             <ConfigSection name="Quick Switch" desc="有効化するとアイコンのクリックでオンオフを一括で設定します">
                 <QuickSwitch className="child:m-2" />
             </ConfigSection>
-            <Link to="/hoge">hoge</Link>
+
+            <ConfigSection name="群馬大学学務課・メディアセンターの方へ">
+                <p>このソフトウェアについて問題がある場合は以下のメールアドレスまでご連絡ください。</p>
+                <a href="mailto:shun819.mail@gmail.com" className="btn btn-neutral my-5">
+                    shun819.mail@gmail.com
+                </a>
+            </ConfigSection>
         </>
     );
 }
 
-function ConfigSection({ children, name, desc }: { children: React.ReactNode; name: string; desc: string }) {
+function ConfigSection({ children, name, desc }: { children?: React.ReactNode; name: string; desc?: string }) {
     return (
         <>
             <Heading.h2>{name}</Heading.h2>
-            <p>{desc}</p>
-            {children}
+            {desc ? <p>{desc}</p> : null}
+            {children ? children : null}
         </>
     );
 }
