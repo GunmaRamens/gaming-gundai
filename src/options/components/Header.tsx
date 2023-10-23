@@ -1,5 +1,5 @@
 import { Menu, Navbar } from "react-daisyui";
-import { FaGithub, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaInfo, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Header({ className }: { className?: string }) {
@@ -15,24 +15,15 @@ export default function Header({ className }: { className?: string }) {
 }
 
 function NavbarStart() {
-    return (
-        <Navbar.Start>
-            <a className="rainbow-text btn btn-ghost normal-case">Gaming Gunma University</a>
-        </Navbar.Start>
-    );
+    return <Navbar.Start></Navbar.Start>;
 }
 
 function NavbarCenter() {
     return (
         <Navbar.Center>
-            <Menu horizontal>
-                <Menu.Item>
-                    <Link to="/">Settings</Link>
-                </Menu.Item>
-                <Menu.Item>
-                    <Link to="/about">About</Link>
-                </Menu.Item>
-            </Menu>
+            <Link to="/" className="rainbow-text btn btn-ghost normal-case">
+                Gaming Gunma University
+            </Link>
         </Navbar.Center>
     );
 }
@@ -41,6 +32,11 @@ function NavbarEnd() {
     return (
         <Navbar.End>
             <Menu horizontal>
+                <Menu.Item>
+                    <Link to="/about">
+                        <FaInfo />
+                    </Link>
+                </Menu.Item>
                 <Menu.Item>
                     <a href="https://twitter.com/Hayao0819">
                         <FaTwitter />
