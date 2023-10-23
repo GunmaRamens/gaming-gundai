@@ -12,4 +12,16 @@ export const FrontConfigs: FrontConfig[] = [
         name: "教務システム",
         id: "kyomu",
     },
+    {
+        name: "メディアセンター",
+        id: "media",
+    },
+    {
+        name: "MyLibrary",
+        id: "mylibrary",
+    },
+    {
+        name: "SSO",
+        id: "sso",
+    },
 ];

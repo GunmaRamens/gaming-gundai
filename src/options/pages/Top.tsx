@@ -7,7 +7,9 @@ export default function Top() {
     return (
         <>
             <ConfigSection name="Websites" desc="有効化するウェブサイトを設定します">
-                <Switches className="child:m-2" />
+                <div className="flex">
+                    <Switches className=" flex-row-reverse child:m-2" />
+                </div>
             </ConfigSection>
 
             <ConfigSection name="Quick Switch" desc="有効化するとアイコンのクリックでオンオフを一括で設定します">
