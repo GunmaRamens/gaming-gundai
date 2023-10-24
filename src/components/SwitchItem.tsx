@@ -26,7 +26,6 @@ export function SwitchItem({ config, className }: { config: FrontConfig; classNa
     }, []);
 
     return (
-        //<div className="my-5 flex w-full justify-center child:text-center">
         <div className={classNames(className, "my-5 flex")}>
             <div>
                 <p className="flex items-center">

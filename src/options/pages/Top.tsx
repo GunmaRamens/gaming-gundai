@@ -123,7 +123,7 @@ function HiddenConfigSection() {
 
     return (
         <ConfigSection name="隠し機能を有効化する" className={classNames(hiddenClass)}>
-            <div className="my-5 flex child:m-2">
+            <div className="my-5 flex items-center child:m-2">
                 <p>隠し機能</p>
                 <p className="flex items-center">
                     <input type="checkbox" className="toggle toggle-info" checked={enabledHidden} onChange={handleClick} />
