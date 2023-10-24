@@ -25,8 +25,7 @@
         "tailwindcss/no-custom-classname": [
             "warn",
             {
-                "cssFiles": ["**/*.css", "**/*.pcss", "!**/node_modules", "!**/.*", "!**/dist", "!**/build"],
-                "whitelist": ["rainbow\\-bg", "rainbow\\-text", "rainbow\\-bg-shadow", "rainbow\\-text-shadow"]
+                "whitelist": ["rainbow\\-bg", "rainbow\\-text", "rainbow\\-bg\\-shadow", "rainbow\\-text\\-shadow"]
             }
         ]
     },
