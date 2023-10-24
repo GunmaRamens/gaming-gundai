@@ -9,7 +9,7 @@ export class StorageTool {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    UpdateStorage(key: string, value: any) {
+    async UpdateStorage(key: string, value: any) {
         let newData = { [key]: value };
         const storage = StorageTool.GetStorage();
         if (!storage) {
@@ -17,8 +17,8 @@ export class StorageTool {
             return;
         }
 
-        const currentData = storage.get(this.id);
-        if (currentData) newData = { ...currentData, ...newData };
+        const currentData = await storage.get(this.id);
+        if (currentData) newData = { ...currentData[this.id], ...newData };
 
         storage.set({ [this.id]: newData });
     }
