@@ -4,7 +4,7 @@
     "version": "1.3.0",
     "description": "辺境の地にある群馬大学のウェブサイトをゲーミングでエキサイティングにします",
     "author": "shun819.mail@gmail.com",
-    "permissions": ["storage"],
+    "permissions": ["storage", "tabs"],
     "web_accessible_resources": [
         {
             "resources": ["assets/*"],
