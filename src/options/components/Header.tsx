@@ -1,6 +1,8 @@
 import { Menu, Navbar } from "react-daisyui";
 import { FaGithub, FaInfo, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
+import { StorageTool } from "../../class/StorageTool";
 
 export default function Header({ className }: { className?: string }) {
     return (
@@ -19,9 +21,19 @@ function NavbarStart() {
 }
 
 function NavbarCenter() {
+    const reactLocation = useLocation();
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        if (reactLocation.pathname === "/") {
+            e.preventDefault();
+            const storage = new StorageTool("other");
+            storage.UpdateStorage("show-hidden-option", "true");
+            location.reload();
+        }
+    };
+
     return (
         <Navbar.Center>
-            <Link to="/" className="rainbow-text btn btn-ghost normal-case">
+            <Link to="/" className="rainbow-text btn btn-ghost normal-case" onClick={handleClick}>
                 Gaming Gunma University
             </Link>
         </Navbar.Center>
