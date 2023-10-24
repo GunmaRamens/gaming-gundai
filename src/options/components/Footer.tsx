@@ -8,7 +8,9 @@ export default function Footer({ className }: { className?: string }) {
             <DaisyFooter className="mx-auto w-2/3 py-5">
                 <div>
                     <DaisyFooter.Title>Links</DaisyFooter.Title>
-                    <FooterLink>About</FooterLink>
+                    <FooterLink href="/about" isInternal>
+                        About
+                    </FooterLink>
                 </div>
                 <div>
                     <DaisyFooter.Title>SNS</DaisyFooter.Title>
@@ -38,12 +40,14 @@ interface FooterLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> 
 }
 
 function FooterLink(props: FooterLinkProps) {
+    // Props without isInternal
+    const aProps = { ...props };
+    delete aProps.isInternal;
+
     if (props.isInternal) {
         if (!props.href) props.href = "/";
-        return <Link {...props} to={props.href} className={classNames(props.className, "link-hover link")} />;
+        return <Link {...aProps} to={props.href} className={classNames(props.className, "link-hover link")} />;
     } else {
-        const aProps = { ...props };
-        delete props.isInternal;
         return <a {...aProps} className={classNames(props.className, "link-hover link")} />;
     }
 }
