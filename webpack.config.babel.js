@@ -63,7 +63,7 @@ module.exports = () => {
         },
 
         plugins: [
-            new ESLintPlugin(),
+            new ESLintPlugin({ extensions: ["js", "jsx", "ts", "tsx"] }),
             new CopyPlugin({
                 patterns: [
                     {
