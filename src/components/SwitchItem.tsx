@@ -28,7 +28,7 @@ export function SwitchItem({ config, className }: { config: FrontConfig; classNa
     return (
         <div className={classNames(className, "my-5 flex")}>
             <div>
-                <p className="flex items-center">
+                <p className="flex items-center justify-center">
                     <input type="checkbox" className="toggle toggle-info" onChange={genericChangeHandle()} checked={enabled} />
                 </p>
             </div>

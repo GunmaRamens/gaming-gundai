@@ -9,7 +9,7 @@ export default function Header(props: HeaderProps) {
                 <p className="rainbow-text text-4xl">Gaming Gunma University</p>
             </div>
             <div className="my-4">
-                <p className="text-2xl italic">Configure Gaming Gunma University!!</p>
+                <p className="text-2xl italic">Configure it!!</p>
             </div>
         </header>
     );
