@@ -17,7 +17,11 @@ export default function Top() {
 
             <HiddenConfigSection />
 
-            <ConfigSection name="Quick Switch" desc="有効化するとアイコンのクリックでオンオフを一括で設定します">
+            <ConfigSection
+                name="Quick Switch"
+                desc="有効化するとアイコンのクリックでオンオフを一括で設定します"
+                className="hidden"
+            >
                 <QuickSwitch className="child:m-2" />
             </ConfigSection>
 
