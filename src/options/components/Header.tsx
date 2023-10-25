@@ -1,5 +1,5 @@
 import { Menu, Navbar } from "react-daisyui";
-import { FaGithub, FaInfo, FaTwitter } from "react-icons/fa";
+import { FaCog, FaGithub, FaInfo, FaTwitter } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
 import { StorageTool } from "../../class/StorageTool";
@@ -47,6 +47,11 @@ function NavbarEnd() {
                 <Menu.Item>
                     <Link to="/about">
                         <FaInfo />
+                    </Link>
+                </Menu.Item>
+                <Menu.Item>
+                    <Link to="/">
+                        <FaCog />
                     </Link>
                 </Menu.Item>
                 <Menu.Item>
