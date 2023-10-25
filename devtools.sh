@@ -24,7 +24,7 @@ init_command() {
     fi
 
     echo "Install Node.js" >&2
-    volta install node
+    volta install node@lts
 
     echo "Install dependencies" >&2
     volta install pnpm
