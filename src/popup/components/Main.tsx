@@ -11,7 +11,7 @@ export default function Main(props: MainProps) {
         () =>
             chrome.tabs.query({ active: true, currentWindow: true }, (e) => {
                 const url = e[0].url;
-                if (url == `chrome-extension://${chrome.runtime.id}/options.html`) {
+                if (url?.startsWith(`chrome-extension://${chrome.runtime.id}/options.html`)) {
                     setShowSwitchClass(false);
                 }
             }),
