@@ -1,19 +1,23 @@
-type OpenOptionsArgs = "home" | "about" | "thanks";
+type OpenOptionsArgs = "home" | "about" | "thanks" | undefined;
 
-function OpenWithRoute(route: string) {
-    chrome.tabs.create({ url: `options.html#${route}` });
+function Open(route?: string) {
+    //return () => {
+    if (!route) return chrome.tabs.create({ url: "options.html" });
+
+    return chrome.tabs.create({ url: `options.html#${route}` });
+    //};
 }
 
 export default function OpenOptions(args: OpenOptionsArgs) {
+    if (!args) return Open();
     switch (args) {
         case "home":
-            chrome.runtime.openOptionsPage();
-            break;
+            return Open();
+
         case "about":
-            OpenWithRoute("/about");
-            break;
+            return Open("/about");
+
         case "thanks":
-            OpenWithRoute("/thanks");
-            break;
+            return Open("/thanks");
     }
 }
