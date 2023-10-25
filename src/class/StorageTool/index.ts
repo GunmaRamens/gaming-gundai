@@ -1,3 +1,5 @@
+import IsTrue from "../../utils/IsTrue";
+
 export class StorageTool {
     id: string;
     constructor(id: string) {
@@ -21,6 +23,17 @@ export class StorageTool {
         if (currentData) newData = { ...currentData[this.id], ...newData };
 
         storage.set({ [this.id]: newData });
+    }
+    async GetBool(key: string) {
+        const storage = StorageTool.GetStorage();
+        if (!storage) {
+            console.error("Storage is not supported");
+            return;
+        }
+
+        const rawdata = await this.GetStorage(key);
+
+        return IsTrue(rawdata);
     }
     async GetStorage(key: string) {
         const storage = StorageTool.GetStorage();
