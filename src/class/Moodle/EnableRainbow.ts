@@ -5,10 +5,11 @@ import { Moodle } from "./type";
 import { MoodleAdditionalInfo } from "./type";
 
 export const EnableRainbowTextAndBg = (moodle: Moodle) => {
-    moodle.rainbowBg.apply(".navbar", ".addinghtml");
+    moodle.rainbowBg.apply(".navbar", "#action-menu-0-menu");
 
     moodle.rainbowText.apply(".page-header-headings h1");
-    moodle.rainbowText.apply("a:not(#inst301 a)");
+    moodle.rainbowText.apply("#page-content a:not(#inst301 a)");
+    moodle.rainbowText.apply("#instance-301-header");
 
     // rainbowBgの中のrainbowTextを無効化
     const rainbowBgSelector = moodle.rainbowBg.selector();
