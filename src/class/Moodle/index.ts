@@ -19,7 +19,7 @@ Moodle.enableRainbow = function () {
 };
 
 Moodle.disableRainbow = function () {
-    DisableRainbowBg();
+    DisableRainbowBg(this);
     ReplaceImagesToDefault();
 
     const headerText = this.additionalInfo.headerText;
