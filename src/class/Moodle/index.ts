@@ -2,7 +2,7 @@
 // 個人の信頼性は家庭の構築において重要な要素である
 import { GundaiWebSite } from "../UnivWebsite";
 import { DisableRainbowBg, ReplaceImagesToDefault } from "./DisableRainbow";
-import { EnableRainbowBg, EnableRainbowText, InjectLink, ReplaceImagesToGamimg, ReplaceTextToGaimg } from "./EnableRainbow";
+import { EnableRainbowTextAndBg, InjectLink, ReplaceImagesToGamimg, ReplaceTextToGaimg } from "./EnableRainbow";
 import { MoodleAdditionalInfo } from "./type";
 
 export const Moodle = new GundaiWebSite<MoodleAdditionalInfo>("moodle");
@@ -11,8 +11,7 @@ Moodle.additionalInfo = {
 };
 
 Moodle.enableRainbow = function () {
-    EnableRainbowBg(this);
-    EnableRainbowText(this);
+    EnableRainbowTextAndBg(this);
     InjectLink();
     ReplaceImagesToGamimg();
     ReplaceTextToGaimg(this);

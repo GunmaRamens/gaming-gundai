@@ -78,4 +78,8 @@ export class Rainbow {
     remove(...elements: Elements[]) {
         removeClass(elements, [this.base, ...this.classes]);
     }
+    selector() {
+        if (this.classes.length === 0) return `.${this.base}`;
+        else return `.${this.base}.${this.classes.join(".")}`;
+    }
 }
