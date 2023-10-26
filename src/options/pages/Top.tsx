@@ -76,10 +76,10 @@ function HiddenConfigSection() {
         const storage = new StorageTool("other");
         if (visibility) {
             setShowHiddenOption(true);
-            storage.UpdateStorage("show-hidden-option", "true");
+            storage.set("show-hidden-option", "true");
         } else {
             setShowHiddenOption(false);
-            storage.UpdateStorage("show-hidden-option", "false");
+            storage.set("show-hidden-option", "false");
         }
     };
 
@@ -100,14 +100,14 @@ function HiddenConfigSection() {
             if (!res) v = false;
 
             setEnabledHidden(v);
-            storage.UpdateStorage("enabled-hidden", v.toString());
+            storage.set("enabled-hidden", v.toString());
         });
     }, []);
 
     const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         const storage = new StorageTool("other");
         setEnabledHidden(e.target.checked);
-        storage.UpdateStorage("enabled-hidden", e.target.checked.toString());
+        storage.set("enabled-hidden", e.target.checked.toString());
     };
 
     return showHiddenOption ? (

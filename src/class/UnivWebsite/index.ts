@@ -15,6 +15,7 @@ const rainbowTextShadow = "rainbow-text-shadow";
 export class UnivWebsite<T> {
     id: string;
     additionalInfo: T; // 型変数使うとかっこいいよね
+    storage: StorageTool;
 
     rainbowText: Rainbow;
     rainbowBg: Rainbow;
@@ -23,8 +24,8 @@ export class UnivWebsite<T> {
 
     constructor(id: string) {
         this.id = id;
-
         this.additionalInfo = {} as T;
+        this.storage = new StorageTool(id);
 
         this.rainbowText = new Rainbow(rainbowText);
         this.rainbowBg = new Rainbow(rainbowBg);
@@ -47,26 +48,16 @@ export class UnivWebsite<T> {
     enable() {
         // CSSのためにHTML要素にデータ属性を追加
         document.documentElement.dataset.gaming_gundai = "true";
-        this.storageSet("enabled", "true");
+        this.storage.set("enabled", "true");
         this.enableRainbow();
         //this.EnableHidden();
     }
     disable() {
         // CSSのためにHTML要素にデータ属性を追加
         document.documentElement.dataset.gaming_gundai = "false";
-        this.storageSet("enabled", "false");
+        this.storage.set("enabled", "false");
         this.disableRainbow();
         //this.DisableHidden();
-    }
-
-    // StorageTool
-    async storageSet(key: string, value: string) {
-        const storage = new StorageTool(this.id);
-        await storage.UpdateStorage(key, value);
-    }
-    async storageGet(key: string) {
-        const storage = new StorageTool(this.id);
-        return await storage.GetStorage(key);
     }
 }
 

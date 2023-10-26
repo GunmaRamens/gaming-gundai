@@ -8,6 +8,6 @@ chrome.runtime.onInstalled.addListener(async () => {
     console.log(isInstalled);
     if (isInstalled != undefined && IsTrue(isInstalled)) return;
     OpenOptions("thanks").then(() => {
-        storage.UpdateStorage("installed", "true");
+        storage.set("installed", "true");
     });
 });
