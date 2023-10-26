@@ -4,8 +4,9 @@
     "license": "MIT",
     "version": "1.1.0",
     "scripts": {
-        "build": "pnpm webpack --mode production",
-        "watch": "pnpm webpack --mode development --watch",
+        "build": "pnpm webpack --mode production --config webpack.prod.js",
+        "build:dev": "pnpm webpack --mode development --config webpack.dev.js",
+        "watch": "pnpm webpack --mode development --watch --config webpack.dev.js",
         "fmt": "prettier --write '**/*.{js,json,md,html,sh}'",
         "lint": "prettier --check . && eslint . ",
         "lint:fix": "pnpm fmt && eslint . --fix"
@@ -57,7 +58,8 @@
         "ts-node": "^10.9.1",
         "typescript": "^5.2.2",
         "webpack": "^5.89.0",
-        "webpack-cli": "^5.1.4"
+        "webpack-cli": "^5.1.4",
+        "webpack-merge": "^5.10.0"
     },
     "volta": {
         "node": "18.18.1"
