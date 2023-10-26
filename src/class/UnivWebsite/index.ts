@@ -28,10 +28,10 @@ export class UnivWebsite<T> {
         this.additionalInfo = {} as T;
         this.storage = new StorageTool(id);
 
-        this.rainbowText = new Rainbow(rainbowText);
-        this.rainbowBg = new Rainbow(rainbowBg);
-        this.rainbowTextShadow = new Rainbow(rainbowTextShadow);
-        this.rainbowBgShadow = new Rainbow(rainbowBgShadow);
+        this.rainbowText = new Rainbow([rainbowText]);
+        this.rainbowBg = new Rainbow([rainbowBg]);
+        this.rainbowTextShadow = new Rainbow([rainbowText, rainbowTextShadow]);
+        this.rainbowBgShadow = new Rainbow([rainbowBg, rainbowBgShadow]);
 
         this.enableRainbow.bind(this);
         this.enableHidden.bind(this);
@@ -68,18 +68,18 @@ export class UnivWebsite<T> {
 export class GundaiWebSite<T> extends UnivWebsite<T> {}
 
 export class Rainbow {
-    base: string;
+    base: string[];
     classes: string[];
-    constructor(base: string) {
+    constructor(base: string[]) {
         this.base = base;
         this.classes = [];
     }
 
     apply(...elements: Elements[]) {
-        addClass(elements, [this.base, ...this.classes]);
+        addClass(elements, [...this.base, ...this.classes]);
     }
     remove(...elements: Elements[]) {
-        removeClass(elements, [this.base, ...this.classes]);
+        removeClass(elements, [...this.base, ...this.classes]);
     }
     selector() {
         if (this.classes.length === 0) return `.${this.base}`;

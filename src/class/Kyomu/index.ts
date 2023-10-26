@@ -39,7 +39,7 @@ Kyomu.enableRainbow = function () {
     changeQueryInnerHTML("#AllAnnualList_LblTitle", "ゲーミング ライフ スタイル");
 
     // 受信メッセージ一覧
-    this.rainbowBg.apply("#ctl00_phContents_ctlMesReceive_gridMes tr");
+    this.rainbowBgShadow.apply("#ctl00_phContents_ctlMesReceive_gridMes tr");
 
     // リンクを挿入
     if (["/portal/login.aspx", "/portal/"].includes(location.pathname.toLowerCase())) {
@@ -50,4 +50,7 @@ Kyomu.enableRainbow = function () {
             if (tbody) tbody.innerHTML += linkHTML;
         });
     }
+
+    //ヘッダー上部の名前
+    this.rainbowText.apply("#ctl00_bhHeader_lblName");
 };
