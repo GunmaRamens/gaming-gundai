@@ -12,7 +12,7 @@ export function SwitchItem({ config, className }: { config: FrontConfig; classNa
 
     console.log(`Render SwitchItem with ${config.name}`);
     useEffect(() => {
-        WebSites[config.id].ReadStorage("enabled").then((value) => {
+        WebSites[config.id].storage.get("enabled").then((value) => {
             setEnabled(IsTrue(value));
         });
     }, []);
@@ -20,7 +20,7 @@ export function SwitchItem({ config, className }: { config: FrontConfig; classNa
     const genericChangeHandle = useCallback(() => {
         return (e: React.ChangeEvent<HTMLInputElement>) => {
             setEnabled(e.target.checked);
-            WebSites[config.id].WriteStorage("enabled", e.target.checked.toString());
+            WebSites[config.id].storage.set("enabled", e.target.checked.toString());
             chrome.runtime.sendMessage("reload");
         };
     }, []);

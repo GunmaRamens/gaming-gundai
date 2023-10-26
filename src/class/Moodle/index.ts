@@ -10,7 +10,7 @@ Moodle.additionalInfo = {
     headerText: " Gaming Edition🎮",
 };
 
-Moodle.EnableRainbow = function () {
+Moodle.enableRainbow = function () {
     EnableRainbowBg(this);
     EnableRainbowText(this);
     InjectLink();
@@ -18,7 +18,7 @@ Moodle.EnableRainbow = function () {
     ReplaceTextToGaimg(this);
 };
 
-Moodle.DisableRainbow = function () {
+Moodle.disableRainbow = function () {
     DisableRainbowBg(this);
     ReplaceImagesToDefault();
 
@@ -28,7 +28,7 @@ Moodle.DisableRainbow = function () {
     });
 };
 
-Moodle.EnableHidden = () => {
+Moodle.enableHidden = () => {
     const playCountUnderTextElement = document.querySelectorAll(".card-text .no-overflow")[0].getElementsByTagName("p")[1];
     playCountUnderTextElement.innerHTML = "想定最大利用者乳首数：4,000";
 };

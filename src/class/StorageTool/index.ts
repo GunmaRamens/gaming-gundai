@@ -6,14 +6,14 @@ export class StorageTool {
         this.id = id;
     }
 
-    static GetStorage() {
+    static getChromeStorage() {
         return chrome.storage ? chrome.storage.sync : null;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async UpdateStorage(key: string, value: any) {
+    async set(key: string, value: any) {
         let newData = { [key]: value };
-        const storage = StorageTool.GetStorage();
+        const storage = StorageTool.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
             return;
@@ -24,19 +24,19 @@ export class StorageTool {
 
         storage.set({ [this.id]: newData });
     }
-    async GetBool(key: string) {
-        const storage = StorageTool.GetStorage();
+    async getBool(key: string) {
+        const storage = StorageTool.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
             return;
         }
 
-        const rawdata = await this.GetStorage(key);
+        const rawdata = await this.get(key);
 
         return IsTrue(rawdata);
     }
-    async GetStorage(key: string) {
-        const storage = StorageTool.GetStorage();
+    async get(key: string) {
+        const storage = StorageTool.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
             return;

@@ -76,16 +76,16 @@ function HiddenConfigSection() {
         const storage = new StorageTool("other");
         if (visibility) {
             setShowHiddenOption(true);
-            storage.UpdateStorage("show-hidden-option", "true");
+            storage.set("show-hidden-option", "true");
         } else {
             setShowHiddenOption(false);
-            storage.UpdateStorage("show-hidden-option", "false");
+            storage.set("show-hidden-option", "false");
         }
     };
 
     useEffect(() => {
         const storage = new StorageTool("other");
-        storage.GetStorage("show-hidden-option").then((res): void => {
+        storage.get("show-hidden-option").then((res): void => {
             let v = IsTrue(res);
             if (!res) v = false;
             console.log(v, res);
@@ -95,19 +95,19 @@ function HiddenConfigSection() {
 
     useEffect(() => {
         const storage = new StorageTool("other");
-        storage.GetStorage("enabled-hidden").then((res): void => {
+        storage.get("enabled-hidden").then((res): void => {
             let v = IsTrue(res);
             if (!res) v = false;
 
             setEnabledHidden(v);
-            storage.UpdateStorage("enabled-hidden", v.toString());
+            storage.set("enabled-hidden", v.toString());
         });
     }, []);
 
     const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         const storage = new StorageTool("other");
         setEnabledHidden(e.target.checked);
-        storage.UpdateStorage("enabled-hidden", e.target.checked.toString());
+        storage.set("enabled-hidden", e.target.checked.toString());
     };
 
     return showHiddenOption ? (

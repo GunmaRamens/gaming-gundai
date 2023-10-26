@@ -4,18 +4,18 @@ import { Moodle } from "./type";
 import { MoodleAdditionalInfo } from "./type";
 
 export const EnableRainbowText = (moodle: Moodle) => {
-    moodle.AddRainbowText(".page-header-headings h1");
+    moodle.rainbowText.apply(".page-header-headings h1");
 
     // 科目リスト
     if (document.getElementById("inst301")) {
-        moodle.AddRainbowTextWithShadow("#inst301 a");
+        moodle.rainbowTextShadow.apply("#inst301 a");
     }
 
-    moodle.AddRainbowText("a");
+    moodle.rainbowText.apply("a");
 };
 
 export const EnableRainbowBg = (moodle: Moodle) => {
-    moodle.AddRainbowBg(".navbar", ".addinghtml");
+    moodle.rainbowBg.apply(".navbar", ".addinghtml");
 };
 
 export const InjectLink = () => {

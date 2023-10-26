@@ -27,7 +27,7 @@ function NavbarCenter() {
             e.preventDefault();
             if (e.detail <= 3) return;
             const storage = new StorageTool("other");
-            storage.UpdateStorage("show-hidden-option", "true");
+            storage.set("show-hidden-option", "true");
             location.reload();
         }
     };

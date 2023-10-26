@@ -5,7 +5,7 @@ import { GundaiWebSite } from "../UnivWebsite";
 
 export const Kyomu = new GundaiWebSite("kyomu");
 
-Kyomu.EnableRainbow = function () {
+Kyomu.enableRainbow = function () {
     // ログインボタン
     // https://qiita.com/Sekky0905/items/a88721f2af41050c93f2
     const loginBtn: HTMLInputElement = <HTMLInputElement>document.getElementById("ctl21_btnLoginShibbolethGunma");
@@ -14,19 +14,19 @@ Kyomu.EnableRainbow = function () {
     }
 
     // ページ遷移リンク
-    this.AddRainbowText(".commonTopPageLink", ".commonTopPageLinkWithPadding");
+    this.rainbowText.apply(".commonTopPageLink", ".commonTopPageLinkWithPadding");
 
-    this.AddRainbowText(
+    this.rainbowText.apply(
         "#CtlInfLstBfrLginEmrgncy_LblTitle",
         "#CtlInfLstBfrLginNrml_LblTitle",
         "#AllAnnualList_LblTitle",
         "#JeLblSyllabiHeader_lbl",
     );
-    this.AddRainbowBg(".infoListEntryOrgName");
-    this.AddRainbowBg(".infoListBeforeLoginGrid");
+    this.rainbowBg.apply(".infoListEntryOrgName");
+    this.rainbowBg.apply(".infoListBeforeLoginGrid");
 
     // ログイン後のトップページ
-    this.AddRainbowBg(".top_title_header", ".top_now_title");
+    this.rainbowBg.apply(".top_title_header", ".top_now_title");
 
     // トップページのウェルカムメッセージ
     ChangeQueryInnerHTML("#loginHeader_lblWelcome_1_lbl", "よおこそ、群馬大学ゲーミング教務システムへ");
@@ -39,7 +39,7 @@ Kyomu.EnableRainbow = function () {
     ChangeQueryInnerHTML("#AllAnnualList_LblTitle", "ゲーミング ライフ スタイル");
 
     // 受信メッセージ一覧
-    this.AddRainbowBg("#ctl00_phContents_ctlMesReceive_gridMes tr");
+    this.rainbowBg.apply("#ctl00_phContents_ctlMesReceive_gridMes tr");
 
     // リンクを挿入
     if (["/portal/login.aspx", "/portal/"].includes(location.pathname.toLowerCase())) {
