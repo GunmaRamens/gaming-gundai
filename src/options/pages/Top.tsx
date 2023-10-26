@@ -68,11 +68,20 @@ function QuickSwitch({ className }: { className?: string }) {
 
 // ここらへんの処理をあとでまとめて書き直す
 function HiddenConfigSection() {
-    const [hiddenClass, setHiddenClass] = useState({
-        hidden: false,
-    });
+    const [showHiddenOption, setShowHiddenOption] = useState(false);
 
     const [enabledHidden, setEnabledHidden] = useState(false);
+
+    const switchShowOrHidden = (visibility: boolean) => {
+        const storage = new StorageTool("other");
+        if (visibility) {
+            setShowHiddenOption(true);
+            storage.UpdateStorage("show-hidden-option", "true");
+        } else {
+            setShowHiddenOption(false);
+            storage.UpdateStorage("show-hidden-option", "false");
+        }
+    };
 
     useEffect(() => {
         const storage = new StorageTool("other");
@@ -80,14 +89,7 @@ function HiddenConfigSection() {
             let v = IsTrue(res);
             if (!res) v = false;
             console.log(v, res);
-
-            if (v) {
-                setHiddenClass({ hidden: false });
-                storage.UpdateStorage("show-hidden-option", "true");
-            } else {
-                setHiddenClass({ hidden: true });
-                storage.UpdateStorage("show-hidden-option", "false");
-            }
+            switchShowOrHidden(v);
         });
     }, []);
 
@@ -102,31 +104,14 @@ function HiddenConfigSection() {
         });
     }, []);
 
-    const switchShowOrHidden = (visibility: boolean) => {
-        const storage = new StorageTool("other");
-        if (visibility) {
-            setHiddenClass({ hidden: false });
-            storage.UpdateStorage("show-hidden-option", "true");
-        } else {
-            setHiddenClass({ hidden: true });
-            storage.UpdateStorage("show-hidden-option", "false");
-        }
-    };
-
-    /*
-    useKonami(() => {
-        switchShowOrHidden(true);
-    });
-    */
-
     const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         const storage = new StorageTool("other");
         setEnabledHidden(e.target.checked);
         storage.UpdateStorage("enabled-hidden", e.target.checked.toString());
     };
 
-    return (
-        <ConfigSection name="隠し機能を有効化する" className={classNames(hiddenClass)}>
+    return showHiddenOption ? (
+        <ConfigSection name="隠し機能を有効化する">
             <div className="my-5 flex items-center child:m-2">
                 <p>隠し機能</p>
                 <p className="flex items-center">
@@ -137,5 +122,5 @@ function HiddenConfigSection() {
                 </button>
             </div>
         </ConfigSection>
-    );
+    ) : null;
 }

@@ -25,6 +25,7 @@ function NavbarCenter() {
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         if (reactLocation.pathname === "/") {
             e.preventDefault();
+            if (e.detail <= 3) return;
             const storage = new StorageTool("other");
             storage.UpdateStorage("show-hidden-option", "true");
             location.reload();
