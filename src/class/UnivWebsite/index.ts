@@ -51,7 +51,10 @@ export class UnivWebsite<T> {
         document.documentElement.dataset.gaming_gundai = "true";
         this.storage.set("enabled", "true");
         this.enableRainbow();
-        //this.EnableHidden();
+
+        new StorageTool("other").getBool("enabled-hidden").then((enabled) => {
+            if (enabled) this.enableHidden();
+        });
     }
     disable() {
         // CSSのためにHTML要素にデータ属性を追加
