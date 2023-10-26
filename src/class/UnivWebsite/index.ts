@@ -14,94 +14,76 @@ const rainbowTextShadow = "rainbow-text-shadow";
 // 型変数とAdditionalInfoプロパティによって任意の情報を追加できる
 export class UnivWebsite<T> {
     id: string;
+    additionalInfo: T; // 型変数使うとかっこいいよね
 
-    additionalInfo: T;
-    classes: {
-        RainbowText: string[];
-        RainbowTextShadow: string[];
-        RainbowBg: string[];
-        RainbowBgShadow: string[];
-    };
+    rainbowText: Rainbow;
+    rainbowBg: Rainbow;
+    rainbowTextShadow: Rainbow;
+    rainbowBgShadow: Rainbow;
 
-    constructor(id: string, enable?: () => void, disable?: () => void) {
+    constructor(id: string) {
         this.id = id;
-        if (enable) this.EnableRainbow = enable;
-        if (disable) this.DisableRainbow = disable;
 
         this.additionalInfo = {} as T;
-        this.classes = {
-            RainbowText: [],
-            RainbowTextShadow: [],
-            RainbowBg: [],
-            RainbowBgShadow: [],
-        };
 
-        this.EnableRainbow.bind(this);
-        this.DisableRainbow.bind(this);
-        this.EnableHidden.bind(this);
-        this.DisableHidden.bind(this);
+        this.rainbowText = new Rainbow(rainbowText);
+        this.rainbowBg = new Rainbow(rainbowBg);
+        this.rainbowTextShadow = new Rainbow(rainbowTextShadow);
+        this.rainbowBgShadow = new Rainbow(rainbowBgShadow);
+
+        this.enableRainbow.bind(this);
+        this.enableHidden.bind(this);
+        this.disableRainbow.bind(this);
+        this.disableHidden.bind(this);
     }
 
     // これらのメソッドは継承先でオーバーライドする
-    EnableRainbow() {}
-    EnableHidden() {}
-    DisableRainbow() {}
-    DisableHidden() {}
+    enableRainbow() {}
+    enableHidden() {}
+    disableRainbow() {}
+    disableHidden() {}
 
     // 上記の関数を実行するためのラッパー
-    Enable() {
+    enable() {
         // CSSのためにHTML要素にデータ属性を追加
         document.documentElement.dataset.gaming_gundai = "true";
-        this.WriteStorage("enabled", "true");
-        this.EnableRainbow();
+        this.storageSet("enabled", "true");
+        this.enableRainbow();
         //this.EnableHidden();
     }
-    Disable() {
+    disable() {
         // CSSのためにHTML要素にデータ属性を追加
         document.documentElement.dataset.gaming_gundai = "false";
-        this.WriteStorage("enabled", "false");
-        this.DisableRainbow();
+        this.storageSet("enabled", "false");
+        this.disableRainbow();
         //this.DisableHidden();
     }
 
     // StorageTool
-    async WriteStorage(key: string, value: string) {
+    async storageSet(key: string, value: string) {
         const storage = new StorageTool(this.id);
         await storage.UpdateStorage(key, value);
     }
-    async ReadStorage(key: string) {
+    async storageGet(key: string) {
         const storage = new StorageTool(this.id);
         return await storage.GetStorage(key);
-    }
-
-    // スタイル適用のためのメソッド
-    AddRainbowBg(...elements: Elements[]) {
-        AddClass(elements, [rainbowBg, ...this.classes.RainbowBg]);
-    }
-    AddRainbowBgWithShadow(...elements: Elements[]) {
-        AddClass(elements, [rainbowBg, rainbowBgShadow, ...this.classes.RainbowBgShadow]);
-    }
-    AddRainbowText(...elements: Elements[]) {
-        AddClass(elements, [rainbowText, ...this.classes.RainbowText]);
-    }
-    AddRainbowTextWithShadow(...elements: Elements[]) {
-        AddClass(elements, [rainbowText, rainbowTextShadow, ...this.classes.RainbowTextShadow]);
-    }
-
-    RemoveRainbowBg(...elements: Elements[]) {
-        RemoveClass(elements, [rainbowBg, ...this.classes.RainbowBg]);
-    }
-    RemoveRainbowBgWithShadow(...elements: Elements[]) {
-        RemoveClass(elements, [rainbowBg, rainbowBgShadow, ...this.classes.RainbowBgShadow]);
-    }
-    RemoveRainbowText(...elements: Elements[]) {
-        RemoveClass(elements, [rainbowText, ...this.classes.RainbowText]);
-    }
-    RemoveRainbowTextWithShadow(...elements: Elements[]) {
-        RemoveClass(elements, [rainbowText, rainbowTextShadow, ...this.classes.RainbowTextShadow]);
     }
 }
 
 export class GundaiWebSite<T> extends UnivWebsite<T> {}
 
-// 型変数使うとかっこいいよね
+export class Rainbow {
+    base: string;
+    classes: string[];
+    constructor(base: string) {
+        this.base = base;
+        this.classes = [];
+    }
+
+    apply(...elements: Elements[]) {
+        AddClass(elements, this.classes);
+    }
+    RemoveClasses(...elements: Elements[]) {
+        RemoveClass(elements, this.classes);
+    }
+}
