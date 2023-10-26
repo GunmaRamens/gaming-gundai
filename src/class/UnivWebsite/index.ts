@@ -1,7 +1,7 @@
 // 無駄とは人生である。無駄を極めよ。無駄を愛せ。無駄を生きろ。
 // 無駄を以て物を成す者は、無駄を以て物を滅ぼす者に勝る。x
 
-import { AddClass, Elements, RemoveClass } from "../../utils/AddClass";
+import { addClass, Elements, removeClass } from "../../utils/addClass";
 import { StorageTool } from "../StorageTool";
 //import Storage from "../../utils/Storage";
 
@@ -19,6 +19,7 @@ export class UnivWebsite<T> {
 
     rainbowText: Rainbow;
     rainbowBg: Rainbow;
+
     rainbowTextShadow: Rainbow;
     rainbowBgShadow: Rainbow;
 
@@ -72,9 +73,9 @@ export class Rainbow {
     }
 
     apply(...elements: Elements[]) {
-        AddClass(elements, [this.base, ...this.classes]);
+        addClass(elements, [this.base, ...this.classes]);
     }
     remove(...elements: Elements[]) {
-        RemoveClass(elements, [this.base, ...this.classes]);
+        removeClass(elements, [this.base, ...this.classes]);
     }
 }

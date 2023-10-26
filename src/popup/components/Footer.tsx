@@ -1,4 +1,4 @@
-import OpenOptions from "../../utils/OpenOptions";
+import OpenOptions from "../../utils/openOptions";
 
 export default function Footer() {
     return (

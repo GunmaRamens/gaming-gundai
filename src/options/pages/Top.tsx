@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { StorageTool } from "../../class/StorageTool";
 import Heading from "../../components/Heading";
 import { Switches } from "../../components/Switches";
-import IsTrue from "../../utils/IsTrue";
+import IsTrue from "../../utils/isTrue";
 
 export default function Top() {
     return (

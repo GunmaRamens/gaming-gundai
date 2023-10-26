@@ -1,4 +1,4 @@
-import ChangeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
+import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { Moodle } from "./type";
 
 export const DisableRainbowBg = (moodle: Moodle) => {
@@ -8,5 +8,5 @@ export const DisableRainbowBg = (moodle: Moodle) => {
 };
 
 export const ReplaceImagesToDefault = () => {
-    ChangeQueryInnerHTML("#instance-320-header", "現在のログイン人数");
+    changeQueryInnerHTML("#instance-320-header", "現在のログイン人数");
 };

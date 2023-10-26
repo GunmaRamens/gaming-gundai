@@ -1,6 +1,6 @@
 // 教務は学生の未来を担い、ゲーミングは学生の人生に彩りを加える
 // この二つのシステムを統合することで、学生の人生をより豊かにすることができる
-import ChangeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
+import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { GundaiWebSite } from "../UnivWebsite";
 
 export const Kyomu = new GundaiWebSite("kyomu");
@@ -29,14 +29,14 @@ Kyomu.enableRainbow = function () {
     this.rainbowBg.apply(".top_title_header", ".top_now_title");
 
     // トップページのウェルカムメッセージ
-    ChangeQueryInnerHTML("#loginHeader_lblWelcome_1_lbl", "よおこそ、群馬大学ゲーミング教務システムへ");
-    ChangeQueryInnerHTML(
+    changeQueryInnerHTML("#loginHeader_lblWelcome_1_lbl", "よおこそ、群馬大学ゲーミング教務システムへ");
+    changeQueryInnerHTML(
         "#loginHeader_lblWelcome_2_lbl",
         "このサイトでは、プレーヤーの群馬大学での𝑮𝒂𝒎𝒊𝒏𝒈 𝑳𝒊𝒇𝒆 𝑺𝒕𝒚𝒍𝒆をいい感じにします",
     );
 
     // トップページのお知らせ
-    ChangeQueryInnerHTML("#AllAnnualList_LblTitle", "ゲーミング ライフ スタイル");
+    changeQueryInnerHTML("#AllAnnualList_LblTitle", "ゲーミング ライフ スタイル");
 
     // 受信メッセージ一覧
     this.rainbowBg.apply("#ctl00_phContents_ctlMesReceive_gridMes tr");

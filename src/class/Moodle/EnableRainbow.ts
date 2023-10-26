@@ -1,4 +1,4 @@
-import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
+import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { GundaiWebSite } from "../UnivWebsite";
 import { Moodle } from "./type";
 import { MoodleAdditionalInfo } from "./type";

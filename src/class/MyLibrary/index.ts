@@ -1,4 +1,4 @@
-import ChangeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
+import ChangeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { GundaiWebSite } from "../UnivWebsite";
 
 export const MyLibrary = new GundaiWebSite("mylibrary");

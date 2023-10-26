@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { WebSites } from "../class";
 import { FrontConfig } from "../popup/config";
-import IsTrue from "../utils/IsTrue";
+import IsTrue from "../utils/isTrue";
 
 export function SwitchItem({ config, className }: { config: FrontConfig; className?: string }) {
     const [enabled, setEnabled] = useState(false);

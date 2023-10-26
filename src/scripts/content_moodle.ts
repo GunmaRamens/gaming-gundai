@@ -1,7 +1,7 @@
 import "/styles/moodle.scss";
 
 import { Moodle } from "../class";
-import loadGamingWebsite from "../utils/LoadGamingWebsite";
+import loadGamingWebsite from "../utils/loadGamingWebsite";
 
 //window.addEventListener("load", async () => await runFuncIfEnabled(Moodle.EnableRainbow));
 loadGamingWebsite(Moodle);

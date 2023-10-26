@@ -1,4 +1,4 @@
-import IsTrue from "../../utils/IsTrue";
+import IsTrue from "../../utils/isTrue";
 
 export class StorageTool {
     id: string;

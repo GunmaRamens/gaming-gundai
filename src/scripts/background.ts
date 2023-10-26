@@ -1,12 +1,12 @@
 import { StorageTool } from "../class/StorageTool";
-import IsTrue from "../utils/IsTrue";
-import OpenOptions from "../utils/OpenOptions";
+import isTrue from "../utils/isTrue";
+import OpenOptions from "../utils/openOptions";
 
 chrome.runtime.onInstalled.addListener(async () => {
     const storage = new StorageTool("other");
     const isInstalled = await storage.get("installed");
     console.log(isInstalled);
-    if (isInstalled != undefined && IsTrue(isInstalled)) return;
+    if (isInstalled != undefined && isTrue(isInstalled)) return;
     OpenOptions("thanks").then(() => {
         storage.set("installed", "true");
     });
