@@ -81,9 +81,9 @@ export class Rainbow {
     }
 
     apply(...elements: Elements[]) {
-        AddClass(elements, this.classes);
+        AddClass(elements, [this.base, ...this.classes]);
     }
     RemoveClasses(...elements: Elements[]) {
-        RemoveClass(elements, this.classes);
+        RemoveClass(elements, [this.base, ...this.classes]);
     }
 }
