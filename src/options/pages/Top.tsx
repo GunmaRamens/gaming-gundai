@@ -85,7 +85,7 @@ function HiddenConfigSection() {
 
     useEffect(() => {
         const storage = new StorageTool("other");
-        storage.GetStorage("show-hidden-option").then((res): void => {
+        storage.get("show-hidden-option").then((res): void => {
             let v = IsTrue(res);
             if (!res) v = false;
             console.log(v, res);
@@ -95,7 +95,7 @@ function HiddenConfigSection() {
 
     useEffect(() => {
         const storage = new StorageTool("other");
-        storage.GetStorage("enabled-hidden").then((res): void => {
+        storage.get("enabled-hidden").then((res): void => {
             let v = IsTrue(res);
             if (!res) v = false;
 

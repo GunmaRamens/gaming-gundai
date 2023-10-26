@@ -74,7 +74,7 @@ export class Rainbow {
     apply(...elements: Elements[]) {
         AddClass(elements, [this.base, ...this.classes]);
     }
-    RemoveClasses(...elements: Elements[]) {
+    remove(...elements: Elements[]) {
         RemoveClass(elements, [this.base, ...this.classes]);
     }
 }

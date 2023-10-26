@@ -4,7 +4,7 @@ import OpenOptions from "../utils/OpenOptions";
 
 chrome.runtime.onInstalled.addListener(async () => {
     const storage = new StorageTool("other");
-    const isInstalled = await storage.GetStorage("installed");
+    const isInstalled = await storage.get("installed");
     console.log(isInstalled);
     if (isInstalled != undefined && IsTrue(isInstalled)) return;
     OpenOptions("thanks").then(() => {

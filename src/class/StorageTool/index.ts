@@ -24,18 +24,18 @@ export class StorageTool {
 
         storage.set({ [this.id]: newData });
     }
-    async get(key: string) {
+    async getBool(key: string) {
         const storage = StorageTool.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
             return;
         }
 
-        const rawdata = await this.GetStorage(key);
+        const rawdata = await this.get(key);
 
         return IsTrue(rawdata);
     }
-    async GetStorage(key: string) {
+    async get(key: string) {
         const storage = StorageTool.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
