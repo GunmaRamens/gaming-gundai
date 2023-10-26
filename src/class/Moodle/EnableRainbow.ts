@@ -14,7 +14,7 @@ export const EnableRainbowTextAndBg = (moodle: Moodle) => {
     // rainbowBgの中のrainbowTextを無効化
     const rainbowBgSelector = moodle.rainbowBg.selector();
     const targetElementsSelector = `${rainbowBgSelector} ${moodle.rainbowText.selector()}`;
-    removeClass([targetElementsSelector], [moodle.rainbowText.base]);
+    removeClass([targetElementsSelector], moodle.rainbowText.base);
 };
 
 export const InjectLink = () => {
