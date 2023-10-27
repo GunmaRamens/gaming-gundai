@@ -15,6 +15,19 @@ Moodle.enableRainbow = function () {
     InjectLink();
     ReplaceImagesToGamimg();
     ReplaceTextToGaimg(this);
+
+    // メニューバーでホバー時にclassを追加
+    document.querySelectorAll(".moremenu .nav-link").forEach((e) => {
+        const menuHasActiveClass = e.classList.contains("active");
+        e.addEventListener("mouseover", () => {
+            e.classList.add("rainbow-bg-shadow");
+            if (!menuHasActiveClass) e.classList.add("active");
+        });
+        e.addEventListener("mouseout", () => {
+            e.classList.remove("rainbow-bg-shadow");
+            if (!menuHasActiveClass) e.classList.remove("active");
+        });
+    });
 };
 
 Moodle.disableRainbow = function () {

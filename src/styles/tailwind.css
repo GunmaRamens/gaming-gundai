@@ -10,6 +10,6 @@
 
 @layer utilities {
     p {
-        @apply leading-loose my-1;
+        @apply leading-loose my-1 text-base;
     }
 }

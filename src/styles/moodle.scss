@@ -1,3 +1,5 @@
+@import "./gaming.scss";
+
 [data-gaming_gundai="true"] {
     .menu-action-text,
     .dropdown-menu {
@@ -9,18 +11,14 @@
     .moremenu .active > .nav-link.rainbow-text,
     .moremenu .nav-link.show.rainbow-text,
     .moremenu .nav-link.active.rainbow-text {
-        animation-duration: 0.7s;
+        @extend .rainbow-text;
+    }
 
-        background: linear-gradient(to right, Magenta, yellow, Cyan, Magenta) 0% center/200%;
-        animation-name: gaming;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
+    #user-action-menu {
+        @extend .rainbow-bg;
+    }
 
-        // For Text
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: bold;
-        color: transparent;
+    .moremenu .nav-link:hover {
+        background-color: transparent !important;
     }
 }
