@@ -1,6 +1,5 @@
 import { UnivWebsite } from "../class/UnivWebsite";
 import isTrue from "./isTrue";
-//import RunFuncIfEnabled from "./RunFuncIfEnabled";
 
 // ウィンドウが読み込まれたらGundaiWebsiteのEnableRainbowを実行する
 export default function loadGamingWebsite(website: UnivWebsite<unknown>) {
@@ -9,7 +8,7 @@ export default function loadGamingWebsite(website: UnivWebsite<unknown>) {
         if (isTrue(isEnabled)) {
             UnivWebsite.enable(website);
         } else {
-            UnivWebsite.enable(website);
+            UnivWebsite.disable(website);
         }
     });
 }
