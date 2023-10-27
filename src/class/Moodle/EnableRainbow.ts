@@ -1,4 +1,3 @@
-import { removeClass } from "../../utils/addClass";
 import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { RainbowApplicator } from "../ClassApplicator";
 import { GundaiWebSite } from "../UnivWebsite";
@@ -14,7 +13,8 @@ export const EnableRainbowTextAndBg = (rainbow: RainbowApplicator) => {
     // rainbowBgの中のrainbowTextを無効化
     const rainbowBgSelector = rainbow.bg.selector();
     const targetElementsSelector = `${rainbowBgSelector} ${rainbow.text.selector()}`;
-    removeClass([targetElementsSelector], rainbow.text.base);
+    //removeClass([targetElementsSelector], rainbow.text.base);
+    rainbow.text.remove(targetElementsSelector);
 };
 
 export const InjectLink = () => {

@@ -10,22 +10,22 @@ const rainbowTextShadow = "rainbow-text-shadow";
 // selectorで適用されるセレクタを取得できます
 // baseは初期化に必ず指定する必要があり書き換えるべきではありませんが、classesは追加で個別の設定を行うために指定できます
 export class classApplicator {
-    base: string[];
+    #base: string[];
     classes: string[];
     constructor(base: string[]) {
-        this.base = base;
+        this.#base = base;
         this.classes = [];
     }
 
     apply(...elements: Elements[]) {
-        addClass(elements, [...this.base, ...this.classes]);
+        addClass(elements, [...this.#base, ...this.classes]);
     }
     remove(...elements: Elements[]) {
-        removeClass(elements, [...this.base, ...this.classes]);
+        removeClass(elements, [...this.#base, ...this.classes]);
     }
     selector() {
-        if (this.classes.length === 0) return `.${this.base}`;
-        else return `.${this.base}.${this.classes.join(".")}`;
+        if (this.classes.length === 0) return `.${this.#base}`;
+        else return `.${this.#base}.${this.classes.join(".")}`;
     }
 }
 
