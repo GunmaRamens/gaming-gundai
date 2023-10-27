@@ -26,23 +26,41 @@ export class UnivWebsite<T> {
         this.hidden = new HiddenApplicator();
     }
 
-    // 上記の関数を実行するためのラッパー
-    static enable(site: UnivWebsite<unknown>) {
-        // CSSのためにHTML要素にデータ属性を追加
-        document.documentElement.dataset.gaming_gundai = "true";
-        site.storage.set("enabled", "true");
-        site.rainbow.enable();
+    static async load(site: UnivWebsite<unknown>) {
+        const isRainbowEnabled = await site.storage.get("rainbow");
+        if (isRainbowEnabled === "true") {
+            // CSSのためにHTML要素にデータ属性を追加
+            document.documentElement.dataset.gaming_gundai = "true";
+            site.storage.set("rainbow", "true");
+            site.rainbow.enable();
+        } else {
+            // CSSのためにHTML要素にデータ属性を追加
+            document.documentElement.dataset.gaming_gundai = "false";
+            site.storage.set("rainbow", "false");
+            site.rainbow.disable();
+        }
 
-        new StorageTool("other").getBool("enabled-hidden").then((enabled) => {
-            if (enabled) site.hidden.enable();
-        });
-    }
-    static disable(site: UnivWebsite<unknown>) {
-        // CSSのためにHTML要素にデータ属性を追加
-        document.documentElement.dataset.gaming_gundai = "false";
-        site.storage.set("enabled", "false");
-        site.rainbow.disable();
-        site.hidden.disable();
+        const isDarkEnabled = await site.storage.get("dark");
+        if (isDarkEnabled === "true") {
+            document.documentElement.dataset.gaming_gundai_dark = "true";
+            site.storage.set("dark", "true");
+            site.dark.enable();
+        } else {
+            document.documentElement.dataset.gaming_gundai_dark = "false";
+            site.storage.set("dark", "false");
+            site.dark.disable();
+        }
+
+        const isHiddenEnabled = await new StorageTool("other").getBool("enabled-hidden");
+        if (isHiddenEnabled) {
+            document.documentElement.dataset.gaming_gundai_hidden = "true";
+            site.storage.set("hidden", "true");
+            site.hidden.enable();
+        } else {
+            document.documentElement.dataset.gaming_gundai_hidden = "false";
+            site.storage.set("hidden", "false");
+            site.hidden.disable();
+        }
     }
 }
 
