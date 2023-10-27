@@ -1,10 +1,10 @@
 import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
-import { Moodle } from "./type";
+import { RainbowApplicator } from "../ClassApplicator";
 
-export const DisableRainbowBg = (moodle: Moodle) => {
-    moodle.rainbow.bg.remove(".navbar", ".addinghtml");
-    moodle.rainbow.bg.remove(".page-header-headings h1");
-    moodle.rainbow.bg.remove("a");
+export const DisableRainbowBg = (rainbow: RainbowApplicator) => {
+    rainbow.bg.remove(".navbar", ".addinghtml");
+    rainbow.bg.remove(".page-header-headings h1");
+    rainbow.bg.remove("a");
 };
 
 export const ReplaceImagesToDefault = () => {

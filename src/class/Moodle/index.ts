@@ -10,11 +10,11 @@ Moodle.additionalInfo = {
     headerText: " Gaming Edition🎮",
 };
 
-Moodle.enableRainbow = function () {
+Moodle.rainbow.enable = function () {
     EnableRainbowTextAndBg(this);
     InjectLink();
     ReplaceImagesToGamimg();
-    ReplaceTextToGaimg(this);
+    ReplaceTextToGaimg(Moodle);
 
     // メニューバーでホバー時にclassを追加
     document.querySelectorAll(".moremenu .nav-link").forEach((e) => {
@@ -30,17 +30,17 @@ Moodle.enableRainbow = function () {
     });
 };
 
-Moodle.disableRainbow = function () {
+Moodle.rainbow.disable = function () {
     DisableRainbowBg(this);
     ReplaceImagesToDefault();
 
-    const headerText = this.additionalInfo.headerText;
+    const headerText = Moodle.additionalInfo.headerText;
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
         if (e.innerHTML.includes(headerText)) e.innerHTML.replace(headerText, "");
     });
 };
 
-Moodle.enableHidden = () => {
+Moodle.hidden.enable = () => {
     const cardElement = document.querySelector(".card-text .no-overflow");
     if (!cardElement) return;
     const playCountUnderTextElement = cardElement.getElementsByTagName("p")[1];

@@ -1,8 +1,8 @@
 // 無駄とは人生である。無駄を極めよ。無駄を愛せ。無駄を生きろ。
 // 無駄を以て物を成す者は、無駄を以て物を滅ぼす者に勝る。x
 
+import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApplicator";
 import { StorageTool } from "../StorageTool";
-import { DarkApplicator, RainbowApplicator } from "./ClassApplicator";
 //import Storage from "../../utils/Storage";
 
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
@@ -14,6 +14,7 @@ export class UnivWebsite<T> {
 
     rainbow: RainbowApplicator;
     dark: DarkApplicator;
+    hidden: HiddenApplicator;
 
     constructor(id: string) {
         this.id = id;
@@ -22,36 +23,26 @@ export class UnivWebsite<T> {
 
         this.rainbow = new RainbowApplicator();
         this.dark = new DarkApplicator();
-
-        this.enableRainbow.bind(this);
-        this.enableHidden.bind(this);
-        this.disableRainbow.bind(this);
-        this.disableHidden.bind(this);
+        this.hidden = new HiddenApplicator();
     }
-
-    // これらのメソッドは継承先でオーバーライドする
-    enableRainbow() {}
-    enableHidden() {}
-    disableRainbow() {}
-    disableHidden() {}
 
     // 上記の関数を実行するためのラッパー
     static enable(site: UnivWebsite<unknown>) {
         // CSSのためにHTML要素にデータ属性を追加
         document.documentElement.dataset.gaming_gundai = "true";
         site.storage.set("enabled", "true");
-        site.enableRainbow();
+        site.rainbow.enable();
 
         new StorageTool("other").getBool("enabled-hidden").then((enabled) => {
-            if (enabled) site.enableHidden();
+            if (enabled) site.hidden.enable();
         });
     }
     static disable(site: UnivWebsite<unknown>) {
         // CSSのためにHTML要素にデータ属性を追加
         document.documentElement.dataset.gaming_gundai = "false";
         site.storage.set("enabled", "false");
-        site.disableRainbow();
-        //this.DisableHidden();
+        site.rainbow.disable();
+        site.hidden.disable();
     }
 }
 

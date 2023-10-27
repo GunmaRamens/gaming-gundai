@@ -1,4 +1,4 @@
-import { addClass, Elements, removeClass } from "../../utils/addClass";
+import { addClass, Elements, removeClass } from "../utils/addClass";
 
 const rainbowBg = "rainbow-bg";
 const rainbowText = "rainbow-text";
@@ -29,14 +29,20 @@ export class classApplicator {
     }
 }
 
+export class ApplicatorBase {
+    enable() {}
+    disable() {}
+}
+
 // classApplicatorを用いて虹色にするクラス
-export class RainbowApplicator {
+export class RainbowApplicator extends ApplicatorBase {
     text: classApplicator;
     bg: classApplicator;
     textShadow: classApplicator;
     bgShadow: classApplicator;
 
     constructor() {
+        super();
         this.text = new classApplicator([rainbowText]);
         this.bg = new classApplicator([rainbowBg]);
         this.textShadow = new classApplicator([rainbowText, rainbowTextShadow]);
@@ -44,8 +50,11 @@ export class RainbowApplicator {
     }
 }
 
+// 隠し機能を有効化するクラス
+export class HiddenApplicator extends ApplicatorBase {}
+
 // classApplicatorを用いてダークテーマにするクラス
-export class DarkApplicator {
+export class DarkApplicator extends ApplicatorBase {
     base: classApplicator;
     baseDarker: classApplicator;
     content: classApplicator;
@@ -53,6 +62,7 @@ export class DarkApplicator {
     accent: classApplicator;
 
     constructor() {
+        super();
         this.base = new classApplicator(["dark-base"]);
         this.baseDarker = new classApplicator(["dark-base-darker"]);
         this.content = new classApplicator(["dark-content"]);

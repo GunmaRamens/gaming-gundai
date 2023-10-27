@@ -1,20 +1,20 @@
 import { removeClass } from "../../utils/addClass";
 import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
+import { RainbowApplicator } from "../ClassApplicator";
 import { GundaiWebSite } from "../UnivWebsite";
-import { Moodle } from "./type";
 import { MoodleAdditionalInfo } from "./type";
 
-export const EnableRainbowTextAndBg = (moodle: Moodle) => {
-    moodle.rainbow.bg.apply(".navbar", "#action-menu-0-menu");
+export const EnableRainbowTextAndBg = (rainbow: RainbowApplicator) => {
+    rainbow.bg.apply(".navbar", "#action-menu-0-menu");
 
-    moodle.rainbow.text.apply(".page-header-headings h1");
-    moodle.rainbow.text.apply("#page-content a:not(#inst301 a)");
-    moodle.rainbow.text.apply("#instance-301-header");
+    rainbow.text.apply(".page-header-headings h1");
+    rainbow.text.apply("#page-content a:not(#inst301 a)");
+    rainbow.text.apply("#instance-301-header");
 
     // rainbowBgの中のrainbowTextを無効化
-    const rainbowBgSelector = moodle.rainbow.bg.selector();
-    const targetElementsSelector = `${rainbowBgSelector} ${moodle.rainbow.text.selector()}`;
-    removeClass([targetElementsSelector], moodle.rainbow.text.base);
+    const rainbowBgSelector = rainbow.bg.selector();
+    const targetElementsSelector = `${rainbowBgSelector} ${rainbow.text.selector()}`;
+    removeClass([targetElementsSelector], rainbow.text.base);
 };
 
 export const InjectLink = () => {
