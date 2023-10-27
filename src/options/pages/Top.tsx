@@ -10,9 +10,15 @@ import IsTrue from "../../utils/isTrue";
 export default function Top() {
     return (
         <>
-            <ConfigSection name="Websites" desc="有効化するウェブサイトを設定します">
+            <ConfigSection name="Rainbow Websites" desc="虹色にするウェブサイトを設定します">
                 <div className="flex flex-wrap">
-                    <Switches className=" flex-row-reverse items-center child:m-2" />
+                    <Switches className="flex-row-reverse items-center child:m-2" category="rainbow" />
+                </div>
+            </ConfigSection>
+
+            <ConfigSection name="Dark Websites" desc="ダークモードを有効化するウェブサイトを設定します">
+                <div className="flex flex-wrap">
+                    <Switches className="flex-row-reverse items-center child:m-2" category="dark" />
                 </div>
             </ConfigSection>
 

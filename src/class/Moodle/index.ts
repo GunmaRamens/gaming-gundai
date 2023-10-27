@@ -48,3 +48,7 @@ Moodle.hidden.enable = () => {
 
     playCountUnderTextElement.innerHTML = "想定最大利用者乳首数：4,000";
 };
+
+Moodle.dark.enable = () => {
+    Moodle.dark.base.apply("#page");
+};

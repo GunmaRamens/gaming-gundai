@@ -51,14 +51,15 @@ export class UnivWebsite<T> {
             site.dark.disable();
         }
 
-        const isHiddenEnabled = await new StorageTool("other").getBool("enabled-hidden");
+        const otherStorage = new StorageTool("other");
+        const isHiddenEnabled = await otherStorage.getBool("enabled-hidden");
         if (isHiddenEnabled) {
             document.documentElement.dataset.gaming_gundai_hidden = "true";
-            site.storage.set("hidden", "true");
+            otherStorage.set("enabled-hidden", "true");
             site.hidden.enable();
         } else {
             document.documentElement.dataset.gaming_gundai_hidden = "false";
-            site.storage.set("hidden", "false");
+            site.storage.set("enabled-hidden", "false");
             site.hidden.disable();
         }
     }

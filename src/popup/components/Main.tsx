@@ -18,7 +18,7 @@ export default function Main(props: MainProps) {
         [],
     );
 
-    const switches = <Switches className="w-full justify-center child:w-1/2 child:text-center" />;
+    const switches = <Switches category="rainbow" className="w-full justify-center child:w-1/2 child:text-center" />;
     const hiddenMsg = <p className="text-center text-lg">設定画面を表示中はポップアップを利用できません</p>;
 
     return (
