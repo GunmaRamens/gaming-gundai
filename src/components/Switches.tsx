@@ -1,4 +1,4 @@
-import { FrontConfigs } from "../popup/config";
+import { FrontConfigs } from "./config";
 import { SwitchItem } from "./SwitchItem";
 
 export function Switches({ className }: { className?: string }) {
