@@ -4,9 +4,9 @@ export function addClass(elements: Elements[], classNames: string[]) {
     elements.forEach((element) => {
         if (typeof element === "string") {
             const elements = document.querySelectorAll(element);
-            elements.forEach((element) => {
-                //console.log("adding classes to", element);
-                element.classList.add(...classNames);
+            elements.forEach((e) => {
+                console.log(`adding classes (${classNames}) to`, e);
+                e.classList.add(...classNames);
             });
         } else {
             let list: HTMLElement[];

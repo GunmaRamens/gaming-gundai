@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 
 import { StorageTool } from "../../class/StorageTool";
+import CopyTootrip from "../../components/CopyBtn";
 import Heading from "../../components/Heading";
 import { Switches } from "../../components/Switches";
 import IsTrue from "../../utils/isTrue";
@@ -27,9 +28,9 @@ export default function Top() {
 
             <ConfigSection name="群馬大学学務課・メディアセンターの方へ">
                 <p>このソフトウェアについて問題がある場合は以下のメールアドレスまでご連絡ください。</p>
-                <a href="mailto:shun819.mail@gmail.com" className="btn btn-neutral my-5">
-                    shun819.mail@gmail.com
-                </a>
+                <CopyTootrip copyText="shun819.mail@gmail.com" className="my-5">
+                    <button className="btn btn-neutral">shun819.mail@gmail.com</button>
+                </CopyTootrip>
             </ConfigSection>
         </>
     );
