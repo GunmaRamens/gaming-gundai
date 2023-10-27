@@ -13,11 +13,11 @@ MyLibrary.enableRainbow = function () {
         ChangeQueryInnerHTML("#ssoLoginTitle", "全学ゲーミングアカウントでログイン");
 
         // フッターをレインボー
-        this.rainbowBg.apply("#footer");
+        this.rainbow.bg.apply("#footer");
         document.getElementById("footer")!.id = "";
     }
 
     // ヘッダーとタイトルをレインボー
-    this.rainbowBg.apply("#header", "h2");
-    this.rainbowText.apply("#lblTitle", "#mainTitle");
+    this.rainbow.bg.apply("#header", "h2");
+    this.rainbow.text.apply("#lblTitle", "#mainTitle");
 };

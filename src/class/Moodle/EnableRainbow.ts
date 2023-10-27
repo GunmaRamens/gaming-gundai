@@ -5,16 +5,16 @@ import { Moodle } from "./type";
 import { MoodleAdditionalInfo } from "./type";
 
 export const EnableRainbowTextAndBg = (moodle: Moodle) => {
-    moodle.rainbowBg.apply(".navbar", "#action-menu-0-menu");
+    moodle.rainbow.bg.apply(".navbar", "#action-menu-0-menu");
 
-    moodle.rainbowText.apply(".page-header-headings h1");
-    moodle.rainbowText.apply("#page-content a:not(#inst301 a)");
-    moodle.rainbowText.apply("#instance-301-header");
+    moodle.rainbow.text.apply(".page-header-headings h1");
+    moodle.rainbow.text.apply("#page-content a:not(#inst301 a)");
+    moodle.rainbow.text.apply("#instance-301-header");
 
     // rainbowBgの中のrainbowTextを無効化
-    const rainbowBgSelector = moodle.rainbowBg.selector();
-    const targetElementsSelector = `${rainbowBgSelector} ${moodle.rainbowText.selector()}`;
-    removeClass([targetElementsSelector], moodle.rainbowText.base);
+    const rainbowBgSelector = moodle.rainbow.bg.selector();
+    const targetElementsSelector = `${rainbowBgSelector} ${moodle.rainbow.text.selector()}`;
+    removeClass([targetElementsSelector], moodle.rainbow.text.base);
 };
 
 export const InjectLink = () => {

@@ -14,19 +14,19 @@ Kyomu.enableRainbow = function () {
     }
 
     // ページ遷移リンク
-    this.rainbowText.apply(".commonTopPageLink", ".commonTopPageLinkWithPadding");
+    this.rainbow.text.apply(".commonTopPageLink", ".commonTopPageLinkWithPadding");
 
-    this.rainbowText.apply(
+    this.rainbow.text.apply(
         "#CtlInfLstBfrLginEmrgncy_LblTitle",
         "#CtlInfLstBfrLginNrml_LblTitle",
         "#AllAnnualList_LblTitle",
         "#JeLblSyllabiHeader_lbl",
     );
-    this.rainbowBg.apply(".infoListEntryOrgName");
-    this.rainbowBg.apply(".infoListBeforeLoginGrid");
+    this.rainbow.bg.apply(".infoListEntryOrgName");
+    this.rainbow.bg.apply(".infoListBeforeLoginGrid");
 
     // ログイン後のトップページ
-    this.rainbowBg.apply(".top_title_header", ".top_now_title");
+    this.rainbow.bg.apply(".top_title_header", ".top_now_title");
 
     // トップページのウェルカムメッセージ
     changeQueryInnerHTML("#loginHeader_lblWelcome_1_lbl", "よおこそ、群馬大学ゲーミング教務システムへ");
@@ -39,7 +39,7 @@ Kyomu.enableRainbow = function () {
     changeQueryInnerHTML("#AllAnnualList_LblTitle", "ゲーミング ライフ スタイル");
 
     // 受信メッセージ一覧
-    this.rainbowBgShadow.apply("#ctl00_phContents_ctlMesReceive_gridMes tr");
+    this.rainbow.bgShadow.apply("#ctl00_phContents_ctlMesReceive_gridMes tr");
 
     // リンクを挿入
     if (["/portal/login.aspx", "/portal/"].includes(location.pathname.toLowerCase())) {
@@ -52,5 +52,5 @@ Kyomu.enableRainbow = function () {
     }
 
     //ヘッダー上部の名前
-    this.rainbowText.apply("#ctl00_bhHeader_lblName");
+    this.rainbow.text.apply("#ctl00_bhHeader_lblName");
 };

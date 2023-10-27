@@ -2,9 +2,9 @@ import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { Moodle } from "./type";
 
 export const DisableRainbowBg = (moodle: Moodle) => {
-    moodle.rainbowBg.remove(".navbar", ".addinghtml");
-    moodle.rainbowBg.remove(".page-header-headings h1");
-    moodle.rainbowBg.remove("a");
+    moodle.rainbow.bg.remove(".navbar", ".addinghtml");
+    moodle.rainbow.bg.remove(".page-header-headings h1");
+    moodle.rainbow.bg.remove("a");
 };
 
 export const ReplaceImagesToDefault = () => {

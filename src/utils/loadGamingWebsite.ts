@@ -7,9 +7,9 @@ export default function loadGamingWebsite(website: UnivWebsite<unknown>) {
     window.addEventListener("load", async () => {
         const isEnabled = await website.storage.get("enabled");
         if (isTrue(isEnabled)) {
-            website.enable();
+            UnivWebsite.enable(website);
         } else {
-            website.disable();
+            UnivWebsite.enable(website);
         }
     });
 }

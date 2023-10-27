@@ -1,14 +1,9 @@
 // 無駄とは人生である。無駄を極めよ。無駄を愛せ。無駄を生きろ。
 // 無駄を以て物を成す者は、無駄を以て物を滅ぼす者に勝る。x
 
-import { addClass, Elements, removeClass } from "../../utils/addClass";
 import { StorageTool } from "../StorageTool";
+import { DarkApplicator, RainbowApplicator } from "./ClassApplicator";
 //import Storage from "../../utils/Storage";
-
-const rainbowBg = "rainbow-bg";
-const rainbowText = "rainbow-text";
-const rainbowBgShadow = "rainbow-bg-shadow";
-const rainbowTextShadow = "rainbow-text-shadow";
 
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
 // 型変数とAdditionalInfoプロパティによって任意の情報を追加できる
@@ -17,21 +12,16 @@ export class UnivWebsite<T> {
     additionalInfo: T; // 型変数使うとかっこいいよね
     storage: StorageTool;
 
-    rainbowText: Rainbow;
-    rainbowBg: Rainbow;
-
-    rainbowTextShadow: Rainbow;
-    rainbowBgShadow: Rainbow;
+    rainbow: RainbowApplicator;
+    dark: DarkApplicator;
 
     constructor(id: string) {
         this.id = id;
         this.additionalInfo = {} as T;
         this.storage = new StorageTool(id);
 
-        this.rainbowText = new Rainbow([rainbowText]);
-        this.rainbowBg = new Rainbow([rainbowBg]);
-        this.rainbowTextShadow = new Rainbow([rainbowText, rainbowTextShadow]);
-        this.rainbowBgShadow = new Rainbow([rainbowBg, rainbowBgShadow]);
+        this.rainbow = new RainbowApplicator();
+        this.dark = new DarkApplicator();
 
         this.enableRainbow.bind(this);
         this.enableHidden.bind(this);
@@ -46,43 +36,23 @@ export class UnivWebsite<T> {
     disableHidden() {}
 
     // 上記の関数を実行するためのラッパー
-    enable() {
+    static enable(site: UnivWebsite<unknown>) {
         // CSSのためにHTML要素にデータ属性を追加
         document.documentElement.dataset.gaming_gundai = "true";
-        this.storage.set("enabled", "true");
-        this.enableRainbow();
+        site.storage.set("enabled", "true");
+        site.enableRainbow();
 
         new StorageTool("other").getBool("enabled-hidden").then((enabled) => {
-            if (enabled) this.enableHidden();
+            if (enabled) site.enableHidden();
         });
     }
-    disable() {
+    static disable(site: UnivWebsite<unknown>) {
         // CSSのためにHTML要素にデータ属性を追加
         document.documentElement.dataset.gaming_gundai = "false";
-        this.storage.set("enabled", "false");
-        this.disableRainbow();
+        site.storage.set("enabled", "false");
+        site.disableRainbow();
         //this.DisableHidden();
     }
 }
 
 export class GundaiWebSite<T> extends UnivWebsite<T> {}
-
-export class Rainbow {
-    base: string[];
-    classes: string[];
-    constructor(base: string[]) {
-        this.base = base;
-        this.classes = [];
-    }
-
-    apply(...elements: Elements[]) {
-        addClass(elements, [...this.base, ...this.classes]);
-    }
-    remove(...elements: Elements[]) {
-        removeClass(elements, [...this.base, ...this.classes]);
-    }
-    selector() {
-        if (this.classes.length === 0) return `.${this.base}`;
-        else return `.${this.base}.${this.classes.join(".")}`;
-    }
-}
