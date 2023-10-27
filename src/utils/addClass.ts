@@ -1,6 +1,6 @@
 export type Elements = HTMLElement | NodeListOf<HTMLElement> | string;
 
-export function AddClass(elements: Elements[], classNames: string[]) {
+export function addClass(elements: Elements[], classNames: string[]) {
     elements.forEach((element) => {
         if (typeof element === "string") {
             const elements = document.querySelectorAll(element);
@@ -21,7 +21,7 @@ export function AddClass(elements: Elements[], classNames: string[]) {
     });
 }
 
-export function RemoveClass(elements: Elements[], classNames: string[]) {
+export function removeClass(elements: Elements[], classNames: string[]) {
     elements.forEach((element) => {
         if (typeof element === "string") {
             const elements = document.querySelectorAll(element);

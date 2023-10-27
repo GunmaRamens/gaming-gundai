@@ -1,21 +1,20 @@
-import changeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
-import GundaiWebSite from "../GundaiWebsite";
+import { removeClass } from "../../utils/addClass";
+import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
+import { GundaiWebSite } from "../UnivWebsite";
 import { Moodle } from "./type";
 import { MoodleAdditionalInfo } from "./type";
 
-export const EnableRainbowText = (moodle: Moodle) => {
-    moodle.AddRainbowText(".page-header-headings h1");
+export const EnableRainbowTextAndBg = (moodle: Moodle) => {
+    moodle.rainbowBg.apply(".navbar", "#action-menu-0-menu");
 
-    // 科目リスト
-    if (document.getElementById("inst301")) {
-        moodle.AddRainbowTextWithShadow("#inst301 a");
-    }
+    moodle.rainbowText.apply(".page-header-headings h1");
+    moodle.rainbowText.apply("#page-content a:not(#inst301 a)");
+    moodle.rainbowText.apply("#instance-301-header");
 
-    moodle.AddRainbowText("a");
-};
-
-export const EnableRainbowBg = (moodle: Moodle) => {
-    moodle.AddRainbowBg(".navbar", ".addinghtml");
+    // rainbowBgの中のrainbowTextを無効化
+    const rainbowBgSelector = moodle.rainbowBg.selector();
+    const targetElementsSelector = `${rainbowBgSelector} ${moodle.rainbowText.selector()}`;
+    removeClass([targetElementsSelector], moodle.rainbowText.base);
 };
 
 export const InjectLink = () => {

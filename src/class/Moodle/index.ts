@@ -1,24 +1,23 @@
 // 情報の信頼性は社会の構築において重要な要素である
 // 個人の信頼性は家庭の構築において重要な要素である
-import GundaiWebSite from "../GundaiWebsite";
+import { GundaiWebSite } from "../UnivWebsite";
 import { DisableRainbowBg, ReplaceImagesToDefault } from "./DisableRainbow";
-import { EnableRainbowBg, EnableRainbowText, InjectLink, ReplaceImagesToGamimg, ReplaceTextToGaimg } from "./EnableRainbow";
+import { EnableRainbowTextAndBg, InjectLink, ReplaceImagesToGamimg, ReplaceTextToGaimg } from "./EnableRainbow";
 import { MoodleAdditionalInfo } from "./type";
 
-export const Moodle = new GundaiWebSite<MoodleAdditionalInfo>();
+export const Moodle = new GundaiWebSite<MoodleAdditionalInfo>("moodle");
 Moodle.additionalInfo = {
     headerText: " Gaming Edition🎮",
 };
 
-Moodle.EnableRainbow = function () {
-    EnableRainbowBg(this);
-    EnableRainbowText(this);
+Moodle.enableRainbow = function () {
+    EnableRainbowTextAndBg(this);
     InjectLink();
     ReplaceImagesToGamimg();
     ReplaceTextToGaimg(this);
 };
 
-Moodle.DisableRainbow = function () {
+Moodle.disableRainbow = function () {
     DisableRainbowBg(this);
     ReplaceImagesToDefault();
 
@@ -28,7 +27,11 @@ Moodle.DisableRainbow = function () {
     });
 };
 
-Moodle.EnableHiddenFunction = () => {
-    const playCountUnderTextElement = document.querySelectorAll(".card-text .no-overflow")[0].getElementsByTagName("p")[1];
+Moodle.enableHidden = () => {
+    const cardElement = document.querySelector(".card-text .no-overflow");
+    if (!cardElement) return;
+    const playCountUnderTextElement = cardElement.getElementsByTagName("p")[1];
+    if (!playCountUnderTextElement) return;
+
     playCountUnderTextElement.innerHTML = "想定最大利用者乳首数：4,000";
 };

@@ -1,9 +1,9 @@
-import ChangeQueryInnerHTML from "../../utils/ChangeQueryInnerHTML";
-import GundaiWebSite from "../GundaiWebsite";
+import ChangeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
+import { GundaiWebSite } from "../UnivWebsite";
 
-export const MyLibrary = new GundaiWebSite();
+export const MyLibrary = new GundaiWebSite("mylibrary");
 
-MyLibrary.EnableRainbow = function () {
+MyLibrary.enableRainbow = function () {
     if (location.pathname == "/portal/portal/selectLogin/") {
         //document.getElementById("explanation")
         ChangeQueryInnerHTML(
@@ -13,11 +13,11 @@ MyLibrary.EnableRainbow = function () {
         ChangeQueryInnerHTML("#ssoLoginTitle", "全学ゲーミングアカウントでログイン");
 
         // フッターをレインボー
-        this.AddRainbowBg("#footer");
+        this.rainbowBg.apply("#footer");
         document.getElementById("footer")!.id = "";
     }
 
     // ヘッダーとタイトルをレインボー
-    this.AddRainbowBg("#header", "h2");
-    this.AddRainbowText("#lblTitle", "#mainTitle");
+    this.rainbowBg.apply("#header", "h2");
+    this.rainbowText.apply("#lblTitle", "#mainTitle");
 };

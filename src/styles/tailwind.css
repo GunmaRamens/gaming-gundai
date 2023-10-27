@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .first-transition-none {
+        @apply transition-none;
+    }
+}
+
+@layer utilities {
+    p {
+        @apply leading-loose my-1;
+    }
+}

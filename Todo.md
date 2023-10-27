@@ -12,3 +12,7 @@
 -   [ ] [webpack-chrome-extension-reloader](https://www.npmjs.com/package/webpack-chrome-extension-reloader)でホットリロードに対応する
 -   [ ] SCSSで直にスタイルを書き込んだ場合に無効化できない問題を修正する
 -   [ ] リロードなしで有効化/無効化できるようにする
+-   [ ] Reactコンポーネントを最適化する
+-   [ ] テストを書く
+-   [ ] ドキュメントを書く
+-   [ ] 設定を開いている間はポップアップを無効化する

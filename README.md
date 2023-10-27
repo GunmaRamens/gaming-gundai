@@ -1,5 +1,11 @@
 ## Gunma University Gaming Edition
 
+![](https://img.shields.io/github/actions/workflow/status/GunmaRamens/gaming-gundai/check.yml?style=flat-square)
+![](https://img.shields.io/github/release-date-pre/GunmaRamens/gaming-gundai?style=flat-square)
+![](https://img.shields.io/github/license/GunmaRamens/gaming-gundai?style=flat-square)
+![](https://img.shields.io/chrome-web-store/v/fifbnlkbedonackjjbegkjmekchdcfhk?style=flat-square)
+
+
 関東の最も辺境の地にある緑あふれる群馬大学。
 
 せめてウェブサービスだけでも綺羅びやかにしようではないかという、とある学部生のささやかなプロジェクト。
@@ -51,11 +57,16 @@ You can choose one of the following licenses.
 ## Technology Stack
 
 - core-js
+- daisy UI (React)
 - ESLint
 - Node.js
 - pnpm
+- PostCSS
 - Prettier
+- React
 - Sass
+- Stylelint
+- Tailwind CSS
 - TypeScript
 - Volta
 - Webpack

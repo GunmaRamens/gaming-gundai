@@ -1,3 +1,4 @@
+/** @type {import("prettier").Config} */
 module.exports = {
     tabWidth: 4,
     singleQuote: false,
@@ -6,7 +7,5 @@ module.exports = {
     endOfLine: "lf",
     printWidth: 130,
     htmlWhitespaceSensitivity: "ignore",
-    plugins: [],
-
-    overrides: [],
+    plugins: ["stylelint-prettier", "prettier-plugin-sh"],
 };

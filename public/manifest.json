@@ -1,10 +1,10 @@
 {
     "manifest_version": 3,
     "name": "ゲーミング群馬大学 -Gaming Gunma University-",
-    "version": "1.2.1",
+    "version": "2.0.0",
     "description": "辺境の地にある群馬大学のウェブサイトをゲーミングでエキサイティングにします",
     "author": "shun819.mail@gmail.com",
-    "permissions": ["storage"],
+    "permissions": ["storage", "tabs"],
     "web_accessible_resources": [
         {
             "resources": ["assets/*"],
@@ -12,7 +12,12 @@
         }
     ],
     "action": {
-        "default_title": "Gaming Gunma University"
+        "default_title": "Gaming Gunma University",
+        "default_popup": "popup.html"
+    },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": true
     },
     "background": {
         "service_worker": "background.js",

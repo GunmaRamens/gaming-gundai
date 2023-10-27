@@ -1,4 +1,4 @@
-import GundaiWebSite from "../GundaiWebsite";
+import { GundaiWebSite } from "../UnivWebsite";
 
 export interface MoodleAdditionalInfo {
     headerText: string;
