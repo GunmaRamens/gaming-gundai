@@ -1,0 +1,41 @@
+[data-gaming_gundai_dark="true"] {
+    * {
+        --base: #1d232a;
+        --base-darker: #191e25;
+        --content: #a6acba;
+        --neutral: #29323c;
+        --accent: #21b2a5;
+    }
+
+    .bg-base {
+        background-color: var(--base) !important;
+    }
+    .bg-base-darker {
+        background-color: var(--base-darker) !important;
+    }
+    .bg-content {
+        background-color: var(--content) !important;
+    }
+    .bg-neutral {
+        background-color: var(--neutral) !important;
+    }
+    .bg-accent {
+        background-color: var(--accent) !important;
+    }
+
+    .text-base {
+        color: var(--base) !important;
+    }
+    .text-base-darker {
+        color: var(--base-darker) !important;
+    }
+    .text-content {
+        color: var(--content) !important;
+    }
+    .text-neutral {
+        color: var(--neutral) !important;
+    }
+    .text-accent {
+        color: var(--accent) !important;
+    }
+}

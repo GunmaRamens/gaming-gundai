@@ -3,7 +3,7 @@ import { GundaiWebSite } from "../UnivWebsite";
 
 export const MyLibrary = new GundaiWebSite("mylibrary");
 
-MyLibrary.enableRainbow = function () {
+MyLibrary.rainbow.enable = function () {
     if (location.pathname == "/portal/portal/selectLogin/") {
         //document.getElementById("explanation")
         ChangeQueryInnerHTML(
@@ -13,11 +13,11 @@ MyLibrary.enableRainbow = function () {
         ChangeQueryInnerHTML("#ssoLoginTitle", "全学ゲーミングアカウントでログイン");
 
         // フッターをレインボー
-        this.rainbowBg.apply("#footer");
+        this.bg.apply("#footer");
         document.getElementById("footer")!.id = "";
     }
 
     // ヘッダーとタイトルをレインボー
-    this.rainbowBg.apply("#header", "h2");
-    this.rainbowText.apply("#lblTitle", "#mainTitle");
+    this.bg.apply("#header", "h2");
+    this.text.apply("#lblTitle", "#mainTitle");
 };

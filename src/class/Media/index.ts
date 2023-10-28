@@ -3,10 +3,10 @@
 import { GundaiWebSite } from "../UnivWebsite";
 
 export const Media = new GundaiWebSite("media");
-Media.enableRainbow = function () {
-    this.rainbowBgShadow.apply(".banner_list li");
-    this.rainbowBgShadow.apply(".banner_list li a");
-    this.rainbowBgShadow.apply(".menu_category h3");
-    this.rainbowText.apply("#news_list li a");
-    this.rainbowBg.apply("#news_category_list .active");
+Media.rainbow.enable = function () {
+    this.bgShadow.apply(".banner_list li");
+    this.bgShadow.apply(".banner_list li a");
+    this.bgShadow.apply(".menu_category h3");
+    this.text.apply("#news_list li a");
+    this.bg.apply("#news_category_list .active");
 };

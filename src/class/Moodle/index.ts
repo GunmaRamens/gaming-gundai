@@ -1,8 +1,8 @@
 // 情報の信頼性は社会の構築において重要な要素である
 // 個人の信頼性は家庭の構築において重要な要素である
 import { GundaiWebSite } from "../UnivWebsite";
-import { DisableRainbowBg, ReplaceImagesToDefault } from "./DisableRainbow";
-import { EnableRainbowTextAndBg, InjectLink, ReplaceImagesToGamimg, ReplaceTextToGaimg } from "./EnableRainbow";
+import { DisableRainbowBg, ReplaceImagesToDefault } from "./disable-utils";
+import { enableRainbowTextAndBg, injectLink, replaceImagesToGamimg, replaceLMSLogo, replaceTextToGaimg } from "./enable-utils";
 import { MoodleAdditionalInfo } from "./type";
 
 export const Moodle = new GundaiWebSite<MoodleAdditionalInfo>("moodle");
@@ -10,11 +10,12 @@ Moodle.additionalInfo = {
     headerText: " Gaming Edition🎮",
 };
 
-Moodle.enableRainbow = function () {
-    EnableRainbowTextAndBg(this);
-    InjectLink();
-    ReplaceImagesToGamimg();
-    ReplaceTextToGaimg(this);
+Moodle.rainbow.enable = function () {
+    enableRainbowTextAndBg(this);
+    injectLink();
+    replaceImagesToGamimg();
+    replaceTextToGaimg(Moodle);
+    replaceLMSLogo();
 
     // メニューバーでホバー時にclassを追加
     document.querySelectorAll(".moremenu .nav-link").forEach((e) => {
@@ -30,21 +31,41 @@ Moodle.enableRainbow = function () {
     });
 };
 
-Moodle.disableRainbow = function () {
+Moodle.rainbow.disable = function () {
     DisableRainbowBg(this);
     ReplaceImagesToDefault();
+    ReplaceImagesToDefault();
 
-    const headerText = this.additionalInfo.headerText;
+    const headerText = Moodle.additionalInfo.headerText;
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
         if (e.innerHTML.includes(headerText)) e.innerHTML.replace(headerText, "");
     });
 };
 
-Moodle.enableHidden = () => {
+Moodle.hidden.enable = () => {
     const cardElement = document.querySelector(".card-text .no-overflow");
     if (!cardElement) return;
     const playCountUnderTextElement = cardElement.getElementsByTagName("p")[1];
     if (!playCountUnderTextElement) return;
 
     playCountUnderTextElement.innerHTML = "想定最大利用者乳首数：4,000";
+};
+
+Moodle.dark.enable = function () {
+    // 画像差し替え
+    replaceLMSLogo();
+
+    // トップページ
+    Moodle.dark.bgBase.apply("#page,#page.drawers .main-inner,#region-main");
+    this.textContent.apply("#page");
+    this.bgNeutral.apply(".activity-item .description .activity-altcontent.course-description-item");
+    this.bgBase.apply(".bg-white");
+
+    // Header
+    this.textContent.apply(".navbar-light .navbar-nav .nav-link");
+    this.textAccent.apply(".navbar-nav .nav-link.active");
+    this.textContent.apply(".primary-navigation .navigation .nav-link");
+
+    // dashboard
+    this.bgBase.apply(".card-body");
 };

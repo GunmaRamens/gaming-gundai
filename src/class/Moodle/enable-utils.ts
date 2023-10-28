@@ -1,23 +1,23 @@
-import { removeClass } from "../../utils/addClass";
 import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
+import { RainbowApplicator } from "../ClassApplicator";
 import { GundaiWebSite } from "../UnivWebsite";
-import { Moodle } from "./type";
 import { MoodleAdditionalInfo } from "./type";
 
-export const EnableRainbowTextAndBg = (moodle: Moodle) => {
-    moodle.rainbowBg.apply(".navbar", "#action-menu-0-menu");
+export const enableRainbowTextAndBg = (rainbow: RainbowApplicator) => {
+    rainbow.bg.apply(".navbar", "#action-menu-0-menu");
 
-    moodle.rainbowText.apply(".page-header-headings h1");
-    moodle.rainbowText.apply("#page-content a:not(#inst301 a)");
-    moodle.rainbowText.apply("#instance-301-header");
+    rainbow.text.apply(".page-header-headings h1");
+    rainbow.text.apply("#page-content a:not(#inst301 a)");
+    rainbow.text.apply("#instance-301-header");
 
     // rainbowBgの中のrainbowTextを無効化
-    const rainbowBgSelector = moodle.rainbowBg.selector();
-    const targetElementsSelector = `${rainbowBgSelector} ${moodle.rainbowText.selector()}`;
-    removeClass([targetElementsSelector], moodle.rainbowText.base);
+    const rainbowBgSelector = rainbow.bg.selector();
+    const targetElementsSelector = `${rainbowBgSelector} ${rainbow.text.selector()}`;
+    //removeClass([targetElementsSelector], rainbow.text.base);
+    rainbow.text.remove(targetElementsSelector);
 };
 
-export const InjectLink = () => {
+export const injectLink = () => {
     const supportSection = document.querySelector(".footer-support-link");
     if (supportSection)
         supportSection.innerHTML =
@@ -25,17 +25,19 @@ export const InjectLink = () => {
             `<a href="https://twitter.com/Hayao0819" target="blank" class="rainbow-text">Gaming Edition開発者に連絡する<i class="icon fa fa-external-link fa-fw ml-1" aria-hidden="true"></i></a>`;
 };
 
-export const ReplaceImagesToGamimg = () => {
+export const replaceLMSLogo = () => {
     document.querySelectorAll(".logo").forEach((e) => {
         if (e.getAttribute("src")) e.setAttribute("src", chrome.runtime.getURL("assets/GULMS.png"));
     });
+};
 
+export const replaceImagesToGamimg = () => {
     document.querySelectorAll("img.userpicture").forEach((e) => {
         if (e.getAttribute("src")) e.setAttribute("src", chrome.runtime.getURL("assets/partyparrot.gif"));
     });
 };
 
-export const ReplaceTextToGaimg = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
+export const replaceTextToGaimg = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
     const headerText = moodle.additionalInfo.headerText;
 
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {

@@ -6,13 +6,14 @@ import { useCallback, useEffect, useState } from "react";
 import { WebSites } from "../class";
 import IsTrue from "../utils/isTrue";
 import { FrontConfig } from "./config";
+import { Category } from "./type";
 
-export function SwitchItem({ config, className }: { config: FrontConfig; className?: string }) {
+export function SwitchItem({ config, className, category }: { config: FrontConfig; className?: string; category: Category }) {
     const [enabled, setEnabled] = useState(false);
 
     console.log(`Render SwitchItem with ${config.name}`);
     useEffect(() => {
-        WebSites[config.id].storage.get("enabled").then((value) => {
+        WebSites[config.id].storage.get(category).then((value) => {
             setEnabled(IsTrue(value));
         });
     }, []);
@@ -20,8 +21,7 @@ export function SwitchItem({ config, className }: { config: FrontConfig; classNa
     const genericChangeHandle = useCallback(() => {
         return (e: React.ChangeEvent<HTMLInputElement>) => {
             setEnabled(e.target.checked);
-            WebSites[config.id].storage.set("enabled", e.target.checked.toString());
-            chrome.runtime.sendMessage("reload");
+            WebSites[config.id].storage.set(category, e.target.checked.toString());
         };
     }, []);
 
