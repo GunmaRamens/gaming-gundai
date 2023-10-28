@@ -1,6 +1,7 @@
 // 無駄とは人生である。無駄を極めよ。無駄を愛せ。無駄を生きろ。
 // 無駄を以て物を成す者は、無駄を以て物を滅ぼす者に勝る。x
 
+import isTrue from "../../utils/isTrue";
 import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApplicator";
 import { StorageTool } from "../StorageTool";
 //import Storage from "../../utils/Storage";
@@ -26,9 +27,25 @@ export class UnivWebsite<T> {
         this.hidden = new HiddenApplicator();
     }
 
+    async isRainbowEnabled() {
+        const isRainbowEnabled = await this.storage.get("rainbow");
+        return isTrue(isRainbowEnabled);
+    }
+
+    async isDarkEnabled() {
+        const isDarkEnabled = await this.storage.get("dark");
+        return isTrue(isDarkEnabled);
+    }
+
+    async isHiddenEnabled() {
+        const otherStorage = new StorageTool("other");
+        const isHiddenEnabled = await otherStorage.getBool("enabled-hidden");
+        return isTrue(isHiddenEnabled);
+    }
+
     static async load(site: UnivWebsite<unknown>) {
-        const isRainbowEnabled = await site.storage.get("rainbow");
-        if (isRainbowEnabled === "true") {
+        const isRainbowEnabled = await site.isRainbowEnabled();
+        if (isRainbowEnabled) {
             // CSSのためにHTML要素にデータ属性を追加
             document.documentElement.dataset.gaming_gundai = "true";
             site.storage.set("rainbow", "true");
@@ -40,8 +57,8 @@ export class UnivWebsite<T> {
             site.rainbow.disable();
         }
 
-        const isDarkEnabled = await site.storage.get("dark");
-        if (isDarkEnabled === "true") {
+        const isDarkEnabled = await site.isDarkEnabled();
+        if (isDarkEnabled) {
             document.documentElement.dataset.gaming_gundai_dark = "true";
             site.storage.set("dark", "true");
             site.dark.enable();
@@ -51,8 +68,8 @@ export class UnivWebsite<T> {
             site.dark.disable();
         }
 
+        const isHiddenEnabled = await site.isHiddenEnabled();
         const otherStorage = new StorageTool("other");
-        const isHiddenEnabled = await otherStorage.getBool("enabled-hidden");
         if (isHiddenEnabled) {
             document.documentElement.dataset.gaming_gundai_hidden = "true";
             otherStorage.set("enabled-hidden", "true");
