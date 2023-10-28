@@ -1,11 +1,35 @@
 ## Todo
 
-### ウェブサイト
+### ゲーミング
 
--   [ ] [mdl.media.gunma-u.ac.jp](https://mdl.media.gunma-u.ac.jp/GU/index.php)
--   [ ] [www.kyomu-sys.gunma-u.ac.jp](https://www.kyomu-sys.gunma-u.ac.jp/Portal/)
--   [ ] [www.media.gunma-u.ac.jp](https://www.media.gunma-u.ac.jp/)
--   [ ] [www.gunma-u.ac.jp](https://www.gunma-u.ac.jp/)
+-   SSOログイン画面
+    -   [x] 基本的な実装
+    -   [ ] 見やすさの改善
+-   [mdl.media.gunma-u.ac.jp](https://mdl.media.gunma-u.ac.jp/GU/index.php)
+    -   [x] 基本的な実装
+-   [www.kyomu-sys.gunma-u.ac.jp](https://www.kyomu-sys.gunma-u.ac.jp/Portal/)
+    -   [x] 基本的な実装
+-   [www.media.gunma-u.ac.jp](https://www.media.gunma-u.ac.jp/)
+    -   [x] 基本的な実装
+-   [opac.lib.gunma-u.ac.jp](https://opac.lib.gunma-u.ac.jp/opc/)
+    -   [x] 基本的な実装
+-   [www.gunma-u.ac.jp](https://www.gunma-u.ac.jp/)
+    -   [ ] 基本的な実装
+
+### ダークモード
+
+-   SSOログイン画面
+    -   [ ] 基本的な実装
+-   [mdl.media.gunma-u.ac.jp](https://mdl.media.gunma-u.ac.jp/GU/index.php)
+    -   [ ] 基本的な実装
+-   [www.kyomu-sys.gunma-u.ac.jp](https://www.kyomu-sys.gunma-u.ac.jp/Portal/)
+    -   [ ] 基本的な実装
+-   [www.media.gunma-u.ac.jp](https://www.media.gunma-u.ac.jp/)
+    -   [ ] 基本的な実装
+-   [opac.lib.gunma-u.ac.jp](https://opac.lib.gunma-u.ac.jp/opc/)
+    -   [ ] 基本的な実装
+-   [www.gunma-u.ac.jp](https://www.gunma-u.ac.jp/)
+    -   [ ] 基本的な実装
 
 ### 開発
 
