@@ -55,18 +55,29 @@ export class HiddenApplicator extends ApplicatorBase {}
 
 // classApplicatorを用いてダークテーマにするクラス
 export class DarkApplicator extends ApplicatorBase {
-    base: classApplicator;
-    baseDarker: classApplicator;
-    content: classApplicator;
-    neutral: classApplicator;
-    accent: classApplicator;
+    bgBase: classApplicator;
+    bgBaseDarker: classApplicator;
+    bgContent: classApplicator;
+    bgNeutral: classApplicator;
+    bgAccent: classApplicator;
+    textBase: classApplicator;
+    textBaseDarker: classApplicator;
+    textContent: classApplicator;
+    textNeutral: classApplicator;
+    textAccent: classApplicator;
 
     constructor() {
         super();
-        this.base = new classApplicator(["dark-base"]);
-        this.baseDarker = new classApplicator(["dark-base-darker"]);
-        this.content = new classApplicator(["dark-content"]);
-        this.neutral = new classApplicator(["dark-neutral"]);
-        this.accent = new classApplicator(["dark-accent"]);
+
+        this.bgBase = new classApplicator(["bg-base"]);
+        this.bgBaseDarker = new classApplicator(["bg-base-darker"]);
+        this.bgContent = new classApplicator(["bg-content"]);
+        this.bgNeutral = new classApplicator(["bg-neutral"]);
+        this.bgAccent = new classApplicator(["bg-accent"]);
+        this.textBase = new classApplicator(["text-base"]);
+        this.textBaseDarker = new classApplicator(["text-base-darker"]);
+        this.textContent = new classApplicator(["text-content"]);
+        this.textNeutral = new classApplicator(["text-neutral"]);
+        this.textAccent = new classApplicator(["text-accent"]);
     }
 }

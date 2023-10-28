@@ -2,7 +2,7 @@
 // 個人の信頼性は家庭の構築において重要な要素である
 import { GundaiWebSite } from "../UnivWebsite";
 import { DisableRainbowBg, ReplaceImagesToDefault } from "./DisableRainbow";
-import { EnableRainbowTextAndBg, InjectLink, ReplaceImagesToGamimg, ReplaceTextToGaimg } from "./EnableRainbow";
+import { EnableRainbowTextAndBg, InjectLink, ReplaceImagesToGamimg, ReplaceLMSLogo, ReplaceTextToGaimg } from "./EnableRainbow";
 import { MoodleAdditionalInfo } from "./type";
 
 export const Moodle = new GundaiWebSite<MoodleAdditionalInfo>("moodle");
@@ -33,6 +33,7 @@ Moodle.rainbow.enable = function () {
 Moodle.rainbow.disable = function () {
     DisableRainbowBg(this);
     ReplaceImagesToDefault();
+    ReplaceLMSLogo();
 
     const headerText = Moodle.additionalInfo.headerText;
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
@@ -49,6 +50,18 @@ Moodle.hidden.enable = () => {
     playCountUnderTextElement.innerHTML = "想定最大利用者乳首数：4,000";
 };
 
-Moodle.dark.enable = () => {
-    Moodle.dark.base.apply("#page");
+Moodle.dark.enable = function () {
+    // 画像差し替え
+    ReplaceLMSLogo();
+
+    // トップページ
+    Moodle.dark.bgBase.apply("#page,#page.drawers .main-inner,#region-main");
+    this.textContent.apply("#page");
+    this.bgNeutral.apply(".activity-item .description .activity-altcontent.course-description-item");
+    this.bgBase.apply(".bg-white");
+
+    // Header
+    this.textContent.apply(".navbar-light .navbar-nav .nav-link");
+    this.textAccent.apply(".navbar-nav .nav-link.active");
+    this.textContent.apply(".primary-navigation .navigation .nav-link");
 };
