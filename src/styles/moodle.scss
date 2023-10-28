@@ -33,7 +33,9 @@
     .bg-white {
         background-color: var(--base) !important;
     }
+}
 
+[data-gaming_gundai_dark="true"]:not([data-gaming_gundai="true"]) {
     .logo {
         filter: invert(1) grayscale(100%);
     }
