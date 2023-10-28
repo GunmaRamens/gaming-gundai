@@ -33,6 +33,11 @@
     .bg-white {
         background-color: var(--base) !important;
     }
+
+    .list-group-item,
+    .form-control {
+        @extend .bg-base;
+    }
 }
 
 [data-gaming_gundai_dark="true"]:not([data-gaming_gundai="true"]) {

@@ -64,4 +64,7 @@ Moodle.dark.enable = function () {
     this.textContent.apply(".navbar-light .navbar-nav .nav-link");
     this.textAccent.apply(".navbar-nav .nav-link.active");
     this.textContent.apply(".primary-navigation .navigation .nav-link");
+
+    // dashboard
+    this.bgBase.apply(".card-body");
 };
