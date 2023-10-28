@@ -22,7 +22,6 @@ export function SwitchItem({ config, className, category }: { config: FrontConfi
         return (e: React.ChangeEvent<HTMLInputElement>) => {
             setEnabled(e.target.checked);
             WebSites[config.id].storage.set(category, e.target.checked.toString());
-            chrome.runtime.sendMessage("reload");
         };
     }, []);
 
