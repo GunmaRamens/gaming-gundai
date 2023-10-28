@@ -62,7 +62,7 @@
         "webpack-merge": "^5.10.0"
     },
     "volta": {
-        "node": "18.18.1"
+        "node": "20.9.0"
     },
     "dependencies": {
         "classnames": "^2.3.2",
