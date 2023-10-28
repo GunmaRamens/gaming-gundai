@@ -3,7 +3,7 @@ import { RainbowApplicator } from "../ClassApplicator";
 import { GundaiWebSite } from "../UnivWebsite";
 import { MoodleAdditionalInfo } from "./type";
 
-export const EnableRainbowTextAndBg = (rainbow: RainbowApplicator) => {
+export const enableRainbowTextAndBg = (rainbow: RainbowApplicator) => {
     rainbow.bg.apply(".navbar", "#action-menu-0-menu");
 
     rainbow.text.apply(".page-header-headings h1");
@@ -17,7 +17,7 @@ export const EnableRainbowTextAndBg = (rainbow: RainbowApplicator) => {
     rainbow.text.remove(targetElementsSelector);
 };
 
-export const InjectLink = () => {
+export const injectLink = () => {
     const supportSection = document.querySelector(".footer-support-link");
     if (supportSection)
         supportSection.innerHTML =
@@ -25,19 +25,19 @@ export const InjectLink = () => {
             `<a href="https://twitter.com/Hayao0819" target="blank" class="rainbow-text">Gaming Edition開発者に連絡する<i class="icon fa fa-external-link fa-fw ml-1" aria-hidden="true"></i></a>`;
 };
 
-export const ReplaceLMSLogo = () => {
+export const replaceLMSLogo = () => {
     document.querySelectorAll(".logo").forEach((e) => {
         if (e.getAttribute("src")) e.setAttribute("src", chrome.runtime.getURL("assets/GULMS.png"));
     });
 };
 
-export const ReplaceImagesToGamimg = () => {
+export const replaceImagesToGamimg = () => {
     document.querySelectorAll("img.userpicture").forEach((e) => {
         if (e.getAttribute("src")) e.setAttribute("src", chrome.runtime.getURL("assets/partyparrot.gif"));
     });
 };
 
-export const ReplaceTextToGaimg = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
+export const replaceTextToGaimg = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
     const headerText = moodle.additionalInfo.headerText;
 
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {

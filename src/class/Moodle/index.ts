@@ -1,8 +1,8 @@
 // 情報の信頼性は社会の構築において重要な要素である
 // 個人の信頼性は家庭の構築において重要な要素である
 import { GundaiWebSite } from "../UnivWebsite";
-import { DisableRainbowBg, ReplaceImagesToDefault } from "./DisableRainbow";
-import { EnableRainbowTextAndBg, InjectLink, ReplaceImagesToGamimg, ReplaceLMSLogo, ReplaceTextToGaimg } from "./EnableRainbow";
+import { DisableRainbowBg, ReplaceImagesToDefault } from "./disable-utils";
+import { enableRainbowTextAndBg, injectLink, replaceImagesToGamimg, replaceLMSLogo, replaceTextToGaimg } from "./enable-utils";
 import { MoodleAdditionalInfo } from "./type";
 
 export const Moodle = new GundaiWebSite<MoodleAdditionalInfo>("moodle");
@@ -11,10 +11,11 @@ Moodle.additionalInfo = {
 };
 
 Moodle.rainbow.enable = function () {
-    EnableRainbowTextAndBg(this);
-    InjectLink();
-    ReplaceImagesToGamimg();
-    ReplaceTextToGaimg(Moodle);
+    enableRainbowTextAndBg(this);
+    injectLink();
+    replaceImagesToGamimg();
+    replaceTextToGaimg(Moodle);
+    replaceLMSLogo();
 
     // メニューバーでホバー時にclassを追加
     document.querySelectorAll(".moremenu .nav-link").forEach((e) => {
@@ -33,7 +34,7 @@ Moodle.rainbow.enable = function () {
 Moodle.rainbow.disable = function () {
     DisableRainbowBg(this);
     ReplaceImagesToDefault();
-    ReplaceLMSLogo();
+    ReplaceImagesToDefault();
 
     const headerText = Moodle.additionalInfo.headerText;
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
@@ -52,7 +53,7 @@ Moodle.hidden.enable = () => {
 
 Moodle.dark.enable = function () {
     // 画像差し替え
-    ReplaceLMSLogo();
+    replaceLMSLogo();
 
     // トップページ
     Moodle.dark.bgBase.apply("#page,#page.drawers .main-inner,#region-main");
