@@ -8,7 +8,7 @@ const rainbowTextShadow = "rainbow-text-shadow";
 // 要素にclassNameを追加します
 // baseとclassesで追加するclassNameを指定し、applyで適用、removeで削除します
 // selectorで適用されるセレクタを取得できます
-// baseは初期化に必ず指定する必要があり書き換えるべきではありませんが、classesは追加で個別の設定を行うために指定できます
+// classesは追加で任意のクラスを同時に指定できます
 export class classApplicator {
     #base: string[];
     classes: string[];

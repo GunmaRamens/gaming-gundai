@@ -2,7 +2,7 @@ import IsTrue from "../../utils/isTrue";
 
 type Keys = "dark" | "rainbow" | "enabled-hidden" | "show-hidden-option" | "installed";
 
-export class StorageTool {
+export default class StorageTool {
     id: string;
     constructor(id: string) {
         this.id = id;

@@ -1,4 +1,4 @@
-import { StorageTool } from "../class/StorageTool";
+import StorageTool from "../class/StorageTool";
 import isTrue from "../utils/isTrue";
 import OpenOptions from "../utils/openOptions";
 

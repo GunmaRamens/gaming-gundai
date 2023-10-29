@@ -4,6 +4,7 @@ import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { GundaiWebSite } from "../UnivWebsite";
 
 export const Kyomu = new GundaiWebSite("kyomu");
+export default Kyomu;
 
 Kyomu.rainbow.enable = function () {
     // ログインボタン

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 
-import { StorageTool } from "../../class/StorageTool";
+import StorageTool from "../../class/StorageTool";
 import CopyTootrip from "../../components/CopyBtn";
 import Heading from "../../components/Heading";
 import { Switches } from "../../components/Switches";

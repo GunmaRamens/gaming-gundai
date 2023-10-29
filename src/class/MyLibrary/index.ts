@@ -2,6 +2,7 @@ import ChangeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { GundaiWebSite } from "../UnivWebsite";
 
 export const MyLibrary = new GundaiWebSite("mylibrary");
+export default MyLibrary;
 
 MyLibrary.rainbow.enable = function () {
     if (location.pathname == "/portal/portal/selectLogin/") {

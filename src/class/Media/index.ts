@@ -3,6 +3,8 @@
 import { GundaiWebSite } from "../UnivWebsite";
 
 export const Media = new GundaiWebSite("media");
+export default Media;
+
 Media.rainbow.enable = function () {
     this.bgShadow.apply(".banner_list li");
     this.bgShadow.apply(".banner_list li a");

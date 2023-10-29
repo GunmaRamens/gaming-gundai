@@ -5,6 +5,8 @@ import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { GundaiWebSite } from "../UnivWebsite";
 
 export const SSO = new GundaiWebSite("sso");
+export default SSO;
+
 SSO.rainbow.enable = function () {
     this.bg.apply(".header_column", ".input_form", ".input_column");
     changeQueryInnerHTML(".product", "群馬大学ゲーミングサインオンシステム");

@@ -1,3 +1,5 @@
+import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
+
 export const injectLink = () => {
     const supportSection = document.querySelector(".footer-support-link");
     if (supportSection)
@@ -10,4 +12,8 @@ export const replaceLMSLogo = () => {
     document.querySelectorAll(".logo").forEach((e) => {
         if (e.getAttribute("src")) e.setAttribute("src", chrome.runtime.getURL("assets/GULMS.png"));
     });
+};
+
+export const replaceImagesToDefault = () => {
+    changeQueryInnerHTML("#instance-320-header", "現在のログイン人数");
 };

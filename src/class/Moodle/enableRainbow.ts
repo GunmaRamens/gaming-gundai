@@ -1,6 +1,7 @@
 import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { RainbowApplicator } from "../ClassApplicator";
 import { GundaiWebSite } from "../UnivWebsite";
+import Moodle from ".";
 import { injectLink, replaceLMSLogo } from "./common";
 import { MoodleAdditionalInfo } from "./type";
 
@@ -50,7 +51,9 @@ const headerHover = () => {
     });
 };
 
-export default function enableRainbow(moodle: GundaiWebSite<MoodleAdditionalInfo>) {
+export default function enableRainbow() {
+    const moodle = Moodle;
+
     textAndBg(moodle.rainbow);
     headerHover();
     injectLink();
