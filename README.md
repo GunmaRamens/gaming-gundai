@@ -5,6 +5,7 @@
 ![](https://img.shields.io/github/license/GunmaRamens/gaming-gundai?style=flat-square)
 ![](https://img.shields.io/chrome-web-store/v/fifbnlkbedonackjjbegkjmekchdcfhk?style=flat-square)
 
+**This project is looking for contributors; PR is welcome.**
 
 関東の最も辺境の地にある緑あふれる群馬大学。
 
