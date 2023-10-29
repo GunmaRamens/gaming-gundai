@@ -1,11 +1,11 @@
 ## Gunma University Gaming Edition
 
+**This project is looking for contributors; PR is welcome.**
+
 ![](https://img.shields.io/github/actions/workflow/status/GunmaRamens/gaming-gundai/check.yml?style=flat-square)
 ![](https://img.shields.io/github/release-date-pre/GunmaRamens/gaming-gundai?style=flat-square)
 ![](https://img.shields.io/github/license/GunmaRamens/gaming-gundai?style=flat-square)
 ![](https://img.shields.io/chrome-web-store/v/fifbnlkbedonackjjbegkjmekchdcfhk?style=flat-square)
-
-**This project is looking for contributors; PR is welcome.**
 
 関東の最も辺境の地にある緑あふれる群馬大学。
 
@@ -13,9 +13,7 @@
 
 ## Warning
 
-This project is not accepted by Gunma University.
-
-Please use this project at your own risk.
+This project is not accepted by Gunma University. Please use this project at your own risk.
 
 ## Install
 
