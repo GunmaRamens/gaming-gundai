@@ -1,3 +1,6 @@
+// 無駄とは人生である。無駄を極めよ。無駄を愛せ。無駄を生きろ。
+// 無駄を以て物を成す者は、無駄を以て物を滅ぼす者に勝る。
+
 import { addClass, Elements, removeClass } from "../utils/addClass";
 
 const rainbowBg = "rainbow-bg";

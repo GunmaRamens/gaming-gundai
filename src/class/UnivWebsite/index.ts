@@ -1,5 +1,6 @@
-// 無駄とは人生である。無駄を極めよ。無駄を愛せ。無駄を生きろ。
-// 無駄を以て物を成す者は、無駄を以て物を滅ぼす者に勝る。x
+// 大学。それは研究する場であり、人類の最先端である。
+// しかし今の日本では大学は高校の延長線上であり、学士を得るための場所と化している。
+// こういった人々の認識が変わって欲しいと日々願っている。
 
 import isTrue from "../../utils/isTrue";
 import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApplicator";

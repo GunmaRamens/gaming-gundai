@@ -1,3 +1,7 @@
+// 図書館は素晴らしい。市の図書館なんて、先人の知恵をタダで享受できる。
+// 大学の図書館を使えるというだけで学費を回収できるのではないかとさえ思ってしまう。
+// 私の個人的見解であるが、良いと思った本は是非買ってほしい。それが著者に対する最大の感謝だ。
+
 import ChangeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { GundaiWebSite } from "../UnivWebsite";
 

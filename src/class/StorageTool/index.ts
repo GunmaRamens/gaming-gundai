@@ -1,3 +1,7 @@
+// 最近が物忘れが激しい。どうしてだろうか。
+// 人間は嫌なことやつらいこと、思い出さないようなことはすぐに忘れるようにできているらしい。
+// となると、最近はつらいことが多いのかもしれない。例えばchrome.storage.sync.get()の返り値がany型であることとか。
+
 import IsTrue from "../../utils/isTrue";
 
 type Keys = "dark" | "rainbow" | "enabled-hidden" | "show-hidden-option" | "installed";
