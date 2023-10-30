@@ -17,17 +17,17 @@ export default function Top() {
                     {FrontConfigs.map((config) => {
                         return (
                             <div className="chiid:p-1 mx-4 my-2 flex w-60 justify-center child:grow" key={config.id}>
-                                <p className="my-0 flex min-w-1/2 items-center justify-center rounded-l-lg bg-base-300 text-center">
+                                <p className="my-0 flex w-1/2 items-center justify-center rounded-l-lg bg-base-300 text-center">
                                     {config.name}
                                 </p>
                                 <div className="items-center rounded-r-lg bg-neutral-focus child:m-2">
                                     <div className="flex items-center justify-center child:px-1">
                                         <FaMoon className="grow" />
-                                        <SwitchItem config={config} category="dark" />
+                                        <SwitchItem config={config} category="dark" color="primary" />
                                     </div>
                                     <div className="flex items-center justify-center child:px-1">
                                         <FaGamepad className="grow" />
-                                        <SwitchItem config={config} category="rainbow" />
+                                        <SwitchItem config={config} category="rainbow" color="secondary" />
                                     </div>
                                 </div>
                             </div>

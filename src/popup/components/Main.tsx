@@ -1,4 +1,5 @@
 import { DetailedHTMLProps, useEffect, useState } from "react";
+import { ComponentColor } from "react-daisyui/dist/types";
 import { FaGamepad, FaMoon } from "react-icons/fa";
 
 import { FrontConfig, FrontConfigs } from "../../components/config";
@@ -26,8 +27,8 @@ export default function Main(props: MainProps) {
         <div className="flex flex-col items-center">
             {FrontConfigs.map((config) => {
                 return (
-                    <div className="my-2 flex w-full grow rounded-lg bg-base-300 p-2" key={config.id}>
-                        <p className="flex w-2/3 items-center justify-center">{config.name}</p>
+                    <div className="my-2 flex w-full grow flex-col rounded-lg bg-base-300 p-2" key={config.id}>
+                        <p className="flex items-center justify-center">{config.name}</p>
                         <Switches config={config} />
                     </div>
                 );
@@ -45,17 +46,26 @@ function Switches({ config }: { config: FrontConfig }) {
         <div className="grow">
             {(
                 [
-                    { category: "dark", icon: <FaMoon size="1.5rem" className="grow px-2" /> },
-                    { category: "rainbow", icon: <FaGamepad size="1.5rem" className="grow px-2" /> },
+                    {
+                        category: "dark",
+                        icon: <FaMoon size="1.5rem" />,
+                        color: "primary",
+                    },
+                    {
+                        category: "rainbow",
+                        icon: <FaGamepad size="1.5rem" />,
+                        color: "secondary",
+                    },
                 ] as {
                     category: "dark" | "rainbow";
                     icon: JSX.Element;
+                    color: ComponentColor;
                 }[]
             ).map((item) => {
                 return (
                     <div className="flex items-center justify-around" key={item.category}>
                         {item.icon}
-                        <SwitchItem category={item.category} config={config} />
+                        <SwitchItem category={item.category} config={config} color={item.color} />
                     </div>
                 );
             })}
