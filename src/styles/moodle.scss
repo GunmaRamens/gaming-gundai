@@ -24,6 +24,13 @@
     }
 }
 
+[data-gaming_gundai_dark="true"],
+[data-gaming_gundai="true"] {
+    .moremenu .nav-link:hover {
+        background-color: transparent !important;
+    }
+}
+
 [data-gaming_gundai_dark="true"] {
     #page.drawers .main-inner,
     #region-main {

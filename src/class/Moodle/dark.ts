@@ -2,7 +2,7 @@ import { DarkApplicator } from "../ClassApplicator";
 import { Moodle } from ".";
 import { replaceLMSLogo } from "./common";
 
-export default function enableDark(this: DarkApplicator) {
+export default async function enableDark(this: DarkApplicator) {
     // 画像差し替え
     replaceLMSLogo();
 
@@ -13,9 +13,26 @@ export default function enableDark(this: DarkApplicator) {
     this.bgBase.apply(".bg-white");
 
     // Header
-    this.textContent.apply(".navbar-light .navbar-nav .nav-link");
-    this.textAccent.apply(".navbar-nav .nav-link.active");
-    this.textContent.apply(".primary-navigation .navigation .nav-link");
+    // ゲーミングが有効ならそちらに任せる
+    if (!(await Moodle.isRainbowEnabled())) {
+        this.textContent.apply(".navbar-light .navbar-nav .nav-link");
+        this.textAccent.apply(".navbar-nav .nav-link.active");
+        this.textContent.apply(".primary-navigation .navigation .nav-link");
+
+        // ヘッダーのリンクにホバーしたときの挙動
+        document.querySelectorAll<HTMLElement>(".moremenu .nav-link").forEach((e) => {
+            const menuHasActiveClass = e.classList.contains("active");
+            e.addEventListener("mouseover", () => {
+                this.textAccent.apply(e);
+                if (!menuHasActiveClass) e.classList.add("active");
+            });
+            e.addEventListener("mouseout", () => {
+                //e.classList.remove("rainbow-bg-shadow");
+                this.textAccent.remove(e);
+                if (!menuHasActiveClass) e.classList.remove("active");
+            });
+        });
+    }
 
     // dashboard
     this.bgBase.apply(".card-body");
