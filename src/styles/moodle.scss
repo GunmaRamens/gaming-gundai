@@ -45,6 +45,12 @@
     .form-control {
         @extend .bg-base;
     }
+
+    /* マイコース */
+    .course-info-container,
+    .card.dashboard-card {
+        @extend .bg-neutral;
+    }
 }
 
 [data-gaming_gundai_dark="true"]:not([data-gaming_gundai="true"]) {

@@ -70,6 +70,7 @@ You can choose one of the following licenses.
 - Volta
 - Webpack
 
+And elegant poem.
 
 ## Special Thanks
 
