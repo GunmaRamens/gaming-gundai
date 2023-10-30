@@ -6,6 +6,7 @@ import { ComponentColor } from "react-daisyui/dist/types";
 
 import { WebSites } from "../class";
 import IsTrue from "../utils/isTrue";
+import { sendMsgToAllTab } from "../utils/sendMsgToAllTab";
 import { FrontConfig } from "./config";
 import { Category } from "./type";
 
@@ -23,6 +24,7 @@ export function SwitchItem({ config, category, color }: { config: FrontConfig; c
         return (e: React.ChangeEvent<HTMLInputElement>) => {
             setEnabled(e.target.checked);
             WebSites[config.id].storage.set(category, e.target.checked.toString());
+            sendMsgToAllTab<string>("reload");
         };
     }, []);
 
