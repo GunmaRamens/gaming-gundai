@@ -1,6 +1,5 @@
 //import { useEffect } from "react";
 
-import classNames from "classnames";
 import { useCallback, useEffect, useState } from "react";
 
 import { WebSites } from "../class";
@@ -8,7 +7,7 @@ import IsTrue from "../utils/isTrue";
 import { FrontConfig } from "./config";
 import { Category } from "./type";
 
-export function SwitchItem({ config, className, category }: { config: FrontConfig; className?: string; category: Category }) {
+export function SwitchItem({ config, category }: { config: FrontConfig; category: Category }) {
     const [enabled, setEnabled] = useState(false);
 
     console.log(`Render SwitchItem with ${config.name}`);
@@ -26,15 +25,8 @@ export function SwitchItem({ config, className, category }: { config: FrontConfi
     }, []);
 
     return (
-        <div className={classNames(className, "my-5 flex")}>
-            <div>
-                <p className="flex items-center justify-center">
-                    <input type="checkbox" className="toggle toggle-info" onChange={genericChangeHandle()} checked={enabled} />
-                </p>
-            </div>
-            <div>
-                <p>{config.name}</p>
-            </div>
-        </div>
+        <p className="flex items-center justify-center">
+            <input type="checkbox" className="toggle toggle-info" onChange={genericChangeHandle()} checked={enabled} />
+        </p>
     );
 }

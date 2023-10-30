@@ -1,24 +1,38 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
+import { FaGamepad, FaMoon } from "react-icons/fa";
 
 import StorageTool from "../../class/StorageTool";
+import { FrontConfigs } from "../../components/config";
 import CopyTootrip from "../../components/CopyBtn";
 import Heading from "../../components/Heading";
-import { Switches } from "../../components/Switches";
+import { SwitchItem } from "../../components/SwitchItem";
 import IsTrue from "../../utils/isTrue";
 
 export default function Top() {
     return (
         <>
-            <ConfigSection name="Rainbow Websites" desc="虹色にするウェブサイトを設定します">
+            <ConfigSection name="Websites" desc="それぞれのウェブサイトで有効化する機能を設定できます">
                 <div className="flex flex-wrap">
-                    <Switches className="flex-row-reverse items-center child:m-2" category="rainbow" />
-                </div>
-            </ConfigSection>
-
-            <ConfigSection name="Dark Websites" desc="ダークモードを有効化するウェブサイトを設定します">
-                <div className="flex flex-wrap">
-                    <Switches className="flex-row-reverse items-center child:m-2" category="dark" />
+                    {FrontConfigs.map((config) => {
+                        return (
+                            <div className="chiid:p-1 mx-4 my-2 flex w-60 justify-center child:grow" key={config.id}>
+                                <p className="my-0 flex min-w-1/2 items-center justify-center rounded-l-lg bg-base-300 text-center">
+                                    {config.name}
+                                </p>
+                                <div className="items-center rounded-r-lg bg-neutral-focus child:m-2">
+                                    <div className="flex items-center justify-center child:px-1">
+                                        <FaMoon className="grow" />
+                                        <SwitchItem config={config} category="dark" />
+                                    </div>
+                                    <div className="flex items-center justify-center child:px-1">
+                                        <FaGamepad className="grow" />
+                                        <SwitchItem config={config} category="rainbow" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </ConfigSection>
 
@@ -35,7 +49,7 @@ export default function Top() {
             <ConfigSection name="群馬大学学務課・メディアセンターの方へ">
                 <p>このソフトウェアについて問題がある場合は以下のメールアドレスまでご連絡ください。</p>
                 <CopyTootrip copyText="shun819.mail@gmail.com" className="my-5">
-                    <button className="btn btn-neutral">shun819.mail@gmail.com</button>
+                    <button className="btn bg-base-300">shun819.mail@gmail.com</button>
                 </CopyTootrip>
             </ConfigSection>
         </>

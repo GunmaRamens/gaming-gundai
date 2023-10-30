@@ -4,7 +4,7 @@ import Main from "./Main";
 
 export const Layout = ({ children }: { children?: React.ReactNode }) => {
     return (
-        <div className="flex justify-center border border-double bg-base-100">
+        <div className="flex justify-center border border-double bg-base-100 px-4">
             <div className="flex flex-col">
                 <Header></Header>
                 <Main>{children}</Main>
