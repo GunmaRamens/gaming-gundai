@@ -17,6 +17,12 @@ const textAndBg = (rainbow: RainbowApplicator) => {
     const targetElementsSelector = `${rainbowBgSelector} ${rainbow.text.selector()}`;
     //removeClass([targetElementsSelector], rainbow.text.base);
     rainbow.text.remove(targetElementsSelector);
+
+    // Moodleのログインページ
+    if (location.pathname == "/GU/index.php") {
+        rainbow.text.apply("#mtg a");
+        rainbow.text.apply("#loginbutton a");
+    }
 };
 const replaceIconToGamimg = () => {
     document.querySelectorAll("img.userpicture").forEach((e) => {
