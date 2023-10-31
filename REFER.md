@@ -17,3 +17,4 @@
 -   [postcss\-loader \| webpack](https://webpack.js.org/loaders/postcss-loader/)
 -   [PostCSSをwebpackでサクッと動かせるサンプル \#CSS \- Qiita](https://qiita.com/okumurakengo/items/a10f6fa4b77b5b088cb9)
 -   [webpackでJS,React×JS,React×TSの開発環境を1から構築してみた](https://zenn.dev/spacemarket/articles/23e5401a074ccc#2.-react%E3%82%92%E5%B0%8E%E5%85%A5%E3%81%99%E3%82%8B)
+-   [JavaScript や CSS で ~/ から始まるパスをマッピングして import する方法 2020](https://zenn.dev/3846masa/articles/import-path-mapping)
