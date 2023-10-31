@@ -48,8 +48,64 @@
 
     /* マイコース */
     .course-info-container,
-    .card.dashboard-card {
+    .card.dashboard-card,
+    .card.dashboard-card div {
         @extend .bg-neutral;
+        @extend .text-content;
+    }
+    .block .block-cards span.categoryname,
+    .block .block-cards .btn-link {
+        @extend .text-content;
+    }
+
+    .dropdown-menu .dropdown-item {
+        @extend .text-content;
+    }
+
+    .block .block-cards .btn.btn-link.btn-icon:hover,
+    .block .block-cards .show .btn.btn-link.btn-icon {
+        @extend .bg-accent;
+    }
+
+    /* メッセージ */
+    .message-app {
+        @extend .bg-base;
+    }
+    .list-group a {
+        @extend .text-content;
+    }
+    .view-overview-body > div > div {
+        @extend .bg-base;
+    }
+    strong,
+    p {
+        @extend .text-content;
+    }
+    .message-app .dropdown .btn.btn-link.btn-icon {
+        @extend .bg-accent;
+    }
+
+    /* hint icon */
+    #page-footer .btn.btn-icon {
+        @extend .bg-accent;
+    }
+
+    /* リンク */
+    a:hover {
+        @extend .text-accent;
+    }
+
+    /* ドロワー */
+    .drawer.drawer-left.drawer-primary {
+        @extend .bg-base;
+    }
+    .drawerheader .btn.drawertoggle {
+        @extend .text-content;
+    }
+
+    /* ヘッダー */
+    .navbar-light .navbar-toggler-icon {
+        filter: invert(1) grayscale(100%);
     }
 }
 
