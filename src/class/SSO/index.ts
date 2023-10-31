@@ -8,7 +8,7 @@ export const SSO = new GundaiWebSite("sso");
 export default SSO;
 
 SSO.rainbow.enable = function () {
-    this.bg.apply(".header_column", ".input_form", ".input_column");
+    this.bg.apply(".input_form");
     changeQueryInnerHTML(".product", "群馬大学ゲーミングサインオンシステム");
 
     // 二段階認証の自動送信
