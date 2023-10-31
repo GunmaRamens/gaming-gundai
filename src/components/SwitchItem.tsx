@@ -1,16 +1,13 @@
 //import { useEffect } from "react";
 
-import { useCallback, useEffect, useState } from "react";
-import { Toggle } from "react-daisyui";
 import { ComponentColor } from "react-daisyui/dist/types";
 
-import { WebSites } from "../class";
-import IsTrue from "../utils/isTrue";
-import { sendMsgToAllTab } from "../utils/sendMsgToAllTab";
 import { FrontConfig } from "./config";
+import { ToggleWithStorage } from "./ToggleWithStorage";
 import { Category } from "./type";
 
-export function SwitchItem({ config, category, color }: { config: FrontConfig; category: Category; color?: ComponentColor }) {
+/*
+export function OldSwitchItem({ config, category, color }: { config: FrontConfig; category: Category; color?: ComponentColor }) {
     const [enabled, setEnabled] = useState(false);
 
     console.log(`Render SwitchItem with ${config.name}`);
@@ -31,8 +28,13 @@ export function SwitchItem({ config, category, color }: { config: FrontConfig; c
 
     return (
         <p className="flex items-center justify-center">
-            {/*<input type="checkbox" className="toggle toggle-info" onChange={genericChangeHandle()} checked={enabled} />*/}
+
             <Toggle checked={enabled} onChange={genericChangeHandle()} color={color} />
         </p>
     );
+}
+*/
+
+export function SwitchItem({ config, category, color }: { config: FrontConfig; category: Category; color?: ComponentColor }) {
+    return <ToggleWithStorage siteId={config.id} key={category} color={color} />;
 }

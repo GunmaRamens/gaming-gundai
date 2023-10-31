@@ -36,7 +36,6 @@ export function ToggleWithStorage({ siteId, color, key }: ToggleProps) {
 
     return (
         <p className="flex items-center justify-center">
-            {/*<input type="checkbox" className="toggle toggle-info" onChange={genericChangeHandle()} checked={enabled} />*/}
             <Toggle checked={enabled} onChange={genericChangeHandle()} color={color} />
         </p>
     );
