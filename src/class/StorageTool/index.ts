@@ -4,7 +4,7 @@
 
 import IsTrue from "../../utils/isTrue";
 
-export type StorageKeys = "dark" | "rainbow" | "enabled-hidden" | "show-hidden-option" | "installed";
+export type StorageKeys = "dark" | "rainbow" | "enabled-hidden" | "show-hidden-option" | "installed" | "auto-2fa";
 
 export default class StorageTool {
     id: string;

@@ -1,4 +1,5 @@
 export const sendMsgToAllTab = <T>(msg: T) => {
+    if (!isServiceWorkerScript()) return;
     const urls = getUrlsFromManifest();
     chrome.tabs.query(
         {
@@ -14,6 +15,10 @@ export const sendMsgToAllTab = <T>(msg: T) => {
             });
         },
     );
+};
+
+export const isServiceWorkerScript = () => {
+    return location.protocol === "chrome-extension:";
 };
 
 export const getUrlsFromManifest = () => {

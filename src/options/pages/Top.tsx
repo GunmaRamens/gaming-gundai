@@ -2,12 +2,13 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { FaGamepad, FaMoon } from "react-icons/fa";
 
-import StorageTool from "../../class/StorageTool";
-import { FrontConfigs } from "../../components/config";
-import CopyTootrip from "../../components/CopyBtn";
-import Heading from "../../components/Heading";
-import { SwitchItem } from "../../components/SwitchItem";
-import IsTrue from "../../utils/isTrue";
+import StorageTool from "@/class/StorageTool";
+import { FrontConfigs } from "@/components/config";
+import CopyTootrip from "@/components/CopyBtn";
+import Heading from "@/components/Heading";
+import { SwitchItem } from "@/components/SwitchItem";
+import { ToggleWithStorage } from "@/components/ToggleWithStorage";
+import IsTrue from "@/utils/isTrue";
 
 export default function Top() {
     return (
@@ -44,6 +45,15 @@ export default function Top() {
                 className="hidden"
             >
                 <QuickSwitch className="child:m-2" />
+            </ConfigSection>
+
+            <ConfigSection name="Detail" desc="ウェブサイトごとの詳細設定を行います">
+                <div className="flex flex-col">
+                    <Heading.h3>SSO</Heading.h3>
+                    <div className="flex">
+                        <ToggleWithStorage section="sso" key="auto-2fa" />
+                    </div>
+                </div>
             </ConfigSection>
 
             <ConfigSection name="群馬大学学務課・メディアセンターの方へ">
@@ -108,8 +118,7 @@ function HiddenConfigSection() {
         const storage = new StorageTool("other");
         storage.get("show-hidden-option").then((res): void => {
             let v = IsTrue(res);
-            if (!res) v = false;
-            console.log(v, res);
+            if (v == undefined) v = false;
             switchShowOrHidden(v);
         });
     }, []);
@@ -118,7 +127,7 @@ function HiddenConfigSection() {
         const storage = new StorageTool("other");
         storage.get("enabled-hidden").then((res): void => {
             let v = IsTrue(res);
-            if (!res) v = false;
+            if (v == undefined) v = false;
 
             setEnabledHidden(v);
             storage.set("enabled-hidden", v.toString());

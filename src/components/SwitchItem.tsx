@@ -36,5 +36,5 @@ export function OldSwitchItem({ config, category, color }: { config: FrontConfig
 */
 
 export function SwitchItem({ config, category, color }: { config: FrontConfig; category: Category; color?: ComponentColor }) {
-    return <ToggleWithStorage siteId={config.id} key={category} color={color} />;
+    return <ToggleWithStorage section={config.id} key={category} color={color} />;
 }

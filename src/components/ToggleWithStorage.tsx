@@ -10,17 +10,16 @@ import IsTrue from "@/utils/isTrue";
 import { sendMsgToAllTab } from "@/utils/sendMsgToAllTab";
 
 interface ToggleProps {
-    siteId: string;
+    section: string;
     key: StorageKeys;
     color?: ComponentColor;
 }
 
-export function ToggleWithStorage({ siteId, color, key }: ToggleProps) {
+export function ToggleWithStorage({ section, color, key }: ToggleProps) {
     const [enabled, setEnabled] = useState(false);
 
-    console.log(`Render SwitchItem with ${siteId}`);
     useEffect(() => {
-        WebSites[siteId].storage.get(key).then((value) => {
+        WebSites[section].storage.get(key).then((value) => {
             const istrue = IsTrue(value);
             if (istrue !== undefined) setEnabled(istrue);
         });
@@ -29,7 +28,7 @@ export function ToggleWithStorage({ siteId, color, key }: ToggleProps) {
     const genericChangeHandle = useCallback(() => {
         return (e: React.ChangeEvent<HTMLInputElement>) => {
             setEnabled(e.target.checked);
-            WebSites[siteId].storage.set(key, e.target.checked.toString());
+            WebSites[section].storage.set(key, e.target.checked.toString());
             sendMsgToAllTab<string>("reload");
         };
     }, []);
