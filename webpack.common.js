@@ -4,6 +4,7 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const fs = require("fs");
 const HtmlPlugin = require("html-webpack-plugin");
 const path = require("path");
+const { TsconfigPathsPlugin } = require("tsconfig-paths-webpack-plugin");
 
 const loadFilesInScripts = function () {
     const dir = path.join(__dirname, "src/scripts");
@@ -31,6 +32,10 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"],
         roots: [path.resolve(__dirname, "node_modules"), path.resolve(__dirname, "src")],
+        plugins: [new TsconfigPathsPlugin({ configFile: path.resolve(__dirname, "tsconfig.json") })],
+        alias: {
+            "@": path.resolve(__dirname, "src"),
+        },
     },
 
     module: {

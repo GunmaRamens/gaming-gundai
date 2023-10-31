@@ -1,6 +1,6 @@
-import StorageTool from "../class/StorageTool";
-import isTrue from "../utils/isTrue";
-import OpenOptions from "../utils/openOptions";
+import StorageTool from "@/class/StorageTool";
+import isTrue from "@/utils/isTrue";
+import OpenOptions from "@/utils/openOptions";
 
 chrome.runtime.onInstalled.addListener(async () => {
     const storage = new StorageTool("other");

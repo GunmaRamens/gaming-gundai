@@ -31,7 +31,7 @@
 -   [www.gunma-u.ac.jp](https://www.gunma-u.ac.jp/)
     -   [ ] 基本的な実装
 
-### 開発
+### その他
 
 -   [ ] [webpack-chrome-extension-reloader](https://www.npmjs.com/package/webpack-chrome-extension-reloader)でホットリロードに対応する
 -   [x] SCSSで直にスタイルを書き込んだ場合に無効化できない問題を修正する
@@ -41,3 +41,4 @@
 -   [ ] ドキュメントを書く
 -   [x] 設定を開いている間はポップアップを無効化する
 -   [ ] ポップアップでの設定変更後に手動でリロードする必要がある問題を修正する
+-   [ ] 設定の初期値を変更する

@@ -1,4 +1,4 @@
-import "/styles/moodle.scss";
+import "@/styles/moodle.scss";
 
 import { Moodle } from "../class";
 import loadGamingWebsite from "../utils/loadGamingWebsite";

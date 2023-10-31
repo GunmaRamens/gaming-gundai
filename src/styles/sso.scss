@@ -1,0 +1,16 @@
+[data-gaming_gundai="true"] {
+    .header_column,
+    .input_column,
+    .input_form th,
+    #username_id_input,
+    #password_input {
+        background: transparent !important;
+    }
+
+    #username_id_input,
+    #password_input {
+        border: 1px solid #ccc !important;
+        border-radius: 5px !important;
+        padding: 5px !important;
+    }
+}

@@ -1,4 +1,4 @@
-import "/styles/media.css";
+import "@/styles/media.css";
 
 import { Media } from "../class";
 import loadGamingWebsite from "../utils/loadGamingWebsite";

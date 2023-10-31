@@ -1,6 +1,6 @@
-import "/styles/popup.css";
-import "/styles/tailwind.css";
-import "/styles/gaming.scss";
+import "@/styles/popup.css";
+import "@/styles/tailwind.css";
+import "@/styles/gaming.scss";
 
 import { createRoot } from "react-dom/client";
 
