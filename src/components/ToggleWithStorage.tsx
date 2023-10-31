@@ -4,18 +4,23 @@ import { useCallback, useEffect, useState } from "react";
 import { Toggle } from "react-daisyui";
 import { ComponentColor } from "react-daisyui/dist/types";
 
-import { WebSites } from "../class";
-import IsTrue from "../utils/isTrue";
-import { sendMsgToAllTab } from "../utils/sendMsgToAllTab";
-import { FrontConfig } from "./config";
-import { Category } from "./type";
+import { WebSites } from "@/class";
+import { StorageKeys } from "@/class/StorageTool";
+import IsTrue from "@/utils/isTrue";
+import { sendMsgToAllTab } from "@/utils/sendMsgToAllTab";
 
-export function SwitchItem({ config, category, color }: { config: FrontConfig; category: Category; color?: ComponentColor }) {
+interface ToggleProps {
+    siteId: string;
+    key: StorageKeys;
+    color?: ComponentColor;
+}
+
+export function ToggleWithStorage({ siteId, color, key }: ToggleProps) {
     const [enabled, setEnabled] = useState(false);
 
-    console.log(`Render SwitchItem with ${config.name}`);
+    console.log(`Render SwitchItem with ${siteId}`);
     useEffect(() => {
-        WebSites[config.id].storage.get(category).then((value) => {
+        WebSites[siteId].storage.get(key).then((value) => {
             const istrue = IsTrue(value);
             if (istrue !== undefined) setEnabled(istrue);
         });
@@ -24,7 +29,7 @@ export function SwitchItem({ config, category, color }: { config: FrontConfig; c
     const genericChangeHandle = useCallback(() => {
         return (e: React.ChangeEvent<HTMLInputElement>) => {
             setEnabled(e.target.checked);
-            WebSites[config.id].storage.set(category, e.target.checked.toString());
+            WebSites[siteId].storage.set(key, e.target.checked.toString());
             sendMsgToAllTab<string>("reload");
         };
     }, []);

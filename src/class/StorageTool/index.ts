@@ -4,7 +4,7 @@
 
 import IsTrue from "../../utils/isTrue";
 
-type Keys = "dark" | "rainbow" | "enabled-hidden" | "show-hidden-option" | "installed";
+export type StorageKeys = "dark" | "rainbow" | "enabled-hidden" | "show-hidden-option" | "installed";
 
 export default class StorageTool {
     id: string;
@@ -17,7 +17,7 @@ export default class StorageTool {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async set(key: Keys, value: any) {
+    async set(key: StorageKeys, value: any) {
         let newData = { [key]: value };
         const storage = StorageTool.getChromeStorage();
         if (!storage) {
@@ -30,7 +30,7 @@ export default class StorageTool {
 
         storage.set({ [this.id]: newData });
     }
-    async getBool(key: Keys) {
+    async getBool(key: StorageKeys) {
         const storage = StorageTool.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
@@ -41,7 +41,7 @@ export default class StorageTool {
 
         return IsTrue(rawdata);
     }
-    async get(key: Keys) {
+    async get(key: StorageKeys) {
         const storage = StorageTool.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
