@@ -1,3 +1,5 @@
+import "@/styles/gaming.scss";
+
 import { DetailedHTMLProps } from "react";
 
 type HeaderProps = DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;

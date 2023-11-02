@@ -24,10 +24,10 @@ export default function Main(props: MainProps) {
     }, []);
 
     const switches = (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-wrap">
             {FrontConfigs.map((config) => {
                 return (
-                    <div className="my-2 flex w-full grow flex-col rounded-lg bg-base-300 p-2" key={config.id}>
+                    <div className="m-2 flex w-36 min-w-fit flex-col rounded-lg bg-base-300 p-2" key={config.id}>
                         <p className="flex items-center justify-center">{config.name}</p>
                         <Switches config={config} />
                     </div>
