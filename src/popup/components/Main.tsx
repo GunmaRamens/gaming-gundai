@@ -13,6 +13,7 @@ export default function Main(props: MainProps) {
 
     useEffect(() => {
         try {
+            if (chrome.tabs === undefined) return;
             chrome.tabs.query({ active: true, currentWindow: true }, (e) => {
                 const url = e[0].url;
                 if (url?.startsWith(`chrome-extension://${chrome.runtime.id}/options.html`)) {

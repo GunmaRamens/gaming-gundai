@@ -7,7 +7,7 @@ chrome.runtime.onInstalled.addListener(async () => {
     const isInstalled = await storage.get("installed");
     //console.log(isInstalled);
     if (isInstalled != undefined && isTrue(isInstalled)) return;
-    OpenOptions("thanks").then(() => {
+    OpenOptions("thanks")?.then(() => {
         storage.set("installed", "true");
     });
 });
