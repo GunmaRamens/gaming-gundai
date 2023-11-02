@@ -3,6 +3,5 @@ node_modules
 dist
 pnpm-lock.yaml
 Dockerfile
-package.json
 *.md
 

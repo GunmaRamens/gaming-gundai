@@ -4,9 +4,15 @@
     "license": "MIT",
     "version": "2.0.0",
     "scripts": {
-        "build-chrome": "pnpm webpack --mode production --config webpack.prod.js --env browser=chrome",
-        "build-chrome:dev": "pnpm webpack --mode development --config webpack.dev.js --env browser=chrome",
-        "watch": "pnpm webpack --mode development --watch --config webpack.dev.js",
+        "build": "pnpm run build-chrome",
+        "build:dev": "pnpm run build-chrome:dev",
+        "watch": "pnpm run watch-chrome",
+        "build-chrome": "pnpm webpack --mode production --env browser=chrome",
+        "build-chrome:dev": "pnpm webpack --mode development --env browser=chrome",
+        "watch-chrome": "pnpm webpack --mode development --watch --env browser=chrome",
+        "build-firefox": "pnpm webpack --mode production --env browser=firefox",
+        "build-firefox:dev": "pnpm webpack --mode development --env browser=firefox",
+        "watch-firefox": "pnpm webpack --mode development --watch --env browser=firefox",
         "fmt": "prettier --write '**/*.{js,json,md,html,sh}'",
         "lint": "prettier --check . && eslint . ",
         "lint:fix": "pnpm fmt && eslint . --fix"
@@ -59,8 +65,7 @@
         "tsconfig-paths-webpack-plugin": "^4.1.0",
         "typescript": "^5.2.2",
         "webpack": "^5.89.0",
-        "webpack-cli": "^5.1.4",
-        "webpack-merge": "^5.10.0"
+        "webpack-cli": "^5.1.4"
     },
     "volta": {
         "node": "20.9.0"

@@ -1,15 +1,18 @@
-const CopyPlugin = require("copy-webpack-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin");
-const fs = require("fs");
-const HtmlPlugin = require("html-webpack-plugin");
-const path = require("path");
-const { TsconfigPathsPlugin } = require("tsconfig-paths-webpack-plugin");
+import CopyPlugin from "copy-webpack-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import ESLintPlugin from "eslint-webpack-plugin";
+import fs from "fs";
+import HtmlPlugin from "html-webpack-plugin";
+import path from "path";
+import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
+import { Configuration } from "webpack";
 
 const loadFilesInScripts = function () {
     const dir = path.join(__dirname, "src/scripts");
     const files = fs.readdirSync(dir);
-    const entry = {};
+    const entry = {} as {
+        [key: string]: string;
+    };
     files.forEach(function (file) {
         const name = file.replace(".ts", "").replace("content_", "");
         entry[name] = path.join(dir, file);
@@ -17,8 +20,24 @@ const loadFilesInScripts = function () {
     return entry;
 };
 
-module.exports = (env) => {
-    console.log("env", env);
+interface Env {
+    browser?: "chrome" | "firefox";
+    WEBPACK_BUILD: boolean;
+    WEBPACK_BUNDLE: boolean;
+}
+
+interface Argv {
+    mode: "development" | "production";
+    env: Env;
+}
+
+module.exports = (env: Env, argv: Argv): Configuration => {
+    console.log("Build as " + argv.mode + " mode");
+
+    if (env.browser === undefined) {
+        throw new Error("Please set browser");
+    }
+
     return {
         entry: {
             popup: "./src/popup/index.tsx",
@@ -50,7 +69,6 @@ module.exports = (env) => {
                 {
                     test: /\.(css|sass|scss|pcss)/,
                     use: [
-                        CssMinimizerPlugin.loader,
                         "style-loader",
                         {
                             loader: "css-loader",
@@ -66,6 +84,10 @@ module.exports = (env) => {
                     loader: "babel-loader",
                 },
             ],
+        },
+
+        optimization: {
+            minimizer: [new CssMinimizerPlugin()],
         },
 
         plugins: [
@@ -112,5 +134,7 @@ module.exports = (env) => {
             maxEntrypointSize: 2000000,
             maxAssetSize: 2000000,
         },
+
+        devtool: argv.mode !== "development" ? false : "source-map",
     };
 };
