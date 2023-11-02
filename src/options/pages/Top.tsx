@@ -1,35 +1,51 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
+import { Tooltip } from "react-daisyui";
 import { FaGamepad, FaMoon } from "react-icons/fa";
 
 import StorageTool from "@/class/StorageTool";
-import { FrontConfigs } from "@/components/config";
 import CopyTootrip from "@/components/CopyBtn";
 import Heading from "@/components/Heading";
 import { SwitchItem } from "@/components/SwitchItem";
 import { ToggleWithStorage } from "@/components/ToggleWithStorage";
+import { Websites } from "@/data/websites";
 import IsTrue from "@/utils/isTrue";
 
 export default function Top() {
     return (
         <>
             <ConfigSection name="Websites" desc="それぞれのウェブサイトで有効化する機能を設定できます">
-                <div className="flex flex-wrap">
-                    {FrontConfigs.map((config) => {
+                <div className="flex flex-wrap items-center">
+                    {Websites.map((site) => {
                         return (
-                            <div className="chiid:p-1 mx-4 my-2 flex w-60 justify-center child:grow" key={config.id}>
+                            <div className="chiid:p-1 mx-4 my-2 flex w-60 justify-center child:grow" key={site.id}>
                                 <p className="my-0 flex w-1/2 items-center justify-center rounded-l-lg bg-base-300 text-center">
-                                    {config.name}
+                                    {site.name}
                                 </p>
-                                <div className="items-center rounded-r-lg bg-neutral-focus child:m-2">
-                                    <div className="flex items-center justify-center child:px-1">
-                                        <FaMoon className="grow" />
-                                        <SwitchItem config={config} category="dark" color="primary" />
-                                    </div>
-                                    <div className="flex items-center justify-center child:px-1">
-                                        <FaGamepad className="grow" />
-                                        <SwitchItem config={config} category="rainbow" color="secondary" />
-                                    </div>
+                                {/* Todo: ここらへんをオブジェクトでいい感じにループする */}
+                                <div className="flex flex-col justify-center rounded-r-lg bg-neutral-focus child:m-2">
+                                    <Tooltip message={"Dark Mode" + (!site.configable.dark ? " (disabled)" : "")}>
+                                        <div className="flex items-center justify-center child:px-1">
+                                            <FaMoon className="grow" size="20px" />
+                                            <SwitchItem
+                                                config={site}
+                                                category="dark"
+                                                color="primary"
+                                                readonly={!site.configable.dark}
+                                            />
+                                        </div>
+                                    </Tooltip>
+                                    <Tooltip message={"Gaming Mode" + (!site.configable.rainbow ? " (disabled)" : "")}>
+                                        <div className="flex items-center justify-center child:px-1">
+                                            <FaGamepad className="grow" size="20px" />
+                                            <SwitchItem
+                                                config={site}
+                                                category="rainbow"
+                                                color="secondary"
+                                                readonly={!site.configable.rainbow}
+                                            />
+                                        </div>
+                                    </Tooltip>
                                 </div>
                             </div>
                         );
@@ -51,7 +67,7 @@ export default function Top() {
                 <div className="flex flex-col">
                     <Heading.h3>SSO</Heading.h3>
                     <div className="flex">
-                        <ToggleWithStorage section="sso" key="auto-2fa" />
+                        <ToggleWithStorage section="sso" dataKey="auto-2fa" />
                     </div>
                 </div>
             </ConfigSection>

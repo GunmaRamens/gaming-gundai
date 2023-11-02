@@ -1,9 +1,10 @@
 import { DetailedHTMLProps, useEffect, useState } from "react";
+import { Tooltip } from "react-daisyui";
 import { ComponentColor } from "react-daisyui/dist/types";
 import { FaGamepad, FaMoon } from "react-icons/fa";
 
-import { FrontConfig, FrontConfigs } from "../../components/config";
 import { SwitchItem } from "../../components/SwitchItem";
+import { WebsiteConfig, Websites } from "../../data/websites";
 
 type MainProps = DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
@@ -25,7 +26,7 @@ export default function Main(props: MainProps) {
 
     const switches = (
         <div className="flex flex-wrap">
-            {FrontConfigs.map((config) => {
+            {Websites.map((config) => {
                 return (
                     <div className="m-2 flex w-36 min-w-fit flex-col rounded-lg bg-base-300 p-2" key={config.id}>
                         <p className="flex items-center justify-center">{config.name}</p>
@@ -41,7 +42,7 @@ export default function Main(props: MainProps) {
     return <main {...props}>{showSwitchClass ? switches : hiddenMsg}</main>;
 }
 
-function Switches({ config }: { config: FrontConfig }) {
+function Switches({ config }: { config: WebsiteConfig }) {
     return (
         <div className="grow">
             {(
@@ -50,23 +51,31 @@ function Switches({ config }: { config: FrontConfig }) {
                         category: "dark",
                         icon: <FaMoon size="1.5rem" />,
                         color: "primary",
+                        configable: config.configable.dark,
+                        tipText: "Dark Mode",
                     },
                     {
                         category: "rainbow",
                         icon: <FaGamepad size="1.5rem" />,
                         color: "secondary",
+                        configable: config.configable.rainbow,
+                        tipText: "Gaming Mode",
                     },
                 ] as {
                     category: "dark" | "rainbow";
                     icon: JSX.Element;
                     color: ComponentColor;
+                    configable: boolean;
+                    tipText: string;
                 }[]
             ).map((item) => {
                 return (
-                    <div className="flex items-center justify-around" key={item.category}>
-                        {item.icon}
-                        <SwitchItem category={item.category} config={config} color={item.color} />
-                    </div>
+                    <Tooltip message={item.tipText + (!item.configable ? " (disabled)" : "")} key={item.category}>
+                        <div className="flex items-center justify-around">
+                            {item.icon}
+                            <SwitchItem category={item.category} config={config} color={item.color} readonly={!item.configable} />
+                        </div>
+                    </Tooltip>
                 );
             })}
         </div>
