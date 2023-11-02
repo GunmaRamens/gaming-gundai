@@ -1,0 +1,48 @@
+{
+    "manifest_version": 3,
+    "name": "ゲーミング群馬大学 -Gaming Gunma University-",
+    "version": "2.0.0",
+    "description": "辺境の地にある群馬大学のウェブサイトをゲーミングでエキサイティングにします",
+    "author": "shun819.mail@gmail.com",
+    "permissions": ["storage", "tabs"],
+    "web_accessible_resources": [
+        {
+            "resources": ["assets/*"],
+            "matches": ["<all_urls>"]
+        }
+    ],
+    "action": {
+        "default_title": "Gaming Gunma University",
+        "default_popup": "popup.html"
+    },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": true
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://idp.gunma-u.ac.jp/pub/login.cgi*", "*://idp.gunma-u.ac.jp/pub/allotplogin_force.cgi*"],
+            "js": ["common.js", "sso.js"]
+        },
+        {
+            "matches": ["*://mdl.media.gunma-u.ac.jp/*"],
+            "js": ["common.js", "moodle.js"]
+        },
+        {
+            "matches": ["*://*.kyomu-sys.gunma-u.ac.jp/*"],
+            "js": ["common.js", "kyomu.js"]
+        },
+        {
+            "matches": ["*://www.media.gunma-u.ac.jp/*"],
+            "js": ["common.js", "media.js"]
+        },
+        {
+            "matches": ["*://opac.lib.gunma-u.ac.jp/*"],
+            "js": ["common.js", "mylib.js"]
+        }
+    ]
+}

@@ -4,8 +4,8 @@
     "license": "MIT",
     "version": "2.0.0",
     "scripts": {
-        "build": "pnpm webpack --mode production --config webpack.prod.js",
-        "build:dev": "pnpm webpack --mode development --config webpack.dev.js",
+        "build-chrome": "pnpm webpack --mode production --config webpack.prod.js --env browser=chrome",
+        "build-chrome:dev": "pnpm webpack --mode development --config webpack.dev.js --env browser=chrome",
         "watch": "pnpm webpack --mode development --watch --config webpack.dev.js",
         "fmt": "prettier --write '**/*.{js,json,md,html,sh}'",
         "lint": "prettier --check . && eslint . ",

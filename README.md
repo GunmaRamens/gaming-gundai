@@ -41,7 +41,7 @@ cd gaming-gundai
 4. Build
 
 ```bash
-pnpm run build
+pnpm run build-chrome
 ```
 
 5. Load dist directory to Chrome.
