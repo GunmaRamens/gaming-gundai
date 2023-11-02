@@ -70,12 +70,12 @@ function Switches({ config }: { config: WebsiteConfig }) {
                 }[]
             ).map((item) => {
                 return (
-                    <Tooltip message={item.tipText + (!item.configable ? " (disabled)" : "")} key={item.category}>
-                        <div className="flex items-center justify-around">
-                            {item.icon}
+                    <div className="flex items-center justify-around" key={item.category}>
+                        {item.icon}
+                        <Tooltip message={item.tipText + (!item.configable ? " (disabled)" : "")}>
                             <SwitchItem category={item.category} config={config} color={item.color} readonly={!item.configable} />
-                        </div>
-                    </Tooltip>
+                        </Tooltip>
+                    </div>
                 );
             })}
         </div>
