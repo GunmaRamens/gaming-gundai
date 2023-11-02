@@ -32,6 +32,8 @@
 }
 
 [data-gaming_gundai_dark="true"] {
+    @extend .text-content;
+
     #page.drawers .main-inner,
     #region-main {
         background-color: transparent !important;
@@ -96,16 +98,44 @@
     }
 
     /* ドロワー */
-    .drawer.drawer-left.drawer-primary {
+    .drawer.drawer-left {
         @extend .bg-base;
+        @extend .text-content;
     }
     .drawerheader .btn.drawertoggle {
         @extend .text-content;
+    }
+    .courseindex .courseindex-item .courseindex-link:not(.courseindex-item.pageitem a),
+    .courseindex .courseindex-item .courseindex-chevron {
+        @extend .text-content;
+    }
+    .completioninfo i.icon {
+        @extend .text-content;
+    }
+    .courseindex .courseindex-item.pageitem {
+        @extend .bg-accent;
+        * {
+            @extend .text-base;
+        }
     }
 
     /* ヘッダー */
     .navbar-light .navbar-toggler-icon {
         filter: invert(1) grayscale(100%);
+    }
+
+    /* 提出テーブル */
+    .generaltable {
+        @extend .text-content;
+    }
+    .generaltable tbody tr:hover {
+        @extend .bg-base;
+        @extend .text-content;
+    }
+
+    /* 提出ステータス */
+    .activity-header {
+        @extend .bg-base;
     }
 }
 
