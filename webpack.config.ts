@@ -5,7 +5,7 @@ import fs from "fs";
 import HtmlPlugin from "html-webpack-plugin";
 import path from "path";
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
-import { Configuration } from "webpack";
+import { Configuration, DefinePlugin } from "webpack";
 
 const loadFilesInScripts = function () {
     const dir = path.join(__dirname, "src/scripts");
@@ -37,6 +37,11 @@ module.exports = (env: Env, argv: Argv): Configuration => {
     if (env.browser === undefined) {
         throw new Error("Please set browser");
     }
+
+    const isDev = argv.mode === "development";
+    const isProd = argv.mode === "production";
+    const isChrome = env.browser === "chrome";
+    const isFirefox = env.browser === "firefox";
 
     return {
         entry: {
@@ -91,6 +96,13 @@ module.exports = (env: Env, argv: Argv): Configuration => {
         },
 
         plugins: [
+            isProd
+                ? new DefinePlugin({
+                      "process.env.NODE_ENV": JSON.stringify("production"),
+                  })
+                : new DefinePlugin({
+                      "process.env.NODE_ENV": JSON.stringify("development"),
+                  }),
             new ESLintPlugin({ extensions: ["js", "jsx", "ts", "tsx"] }),
             new CopyPlugin({
                 patterns: [
@@ -107,12 +119,11 @@ module.exports = (env: Env, argv: Argv): Configuration => {
                         priority: 0,
                     },
                     {
-                        from:
-                            env.browser === "chrome"
-                                ? "./public/manifest_chrome.json"
-                                : env.browser === "firefox"
-                                ? "./public/manifest_firefox.json"
-                                : "./public/manifest_chrome.json",
+                        from: isChrome
+                            ? "./public/manifest_chrome.json"
+                            : isFirefox
+                            ? "./public/manifest_firefox.json"
+                            : "./public/manifest_chrome.json",
                         to: "./manifest.json",
                         priority: 1,
                     },
@@ -135,6 +146,6 @@ module.exports = (env: Env, argv: Argv): Configuration => {
             maxAssetSize: 2000000,
         },
 
-        devtool: argv.mode !== "development" ? false : "source-map",
+        devtool: isDev ? "source-map" : false,
     };
 };

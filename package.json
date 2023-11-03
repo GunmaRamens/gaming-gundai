@@ -13,6 +13,9 @@
         "build-firefox": "pnpm webpack --mode production --env browser=firefox",
         "build-firefox:dev": "pnpm webpack --mode development --env browser=firefox",
         "watch-firefox": "pnpm webpack --mode development --watch --env browser=firefox",
+        "analyze": "pnpm run analyze-chrome",
+        "analyze-chrome": "pnpm run build-chrome:dev && source-map-explorer ./dist/**.js",
+        "analyze-firefox": "pnpm run build-firefox:dev && source-map-explorer ./dist/**.js",
         "fmt": "prettier --write '**/*.{js,json,md,html,sh}'",
         "lint": "prettier --check . && eslint . ",
         "lint:fix": "pnpm fmt && eslint . --fix"
@@ -55,6 +58,7 @@
         "prettier-plugin-sh": "^0.13.1",
         "sass": "^1.69.5",
         "sass-loader": "^13.3.2",
+        "source-map-explorer": "^2.5.3",
         "style-loader": "^3.3.3",
         "stylelint": "^15.11.0",
         "stylelint-config-standard": "^34.0.0",
