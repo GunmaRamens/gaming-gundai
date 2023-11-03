@@ -21,7 +21,7 @@ export const Websites: WebsiteConfig[] = [
         id: "kyomu",
         configable: {
             rainbow: true,
-            dark: false,
+            dark: true,
         },
     },
     {

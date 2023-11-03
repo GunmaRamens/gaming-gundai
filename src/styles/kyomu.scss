@@ -1,0 +1,15 @@
+@import "./darkmode.scss";
+
+[data-gaming_gundai="true"] {
+}
+
+[data-gaming_gundai_dark="true"] {
+    #container {
+        @extend .bg-base;
+    }
+
+    .welcomMessageTable {
+        @extend .text-content;
+        text-shadow: none;
+    }
+}
