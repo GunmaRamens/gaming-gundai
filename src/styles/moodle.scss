@@ -48,6 +48,11 @@
         @extend .bg-base;
     }
 
+    /* カード */
+    .card {
+        border: none;
+    }
+
     /* マイコース */
     .course-info-container,
     .card.dashboard-card,
@@ -72,7 +77,12 @@
     /* メッセージ */
     .message-app {
         @extend .bg-base;
+        @extend .text-content;
     }
+    /*
+    .message-app a, .message-app .btn-link{
+        @extend .text-accent;
+    }*/
     .list-group a {
         @extend .text-content;
     }
@@ -119,9 +129,29 @@
         }
     }
 
+    /* 提出 概要 */
+    .path-mod .activity-header:not(:empty) {
+        @extend .bg-neutral;
+        @extend .text-content;
+    }
+
     /* ヘッダー */
     .navbar-light .navbar-toggler-icon {
         filter: invert(1) grayscale(100%);
+    }
+    .input-group {
+        @extend .text-content;
+    }
+
+    /* ユーザーアイコン内のメニュー */
+    #user-action-menu {
+        @extend .bg-neutral;
+        @extend .text-content;
+        .btn.btn-icon,
+        .btn.btn-icon:hover,
+        .btn.btn-icon:focus {
+            @extend .bg-accent;
+        }
     }
 
     /* 提出テーブル */
@@ -134,8 +164,37 @@
     }
 
     /* 提出ステータス */
-    .activity-header {
+    .submissionstatustable {
+        .activity-header {
+            @extend .bg-base;
+        }
+    }
+    .path-mod-assign td.submissionnotgraded,
+    .path-mod-assign div.submissionnotgraded {
+        @extend .text-content;
+    }
+
+    /* 通知 */
+    .popover-region-container,
+    .popover-region-footer-container {
         @extend .bg-base;
+        @extend .text-content;
+    }
+
+    /* 各コースのヘッダー */
+    .secondary-navigation {
+        @extend .bg-base;
+        @extend .text-content;
+        .moremenu .nav-tabs {
+            @extend .bg-neutral;
+        }
+        .navigation {
+            padding: 0;
+        }
+        .nav-tabs .nav-link.active,
+        .nav-tabs .nav-item.show .nav-link {
+            @extend .text-accent;
+        }
     }
 }
 
