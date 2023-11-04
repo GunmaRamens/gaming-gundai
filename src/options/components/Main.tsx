@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import About from "../pages/About";
@@ -6,6 +7,14 @@ import Thanks from "../pages/Thanks";
 import Top from "../pages/Top";
 import Why from "../pages/Why";
 import NotFound from "./404";
+
+/*
+const About = React.lazy(() => import( "../pages/About"));
+const Thanks = React.lazy(() => import("../pages/Thanks"));
+const Top = React.lazy(() => import("../pages/Top"));
+const Why = React.lazy(() => import("../pages/Why"));
+const NotFound = React.lazy(() => import("./404"));
+*/
 
 export default function Main(props: { className?: string }) {
     return (

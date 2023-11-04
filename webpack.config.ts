@@ -53,6 +53,8 @@ module.exports = (env: Env, argv: Argv): Configuration => {
         output: {
             path: path.join(__dirname, "dist"),
             clean: true,
+            filename: "[name].js",
+            chunkFilename: "[name].chunk.js",
         },
 
         resolve: {
@@ -93,6 +95,18 @@ module.exports = (env: Env, argv: Argv): Configuration => {
 
         optimization: {
             minimizer: [new CssMinimizerPlugin()],
+            splitChunks: {
+                chunks: "all",
+                minSize: 0,
+                cacheGroups: {
+                    vendor: {
+                        name: "vendors",
+                        test: /[\\/]node_modules[\\/]/,
+                        priority: -10,
+                    },
+                    default: false,
+                },
+            },
         },
 
         plugins: [
