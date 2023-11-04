@@ -4,6 +4,7 @@ import ESLintPlugin from "eslint-webpack-plugin";
 import fs from "fs";
 import HtmlPlugin from "html-webpack-plugin";
 import path from "path";
+import TerserPlugin from "terser-webpack-plugin";
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
 import { Configuration, DefinePlugin } from "webpack";
 
@@ -94,7 +95,7 @@ module.exports = (env: Env, argv: Argv): Configuration => {
         },
 
         optimization: {
-            minimizer: [new CssMinimizerPlugin()],
+            minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
             splitChunks: {
                 chunks: "all",
                 minSize: 0,

@@ -160,6 +160,9 @@ devDependencies:
   tailwindcss:
     specifier: ^3.3.5
     version: 3.3.5(ts-node@10.9.1)
+  terser-webpack-plugin:
+    specifier: ^5.3.9
+    version: 5.3.9(webpack@5.89.0)
   ts-loader:
     specifier: ^9.5.0
     version: 9.5.0(typescript@5.2.2)(webpack@5.89.0)
