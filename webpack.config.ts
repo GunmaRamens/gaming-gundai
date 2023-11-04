@@ -125,6 +125,14 @@ module.exports = (env: Env, argv: Argv): Configuration => {
                         to: ".",
                         context: "public",
                         priority: 0,
+                        noErrorOnMissing: true,
+                        globOptions: {
+                            ignore: ["chrome", "firefox"].map((browser) => {
+                                const ignoreFile = path.posix.join(__dirname, `public/manifest_${browser}.json`);
+                                //console.log(ignoreFile);
+                                return ignoreFile;
+                            }),
+                        },
                     },
                     {
                         from: ".",
