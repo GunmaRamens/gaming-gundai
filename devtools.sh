@@ -98,15 +98,12 @@ main() {
     case "${_cmd-""}" in
         "init")
             init_command "$@"
-            shift 1 || true
             ;;
         "bump")
             bump_command "$@"
-            shift 1 || true
             ;;
         "help")
             print_usage
-            shift 1 || true
             exit 0
             ;;
         "")
