@@ -63,13 +63,10 @@ export default function Top() {
                 <QuickSwitch className="child:m-2" />
             </ConfigSection>
 
-            <ConfigSection name="Detail" desc="ウェブサイトごとの詳細設定を行います">
-                <div className="flex flex-col">
-                    <Heading.h3>SSO</Heading.h3>
-                    <div className="flex">
-                        <p>二段階認証コードの自動送信を行うかどうか</p>
-                        <ToggleWithStorage section="sso" dataKey="auto-2fa" />
-                    </div>
+            <ConfigSection name="SSO">
+                <div className="flex">
+                    <p>二段階認証コードの自動送信</p>
+                    <ToggleWithStorage section="sso" dataKey="auto-2fa" />
                 </div>
             </ConfigSection>
 
