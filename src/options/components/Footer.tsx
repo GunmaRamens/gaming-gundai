@@ -11,6 +11,9 @@ export default function Footer({ className }: { className?: string }) {
                     <FooterLink href="/about" isInternal>
                         About
                     </FooterLink>
+                    <FooterLink href="https://chromewebstore.google.com/detail/gaming-gunma-university/fifbnlkbedonackjjbegkjmekchdcfhk">
+                        Chrome Web Store
+                    </FooterLink>
                 </div>
                 <div>
                     <DaisyFooter.Title>SNS</DaisyFooter.Title>

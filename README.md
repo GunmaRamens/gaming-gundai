@@ -19,7 +19,7 @@ This project is not accepted by Gunma University. Please use this project at you
 
 ### Stable Version
 
-[Chrome Web Store](https://chromewebstore.google.com/detail/gaming-gunma-university/fifbnlkbedonackjjbegkjmekchdcfhk?hl=ja)
+[Chrome Web Store](https://chromewebstore.google.com/detail/gaming-gunma-university/fifbnlkbedonackjjbegkjmekchdcfhk)
 
 ### Manually build and install
 
