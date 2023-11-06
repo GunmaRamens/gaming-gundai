@@ -30,7 +30,7 @@ const replaceIconToGamimg = () => {
     });
 };
 const replaceTextToGaimg = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
-    const headerText = moodle.additionalInfo.headerText;
+    const headerText = moodle.options.headerText;
 
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
         if (!e.innerHTML.includes(headerText)) e.innerHTML = e.innerHTML + headerText;

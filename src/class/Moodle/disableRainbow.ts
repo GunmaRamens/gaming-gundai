@@ -9,7 +9,7 @@ export default function disableRainbow(this: RainbowApplicator) {
 
     replaceImagesToDefault();
 
-    const headerText = Moodle.additionalInfo.headerText;
+    const headerText = Moodle.options.headerText;
     document.querySelectorAll(".page-header-headings h1").forEach((e) => {
         if (e.innerHTML.includes(headerText)) e.innerHTML.replace(headerText, "");
     });

@@ -10,7 +10,7 @@ import { MoodleAdditionalInfo } from "./type";
 export const Moodle = new GundaiWebSite<MoodleAdditionalInfo>("moodle");
 export default Moodle;
 
-Moodle.additionalInfo = {
+Moodle.options = {
     headerText: " Gaming Edition 🎮",
 };
 
