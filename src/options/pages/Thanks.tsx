@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Heading from "../../components/Heading";
 
 export default function Thanks() {
@@ -10,6 +12,15 @@ export default function Thanks() {
             <p>この拡張機能はとある学部生が勝手に作ったものです。大学からの承認等は一切受けていません。</p>
             <p>もし大学側に注意等された場合はすぐに公開を停止します。</p>
             <p>また、この拡張機能を利用したことで生じたいかなる損害についても責任を負いません。</p>
+
+            <Heading.h2>設定</Heading.h2>
+            <p>デフォルトではすべての設定が無効化されています。</p>
+            <p>
+                <Link to="/" className="link-info link">
+                    設定画面
+                </Link>
+                から設定を行えます。
+            </p>
 
             <Heading.h2>開発者募集</Heading.h2>
             <p>この拡張機能の開発を手伝ってくれるボランティアを募集しています。</p>

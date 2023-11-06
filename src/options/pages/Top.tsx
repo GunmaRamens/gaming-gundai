@@ -1,17 +1,55 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
+import { Tooltip } from "react-daisyui";
+import { FaGamepad, FaMoon } from "react-icons/fa";
 
-import { StorageTool } from "../../class/StorageTool";
-import Heading from "../../components/Heading";
-import { Switches } from "../../components/Switches";
-import IsTrue from "../../utils/isTrue";
+import StorageTool from "@/class/StorageTool";
+import CopyTootrip from "@/components/CopyBtn";
+import Heading from "@/components/Heading";
+import { SwitchItem } from "@/components/SwitchItem";
+import { ToggleWithStorage } from "@/components/ToggleWithStorage";
+import { Websites } from "@/data/websites";
+import IsTrue from "@/utils/isTrue";
 
 export default function Top() {
     return (
         <>
-            <ConfigSection name="Websites" desc="有効化するウェブサイトを設定します">
-                <div className="flex flex-wrap">
-                    <Switches className=" flex-row-reverse items-center child:m-2" />
+            <ConfigSection name="Websites" desc="それぞれのウェブサイトで有効化する機能を設定できます">
+                <div className="flex flex-wrap items-center">
+                    {Websites.map((site) => {
+                        return (
+                            <div className="chiid:p-1 mx-4 my-2 flex w-60 justify-center child:grow" key={site.id}>
+                                <p className="my-0 flex w-1/2 items-center justify-center rounded-l-lg bg-base-300 text-center">
+                                    {site.name}
+                                </p>
+                                {/* Todo: ここらへんをオブジェクトでいい感じにループする */}
+                                <div className="flex flex-col justify-center rounded-r-lg bg-neutral-focus child:m-2">
+                                    <Tooltip message={"Dark Mode" + (site.configable.dark ? " (EXPERIMENTAL)" : " (disabled)")}>
+                                        <div className="flex items-center justify-center child:px-1">
+                                            <FaMoon className="grow" size="20px" />
+                                            <SwitchItem
+                                                config={site}
+                                                category="dark"
+                                                color="primary"
+                                                readonly={!site.configable.dark}
+                                            />
+                                        </div>
+                                    </Tooltip>
+                                    <Tooltip message={"Gaming Mode" + (!site.configable.rainbow ? " (disabled)" : "")}>
+                                        <div className="flex items-center justify-center child:px-1">
+                                            <FaGamepad className="grow" size="20px" />
+                                            <SwitchItem
+                                                config={site}
+                                                category="rainbow"
+                                                color="secondary"
+                                                readonly={!site.configable.rainbow}
+                                            />
+                                        </div>
+                                    </Tooltip>
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </ConfigSection>
 
@@ -25,11 +63,18 @@ export default function Top() {
                 <QuickSwitch className="child:m-2" />
             </ConfigSection>
 
+            <ConfigSection name="SSO">
+                <div className="flex">
+                    <p>二段階認証コードの自動送信</p>
+                    <ToggleWithStorage section="sso" dataKey="auto-2fa" />
+                </div>
+            </ConfigSection>
+
             <ConfigSection name="群馬大学学務課・メディアセンターの方へ">
                 <p>このソフトウェアについて問題がある場合は以下のメールアドレスまでご連絡ください。</p>
-                <a href="mailto:shun819.mail@gmail.com" className="btn btn-neutral my-5">
-                    shun819.mail@gmail.com
-                </a>
+                <CopyTootrip copyText="shun819.mail@gmail.com" className="my-5">
+                    <button className="btn bg-base-300">shun819.mail@gmail.com</button>
+                </CopyTootrip>
             </ConfigSection>
         </>
     );
@@ -87,8 +132,7 @@ function HiddenConfigSection() {
         const storage = new StorageTool("other");
         storage.get("show-hidden-option").then((res): void => {
             let v = IsTrue(res);
-            if (!res) v = false;
-            console.log(v, res);
+            if (v == undefined) v = false;
             switchShowOrHidden(v);
         });
     }, []);
@@ -97,7 +141,7 @@ function HiddenConfigSection() {
         const storage = new StorageTool("other");
         storage.get("enabled-hidden").then((res): void => {
             let v = IsTrue(res);
-            if (!res) v = false;
+            if (v == undefined) v = false;
 
             setEnabledHidden(v);
             storage.set("enabled-hidden", v.toString());

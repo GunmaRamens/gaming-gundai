@@ -12,6 +12,7 @@ module.exports = {
     daisyui: {
         themes: ["dark"],
         //prefix: "daisy-", // React daisyUI does not support prefix
+        logs: false,
     },
     plugins: [
         require("@tailwindcss/typography"),

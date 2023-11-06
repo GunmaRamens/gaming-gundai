@@ -1,6 +1,12 @@
+// 最近が物忘れが激しい。どうしてだろうか。
+// 人間は嫌なことやつらいこと、思い出さないようなことはすぐに忘れるようにできているらしい。
+// となると、最近はつらいことが多いのかもしれない。例えばchrome.storage.sync.get()の返り値がany型であることとか。
+
 import IsTrue from "../../utils/isTrue";
 
-export class StorageTool {
+export type StorageKeys = "dark" | "rainbow" | "enabled-hidden" | "show-hidden-option" | "installed" | "auto-2fa";
+
+export default class StorageTool {
     id: string;
     constructor(id: string) {
         this.id = id;
@@ -11,7 +17,7 @@ export class StorageTool {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async set(key: string, value: any) {
+    async set(key: StorageKeys, value: any) {
         let newData = { [key]: value };
         const storage = StorageTool.getChromeStorage();
         if (!storage) {
@@ -24,7 +30,7 @@ export class StorageTool {
 
         storage.set({ [this.id]: newData });
     }
-    async getBool(key: string) {
+    async getBool(key: StorageKeys) {
         const storage = StorageTool.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
@@ -35,7 +41,7 @@ export class StorageTool {
 
         return IsTrue(rawdata);
     }
-    async get(key: string) {
+    async get(key: StorageKeys) {
         const storage = StorageTool.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");

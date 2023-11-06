@@ -1,41 +1,30 @@
 import classNames from "classnames";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Heading from "../../components/Heading";
 import About from "../pages/About";
 import Thanks from "../pages/Thanks";
 import Top from "../pages/Top";
 import Why from "../pages/Why";
+import NotFound from "./404";
+
+/*
+const About = React.lazy(() => import( "../pages/About"));
+const Thanks = React.lazy(() => import("../pages/Thanks"));
+const Top = React.lazy(() => import("../pages/Top"));
+const Why = React.lazy(() => import("../pages/Why"));
+const NotFound = React.lazy(() => import("./404"));
+*/
 
 export default function Main(props: { className?: string }) {
     return (
-        <main {...props} className={classNames(props.className, "w-2/3 mx-auto mt-8")}>
+        <main {...props} className={classNames(props.className, "w-4/5 mx-auto mt-8")}>
             <Routes>
                 <Route path="/" Component={Top} />
-                <Route
-                    path="/hoge"
-                    Component={() => {
-                        return (
-                            <>
-                                <p>Hello</p>
-                            </>
-                        );
-                    }}
-                />
                 <Route path="/about" Component={About} />
                 <Route path="/why" Component={Why} />
                 <Route path="/thanks" Component={Thanks} />
-                <Route
-                    path="*"
-                    Component={() => {
-                        return (
-                            <>
-                                <Heading.h1>404 Not Found</Heading.h1>
-                                <p>内容は無いようです。</p>
-                            </>
-                        );
-                    }}
-                />
+                <Route path="*" Component={NotFound} />
             </Routes>
         </main>
     );

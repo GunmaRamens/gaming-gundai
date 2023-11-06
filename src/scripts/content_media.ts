@@ -1,6 +1,5 @@
-import "/styles/media.css";
+import "@/styles/media.css";
 
-import { Media } from "../class";
-import loadGamingWebsite from "../utils/loadGamingWebsite";
+import { Media, UnivWebsite } from "../class";
 
-loadGamingWebsite(Media);
+UnivWebsite.load(Media);

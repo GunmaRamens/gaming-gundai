@@ -14,7 +14,7 @@ export { MyLibrary } from "./MyLibrary";
 export { SSO } from "./SSO";
 export { GundaiWebSite, UnivWebsite } from "./UnivWebsite";
 
-export const WebSites = (function () {
+export const WebSiteClasses = (function () {
     const sites: { [id: string]: UnivWebsite<unknown> } = {};
 
     [Kyomu, Media, Moodle, MyLibrary, SSO].forEach((site) => {

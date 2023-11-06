@@ -1,6 +1,5 @@
-import "/styles/kyomu.css";
+import "@/styles/kyomu.scss";
 
-import { Kyomu } from "../class";
-import LoadGamingWebsite from "../utils/loadGamingWebsite";
+import { Kyomu, UnivWebsite } from "../class";
 
-LoadGamingWebsite(Kyomu);
+UnivWebsite.load(Kyomu);

@@ -1,88 +1,104 @@
-// 無駄とは人生である。無駄を極めよ。無駄を愛せ。無駄を生きろ。
-// 無駄を以て物を成す者は、無駄を以て物を滅ぼす者に勝る。x
+// 大学。それは研究する場であり、人類の最先端である。
+// しかし今の日本では大学は高校の延長線上であり、学士を得るための場所と化している。
+// こういった人々の認識が変わって欲しいと日々願っている。
 
-import { addClass, Elements, removeClass } from "../../utils/addClass";
-import { StorageTool } from "../StorageTool";
+import isTrue from "../../utils/isTrue";
+import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApplicator";
+import StorageTool from "../StorageTool";
 //import Storage from "../../utils/Storage";
 
-const rainbowBg = "rainbow-bg";
-const rainbowText = "rainbow-text";
-const rainbowBgShadow = "rainbow-bg-shadow";
-const rainbowTextShadow = "rainbow-text-shadow";
-
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
-// 型変数とAdditionalInfoプロパティによって任意の情報を追加できる
+// 型変数とoptionsプロパティによって任意の情報を追加できる
 export class UnivWebsite<T> {
+    // 基本情報
     id: string;
-    additionalInfo: T; // 型変数使うとかっこいいよね
+
     storage: StorageTool;
 
-    rainbowText: Rainbow;
-    rainbowBg: Rainbow;
+    // Applicator
+    rainbow: RainbowApplicator;
+    dark: DarkApplicator;
+    hidden: HiddenApplicator;
 
-    rainbowTextShadow: Rainbow;
-    rainbowBgShadow: Rainbow;
+    // 追加情報
+    options: T; // 型変数使うとかっこいいよね
+    #funcs: (() => void)[];
+    addLoader(func: () => void) {
+        this.#funcs.push(func);
+    }
 
+    // コンストラクタ
     constructor(id: string) {
         this.id = id;
-        this.additionalInfo = {} as T;
+        this.options = {} as T;
+        this.#funcs = [];
         this.storage = new StorageTool(id);
 
-        this.rainbowText = new Rainbow([rainbowText]);
-        this.rainbowBg = new Rainbow([rainbowBg]);
-        this.rainbowTextShadow = new Rainbow([rainbowText, rainbowTextShadow]);
-        this.rainbowBgShadow = new Rainbow([rainbowBg, rainbowBgShadow]);
-
-        this.enableRainbow.bind(this);
-        this.enableHidden.bind(this);
-        this.disableRainbow.bind(this);
-        this.disableHidden.bind(this);
+        this.rainbow = new RainbowApplicator();
+        this.dark = new DarkApplicator();
+        this.hidden = new HiddenApplicator();
     }
 
-    // これらのメソッドは継承先でオーバーライドする
-    enableRainbow() {}
-    enableHidden() {}
-    disableRainbow() {}
-    disableHidden() {}
+    async isRainbowEnabled() {
+        const isRainbowEnabled = await this.storage.get("rainbow");
+        return isTrue(isRainbowEnabled);
+    }
 
-    // 上記の関数を実行するためのラッパー
-    enable() {
-        // CSSのためにHTML要素にデータ属性を追加
-        document.documentElement.dataset.gaming_gundai = "true";
-        this.storage.set("enabled", "true");
-        this.enableRainbow();
+    async isDarkEnabled() {
+        const isDarkEnabled = await this.storage.get("dark");
+        return isTrue(isDarkEnabled);
+    }
 
-        new StorageTool("other").getBool("enabled-hidden").then((enabled) => {
-            if (enabled) this.enableHidden();
+    async isHiddenEnabled() {
+        const otherStorage = new StorageTool("other");
+        const isHiddenEnabled = await otherStorage.getBool("enabled-hidden");
+        return isTrue(isHiddenEnabled);
+    }
+
+    static load(site: UnivWebsite<unknown>) {
+        window.addEventListener("load", async () => {
+            const isRainbowEnabled = await site.isRainbowEnabled();
+            if (isRainbowEnabled) {
+                // CSSのためにHTML要素にデータ属性を追加
+                document.documentElement.dataset.gaming_gundai = "true";
+                site.storage.set("rainbow", "true");
+                site.rainbow.enable();
+            } else {
+                // CSSのためにHTML要素にデータ属性を追加
+                document.documentElement.dataset.gaming_gundai = "false";
+                site.storage.set("rainbow", "false");
+                site.rainbow.disable();
+            }
+
+            const isDarkEnabled = await site.isDarkEnabled();
+            if (isDarkEnabled) {
+                document.documentElement.dataset.gaming_gundai_dark = "true";
+                site.storage.set("dark", "true");
+                site.dark.enable();
+            } else {
+                document.documentElement.dataset.gaming_gundai_dark = "false";
+                site.storage.set("dark", "false");
+                site.dark.disable();
+            }
+
+            const isHiddenEnabled = await site.isHiddenEnabled();
+            const otherStorage = new StorageTool("other");
+            if (isHiddenEnabled) {
+                document.documentElement.dataset.gaming_gundai_hidden = "true";
+                otherStorage.set("enabled-hidden", "true");
+                site.hidden.enable();
+            } else {
+                document.documentElement.dataset.gaming_gundai_hidden = "false";
+                site.storage.set("enabled-hidden", "false");
+                site.hidden.disable();
+            }
+
+            site.#funcs.forEach((func) => {
+                //console.log("func");
+                func();
+            });
         });
-    }
-    disable() {
-        // CSSのためにHTML要素にデータ属性を追加
-        document.documentElement.dataset.gaming_gundai = "false";
-        this.storage.set("enabled", "false");
-        this.disableRainbow();
-        //this.DisableHidden();
     }
 }
 
 export class GundaiWebSite<T> extends UnivWebsite<T> {}
-
-export class Rainbow {
-    base: string[];
-    classes: string[];
-    constructor(base: string[]) {
-        this.base = base;
-        this.classes = [];
-    }
-
-    apply(...elements: Elements[]) {
-        addClass(elements, [...this.base, ...this.classes]);
-    }
-    remove(...elements: Elements[]) {
-        removeClass(elements, [...this.base, ...this.classes]);
-    }
-    selector() {
-        if (this.classes.length === 0) return `.${this.base}`;
-        else return `.${this.base}.${this.classes.join(".")}`;
-    }
-}

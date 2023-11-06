@@ -1,3 +1,6 @@
+@import "./gaming.scss";
+@import "./darkmode.scss";
+
 [data-gaming_gundai="true"] {
     .menu-action-text,
     .dropdown-menu {
@@ -9,18 +12,194 @@
     .moremenu .active > .nav-link.rainbow-text,
     .moremenu .nav-link.show.rainbow-text,
     .moremenu .nav-link.active.rainbow-text {
-        animation-duration: 0.7s;
+        @extend .rainbow-text;
+    }
 
-        background: linear-gradient(to right, Magenta, yellow, Cyan, Magenta) 0% center/200%;
-        animation-name: gaming;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
+    #user-action-menu {
+        @extend .rainbow-bg;
+    }
 
-        // For Text
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: bold;
-        color: transparent;
+    .moremenu .nav-link:hover {
+        background-color: transparent !important;
+    }
+}
+
+[data-gaming_gundai_dark="true"],
+[data-gaming_gundai="true"] {
+    .moremenu .nav-link:hover {
+        background-color: transparent !important;
+    }
+}
+
+[data-gaming_gundai_dark="true"] {
+    @extend .text-content;
+
+    #page.drawers .main-inner,
+    #region-main {
+        background-color: transparent !important;
+    }
+
+    .bg-white {
+        background-color: var(--base) !important;
+    }
+
+    .list-group-item,
+    .form-control {
+        @extend .bg-base;
+    }
+
+    /* カード */
+    .card {
+        border: none;
+    }
+
+    /* マイコース */
+    .course-info-container,
+    .card.dashboard-card,
+    .card.dashboard-card div {
+        @extend .bg-neutral;
+        @extend .text-content;
+    }
+    .block .block-cards span.categoryname,
+    .block .block-cards .btn-link {
+        @extend .text-content;
+    }
+
+    .dropdown-menu .dropdown-item {
+        @extend .text-content;
+    }
+
+    .block .block-cards .btn.btn-link.btn-icon:hover,
+    .block .block-cards .show .btn.btn-link.btn-icon {
+        @extend .bg-accent;
+    }
+
+    /* メッセージ */
+    .message-app {
+        @extend .bg-base;
+        @extend .text-content;
+    }
+    /*
+    .message-app a, .message-app .btn-link{
+        @extend .text-accent;
+    }*/
+    .list-group a {
+        @extend .text-content;
+    }
+    .view-overview-body > div > div {
+        @extend .bg-base;
+    }
+    strong,
+    p {
+        @extend .text-content;
+    }
+    .message-app .dropdown .btn.btn-link.btn-icon {
+        @extend .bg-accent;
+    }
+
+    /* hint icon */
+    #page-footer .btn.btn-icon {
+        @extend .bg-accent;
+    }
+
+    /* リンク */
+    a:hover {
+        @extend .text-accent;
+    }
+
+    /* ドロワー */
+    .drawer.drawer-left {
+        @extend .bg-base;
+        @extend .text-content;
+    }
+    .drawerheader .btn.drawertoggle {
+        @extend .text-content;
+    }
+    .courseindex .courseindex-item .courseindex-link:not(.courseindex-item.pageitem a),
+    .courseindex .courseindex-item .courseindex-chevron {
+        @extend .text-content;
+    }
+    .completioninfo i.icon {
+        @extend .text-content;
+    }
+    .courseindex .courseindex-item.pageitem {
+        @extend .bg-accent;
+        * {
+            @extend .text-base;
+        }
+    }
+
+    /* 提出 概要 */
+    .path-mod .activity-header:not(:empty) {
+        @extend .bg-neutral;
+        @extend .text-content;
+    }
+
+    /* ヘッダー */
+    .navbar-light .navbar-toggler-icon {
+        filter: invert(1) grayscale(100%);
+    }
+    .input-group {
+        @extend .text-content;
+    }
+
+    /* ユーザーアイコン内のメニュー */
+    #user-action-menu {
+        @extend .bg-neutral;
+        @extend .text-content;
+        .btn.btn-icon,
+        .btn.btn-icon:hover,
+        .btn.btn-icon:focus {
+            @extend .bg-accent;
+        }
+    }
+
+    /* 提出テーブル */
+    .generaltable {
+        @extend .text-content;
+    }
+    .generaltable tbody tr:hover {
+        @extend .bg-base;
+        @extend .text-content;
+    }
+
+    /* 提出ステータス */
+    .submissionstatustable {
+        .activity-header {
+            @extend .bg-base;
+        }
+    }
+    .path-mod-assign td.submissionnotgraded,
+    .path-mod-assign div.submissionnotgraded {
+        @extend .text-content;
+    }
+
+    /* 通知 */
+    .popover-region-container,
+    .popover-region-footer-container {
+        @extend .bg-base;
+        @extend .text-content;
+    }
+
+    /* 各コースのヘッダー */
+    .secondary-navigation {
+        @extend .bg-base;
+        @extend .text-content;
+        .moremenu .nav-tabs {
+            @extend .bg-neutral;
+        }
+        .navigation {
+            padding: 0;
+        }
+        .nav-tabs .nav-link.active,
+        .nav-tabs .nav-item.show .nav-link {
+            @extend .text-accent;
+        }
+    }
+}
+
+[data-gaming_gundai_dark="true"]:not([data-gaming_gundai="true"]) {
+    .logo {
+        filter: invert(1) grayscale(100%);
     }
 }

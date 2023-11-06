@@ -1,8 +1,5 @@
-import "/styles/sso.css";
+import "@/styles/sso.scss";
 
-import { SSO } from "../class";
-import loadGamingWebsite from "../utils/loadGamingWebsite";
+import { SSO, UnivWebsite } from "../class";
 
-//window.addEventListener("load", async () => await runFuncIfEnabled(SSO.EnableRainbow));
-
-loadGamingWebsite(SSO);
+UnivWebsite.load(SSO);
