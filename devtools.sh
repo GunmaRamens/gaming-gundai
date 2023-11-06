@@ -98,15 +98,15 @@ main() {
     case "${_cmd-""}" in
         "init")
             init_command "$@"
-            shift 1
+            shift 1 || true
             ;;
         "bump")
             bump_command "$@"
-            shift 1
+            shift 1 || true
             ;;
         "help")
             print_usage
-            shift 1
+            shift 1 || true
             exit 0
             ;;
         "")
@@ -115,11 +115,11 @@ main() {
             exit 1
             ;;
         *)
-            _cmdargs="${_cmdargs-""}${1} "
-            shift 1
+            echo "Unknown command: ${_cmd}" >&2
+            print_usage >&2
+            exit 1
             ;;
     esac
-    eval set -- "${_cmdargs-""}"
 }
 
 main "$@"
