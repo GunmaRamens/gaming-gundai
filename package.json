@@ -2,7 +2,7 @@
     "name": "gunma-univ-gaming-edition",
     "description": "The browser extension of Gunma University Gaming Edition",
     "license": "MIT",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "scripts": {
         "build": "pnpm run build-chrome",
         "build:dev": "pnpm run build-chrome:dev",
