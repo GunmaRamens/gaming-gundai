@@ -1,6 +1,5 @@
 import "@/styles/mylibrary.css";
 
-import { MyLibrary } from "../class";
-import LoadGamingWebsite from "../utils/loadGamingWebsite";
+import { MyLibrary, UnivWebsite } from "../class";
 
-LoadGamingWebsite(MyLibrary);
+UnivWebsite.load(MyLibrary);

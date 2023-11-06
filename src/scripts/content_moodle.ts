@@ -1,6 +1,5 @@
 import "@/styles/moodle.scss";
 
-import { Moodle } from "../class";
-import loadGamingWebsite from "../utils/loadGamingWebsite";
+import { Moodle, UnivWebsite } from "../class";
 
-loadGamingWebsite(Moodle);
+UnivWebsite.load(Moodle);

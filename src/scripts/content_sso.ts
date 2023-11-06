@@ -1,6 +1,5 @@
 import "@/styles/sso.scss";
 
-import { SSO } from "../class";
-import loadGamingWebsite from "../utils/loadGamingWebsite";
+import { SSO, UnivWebsite } from "../class";
 
-loadGamingWebsite(SSO);
+UnivWebsite.load(SSO);
