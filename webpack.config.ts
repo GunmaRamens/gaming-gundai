@@ -117,9 +117,7 @@ module.exports = (env: Env, argv: Argv): Configuration => {
                         noErrorOnMissing: true,
                         globOptions: {
                             ignore: ["chrome", "firefox"].map((browser) => {
-                                const ignoreFile = path.posix.join(__dirname, `public/manifest_${browser}.json`);
-                                //console.log(ignoreFile);
-                                return ignoreFile;
+                                return `**/manifest_${browser}.json`;
                             }),
                         },
                     },
