@@ -24,7 +24,7 @@ export default function Top() {
                                 </p>
                                 {/* Todo: ここらへんをオブジェクトでいい感じにループする */}
                                 <div className="flex flex-col justify-center rounded-r-lg bg-neutral-focus child:m-2">
-                                    <Tooltip message={"Dark Mode" + (!site.configable.dark ? " (disabled)" : "")}>
+                                    <Tooltip message={"Dark Mode" + (site.configable.dark ? " (EXPERIMENTAL)" : " (disabled)")}>
                                         <div className="flex items-center justify-center child:px-1">
                                             <FaMoon className="grow" size="20px" />
                                             <SwitchItem

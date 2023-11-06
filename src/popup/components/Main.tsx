@@ -73,7 +73,12 @@ function Switches({ config }: { config: WebsiteConfig }) {
                 return (
                     <div className="flex items-center justify-around" key={item.category}>
                         {item.icon}
-                        <Tooltip message={item.tipText + (!item.configable ? " (disabled)" : "")}>
+                        <Tooltip
+                            message={
+                                item.tipText +
+                                (item.configable ? (item.category == "dark" ? " (EXPERIMENTAL)" : "") : " (disabled)")
+                            }
+                        >
                             <SwitchItem category={item.category} config={config} color={item.color} readonly={!item.configable} />
                         </Tooltip>
                     </div>
