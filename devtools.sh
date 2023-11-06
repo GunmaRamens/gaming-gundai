@@ -16,6 +16,14 @@ print_usage() {
     echo
 }
 
+# change_json [file] [key] [value]
+change_json() {
+    tmpjson="$(mktemp)"
+    cat "$1" > "$tmpjson"
+    jq "$2 |= \"$3\"" "$tmpjson" > "$1"
+    rm "$tmpjson"
+}
+
 init_command() {
     echo "Setup GitHooks" >&2
     git config core.hooksPath .githooks
@@ -50,16 +58,14 @@ bump_command() {
 
     # Change package.json
     echo "Bump version in package.json to $1" >&2
-    pnpm version "$1"
+    #pnpm version "$1" --no-git-tag-version --no-commit-hooks
+    change_json "$script_path/package.json" ".version" "$1"
 
     # Change manifest.json
 
     echo "Bump version in manifest.json to $1" >&2
     for manifest in "$script_path/public/manifest_chrome.json" "$script_path/public/manifest_firefox.json"; do
-        tmpjson="$(mktemp)"
-        cat "$manifest" > "$tmpjson"
-        jq ".version |= \"$1\"" "$tmpjson" > "$manifest"
-        rm "$tmpjson"
+        change_json "$manifest" ".version" "$1"
     done
 
     return 0
