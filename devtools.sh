@@ -68,6 +68,9 @@ bump_command() {
         change_json "$manifest" ".version" "$1"
     done
 
+    echo "Format files" >&2
+    pnpm run lint:fix
+
     return 0
 }
 
