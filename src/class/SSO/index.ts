@@ -19,18 +19,23 @@ SSO.options.isAuto2FAEnabled = async (): Promise<boolean> => {
     return isAuto2FAEnabled;
 };
 SSO.options.enableAuto2FA = () => {
-    // 二段階認証の自動送信
-    if (location.pathname == "/pub/allotplogin_force.cgi") {
-        // 2段階認証のページ
-        document.getElementById("password_input")?.addEventListener("input", (e) => {
-            const target = e.target;
-            if (!(target instanceof HTMLInputElement)) return;
-            if (target.value.length == 6) {
-                const form = document.getElementById("login");
-                if (form instanceof HTMLFormElement) form.submit();
+    SSO.storage.getBool("auto-2fa").then((isAuto2FAEnabled) => {
+        if (isAuto2FAEnabled) {
+            //console.log("enableAuto2FA");
+            // 二段階認証の自動送信
+            if (location.pathname == "/pub/allotplogin_force.cgi") {
+                // 2段階認証のページ
+                document.getElementById("password_input")?.addEventListener("input", (e) => {
+                    const target = e.target;
+                    if (!(target instanceof HTMLInputElement)) return;
+                    if (target.value.length == 6) {
+                        const form = document.getElementById("login");
+                        if (form instanceof HTMLFormElement) form.submit();
+                    }
+                });
             }
-        });
-    }
+        }
+    });
 };
 
 SSO.addLoader(SSO.options.enableAuto2FA);

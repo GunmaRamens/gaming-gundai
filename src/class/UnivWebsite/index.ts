@@ -55,7 +55,7 @@ export class UnivWebsite<T> {
         return isTrue(isHiddenEnabled);
     }
 
-    static async load(site: UnivWebsite<unknown>) {
+    static load(site: UnivWebsite<unknown>) {
         window.addEventListener("load", async () => {
             const isRainbowEnabled = await site.isRainbowEnabled();
             if (isRainbowEnabled) {
@@ -93,7 +93,10 @@ export class UnivWebsite<T> {
                 site.hidden.disable();
             }
 
-            site.#funcs.forEach((func) => func());
+            site.#funcs.forEach((func) => {
+                //console.log("func");
+                func();
+            });
         });
     }
 }
