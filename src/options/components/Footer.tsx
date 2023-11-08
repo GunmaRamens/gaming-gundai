@@ -4,12 +4,18 @@ import { Link } from "react-router-dom";
 
 export default function Footer({ className }: { className?: string }) {
     return (
-        <footer className={classNames(className, "bg-neutral")}>
-            <DaisyFooter className="mx-auto w-2/3 py-5">
+        <footer className={classNames(className, "bg-neutral", "mt-3")}>
+            <DaisyFooter className="mx-auto w-2/3 py-2">
                 <div>
                     <DaisyFooter.Title>Links</DaisyFooter.Title>
                     <FooterLink href="/about" isInternal>
                         About
+                    </FooterLink>
+                    <FooterLink href="/why" isInternal>
+                        Why I created it?
+                    </FooterLink>
+                    <FooterLink href="/wanted" isInternal>
+                        Wanted
                     </FooterLink>
                     <FooterLink href="https://chromewebstore.google.com/detail/gaming-gunma-university/fifbnlkbedonackjjbegkjmekchdcfhk">
                         Chrome Web Store

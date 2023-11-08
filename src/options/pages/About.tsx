@@ -10,6 +10,19 @@ export default function About() {
             <Heading.h2>筆者について</Heading.h2>
             <p>ゲーミングうんたらと言って虹色に光るのが大嫌いな、群馬大学情報学部所属の伊藤 駿です。</p>
             <p>普段はTwitterでパソコンをかたかた弄って遊んでいます。もし大学内でお会いした際には是非仲良くしてください。</p>
+            <Heading.h2>筆者の連絡先</Heading.h2>
+            <ul>
+                <li>
+                    <a href="https://twitter.com/Hayao0819" className="link-info link">
+                        Twitter
+                    </a>
+                </li>
+                <li>
+                    <a href="https://instagram.com/Hayao0819" className="link-info link">
+                        Instagram
+                    </a>
+                </li>
+            </ul>
         </>
     );
 }

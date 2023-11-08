@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { Tooltip } from "react-daisyui";
 import { FaGamepad, FaMoon } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import StorageTool from "@/class/StorageTool";
 import CopyTootrip from "@/components/CopyBtn";
@@ -75,6 +76,15 @@ export default function Top() {
                 <CopyTootrip copyText="shun819.mail@gmail.com" className="my-5">
                     <button className="btn bg-base-300">shun819.mail@gmail.com</button>
                 </CopyTootrip>
+            </ConfigSection>
+
+            <ConfigSection name="開発者募集">
+                <p>
+                    <Link to="/wanted" className="link-info link">
+                        こちら
+                    </Link>
+                    を御覧ください。
+                </p>
             </ConfigSection>
         </>
     );
