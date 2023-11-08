@@ -27,10 +27,10 @@ export default function Thanks() {
             <p>使用技術はTypeScriptとReact、TailwindCSSです。</p>
             <p>
                 興味のある方は
-                <a href="https://twitter.com/Hayao0819" target="_blank" rel="noreferrer">
-                    TwitterのDM
-                </a>
-                までご連絡ください。
+                <Link to="/wanted" className="link-info link">
+                    こちら
+                </Link>
+                をご覧ください。
             </p>
         </>
     );

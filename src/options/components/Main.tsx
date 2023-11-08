@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import About from "../pages/About";
 import Thanks from "../pages/Thanks";
 import Top from "../pages/Top";
+import Wanted from "../pages/Wanted";
 import Why from "../pages/Why";
 import NotFound from "./404";
 
@@ -24,6 +25,7 @@ export default function Main(props: { className?: string }) {
                 <Route path="/about" Component={About} />
                 <Route path="/why" Component={Why} />
                 <Route path="/thanks" Component={Thanks} />
+                <Route path="/wanted" Component={Wanted} />
                 <Route path="*" Component={NotFound} />
             </Routes>
         </main>

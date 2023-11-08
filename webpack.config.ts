@@ -3,10 +3,11 @@ import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import fs from "fs";
 import HtmlPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import path from "path";
-import TerserPlugin from "terser-webpack-plugin";
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
 import { Configuration, DefinePlugin } from "webpack";
+import RemoveEmptyScriptsPlugin from "webpack-remove-empty-scripts";
 
 const loadFilesInScripts = function () {
     const dir = path.join(__dirname, "src/scripts");
@@ -23,6 +24,7 @@ const loadFilesInScripts = function () {
 
 interface Env {
     browser?: "chrome" | "firefox";
+    stats?: Configuration["stats"];
     WEBPACK_BUILD: boolean;
     WEBPACK_BUNDLE: boolean;
 }
@@ -33,8 +35,6 @@ interface Argv {
 }
 
 module.exports = (env: Env, argv: Argv): Configuration => {
-    console.log("Build as " + argv.mode + " mode");
-
     if (env.browser === undefined) {
         throw new Error("Please set browser");
     }
@@ -43,6 +43,15 @@ module.exports = (env: Env, argv: Argv): Configuration => {
     const isProd = argv.mode === "production";
     const isChrome = env.browser === "chrome";
     const isFirefox = env.browser === "firefox";
+
+    if (!isDev && !isProd) {
+        console.warn(`Unknown mode: ${argv.mode}`);
+    }
+    if (!isChrome && !isFirefox) {
+        console.warn(`Unknown browser: ${env.browser}`);
+    }
+
+    console.log("Build as " + argv.mode + " mode");
 
     return {
         entry: {
@@ -77,7 +86,8 @@ module.exports = (env: Env, argv: Argv): Configuration => {
                 {
                     test: /\.(css|sass|scss|pcss)/,
                     use: [
-                        "style-loader",
+                        //"style-loader",
+                        MiniCssExtractPlugin.loader,
                         {
                             loader: "css-loader",
                             options: { url: false },
@@ -95,10 +105,12 @@ module.exports = (env: Env, argv: Argv): Configuration => {
         },
 
         optimization: {
-            minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+            minimizer: ["...", new CssMinimizerPlugin()],
         },
 
         plugins: [
+            new RemoveEmptyScriptsPlugin(),
+            new MiniCssExtractPlugin(),
             isProd
                 ? new DefinePlugin({
                       "process.env.NODE_ENV": JSON.stringify("production"),
@@ -117,9 +129,7 @@ module.exports = (env: Env, argv: Argv): Configuration => {
                         noErrorOnMissing: true,
                         globOptions: {
                             ignore: ["chrome", "firefox"].map((browser) => {
-                                const ignoreFile = path.posix.join(__dirname, `public/manifest_${browser}.json`);
-                                //console.log(ignoreFile);
-                                return ignoreFile;
+                                return `**/manifest_${browser}.json`;
                             }),
                         },
                     },
@@ -156,6 +166,8 @@ module.exports = (env: Env, argv: Argv): Configuration => {
             maxEntrypointSize: 2000000,
             maxAssetSize: 2000000,
         },
+
+        stats: env.stats ? env.stats : isProd ? "normal" : isDev ? "verbose" : "normal",
 
         devtool: isDev ? "source-map" : false,
     };
