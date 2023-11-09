@@ -56,5 +56,11 @@
             "css": ["common.css", "mylib.css"],
             "js": ["common.js", "mylib.js"]
         }
-    ]
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "gaming-gundai@hayao0819.com",
+            "strict_min_version": "42.0"
+        }
+    }
 }
