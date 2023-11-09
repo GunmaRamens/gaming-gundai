@@ -2,6 +2,7 @@ import { DetailedHTMLProps, useEffect, useState } from "react";
 import { Tooltip } from "react-daisyui";
 import { ComponentColor } from "react-daisyui/dist/types";
 import { FaGamepad, FaMoon } from "react-icons/fa";
+import browser from "webextension-polyfill";
 
 import { SwitchItem } from "../../components/SwitchItem";
 import { WebsiteConfig, Websites } from "../../data/websites";
@@ -13,8 +14,8 @@ export default function Main(props: MainProps) {
 
     useEffect(() => {
         try {
-            if (chrome.tabs === undefined) return;
-            chrome.tabs.query({ active: true, currentWindow: true }, (e) => {
+            if (browser.tabs === undefined) return;
+            browser.tabs.query({ active: true, currentWindow: true }).then((e) => {
                 const url = e[0].url;
                 if (url?.startsWith(`chrome-extension://${chrome.runtime.id}/options.html`)) {
                     setShowSwitchClass(false);
