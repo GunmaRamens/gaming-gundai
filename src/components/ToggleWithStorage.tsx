@@ -17,10 +17,9 @@ interface ToggleProps {
 
 export function ToggleWithStorage({ dataId, color, dataKey, readonly }: ToggleProps) {
     const [enabled, setEnabled] = useState(false);
+    const storage = new StorageTool(dataId);
 
     useEffect(() => {
-        const storage = StorageTool.getStorage(dataId);
-        if (storage === undefined) return;
         storage.get(dataKey).then((value) => {
             const istrue = IsTrue(value);
             if (istrue !== undefined) setEnabled(istrue);
@@ -31,8 +30,6 @@ export function ToggleWithStorage({ dataId, color, dataKey, readonly }: TogglePr
         if (readonly) return;
         return (e: React.ChangeEvent<HTMLInputElement>) => {
             setEnabled(e.target.checked);
-            const storage = StorageTool.getStorage(dataId);
-            if (storage === undefined) return;
             storage.set(dataKey, e.target.checked.toString());
             sendMsgToAllTab<string>("reload");
         };

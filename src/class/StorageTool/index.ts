@@ -4,7 +4,7 @@
 
 import Browser from "webextension-polyfill";
 
-import { WebsiteIds, Websites } from "@/data/websites";
+import { WebsiteIds } from "@/data/websites";
 
 import IsTrue from "../../utils/isTrue";
 
@@ -19,18 +19,13 @@ export type StorageKeys =
 export type StorageIds = WebsiteIds | "other";
 
 export default class StorageTool {
-    id: string;
-    constructor(id: string) {
+    id: StorageIds;
+    constructor(id: StorageIds) {
         this.id = id;
     }
 
     static getChromeStorage() {
         return Browser.storage ? Browser.storage.sync : null;
-    }
-
-    static getStorage(id: StorageIds) {
-        if (id == "other") return new StorageTool(id);
-        return Websites.get(id)?.class.storage;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
