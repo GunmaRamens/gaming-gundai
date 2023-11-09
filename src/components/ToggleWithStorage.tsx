@@ -4,23 +4,24 @@ import { useCallback, useEffect, useState } from "react";
 import { Toggle } from "react-daisyui";
 import { ComponentColor } from "react-daisyui/dist/types";
 
-import { WebSiteClasses } from "@/class";
-import { StorageKeys } from "@/class/StorageTool";
+import StorageTool, { StorageIds, StorageKeys } from "@/class/StorageTool";
 import IsTrue from "@/utils/isTrue";
 import { sendMsgToAllTab } from "@/utils/sendMsgToAllTab";
 
 interface ToggleProps {
-    section: string;
+    dataId: StorageIds;
     dataKey: StorageKeys;
     color?: ComponentColor;
     readonly?: boolean;
 }
 
-export function ToggleWithStorage({ section, color, dataKey, readonly }: ToggleProps) {
+export function ToggleWithStorage({ dataId, color, dataKey, readonly }: ToggleProps) {
     const [enabled, setEnabled] = useState(false);
 
     useEffect(() => {
-        WebSiteClasses[section].storage.get(dataKey).then((value) => {
+        const storage = StorageTool.getStorage(dataId);
+        if (storage === undefined) return;
+        storage.get(dataKey).then((value) => {
             const istrue = IsTrue(value);
             if (istrue !== undefined) setEnabled(istrue);
         });
@@ -30,7 +31,9 @@ export function ToggleWithStorage({ section, color, dataKey, readonly }: ToggleP
         if (readonly) return;
         return (e: React.ChangeEvent<HTMLInputElement>) => {
             setEnabled(e.target.checked);
-            WebSiteClasses[section].storage.set(dataKey, e.target.checked.toString());
+            const storage = StorageTool.getStorage(dataId);
+            if (storage === undefined) return;
+            storage.set(dataKey, e.target.checked.toString());
             sendMsgToAllTab<string>("reload");
         };
     }, []);

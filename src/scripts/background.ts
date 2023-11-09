@@ -13,3 +13,7 @@ browser.runtime.onInstalled.addListener(async () => {
         storage.set("installed", "true");
     });
 });
+
+browser.storage.onChanged.addListener((change) => {
+    console.log(change);
+});

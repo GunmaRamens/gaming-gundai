@@ -4,9 +4,19 @@
 
 import Browser from "webextension-polyfill";
 
+import { WebSiteClasses, WebsiteIds } from "@/data/websites";
+
 import IsTrue from "../../utils/isTrue";
 
-export type StorageKeys = "dark" | "rainbow" | "enabled-hidden" | "show-hidden-option" | "installed" | "auto-2fa";
+export type StorageKeys =
+    | "dark"
+    | "rainbow"
+    | "enabled-hidden"
+    | "show-hidden-option"
+    | "installed"
+    | "auto-2fa"
+    | "quick-switch";
+export type StorageIds = WebsiteIds | "other";
 
 export default class StorageTool {
     id: string;
@@ -16,6 +26,11 @@ export default class StorageTool {
 
     static getChromeStorage() {
         return Browser.storage ? Browser.storage.sync : null;
+    }
+
+    static getStorage(id: StorageIds) {
+        if (id == "other") return new StorageTool(id);
+        return WebSiteClasses.get(id)?.storage;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

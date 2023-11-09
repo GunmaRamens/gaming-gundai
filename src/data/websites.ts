@@ -1,11 +1,23 @@
+import { UnivWebsite } from "@/class";
+
 export interface WebsiteConfig {
     name: string;
-    id: string;
+    id: WebsiteIds;
     configable: {
         rainbow: boolean;
         dark: boolean;
     };
 }
+
+export type WebsiteIds = "kyomu" | "media" | "moodle" | "mylibrary" | "sso";
+
+export const WebSiteClasses: Map<WebsiteIds, UnivWebsite<unknown>> = new Map([
+    ["kyomu", new UnivWebsite<unknown>("kyomu")],
+    ["media", new UnivWebsite<unknown>("media")],
+    ["moodle", new UnivWebsite<unknown>("moodle")],
+    ["mylibrary", new UnivWebsite<unknown>("mylibrary")],
+    ["sso", new UnivWebsite<unknown>("sso")],
+]);
 
 export const Websites: WebsiteConfig[] = [
     {
