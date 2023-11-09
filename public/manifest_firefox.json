@@ -22,13 +22,13 @@
         "default_title": "Gaming Gunma University",
         "default_popup": "popup.html"
     },
+
     "options_ui": {
         "page": "options.html",
         "open_in_tab": true
     },
     "background": {
-        "service_worker": "background.js",
-        "type": "module"
+        "scripts": ["background.js"]
     },
     "content_scripts": [
         {
