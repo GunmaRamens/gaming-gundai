@@ -5,7 +5,7 @@ import { FaGamepad, FaMoon } from "react-icons/fa";
 import browser from "webextension-polyfill";
 
 import { SwitchItem } from "../../components/SwitchItem";
-import { WebsiteConfig, Websites } from "../../data/websites";
+import { WebsiteConfig, WebsitesList } from "../../data/websites";
 
 type MainProps = DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
@@ -28,9 +28,9 @@ export default function Main(props: MainProps) {
 
     const switches = (
         <div className="flex flex-wrap">
-            {Websites.map((config) => {
+            {WebsitesList.map((config) => {
                 return (
-                    <div className="m-2 flex w-36 min-w-fit flex-col rounded-lg bg-base-300 p-2" key={config.id}>
+                    <div className="m-2 flex w-36 min-w-fit flex-col rounded-lg bg-base-300 p-2" key={config.class.id}>
                         <p className="flex items-center justify-center">{config.name}</p>
                         <Switches config={config} />
                     </div>

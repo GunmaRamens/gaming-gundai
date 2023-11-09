@@ -4,7 +4,7 @@
 
 import Browser from "webextension-polyfill";
 
-import { WebSiteClasses, WebsiteIds } from "@/data/websites";
+import { WebsiteIds, Websites } from "@/data/websites";
 
 import IsTrue from "../../utils/isTrue";
 
@@ -30,7 +30,7 @@ export default class StorageTool {
 
     static getStorage(id: StorageIds) {
         if (id == "other") return new StorageTool(id);
-        return WebSiteClasses.get(id)?.storage;
+        return Websites.get(id)?.class.storage;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

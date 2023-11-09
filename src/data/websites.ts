@@ -1,8 +1,8 @@
-import { UnivWebsite } from "@/class";
+import { Kyomu, Media, Moodle, MyLibrary, SSO, UnivWebsite } from "@/class";
 
 export interface WebsiteConfig {
     name: string;
-    id: WebsiteIds;
+    class: UnivWebsite<unknown>;
     configable: {
         rainbow: boolean;
         dark: boolean;
@@ -11,53 +11,62 @@ export interface WebsiteConfig {
 
 export type WebsiteIds = "kyomu" | "media" | "moodle" | "mylibrary" | "sso";
 
-export const WebSiteClasses: Map<WebsiteIds, UnivWebsite<unknown>> = new Map([
-    ["kyomu", new UnivWebsite<unknown>("kyomu")],
-    ["media", new UnivWebsite<unknown>("media")],
-    ["moodle", new UnivWebsite<unknown>("moodle")],
-    ["mylibrary", new UnivWebsite<unknown>("mylibrary")],
-    ["sso", new UnivWebsite<unknown>("sso")],
+export const Websites: Map<WebsiteIds, WebsiteConfig> = new Map([
+    [
+        "moodle",
+        {
+            name: "Moodle",
+            class: Moodle,
+            configable: {
+                rainbow: true,
+                dark: true,
+            },
+        },
+    ],
+    [
+        "media",
+        {
+            name: "メディアセンター",
+            class: Media,
+            configable: {
+                rainbow: true,
+                dark: false,
+            },
+        },
+    ],
+    [
+        "kyomu",
+        {
+            name: "教務システム",
+            class: Kyomu,
+            configable: {
+                rainbow: true,
+                dark: true,
+            },
+        },
+    ],
+    [
+        "mylibrary",
+        {
+            name: "MyLibrary",
+            class: MyLibrary,
+            configable: {
+                rainbow: true,
+                dark: false,
+            },
+        },
+    ],
+    [
+        "sso",
+        {
+            name: "SSO",
+            class: SSO,
+            configable: {
+                rainbow: true,
+                dark: false,
+            },
+        },
+    ],
 ]);
 
-export const Websites: WebsiteConfig[] = [
-    {
-        name: "Moodle",
-        id: "moodle",
-        configable: {
-            rainbow: true,
-            dark: true,
-        },
-    },
-    {
-        name: "教務システム",
-        id: "kyomu",
-        configable: {
-            rainbow: true,
-            dark: true,
-        },
-    },
-    {
-        name: "メディアセンター",
-        id: "media",
-        configable: {
-            rainbow: true,
-            dark: false,
-        },
-    },
-    {
-        name: "MyLibrary",
-        id: "mylibrary",
-        configable: {
-            rainbow: true,
-            dark: false,
-        },
-    },
-    {
-        name: "SSO",
-        id: "sso",
-        configable: {
-            rainbow: true,
-            dark: false,
-        },
-    },
-];
+export const WebsitesList = Array.from(Websites.values());

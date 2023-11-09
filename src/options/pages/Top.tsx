@@ -17,9 +17,9 @@ export default function Top() {
         <>
             <ConfigSection name="Websites" desc="それぞれのウェブサイトで有効化する機能を設定できます">
                 <div className="flex flex-wrap items-center">
-                    {Websites.map((site) => {
+                    {Array.from(Websites.values()).map((site) => {
                         return (
-                            <div className="chiid:p-1 mx-4 my-2 flex w-60 justify-center child:grow" key={site.id}>
+                            <div className="chiid:p-1 mx-4 my-2 flex w-60 justify-center child:grow" key={site.class.id}>
                                 <p className="my-0 flex w-1/2 items-center justify-center rounded-l-lg bg-base-300 text-center">
                                     {site.name}
                                 </p>

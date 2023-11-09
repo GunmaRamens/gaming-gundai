@@ -17,5 +17,5 @@ export function SwitchItem({
     color?: ComponentColor;
     readonly?: boolean;
 }) {
-    return <ToggleWithStorage dataId={config.id} dataKey={category} color={color} readonly={readonly} />;
+    return <ToggleWithStorage dataId={config.class.id} dataKey={category} color={color} readonly={readonly} />;
 }
