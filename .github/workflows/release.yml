@@ -23,17 +23,27 @@ jobs:
               run: ./devtools.sh init
 
             - name: Build
-              run: pnpm run build-chrome
+              run: |
+                  pnpm run build-chrome
+                  pnpm run build-firefox
 
             - name: Compress files
               uses: vimtor/action-zip@v1.1
               with:
-                  files: dist/
-                  dest: gaming-gundai.zip
+                  files: dist/chrome
+                  dest: gaming-gundai-chrome.zip
+
+            - name: Compress files
+              uses: vimtor/action-zip@v1.1
+              with:
+                  files: dist/firefox
+                  dest: gaming-gundai-firefox.zip
 
             - name: Release
               uses: softprops/action-gh-release@v1
               if: startsWith(github.ref, 'refs/tags/')
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  files: gaming-gundai.zip
+                  files: |
+                      gaming-gundai-chrome.zip
+                      gaming-gundai-firefox.zip
