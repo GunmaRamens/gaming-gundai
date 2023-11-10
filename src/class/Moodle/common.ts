@@ -1,3 +1,5 @@
+import Browser from "webextension-polyfill";
+
 import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 
 export const injectLink = () => {
@@ -10,7 +12,7 @@ export const injectLink = () => {
 
 export const replaceLMSLogo = () => {
     document.querySelectorAll(".logo").forEach((e) => {
-        if (e.getAttribute("src")) e.setAttribute("src", chrome.runtime.getURL("assets/GULMS.png"));
+        if (e.getAttribute("src")) e.setAttribute("src", Browser.runtime.getURL("assets/GULMS.png"));
     });
 };
 

@@ -2,6 +2,8 @@
 // しかし今の日本では大学は高校の延長線上であり、学士を得るための場所と化している。
 // こういった人々の認識が変わって欲しいと日々願っている。
 
+import { WebsiteIds } from "@/data/websites";
+
 import isTrue from "../../utils/isTrue";
 import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApplicator";
 import StorageTool from "../StorageTool";
@@ -11,7 +13,7 @@ import StorageTool from "../StorageTool";
 // 型変数とoptionsプロパティによって任意の情報を追加できる
 export class UnivWebsite<T> {
     // 基本情報
-    id: string;
+    id: WebsiteIds;
 
     storage: StorageTool;
 
@@ -28,7 +30,7 @@ export class UnivWebsite<T> {
     }
 
     // コンストラクタ
-    constructor(id: string) {
+    constructor(id: WebsiteIds) {
         this.id = id;
         this.options = {} as T;
         this.#funcs = [];

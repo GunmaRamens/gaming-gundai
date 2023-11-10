@@ -1,20 +1,20 @@
+import browser from "webextension-polyfill";
 export const sendMsgToAllTab = <T>(msg: T) => {
     if (!isServiceWorkerScript()) return;
     const urls = getUrlsFromManifest();
-    chrome.tabs.query(
-        {
+    browser.tabs
+        .query({
             url: urls,
-        },
-        (tabs) => {
+        })
+        .then((tabs) => {
             tabs.forEach((tab) => {
                 try {
-                    chrome.tabs.sendMessage(tab.id!, msg);
+                    browser.tabs.sendMessage(tab.id!, msg);
                 } catch (e) {
                     console.error(e);
                 }
             });
-        },
-    );
+        });
 };
 
 export const isServiceWorkerScript = () => {
@@ -22,7 +22,7 @@ export const isServiceWorkerScript = () => {
 };
 
 export const getUrlsFromManifest = () => {
-    const manifest = chrome.runtime.getManifest();
+    const manifest = browser.runtime.getManifest();
     const content_scripts = manifest.content_scripts;
     if (!content_scripts) return [];
 

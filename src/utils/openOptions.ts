@@ -1,12 +1,13 @@
+import browser from "webextension-polyfill";
 type OpenOptionsArgs = "home" | "about" | "thanks" | undefined;
 
 export default function openOptions(args: OpenOptionsArgs) {
-    if (!chrome || !chrome.tabs) {
+    if (!browser || !browser.tabs) {
         console.error("chrome.tabs is not defined");
         return;
     }
 
-    if (!args || args === "home") return chrome.tabs.create({ url: "options.html" });
+    if (!args || args === "home") return browser.tabs.create({ url: "options.html" });
 
-    return chrome.tabs.create({ url: `options.html#/${args}` });
+    return browser.tabs.create({ url: `options.html#/${args}` });
 }

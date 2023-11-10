@@ -1,3 +1,5 @@
+import Browser from "webextension-polyfill";
+
 import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
 import { RainbowApplicator } from "../ClassApplicator";
 import { GundaiWebSite } from "../UnivWebsite";
@@ -26,7 +28,7 @@ const textAndBg = (rainbow: RainbowApplicator) => {
 };
 const replaceIconToGamimg = () => {
     document.querySelectorAll("img.userpicture").forEach((e) => {
-        if (e.getAttribute("src")) e.setAttribute("src", chrome.runtime.getURL("assets/partyparrot.gif"));
+        if (e.getAttribute("src")) e.setAttribute("src", Browser.runtime.getURL("assets/partyparrot.gif"));
     });
 };
 const replaceTextToGaimg = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {

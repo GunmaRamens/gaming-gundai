@@ -2,9 +2,10 @@ import { DetailedHTMLProps, useEffect, useState } from "react";
 import { Tooltip } from "react-daisyui";
 import { ComponentColor } from "react-daisyui/dist/types";
 import { FaGamepad, FaMoon } from "react-icons/fa";
+import browser from "webextension-polyfill";
 
 import { SwitchItem } from "../../components/SwitchItem";
-import { WebsiteConfig, Websites } from "../../data/websites";
+import { WebsiteConfig, WebsitesList } from "../../data/websites";
 
 type MainProps = DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
@@ -13,8 +14,8 @@ export default function Main(props: MainProps) {
 
     useEffect(() => {
         try {
-            if (chrome.tabs === undefined) return;
-            chrome.tabs.query({ active: true, currentWindow: true }, (e) => {
+            if (browser.tabs === undefined) return;
+            browser.tabs.query({ active: true, currentWindow: true }).then((e) => {
                 const url = e[0].url;
                 if (url?.startsWith(`chrome-extension://${chrome.runtime.id}/options.html`)) {
                     setShowSwitchClass(false);
@@ -27,9 +28,9 @@ export default function Main(props: MainProps) {
 
     const switches = (
         <div className="flex flex-wrap">
-            {Websites.map((config) => {
+            {WebsitesList.map((config) => {
                 return (
-                    <div className="m-2 flex w-36 min-w-fit flex-col rounded-lg bg-base-300 p-2" key={config.id}>
+                    <div className="m-2 flex w-36 min-w-fit flex-col rounded-lg bg-base-300 p-2" key={config.class.id}>
                         <p className="flex items-center justify-center">{config.name}</p>
                         <Switches config={config} />
                     </div>

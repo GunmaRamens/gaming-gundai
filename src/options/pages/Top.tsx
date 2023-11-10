@@ -17,9 +17,9 @@ export default function Top() {
         <>
             <ConfigSection name="Websites" desc="それぞれのウェブサイトで有効化する機能を設定できます">
                 <div className="flex flex-wrap items-center">
-                    {Websites.map((site) => {
+                    {Array.from(Websites.values()).map((site) => {
                         return (
-                            <div className="chiid:p-1 mx-4 my-2 flex w-60 justify-center child:grow" key={site.id}>
+                            <div className="chiid:p-1 mx-4 my-2 flex w-60 justify-center child:grow" key={site.class.id}>
                                 <p className="my-0 flex w-1/2 items-center justify-center rounded-l-lg bg-base-300 text-center">
                                     {site.name}
                                 </p>
@@ -56,18 +56,14 @@ export default function Top() {
 
             <HiddenConfigSection />
 
-            <ConfigSection
-                name="Quick Switch"
-                desc="有効化するとアイコンのクリックでオンオフを一括で設定します"
-                className="hidden"
-            >
+            <ConfigSection name="Quick Switch" desc="有効化するとアイコンのクリックでオンオフを一括で設定します">
                 <QuickSwitch className="child:m-2" />
             </ConfigSection>
 
             <ConfigSection name="SSO">
                 <div className="flex">
                     <p>二段階認証コードの自動送信</p>
-                    <ToggleWithStorage section="sso" dataKey="auto-2fa" />
+                    <ToggleWithStorage dataId="sso" dataKey="auto-2fa" />
                 </div>
             </ConfigSection>
 
@@ -113,9 +109,7 @@ function ConfigSection({
 function QuickSwitch({ className }: { className?: string }) {
     return (
         <div className={classNames(className, "my-5 flex")}>
-            <p>
-                <input type="checkbox" className="toggle toggle-info" />
-            </p>
+            <ToggleWithStorage dataId="other" dataKey="quick-switch" />
             <p>Quick Switch</p>
         </div>
     );

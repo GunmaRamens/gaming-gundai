@@ -61,7 +61,7 @@ module.exports = (env: Env, argv: Argv): Configuration => {
         },
 
         output: {
-            path: path.join(__dirname, "dist"),
+            path: path.join(__dirname, "dist", env.browser),
             clean: true,
             filename: "[name].js",
             chunkFilename: "[name].chunk.js",

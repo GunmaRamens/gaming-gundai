@@ -1,19 +1,31 @@
 // 最近が物忘れが激しい。どうしてだろうか。
 // 人間は嫌なことやつらいこと、思い出さないようなことはすぐに忘れるようにできているらしい。
-// となると、最近はつらいことが多いのかもしれない。例えばchrome.storage.sync.get()の返り値がany型であることとか。
+// なんか非同期処理が動かないとき闇雲にasync awaitをつけるのがつらい。
+
+import Browser from "webextension-polyfill";
+
+import { WebsiteIds } from "@/data/websites";
 
 import IsTrue from "../../utils/isTrue";
 
-export type StorageKeys = "dark" | "rainbow" | "enabled-hidden" | "show-hidden-option" | "installed" | "auto-2fa";
+export type StorageKeys =
+    | "dark"
+    | "rainbow"
+    | "enabled-hidden"
+    | "show-hidden-option"
+    | "installed"
+    | "auto-2fa"
+    | "quick-switch";
+export type StorageIds = WebsiteIds | "other";
 
 export default class StorageTool {
-    id: string;
-    constructor(id: string) {
+    id: StorageIds;
+    constructor(id: StorageIds) {
         this.id = id;
     }
 
     static getChromeStorage() {
-        return chrome.storage ? chrome.storage.sync : null;
+        return Browser.storage ? Browser.storage.sync : null;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
