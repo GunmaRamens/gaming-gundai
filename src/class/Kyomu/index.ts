@@ -49,7 +49,7 @@ Kyomu.rainbow.enable = function () {
             '<tr><td align="center">ゲーミング群馬大学についての問い合わせは<a href="https://twitter.com/Hayao0819" style="font-size: small;">@Hayao0819</a>までお願いします。</td></tr>';
         document.querySelectorAll(".footerTable").forEach((e) => {
             const tbody = e.querySelector("tbody");
-            if (tbody) tbody.innerHTML += linkHTML;
+            if (tbody) tbody.innerText += linkHTML;
         });
     }
 
