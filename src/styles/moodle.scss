@@ -56,7 +56,8 @@
     /* マイコース */
     .course-info-container,
     .card.dashboard-card,
-    .card.dashboard-card div {
+    .card.dashboard-card div,
+    .activity-dates {
         @extend .bg-neutral;
         @extend .text-content;
     }
@@ -64,9 +65,20 @@
     .block .block-cards .btn-link {
         @extend .text-content;
     }
+    .activity-item:not(.activityinline) {
+        border: 1px solid var(--neutral) !important;
+    }
+    .course-section {
+        border-bottom: 1px solid var(--neutral) !important;
+    }
 
+    .dropdown-menu,
     .dropdown-menu .dropdown-item {
         @extend .text-content;
+        @extend .bg-base;
+    }
+    .dropdown-divider {
+        border-top: 1px solid var(--neutral) !important;
     }
 
     .block .block-cards .btn.btn-link.btn-icon:hover,
@@ -143,6 +155,10 @@
         @extend .text-content;
     }
 
+    .navbar.fixed-top {
+        border-bottom: none;
+    }
+
     /* ユーザーアイコン内のメニュー */
     #user-action-menu {
         @extend .bg-neutral;
@@ -195,6 +211,18 @@
         .nav-tabs .nav-item.show .nav-link {
             @extend .text-accent;
         }
+    }
+
+    // collapseアイコン
+    .btn.btn-icon:hover,
+    .btn.btn-icon:focus {
+        background-color: transparent !important;
+    }
+
+    // 受講しているコース
+    .generaltable th,
+    .generaltable td {
+        border-top: 1px solid var(--neutral) !important;
     }
 }
 
