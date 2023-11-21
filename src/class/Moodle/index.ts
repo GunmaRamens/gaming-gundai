@@ -12,6 +12,7 @@ export default Moodle;
 
 Moodle.options = {
     headerText: " Gaming Edition 🎮",
+    linkInjected: false,
 };
 
 Moodle.rainbow.enable = enableRainbow;

@@ -3,18 +3,22 @@ import Browser from "webextension-polyfill";
 import { createElem } from "@/utils/createElem";
 
 import changeQueryInnerHTML from "../../utils/changeQueryInnerHTML";
+import Moodle from ".";
 
-export const injectLink = () => {
-    console.log("injectLink");
+export const injectLink = async () => {
+    if (Moodle.options.linkInjected) return;
     const supportSection = document.querySelector(".footer-support-link");
     if (supportSection) {
         const link = createElem(
             "a",
             { href: "https://twitter.com/Hayao0819", class: "rainbow-text" },
-            createElem("span", {}, "Gaming Edition開発者に連絡する"),
+            (await Moodle.isRainbowEnabled())
+                ? createElem("span", {}, "Gaming Edition開発者に連絡する")
+                : createElem("span", {}, "ダークモード開発者に連絡する"),
             createElem("i", { class: "icon fa fa-external-link fa-fw ml-1", "aria-hidden": "true" }),
         );
         supportSection.appendChild(link);
+        Moodle.options.linkInjected = true;
     }
 
     const userMenu = document.getElementById("usermenu-carousel");
