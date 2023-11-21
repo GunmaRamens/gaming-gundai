@@ -43,9 +43,12 @@
         background-color: var(--base) !important;
     }
 
+    // フォーム
     .list-group-item,
-    .form-control {
+    .form-control,
+    .custom-select {
         @extend .bg-base;
+        @extend .text-content;
     }
 
     /* カード */
@@ -223,6 +226,21 @@
     .generaltable th,
     .generaltable td {
         border-top: 1px solid var(--neutral) !important;
+    }
+
+    /* テキストエディタ */
+    .editor_atto_toolbar,
+    .editor_atto_toolbar button,
+    .editor_atto_toolbar button .icon {
+        @extend .bg-neutral;
+        @extend .text-content;
+    }
+    .editor_atto_toolbar button,
+    .editor_atto_toolbar .atto_group {
+        border: none;
+    }
+    .editor_atto_toolbar .menuplaceholder {
+        display: none;
     }
 }
 
