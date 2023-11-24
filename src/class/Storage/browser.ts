@@ -4,21 +4,11 @@
 
 import Browser from "webextension-polyfill";
 
-import { WebsiteIds } from "@/data/websites";
-
 import IsTrue from "../../utils/isTrue";
+import { StorageTool } from "..";
+import { StorageIds, StorageKeys } from "./type";
 
-export type StorageKeys =
-    | "dark"
-    | "rainbow"
-    | "enabled-hidden"
-    | "show-hidden-option"
-    | "installed"
-    | "auto-2fa"
-    | "quick-switch";
-export type StorageIds = WebsiteIds | "other";
-
-export default class StorageTool {
+export default class BrowserStorage implements StorageTool {
     id: StorageIds;
     constructor(id: StorageIds) {
         this.id = id;

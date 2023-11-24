@@ -6,7 +6,7 @@ import { WebsiteIds } from "@/data/websites";
 
 import isTrue from "../../utils/isTrue";
 import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApplicator";
-import StorageTool from "../StorageTool";
+import StorageTool from "../Storage/browser";
 //import Storage from "../../utils/Storage";
 
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス

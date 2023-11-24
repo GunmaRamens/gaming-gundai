@@ -4,7 +4,8 @@ import { Tooltip } from "react-daisyui";
 import { FaGamepad, FaMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import StorageTool from "@/class/StorageTool";
+import StorageTool from "@/class/Storage/browser";
+import BrowserStorage from "@/class/Storage/browser";
 import CopyTootrip from "@/components/CopyBtn";
 import Heading from "@/components/Heading";
 import { SwitchItem } from "@/components/SwitchItem";
@@ -63,7 +64,7 @@ export default function Top() {
             <ConfigSection name="SSO">
                 <div className="flex">
                     <p>二段階認証コードの自動送信</p>
-                    <ToggleWithStorage dataId="sso" dataKey="auto-2fa" />
+                    <ToggleWithStorage storage={new StorageTool("sso")} dataKey="auto-2fa" />
                 </div>
             </ConfigSection>
 
@@ -109,7 +110,7 @@ function ConfigSection({
 function QuickSwitch({ className }: { className?: string }) {
     return (
         <div className={classNames(className, "my-5 flex")}>
-            <ToggleWithStorage dataId="other" dataKey="quick-switch" />
+            <ToggleWithStorage storage={new BrowserStorage("other")} dataKey="quick-switch" />
             <p>Quick Switch</p>
         </div>
     );
