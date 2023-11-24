@@ -5,7 +5,7 @@
 import Browser from "webextension-polyfill";
 
 import IsTrue from "../../utils/isTrue";
-import { StorageTool } from "..";
+import { StorageTool } from "./storage";
 import { StorageIds, StorageKeys } from "./type";
 
 export default class BrowserStorage implements StorageTool {
@@ -21,7 +21,7 @@ export default class BrowserStorage implements StorageTool {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async set(key: StorageKeys, value: any) {
         let newData = { [key]: value };
-        const storage = StorageTool.getChromeStorage();
+        const storage = BrowserStorage.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
             return;
@@ -33,7 +33,7 @@ export default class BrowserStorage implements StorageTool {
         storage.set({ [this.id]: newData });
     }
     async getBool(key: StorageKeys) {
-        const storage = StorageTool.getChromeStorage();
+        const storage = BrowserStorage.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
             return;
@@ -44,7 +44,7 @@ export default class BrowserStorage implements StorageTool {
         return IsTrue(rawdata);
     }
     async get(key: StorageKeys) {
-        const storage = StorageTool.getChromeStorage();
+        const storage = BrowserStorage.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
             return;
