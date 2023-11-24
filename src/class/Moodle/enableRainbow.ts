@@ -31,6 +31,8 @@ const replaceIconToGamimg = () => {
         if (e.getAttribute("src")) e.setAttribute("src", Browser.runtime.getURL("assets/partyparrot.gif"));
     });
 };
+
+/* eslint-disable no-unsanitized/property */
 const replaceTextToGaimg = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
     const headerText = moodle.options.headerText;
 
@@ -43,6 +45,7 @@ const replaceTextToGaimg = (moodle: GundaiWebSite<MoodleAdditionalInfo>) => {
 
     changeQueryInnerHTML("#instance-320-header", "現在のプレイ人数");
 };
+/* eslint-enable no-unsanitized/property */
 
 const headerHover = () => {
     // メニューバーでホバー時にclassを追加

@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "ゲーミング群馬大学 -Gaming Gunma University-",
-    "version": "2.1.1",
+    "version": "2.2.1",
     "description": "辺境の地にある群馬大学のウェブサイトをゲーミングでエキサイティングにします",
     "author": "shun819.mail@gmail.com",
     "permissions": ["storage", "tabs"],
@@ -59,7 +59,7 @@
     "browser_specific_settings": {
         "gecko": {
             "id": "gaming-gundai@hayao0819.com",
-            "strict_min_version": "42.0"
+            "strict_min_version": "109.0"
         }
     }
 }

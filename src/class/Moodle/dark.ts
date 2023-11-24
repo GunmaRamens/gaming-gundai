@@ -1,8 +1,9 @@
 import { DarkApplicator } from "../ClassApplicator";
 import { Moodle } from ".";
-import { replaceLMSLogo } from "./common";
+import { injectLink, replaceLMSLogo } from "./common";
 
 export default async function enableDark(this: DarkApplicator) {
+    injectLink();
     // 画像差し替え
     replaceLMSLogo();
 

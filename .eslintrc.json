@@ -13,7 +13,13 @@
     "parserOptions": {
         "sourceType": "module"
     },
-    "plugins": ["tailwindcss", "unused-imports", "prettier", "simple-import-sort"],
+    "root": true,
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "plugins": ["tailwindcss", "unused-imports", "prettier", "simple-import-sort", "no-unsanitized"],
     "rules": {
         "simple-import-sort/imports": "warn",
         "simple-import-sort/exports": "warn",
@@ -25,13 +31,9 @@
             {
                 "whitelist": ["rainbow\\-bg", "rainbow\\-text", "rainbow\\-bg\\-shadow", "rainbow\\-text\\-shadow"]
             }
-        ]
-    },
-    "root": true,
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
+        ],
+        "no-unsanitized/method": "warn",
+        "no-unsanitized/property": "warn"
     },
     "overrides": [
         {

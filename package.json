@@ -2,7 +2,7 @@
     "name": "gunma-univ-gaming-edition",
     "description": "The browser extension of Gunma University Gaming Edition",
     "license": "MIT",
-    "version": "2.1.1",
+    "version": "2.2.1",
     "scripts": {
         "build": "pnpm run build-chrome",
         "build:dev": "pnpm run build-chrome:dev",
@@ -44,6 +44,7 @@
         "daisyui": "^3.9.4",
         "eslint": "^8.53.0",
         "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-no-unsanitized": "^4.0.2",
         "eslint-plugin-prettier": "^5.0.1",
         "eslint-plugin-react": "^7.33.2",
         "eslint-plugin-simple-import-sort": "^10.0.0",
