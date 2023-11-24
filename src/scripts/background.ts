@@ -3,6 +3,7 @@ import browser from "webextension-polyfill";
 import StorageTool from "@/class/StorageTool";
 import isTrue from "@/utils/isTrue";
 import OpenOptions from "@/utils/openOptions";
+import { disablePopup, enablePopup } from "@/utils/popupControl";
 
 browser.runtime.onInstalled.addListener(async () => {
     const storage = new StorageTool("other");
@@ -15,5 +16,12 @@ browser.runtime.onInstalled.addListener(async () => {
 });
 
 browser.storage.onChanged.addListener((change) => {
-    console.log(change);
+    if (Object.keys(change).includes("other")) {
+        const quickSwitchEnabled = isTrue(change.other.newValue["quick-switch"]);
+        if (quickSwitchEnabled) {
+            disablePopup();
+        } else {
+            enablePopup();
+        }
+    }
 });
