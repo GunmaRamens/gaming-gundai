@@ -55,4 +55,23 @@ export default class BrowserStorage implements StorageTool {
         if (rawdata === undefined) return undefined;
         return rawdata[key];
     }
+
+    async toggle(key: StorageKeys) {
+        const storage = BrowserStorage.getChromeStorage();
+        if (!storage) {
+            console.error("Storage is not supported");
+            return;
+        }
+
+        const rawdata = await this.getBool(key);
+
+        if (rawdata === undefined) return;
+
+        if (key == "dark") {
+            console.log(this.id);
+            console.log(typeof rawdata + " " + rawdata);
+            console.log(`Toggle ${key} to ${!rawdata}`);
+        }
+        await this.set(key, !rawdata ? "true" : "false");
+    }
 }

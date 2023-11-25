@@ -1,11 +1,27 @@
 import { Storage } from "webextension-polyfill";
 import browser from "webextension-polyfill";
 
+// クイックスイッチの有効化
+import { WebsitesList } from "@/data/websites";
 import isTrue from "@/utils/isTrue";
 import * as PopupUtils from "@/utils/popupControl";
-import { toggleAll } from "@/utils/toggleAll";
+import { sendMsgToAllTab } from "@/utils/sendMsgToAllTab";
 
-// クイックスイッチの有効化
+const toggleAll = () => {
+    console.log("toggleAll");
+    WebsitesList.forEach((website) => {
+        if (website.configable.dark) {
+            // Toggle dark mode
+            website.class.storage.toggle("dark");
+        }
+        if (website.configable.rainbow) {
+            // Toggle rainbow mode
+            website.class.storage.toggle("rainbow");
+        }
+        sendMsgToAllTab("reload");
+    });
+};
+
 const enableQuickSwitch = () => {
     PopupUtils.disablePopup();
     browser.action.onClicked.addListener(toggleAll);
