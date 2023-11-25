@@ -1,6 +1,6 @@
 import browser from "webextension-polyfill";
 
-import StorageTool from "@/class/StorageTool";
+import StorageTool from "@/class/Storage/browser";
 import isTrue from "@/utils/isTrue";
 import OpenOptions from "@/utils/openOptions";
 import { disablePopup, enablePopup } from "@/utils/popupControl";

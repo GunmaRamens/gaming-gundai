@@ -6,7 +6,7 @@ import { WebsiteIds } from "@/data/websites";
 
 import isTrue from "../../utils/isTrue";
 import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApplicator";
-import StorageTool from "../StorageTool";
+import BrowserStorage from "../Storage/browser";
 //import Storage from "../../utils/Storage";
 
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
@@ -15,7 +15,7 @@ export class UnivWebsite<T> {
     // 基本情報
     id: WebsiteIds;
 
-    storage: StorageTool;
+    storage: BrowserStorage;
 
     // Applicator
     rainbow: RainbowApplicator;
@@ -34,7 +34,7 @@ export class UnivWebsite<T> {
         this.id = id;
         this.options = {} as T;
         this.#funcs = [];
-        this.storage = new StorageTool(id);
+        this.storage = new BrowserStorage(id);
 
         this.rainbow = new RainbowApplicator();
         this.dark = new DarkApplicator();
@@ -52,7 +52,7 @@ export class UnivWebsite<T> {
     }
 
     async isHiddenEnabled() {
-        const otherStorage = new StorageTool("other");
+        const otherStorage = new BrowserStorage("other");
         const isHiddenEnabled = await otherStorage.getBool("enabled-hidden");
         return isTrue(isHiddenEnabled);
     }
@@ -84,7 +84,7 @@ export class UnivWebsite<T> {
             }
 
             const isHiddenEnabled = await site.isHiddenEnabled();
-            const otherStorage = new StorageTool("other");
+            const otherStorage = new BrowserStorage("other");
             if (isHiddenEnabled) {
                 document.documentElement.dataset.gaming_gundai_hidden = "true";
                 otherStorage.set("enabled-hidden", "true");
