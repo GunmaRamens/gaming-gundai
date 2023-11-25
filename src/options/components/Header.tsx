@@ -2,7 +2,7 @@ import { Menu, Navbar } from "react-daisyui";
 import { FaCog, FaGithub, FaInfo, FaTwitter } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
-import StorageTool from "../../class/StorageTool";
+import StorageTool from "../../class/Storage/browser";
 
 export default function Header({ className }: { className?: string }) {
     return (
