@@ -15,7 +15,7 @@ export default class BrowserStorage implements StorageTool {
     }
 
     static getChromeStorage() {
-        return Browser.storage ? Browser.storage.sync : null;
+        return Browser.storage ? Browser.storage.local : null;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
