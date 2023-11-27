@@ -98,7 +98,7 @@ export class UnivWebsite<T> {
                 site.hidden.enable();
             } else {
                 document.documentElement.dataset.gaming_gundai_hidden = "false";
-                site.storage.set("enabled-hidden", "false");
+                otherStorage.set("enabled-hidden", "false");
                 site.hidden.disable();
             }
 
