@@ -4,6 +4,7 @@ import "@/styles/gaming.scss";
 
 import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router-dom";
+import Browser from "webextension-polyfill";
 
 import Layout from "./components/Layout";
 
@@ -16,7 +17,6 @@ function Options() {
 }
 
 //window.onload = () =>
-/*
 Browser.runtime.onMessage.addListener((message) => {
     console.log("message", message);
     if (message === "reload") {
@@ -24,7 +24,6 @@ Browser.runtime.onMessage.addListener((message) => {
     }
     //return true;
 });
-*/
 
 const rootElement = document.getElementById("options-root");
 if (rootElement) {
