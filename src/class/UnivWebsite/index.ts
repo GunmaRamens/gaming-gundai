@@ -24,6 +24,8 @@ export class UnivWebsite<T> {
 
     // 追加情報
     options: T; // 型変数使うとかっこいいよね
+
+    // load時に実行する関数
     #funcs: (() => void)[];
     addLoader(func: () => void) {
         this.#funcs.push(func);
@@ -39,6 +41,11 @@ export class UnivWebsite<T> {
         this.rainbow = new RainbowApplicator();
         this.dark = new DarkApplicator();
         this.hidden = new HiddenApplicator();
+    }
+
+    async initilizeWebsiteDb() {
+        await this.storage.set("rainbow", "false");
+        await this.storage.set("dark", "false");
     }
 
     async isRainbowEnabled() {

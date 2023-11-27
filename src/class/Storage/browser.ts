@@ -15,7 +15,7 @@ export default class BrowserStorage implements StorageTool {
     }
 
     static getChromeStorage() {
-        return Browser.storage ? Browser.storage.sync : null;
+        return Browser.storage ? Browser.storage.local : null;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -54,5 +54,19 @@ export default class BrowserStorage implements StorageTool {
 
         if (rawdata === undefined) return undefined;
         return rawdata[key];
+    }
+
+    async toggle(key: StorageKeys) {
+        const storage = BrowserStorage.getChromeStorage();
+        if (!storage) {
+            console.error("Storage is not supported");
+            return;
+        }
+
+        const rawdata = await this.getBool(key);
+
+        if (rawdata === undefined) return;
+
+        await this.set(key, !rawdata ? "true" : "false");
     }
 }
