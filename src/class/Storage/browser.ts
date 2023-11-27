@@ -67,11 +67,6 @@ export default class BrowserStorage implements StorageTool {
 
         if (rawdata === undefined) return;
 
-        if (key == "dark") {
-            console.log(this.id);
-            console.log(typeof rawdata + " " + rawdata);
-            console.log(`Toggle ${key} to ${!rawdata}`);
-        }
         await this.set(key, !rawdata ? "true" : "false");
     }
 }

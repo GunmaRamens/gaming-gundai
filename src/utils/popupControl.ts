@@ -2,7 +2,7 @@ import Browser from "webextension-polyfill";
 
 export const disablePopup = () => {
     //Browser.browserAction.setPopup({ popup: "" });
-    console.log("disablePopup");
+    //console.log("disablePopup");
     Browser.action.setPopup({ popup: "" });
 };
 

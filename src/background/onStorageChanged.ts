@@ -8,7 +8,6 @@ import * as PopupUtils from "@/utils/popupControl";
 import { sendMsgToAllTab } from "@/utils/sendMsgToAllTab";
 
 const toggleAll = () => {
-    console.log("toggleAll");
     for (const website of WebsitesList) {
         (async () => {
             if (website.configable.dark) {
