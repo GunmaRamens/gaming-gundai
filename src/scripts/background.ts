@@ -8,3 +8,5 @@ browser.runtime.onInstalled.addListener(async () => {
 });
 
 browser.storage.onChanged.addListener(Background.onStorageChanged);
+browser.runtime.onStartup.addListener(Background.onStartup);
+browser.action.onClicked.addListener(Background.onIconClicked);
