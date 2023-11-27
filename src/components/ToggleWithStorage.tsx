@@ -20,7 +20,7 @@ export function ToggleWithStorage({ storage, color, dataKey, readonly }: ToggleP
     const [enabled, setEnabled] = useState(false);
 
     useEffect(() => {
-        console.log("render ToggleWithStorage");
+        //console.log("render ToggleWithStorage");
         storage.get(dataKey).then((value) => {
             const istrue = IsTrue(value);
             if (istrue !== undefined) setEnabled(istrue);

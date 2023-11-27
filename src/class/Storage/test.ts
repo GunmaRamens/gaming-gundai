@@ -21,4 +21,8 @@ export class TestStorage implements StorageTool {
         console.log(`Get ${key}`);
         return true;
     }
+
+    async toggle(key: string) {
+        console.log(`Toggle ${key}`);
+    }
 }
