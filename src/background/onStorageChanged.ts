@@ -9,17 +9,20 @@ import { sendMsgToAllTab } from "@/utils/sendMsgToAllTab";
 
 const toggleAll = () => {
     console.log("toggleAll");
-    WebsitesList.forEach((website) => {
-        if (website.configable.dark) {
-            // Toggle dark mode
-            website.class.storage.toggle("dark");
-        }
-        if (website.configable.rainbow) {
-            // Toggle rainbow mode
-            website.class.storage.toggle("rainbow");
-        }
-        sendMsgToAllTab("reload");
-    });
+    for (const website of WebsitesList) {
+        (async () => {
+            if (website.configable.dark) {
+                // Toggle dark mode
+                await website.class.storage.toggle("dark");
+            }
+            if (website.configable.rainbow) {
+                // Toggle rainbow mode
+                await website.class.storage.toggle("rainbow");
+            }
+        })();
+    }
+
+    sendMsgToAllTab("reload");
 };
 
 const enableQuickSwitch = () => {
