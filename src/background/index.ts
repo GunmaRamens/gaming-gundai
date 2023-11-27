@@ -1,2 +1,2 @@
-export { default as onInstalled } from "./oninstalled";
-export { default as onStorageChanged } from "./onstoragechanged";
+export { default as onInstalled } from "./onInstalled";
+export { default as onStorageChanged } from "./onStorageChanged";
