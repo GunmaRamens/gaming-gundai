@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import Heading from "../../components/Heading";
+import Heading from "../../../lib/components/Heading";
 
 export default function Thanks() {
     return (

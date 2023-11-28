@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import Heading from "../../components/Heading";
+import Heading from "../../../lib/components/Heading";
 
 export default function Why() {
     const paragraphStyle = classNames("indent-4", "leading-10");

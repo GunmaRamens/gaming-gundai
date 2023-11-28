@@ -4,8 +4,8 @@ import { ComponentColor } from "react-daisyui/dist/types";
 import { FaGamepad, FaMoon } from "react-icons/fa";
 import browser from "webextension-polyfill";
 
-import { SwitchItem } from "../../components/SwitchItem";
-import { WebsiteConfig, WebsitesList } from "../../data/websites";
+import { SwitchItem } from "../../../lib/components/SwitchItem";
+import { WebsiteConfig, WebsitesList } from "../../../lib/data/websites";
 
 type MainProps = DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
