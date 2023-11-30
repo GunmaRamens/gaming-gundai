@@ -143,8 +143,8 @@ module.exports = (env: Env, argv: Argv): Configuration => {
                         from: isChrome
                             ? "./public/manifest_chrome.json"
                             : isFirefox
-                            ? "./public/manifest_firefox.json"
-                            : "./public/manifest_chrome.json",
+                              ? "./public/manifest_firefox.json"
+                              : "./public/manifest_chrome.json",
                         to: "./manifest.json",
                         priority: 1,
                     },
