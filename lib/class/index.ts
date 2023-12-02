@@ -5,5 +5,5 @@ export { Media } from "./Media";
 export { Moodle } from "./Moodle";
 export { MyLibrary } from "./MyLibrary";
 export { SSO } from "./SSO";
-export { default as StorageTool } from "./Storage/browser";
+export { default as StorageTool } from "./Storage/storage";
 export { GundaiWebSite, UnivWebsite } from "./UnivWebsite";

@@ -1,5 +1,5 @@
 import "@/styles/kyomu.scss";
 
-import { Kyomu, UnivWebsite } from "../../lib/class";
+import { Kyomu } from "../../lib/class";
 
-UnivWebsite.load(Kyomu);
+Kyomu.load();

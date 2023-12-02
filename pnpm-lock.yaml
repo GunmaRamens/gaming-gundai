@@ -26,6 +26,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.18.0
     version: 6.18.0(react-dom@18.2.0)(react@18.2.0)
+  webext-storage:
+    specifier: ^1.2.2
+    version: 1.2.2
 
 devDependencies:
   '@babel/core':
@@ -6563,6 +6566,17 @@ packages:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
     dev: true
+
+  /webext-polyfill-kinda@1.0.2:
+    resolution: {integrity: sha512-rqQUKeBTOicej0tjDJWDQlOTnDcm9yYJTzgI+7rMdyYV4QHmYMRm+yjkcVgECkg/Wu9MboZ4lYeBPdp1Ep9WgQ==}
+    dev: false
+
+  /webext-storage@1.2.2:
+    resolution: {integrity: sha512-544gs8/iyoXR+mR/rJpt+Pkl3h1SgrLBOvNWr2uu7VPtRrhiHZWGH4Po9GAKtswN0RBSsx2tRKnBtxFskBILgw==}
+    engines: {node: '>=20'}
+    dependencies:
+      webext-polyfill-kinda: 1.0.2
+    dev: false
 
   /webextension-polyfill@0.10.0:
     resolution: {integrity: sha512-c5s35LgVa5tFaHhrZDnr3FpQpjj1BB+RXhLTYUxGqBVN460HkbM8TBtEqdXWbpTKfzwCcjAZVF7zXCYSKtcp9g==}

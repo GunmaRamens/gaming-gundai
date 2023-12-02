@@ -1,5 +1,5 @@
 import "@/styles/sso.scss";
 
-import { SSO, UnivWebsite } from "../../lib/class";
+import { SSO } from "../../lib/class";
 
-UnivWebsite.load(SSO);
+SSO.load();

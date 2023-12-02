@@ -2,8 +2,6 @@
 
 import { ComponentColor } from "react-daisyui/dist/types";
 
-import BrowserStorage from "@/class/Storage/browser";
-
 import { WebsiteConfig } from "../data/websites";
 import { ToggleWithStorage } from "./ToggleWithStorage";
 import { Category } from "./type";
@@ -19,7 +17,5 @@ export function SwitchItem({
     color?: ComponentColor;
     readonly?: boolean;
 }) {
-    return (
-        <ToggleWithStorage storage={new BrowserStorage(config.class.id)} dataKey={category} color={color} readonly={readonly} />
-    );
+    return <ToggleWithStorage storage={config.class.storage} dataKey={category} color={color} readonly={readonly} />;
 }

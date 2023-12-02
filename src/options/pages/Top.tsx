@@ -4,12 +4,11 @@ import { Tooltip } from "react-daisyui";
 import { FaGamepad, FaMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import StorageTool from "@/class/Storage/browser";
-import BrowserStorage from "@/class/Storage/browser";
+import { OtherStorage } from "@/class/Storage/other";
 import CopyTootrip from "@/components/CopyBtn";
 import Heading from "@/components/Heading";
 import { SwitchItem } from "@/components/SwitchItem";
-import { ToggleWithStorage } from "@/components/ToggleWithStorage";
+import { ToggleWithOtherStorage } from "@/components/ToggleWithStorage";
 import { Websites } from "@/data/websites";
 import IsTrue from "@/utils/isTrue";
 
@@ -64,7 +63,7 @@ export default function Top() {
             <ConfigSection name="SSO">
                 <div className="flex">
                     <p>二段階認証コードの自動送信</p>
-                    <ToggleWithStorage storage={new StorageTool("sso")} dataKey="auto-2fa" />
+                    <ToggleWithOtherStorage dataKey="auto-2fa" />
                 </div>
             </ConfigSection>
 
@@ -110,7 +109,7 @@ function ConfigSection({
 function QuickSwitch({ className }: { className?: string }) {
     return (
         <div className={classNames(className, "my-5 flex")}>
-            <ToggleWithStorage storage={new BrowserStorage("other")} dataKey="quick-switch" />
+            <ToggleWithOtherStorage dataKey="quick-switch" />
             <p>Quick Switch</p>
         </div>
     );
@@ -123,19 +122,17 @@ function HiddenConfigSection() {
     const [enabledHidden, setEnabledHidden] = useState(false);
 
     const switchShowOrHidden = (visibility: boolean) => {
-        const storage = new StorageTool("other");
         if (visibility) {
             setShowHiddenOption(true);
-            storage.set("show-hidden-option", "true");
+            OtherStorage.set({ "show-hidden-option": true });
         } else {
             setShowHiddenOption(false);
-            storage.set("show-hidden-option", "false");
+            OtherStorage.set({ "show-hidden-option": false });
         }
     };
 
     useEffect(() => {
-        const storage = new StorageTool("other");
-        storage.get("show-hidden-option").then((res): void => {
+        OtherStorage.get("show-hidden-option").then((res): void => {
             let v = IsTrue(res);
             if (v == undefined) v = false;
             switchShowOrHidden(v);
@@ -143,20 +140,18 @@ function HiddenConfigSection() {
     }, []);
 
     useEffect(() => {
-        const storage = new StorageTool("other");
-        storage.get("enabled-hidden").then((res): void => {
+        OtherStorage.get("enabled-hidden").then((res): void => {
             let v = IsTrue(res);
             if (v == undefined) v = false;
 
             setEnabledHidden(v);
-            storage.set("enabled-hidden", v.toString());
+            OtherStorage.set({ "enabled-hidden": v });
         });
     }, []);
 
     const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const storage = new StorageTool("other");
         setEnabledHidden(e.target.checked);
-        storage.set("enabled-hidden", e.target.checked.toString());
+        OtherStorage.set({ "enabled-hidden": e.target.checked });
     };
 
     return showHiddenOption ? (

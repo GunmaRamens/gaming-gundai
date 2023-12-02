@@ -1,5 +1,5 @@
 import "@/styles/mylibrary.css";
 
-import { MyLibrary, UnivWebsite } from "../../lib/class";
+import { MyLibrary } from "../../lib/class";
 
-UnivWebsite.load(MyLibrary);
+MyLibrary.load();

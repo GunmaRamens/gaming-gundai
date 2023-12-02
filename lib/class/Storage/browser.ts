@@ -1,72 +1,29 @@
-// 最近が物忘れが激しい。どうしてだろうか。
-// 人間は嫌なことやつらいこと、思い出さないようなことはすぐに忘れるようにできているらしい。
-// なんか非同期処理が動かないとき闇雲にasync awaitをつけるのがつらい。
+import * as TypedStorage from "webext-storage";
 
-import Browser from "webextension-polyfill";
+import StorageTool from "./storage";
+import { StorageIds } from "./type";
 
-import IsTrue from "../../utils/isTrue";
-import { StorageTool } from "./storage";
-import { StorageIds, StorageKeys } from "./type";
-
-export default class BrowserStorage implements StorageTool {
+export default class BrowserStorage<T> implements StorageTool<T> {
     id: StorageIds;
+    #item: TypedStorage.StorageItem<T>;
+
     constructor(id: StorageIds) {
         this.id = id;
+        this.#item = new TypedStorage.StorageItem<T>(id);
+    }
+    async toggle(key: keyof T): Promise<void> {
+        const data = await this.#item.get();
+        const newdata = !data[key];
+        await this.#item.set({ ...data, [key]: newdata });
     }
 
-    static getChromeStorage() {
-        return Browser.storage ? Browser.storage.local : null;
+    async get(value: keyof T) {
+        return (await this.#item.get())[value];
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async set(key: StorageKeys, value: any) {
-        let newData = { [key]: value };
-        const storage = BrowserStorage.getChromeStorage();
-        if (!storage) {
-            console.error("Storage is not supported");
-            return;
-        }
+    async set(value: T) {
+        const data = await this.#item.get();
 
-        const currentData = await storage.get(this.id);
-        if (currentData) newData = { ...currentData[this.id], ...newData };
-
-        storage.set({ [this.id]: newData });
-    }
-    async getBool(key: StorageKeys) {
-        const storage = BrowserStorage.getChromeStorage();
-        if (!storage) {
-            console.error("Storage is not supported");
-            return;
-        }
-
-        const rawdata = await this.get(key);
-
-        return IsTrue(rawdata);
-    }
-    async get(key: StorageKeys) {
-        const storage = BrowserStorage.getChromeStorage();
-        if (!storage) {
-            console.error("Storage is not supported");
-            return;
-        }
-
-        const rawdata = (await storage.get(this.id))[this.id];
-
-        if (rawdata === undefined) return undefined;
-        return rawdata[key];
-    }
-
-    async toggle(key: StorageKeys) {
-        const storage = BrowserStorage.getChromeStorage();
-        if (!storage) {
-            console.error("Storage is not supported");
-            return;
-        }
-
-        const rawdata = await this.getBool(key);
-
-        if (rawdata === undefined) return;
-
-        await this.set(key, !rawdata ? "true" : "false");
+        await this.#item.set({ ...data, value });
     }
 }

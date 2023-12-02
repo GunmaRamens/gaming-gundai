@@ -7,15 +7,21 @@ import { WebsiteIds } from "@/data/websites";
 import isTrue from "../../utils/isTrue";
 import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApplicator";
 import BrowserStorage from "../Storage/browser";
-//import Storage from "../../utils/Storage";
+import { OtherStorage } from "../Storage/other";
+import StorageTool from "../Storage/storage";
+
+export interface UnivConfig {
+    rainbow?: boolean;
+    dark?: boolean;
+}
 
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
 // 型変数とoptionsプロパティによって任意の情報を追加できる
-export class UnivWebsite<T> {
+export class UnivWebsite<T = unknown> {
     // 基本情報
     id: WebsiteIds;
 
-    storage: BrowserStorage;
+    storage: StorageTool<UnivConfig>;
 
     // Applicator
     rainbow: RainbowApplicator;
@@ -44,8 +50,10 @@ export class UnivWebsite<T> {
     }
 
     async initilizeWebsiteDb() {
-        await this.storage.set("rainbow", "false");
-        await this.storage.set("dark", "false");
+        await this.storage.set({
+            rainbow: false,
+            dark: false,
+        });
     }
 
     async isRainbowEnabled() {
@@ -59,50 +67,49 @@ export class UnivWebsite<T> {
     }
 
     async isHiddenEnabled() {
-        const otherStorage = new BrowserStorage("other");
-        const isHiddenEnabled = await otherStorage.getBool("enabled-hidden");
+        const isHiddenEnabled = await OtherStorage.get("enabled-hidden");
         return isTrue(isHiddenEnabled);
     }
 
-    static load(site: UnivWebsite<unknown>) {
+    load() {
         window.addEventListener("load", async () => {
-            const isRainbowEnabled = await site.isRainbowEnabled();
+            const isRainbowEnabled = await this.isRainbowEnabled();
             if (isRainbowEnabled) {
                 // CSSのためにHTML要素にデータ属性を追加
                 document.documentElement.dataset.gaming_gundai = "true";
-                site.storage.set("rainbow", "true");
-                site.rainbow.enable();
+                this.storage.set({ rainbow: true });
+                this.rainbow.enable();
             } else {
                 // CSSのためにHTML要素にデータ属性を追加
                 document.documentElement.dataset.gaming_gundai = "false";
-                site.storage.set("rainbow", "false");
-                site.rainbow.disable();
+                this.storage.set({ rainbow: false });
+                this.rainbow.disable();
             }
 
-            const isDarkEnabled = await site.isDarkEnabled();
+            const isDarkEnabled = await this.isDarkEnabled();
             if (isDarkEnabled) {
                 document.documentElement.dataset.gaming_gundai_dark = "true";
-                site.storage.set("dark", "true");
-                site.dark.enable();
+                this.storage.set({ dark: true });
+                this.dark.enable();
             } else {
                 document.documentElement.dataset.gaming_gundai_dark = "false";
-                site.storage.set("dark", "false");
-                site.dark.disable();
+                this.storage.set({ dark: false });
+                this.dark.disable();
             }
 
-            const isHiddenEnabled = await site.isHiddenEnabled();
+            const isHiddenEnabled = await this.isHiddenEnabled();
             const otherStorage = new BrowserStorage("other");
             if (isHiddenEnabled) {
                 document.documentElement.dataset.gaming_gundai_hidden = "true";
-                otherStorage.set("enabled-hidden", "true");
-                site.hidden.enable();
+                otherStorage.set({ "enabled-hidden": true });
+                this.hidden.enable();
             } else {
                 document.documentElement.dataset.gaming_gundai_hidden = "false";
-                otherStorage.set("enabled-hidden", "false");
-                site.hidden.disable();
+                otherStorage.set({ "enabled-hidden": false });
+                this.hidden.disable();
             }
 
-            site.#funcs.forEach((func) => {
+            this.#funcs.forEach((func) => {
                 //console.log("func");
                 func();
             });

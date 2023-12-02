@@ -2,7 +2,9 @@ import { Menu, Navbar } from "react-daisyui";
 import { FaCog, FaGithub, FaInfo, FaTwitter } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
-import StorageTool from "../../../lib/class/Storage/browser";
+import { OtherStorage } from "@/class/Storage/other";
+
+//import StorageTool from "../../../lib/class/Storage/legacybrowser";
 
 export default function Header({ className }: { className?: string }) {
     return (
@@ -26,8 +28,8 @@ function NavbarCenter() {
         if (reactLocation.pathname === "/") {
             e.preventDefault();
             if (e.detail <= 3) return;
-            const storage = new StorageTool("other");
-            storage.set("show-hidden-option", "true");
+
+            OtherStorage.set({ "show-hidden-option": true });
             location.reload();
         }
     };

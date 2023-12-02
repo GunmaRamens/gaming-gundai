@@ -1,5 +1,5 @@
-import { StorageIds, StorageKeys } from "./type";
-
+import { StorageIds } from "./type";
+/*
 export interface StorageTool {
     id: StorageIds;
 
@@ -11,4 +11,13 @@ export interface StorageTool {
     get(key: StorageKeys): Promise<any>;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     toggle(key: StorageKeys): Promise<void>;
+}
+*/
+
+export default interface StorageTool<T> {
+    id: StorageIds;
+
+    get(value: keyof T): Promise<T[keyof T]>;
+    set(value: T): Promise<void>;
+    toggle(key: keyof T): Promise<void>;
 }

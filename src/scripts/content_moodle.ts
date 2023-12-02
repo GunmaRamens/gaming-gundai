@@ -1,5 +1,5 @@
 import "@/styles/moodle.scss";
 
-import { Moodle, UnivWebsite } from "../../lib/class";
+import { Moodle } from "../../lib/class";
 
-UnivWebsite.load(Moodle);
+Moodle.load();

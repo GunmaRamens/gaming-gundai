@@ -1,5 +1,5 @@
 import "@/styles/media.css";
 
-import { Media, UnivWebsite } from "../../lib/class";
+import { Media } from "../../lib/class";
 
-UnivWebsite.load(Media);
+Media.load();
