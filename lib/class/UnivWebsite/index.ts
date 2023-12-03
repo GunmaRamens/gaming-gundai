@@ -17,11 +17,11 @@ export interface UnivConfig {
 
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
 // 型変数とoptionsプロパティによって任意の情報を追加できる
-export class UnivWebsite<T = unknown> {
+export class UnivWebsite<T = unknown, U extends UnivConfig = UnivConfig> {
     // 基本情報
     id: WebsiteIds;
 
-    storage: StorageTool<UnivConfig>;
+    storage: StorageTool<U>;
 
     // Applicator
     rainbow: RainbowApplicator;
