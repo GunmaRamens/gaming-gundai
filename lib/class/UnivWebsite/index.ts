@@ -7,20 +7,15 @@ import { WebsiteIds } from "@/data/websites";
 import isTrue from "../../utils/isTrue";
 import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApplicator";
 import BrowserStorage from "../Storage/browser";
+import { CommonStorage } from "../Storage/common";
 import { OtherStorage } from "../Storage/other";
 import StorageTool from "../Storage/storage";
 
-export interface UnivConfig {
-    rainbow?: boolean;
-    dark?: boolean;
-}
-
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
 // 型変数とoptionsプロパティによって任意の情報を追加できる
-export class UnivWebsite<T = unknown, U extends UnivConfig = UnivConfig> {
+export class UnivWebsite<T = unknown, U = unknown> {
     // 基本情報
     id: WebsiteIds;
-
     storage: StorageTool<U>;
 
     // Applicator
@@ -50,19 +45,19 @@ export class UnivWebsite<T = unknown, U extends UnivConfig = UnivConfig> {
     }
 
     async initilizeWebsiteDb() {
-        await this.storage.set({
+        await CommonStorage.set(this.id, {
             rainbow: false,
             dark: false,
         });
     }
 
     async isRainbowEnabled() {
-        const isRainbowEnabled = await this.storage.get("rainbow");
+        const isRainbowEnabled = await CommonStorage.get(this.id, "rainbow");
         return isTrue(isRainbowEnabled);
     }
 
     async isDarkEnabled() {
-        const isDarkEnabled = await this.storage.get("dark");
+        const isDarkEnabled = await CommonStorage.get(this.id, "dark");
         return isTrue(isDarkEnabled);
     }
 
@@ -77,23 +72,23 @@ export class UnivWebsite<T = unknown, U extends UnivConfig = UnivConfig> {
             if (isRainbowEnabled) {
                 // CSSのためにHTML要素にデータ属性を追加
                 document.documentElement.dataset.gaming_gundai = "true";
-                this.storage.set({ rainbow: true });
+                CommonStorage.set(this.id, { rainbow: true });
                 this.rainbow.enable();
             } else {
                 // CSSのためにHTML要素にデータ属性を追加
                 document.documentElement.dataset.gaming_gundai = "false";
-                this.storage.set({ rainbow: false });
+                CommonStorage.set(this.id, { rainbow: false });
                 this.rainbow.disable();
             }
 
             const isDarkEnabled = await this.isDarkEnabled();
             if (isDarkEnabled) {
                 document.documentElement.dataset.gaming_gundai_dark = "true";
-                this.storage.set({ dark: true });
+                CommonStorage.set(this.id, { dark: true });
                 this.dark.enable();
             } else {
                 document.documentElement.dataset.gaming_gundai_dark = "false";
-                this.storage.set({ dark: false });
+                CommonStorage.set(this.id, { dark: false });
                 this.dark.disable();
             }
 
@@ -117,4 +112,4 @@ export class UnivWebsite<T = unknown, U extends UnivConfig = UnivConfig> {
     }
 }
 
-export class GundaiWebSite<T> extends UnivWebsite<T> {}
+export class GundaiWebSite<T = unknown, U = unknown> extends UnivWebsite<T, U> {}

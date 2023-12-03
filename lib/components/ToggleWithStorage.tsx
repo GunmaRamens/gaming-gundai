@@ -5,8 +5,8 @@ import { Toggle } from "react-daisyui";
 import { ComponentColor } from "react-daisyui/dist/types";
 
 import { StorageTool } from "@/class";
+import { UnivCommonConfig as UnivConfig } from "@/class/Storage/common";
 import { OtherConfig, OtherStorage } from "@/class/Storage/other";
-import { UnivConfig } from "@/class/UnivWebsite";
 import IsTrue from "@/utils/isTrue";
 import { sendMsgToAllTab } from "@/utils/sendMsgToAllTab";
 

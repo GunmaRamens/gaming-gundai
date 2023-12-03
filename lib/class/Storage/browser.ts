@@ -17,11 +17,15 @@ export default class BrowserStorage<T> implements StorageTool<T> {
         await this.#item.set({ ...data, [key]: newdata });
     }
 
-    async get(value: keyof T) {
-        return (await this.#item.get())[value];
+    async getAll() {
+        return await this.#item.get();
     }
 
-    async set(value: T) {
+    async get(value: keyof T) {
+        return (await this.getAll())[value];
+    }
+
+    async set(value: Partial<T>) {
         const data = await this.#item.get();
 
         await this.#item.set({ ...data, value });
