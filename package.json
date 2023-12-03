@@ -16,7 +16,7 @@
         "analyze": "pnpm run analyze-chrome",
         "analyze-chrome": "pnpm run build-chrome:dev && source-map-explorer ./dist/**.js",
         "analyze-firefox": "pnpm run build-firefox:dev && source-map-explorer ./dist/**.js",
-        "fmt": "prettier --write '**/*.{js,json,md,html,sh}'",
+        "fmt": "prettier --write '**/*.{js,json,md,html,sh,ts,tsx,css,scss}'",
         "lint": "prettier --check . && eslint . ",
         "lint:fix": "pnpm fmt && eslint . --fix"
     },
