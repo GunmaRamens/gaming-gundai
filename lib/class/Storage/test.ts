@@ -20,4 +20,9 @@ export class TestStorage<T extends object> implements StorageTool<T> {
         console.log(`Get ${String(key)}`);
         return {} as T[keyof T];
     }
+
+    async getAll(): Promise<T> {
+        console.log(`Get all`);
+        return {} as T;
+    }
 }

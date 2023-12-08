@@ -1,5 +1,6 @@
 import { Kyomu, Media, Moodle, MyLibrary, SSO, UnivWebsite } from "@/class";
 
+// ウェブサイトの設定可能な項目等を定義している内部的にハードコーディングされたデータ
 export interface WebsiteConfig {
     name: string;
     class: UnivWebsite<unknown>;

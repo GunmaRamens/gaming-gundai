@@ -5,19 +5,22 @@ import { Toggle } from "react-daisyui";
 import { ComponentColor } from "react-daisyui/dist/types";
 
 import { StorageTool } from "@/class";
-import { UnivCommonConfig as UnivConfig } from "@/class/Storage/common";
 import { OtherConfig, OtherStorage } from "@/class/Storage/other";
 import IsTrue from "@/utils/isTrue";
 import { sendMsgToAllTab } from "@/utils/sendMsgToAllTab";
 
-interface ToggleProps {
-    storage: StorageTool<UnivConfig>;
-    dataKey: keyof UnivConfig;
+export type BooleanKeyOf<T> = {
+    [K in keyof T]: T[K] extends boolean ? K : never;
+}[keyof T];
+
+interface ToggleProps<T> {
+    storage: StorageTool<T>;
+    dataKey: BooleanKeyOf<T>;
     color?: ComponentColor;
     readonly?: boolean;
 }
 
-export function ToggleWithStorage({ storage, color, dataKey, readonly }: ToggleProps) {
+export function ToggleWithStorage<T>({ storage, color, dataKey, readonly }: ToggleProps<T>) {
     const [enabled, setEnabled] = useState(false);
 
     useEffect(() => {
@@ -32,8 +35,11 @@ export function ToggleWithStorage({ storage, color, dataKey, readonly }: ToggleP
         if (readonly) return;
         return (e: React.ChangeEvent<HTMLInputElement>) => {
             setEnabled(e.target.checked);
-            storage.set({ [dataKey]: e.target.checked });
-            sendMsgToAllTab<string>("reload");
+            storage.getAll().then((data) => {
+                storage.set({ ...data, [dataKey]: e.target.checked }).then(() => {
+                    sendMsgToAllTab<string>("reload");
+                });
+            });
         };
     }, []);
 

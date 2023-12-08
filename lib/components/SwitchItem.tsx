@@ -2,20 +2,11 @@
 
 import { ComponentColor } from "react-daisyui/dist/types";
 
-import { WebsiteConfig } from "../data/websites";
+import { CommonStorage, UnivCommonConfig } from "@/class/Storage/common";
+
 import { ToggleWithStorage } from "./ToggleWithStorage";
 import { Category } from "./type";
 
-export function SwitchItem({
-    config,
-    category,
-    color,
-    readonly,
-}: {
-    config: WebsiteConfig;
-    category: Category;
-    color?: ComponentColor;
-    readonly?: boolean;
-}) {
-    return <ToggleWithStorage storage={config.class.storage} dataKey={category} color={color} readonly={readonly} />;
+export function SwitchItem({ category, color, readonly }: { category: Category; color?: ComponentColor; readonly?: boolean }) {
+    return <ToggleWithStorage<UnivCommonConfig> storage={CommonStorage} dataKey={category} color={color} readonly={readonly} />;
 }

@@ -3,13 +3,13 @@ import * as TypedStorage from "webext-storage";
 import StorageTool from "./storage";
 import { StorageIds } from "./type";
 
-export default class BrowserStorage<T> implements StorageTool<T> {
+export default class BrowserStorageTool<T> implements StorageTool<T> {
     id: StorageIds;
     #item: TypedStorage.StorageItem<T>;
 
     constructor(id: StorageIds) {
         this.id = id;
-        this.#item = new TypedStorage.StorageItem<T>(id);
+        this.#item = new TypedStorage.StorageItem<T>(id, { area: "local" });
     }
     async toggle(key: keyof T): Promise<void> {
         const data = await this.#item.get();

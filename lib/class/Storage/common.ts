@@ -25,4 +25,10 @@ export const CommonStorage = new (class {
 
         await this.#storage.set({ ...data, [id]: { ...data[id], ...value } });
     }
+
+    async toggle(id: WebsiteIds, key: keyof UnivCommonConfig) {
+        const data = await this.#storage.get(id);
+        const newdata = !data[key];
+        await this.#storage.set({ [id]: newdata });
+    }
 })();
