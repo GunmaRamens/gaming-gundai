@@ -1,34 +1,13 @@
 import { WebsiteIds } from "@/data/websites";
 
-import BrowserStorage from "./browser";
+import BrowserStorageTool from "./browser";
 
-export interface UnivCommonConfig {
+export type UnivCommonConfig = {
     rainbow?: boolean;
     dark?: boolean;
-}
+};
 
 export type CommonConfig = Record<WebsiteIds, UnivCommonConfig>;
-
-export const CommonStorage = new (class {
-    #storage: BrowserStorage<CommonConfig>;
-    constructor() {
-        this.#storage = new BrowserStorage("common");
-    }
-
-    async get(id: WebsiteIds, key: keyof UnivCommonConfig) {
-        const isRainbowEnabled = (await this.#storage.get(id))[key];
-        return isRainbowEnabled;
-    }
-
-    async set(id: WebsiteIds, value: Partial<UnivCommonConfig>) {
-        const data = await this.#storage.getAll();
-
-        await this.#storage.set({ ...data, [id]: { ...data[id], ...value } });
-    }
-
-    async toggle(id: WebsiteIds, key: keyof UnivCommonConfig) {
-        const data = await this.#storage.get(id);
-        const newdata = !data[key];
-        await this.#storage.set({ [id]: newdata });
-    }
-})();
+export const CommonStorage = BrowserStorageTool.fromId<CommonConfig>("common", {
+    area: "sync",
+});

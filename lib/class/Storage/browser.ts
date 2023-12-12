@@ -1,15 +1,12 @@
 import * as TypedStorage from "webext-storage";
 
 import StorageTool from "./storage";
-import { StorageIds } from "./type";
 
 export default class BrowserStorageTool<T> implements StorageTool<T> {
-    id: StorageIds;
     #item: TypedStorage.StorageItem<T>;
 
-    constructor(id: StorageIds) {
-        this.id = id;
-        this.#item = new TypedStorage.StorageItem<T>(id, { area: "local" });
+    constructor(storage: TypedStorage.StorageItem<T>) {
+        this.#item = storage;
     }
     async toggle(key: keyof T): Promise<void> {
         const data = await this.#item.get();
@@ -22,12 +19,25 @@ export default class BrowserStorageTool<T> implements StorageTool<T> {
     }
 
     async get(value: keyof T) {
-        return (await this.getAll())[value];
+        const data = await this.getAll();
+        console.log(data);
+        return data[value];
     }
 
     async set(value: Partial<T>) {
         const data = await this.#item.get();
+        const newdata = { ...data, ...value };
+        console.log(`newdata: ${newdata}`);
+        await this.#item.set(newdata);
+    }
 
-        await this.#item.set({ ...data, value });
+    static fromId<T>(id: string, options: TypedStorage.StorageItemOptions<T & Record<string, never>> = { area: "sync" }) {
+        const storage = new TypedStorage.StorageItem<T>(id, options);
+
+        console.log(id);
+        const bstorage = new BrowserStorageTool(storage);
+        bstorage.set({});
+
+        return bstorage;
     }
 }

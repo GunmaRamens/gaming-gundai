@@ -1,6 +1,5 @@
 import browser from "webextension-polyfill";
 
-import { CommonStorage } from "@/class/Storage/common";
 import { OtherStorage } from "@/class/Storage/other";
 import { WebsitesList } from "@/data/websites";
 import * as PopupUtils from "@/utils/popupControl";
@@ -24,11 +23,11 @@ const toggleAll = () => {
         (async () => {
             if (website.configable.dark) {
                 // Toggle dark mode
-                await CommonStorage.toggle(website.class.id, "dark");
+                await website.class.getCommonStorage().toggle("dark");
             }
             if (website.configable.rainbow) {
                 // Toggle rainbow mode
-                await CommonStorage.toggle(website.class.id, "rainbow");
+                await website.class.getCommonStorage().toggle("rainbow");
             }
         })();
     }

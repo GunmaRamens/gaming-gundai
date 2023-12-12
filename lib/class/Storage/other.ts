@@ -8,4 +8,7 @@ export interface OtherConfig {
     "auto-2fa"?: boolean;
 }
 
-export const OtherStorage = new BrowserStorage<OtherConfig>("other");
+export const OtherStorage = BrowserStorage.fromId<OtherConfig>("other", {
+    area: "sync",
+    defaultValue: {},
+});

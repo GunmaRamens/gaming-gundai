@@ -10,7 +10,7 @@ import IsTrue from "@/utils/isTrue";
 import { sendMsgToAllTab } from "@/utils/sendMsgToAllTab";
 
 export type BooleanKeyOf<T> = {
-    [K in keyof T]: T[K] extends boolean ? K : never;
+    [K in keyof T]: T[K] extends boolean ? K : T[K] extends boolean | undefined ? K : never;
 }[keyof T];
 
 interface ToggleProps<T> {

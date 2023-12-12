@@ -9,7 +9,7 @@ import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApp
 import BrowserStorage from "../Storage/browser";
 import { CommonStorage } from "../Storage/common";
 import { OtherStorage } from "../Storage/other";
-import StorageTool from "../Storage/storage";
+import StorageTool, { RecursiveStorageTool } from "../Storage/storage";
 
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
 // 型変数とoptionsプロパティによって任意の情報を追加できる
@@ -37,7 +37,8 @@ export class UnivWebsite<T = unknown, U = unknown> {
         this.id = id;
         this.options = {} as T;
         this.#funcs = [];
-        this.storage = new BrowserStorage(id);
+
+        this.storage = BrowserStorage.fromId(id);
 
         this.rainbow = new RainbowApplicator();
         this.dark = new DarkApplicator();
@@ -45,19 +46,29 @@ export class UnivWebsite<T = unknown, U = unknown> {
     }
 
     async initilizeWebsiteDb() {
-        await CommonStorage.set(this.id, {
+        /*
+        await CommonStorage.set({
+            [this.id]: {
+                rainbow: false,
+                dark: false,
+            },
+        });
+        */
+
+        this.getCommonStorage().set({
             rainbow: false,
             dark: false,
         });
+        console.log(await CommonStorage.getAll());
     }
 
     async isRainbowEnabled() {
-        const isRainbowEnabled = await CommonStorage.get(this.id, "rainbow");
+        const isRainbowEnabled = (await CommonStorage.get(this.id)).rainbow;
         return isTrue(isRainbowEnabled);
     }
 
     async isDarkEnabled() {
-        const isDarkEnabled = await CommonStorage.get(this.id, "dark");
+        const isDarkEnabled = (await CommonStorage.get(this.id)).dark;
         return isTrue(isDarkEnabled);
     }
 
@@ -66,41 +77,44 @@ export class UnivWebsite<T = unknown, U = unknown> {
         return isTrue(isHiddenEnabled);
     }
 
+    getCommonStorage() {
+        return new RecursiveStorageTool(CommonStorage, "moodle");
+    }
+
     load() {
         window.addEventListener("load", async () => {
             const isRainbowEnabled = await this.isRainbowEnabled();
             if (isRainbowEnabled) {
                 // CSSのためにHTML要素にデータ属性を追加
                 document.documentElement.dataset.gaming_gundai = "true";
-                CommonStorage.set(this.id, { rainbow: true });
+                CommonStorage.set({ [this.id]: { rainbow: true } });
                 this.rainbow.enable();
             } else {
                 // CSSのためにHTML要素にデータ属性を追加
                 document.documentElement.dataset.gaming_gundai = "false";
-                CommonStorage.set(this.id, { rainbow: false });
+                CommonStorage.set({ [this.id]: { rainbow: false } });
                 this.rainbow.disable();
             }
 
             const isDarkEnabled = await this.isDarkEnabled();
             if (isDarkEnabled) {
                 document.documentElement.dataset.gaming_gundai_dark = "true";
-                CommonStorage.set(this.id, { dark: true });
+                CommonStorage.set({ [this.id]: { dark: true } });
                 this.dark.enable();
             } else {
                 document.documentElement.dataset.gaming_gundai_dark = "false";
-                CommonStorage.set(this.id, { dark: false });
+                CommonStorage.set({ [this.id]: { dark: false } });
                 this.dark.disable();
             }
 
             const isHiddenEnabled = await this.isHiddenEnabled();
-            const otherStorage = new BrowserStorage("other");
             if (isHiddenEnabled) {
                 document.documentElement.dataset.gaming_gundai_hidden = "true";
-                otherStorage.set({ "enabled-hidden": true });
+                OtherStorage.set({ "enabled-hidden": true });
                 this.hidden.enable();
             } else {
                 document.documentElement.dataset.gaming_gundai_hidden = "false";
-                otherStorage.set({ "enabled-hidden": false });
+                OtherStorage.set({ "enabled-hidden": false });
                 this.hidden.disable();
             }
 
