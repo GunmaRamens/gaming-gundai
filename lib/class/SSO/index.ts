@@ -11,13 +11,21 @@ export const SSO = new GundaiWebSite<{
 export default SSO;
 
 SSO.rainbow.enable = function () {
-    this.bg.apply(".input_form");
+    //this.text.apply("#login_button"); // ログインボタン
+    this.text.apply("a"); // リンク
+    this.text.apply(".product"); // タイトル
+    //this.text.apply(".login_comment");
+
+    this.bg.apply(".login__main"); // ログイン画面
+
+    this.bg.apply("#login_button");
+
     changeQueryInnerHTML(".product", "群馬大学ゲーミングサインオンシステム");
+    changeQueryInnerHTML("#login_button", "→ ログイン ←");
 };
-SSO.options.isAuto2FAEnabled = async (): Promise<boolean> => {
-    const isAuto2FAEnabled = await SSO.storage.get("auto-2fa");
-    return isAuto2FAEnabled;
-};
+
+SSO.options.isAuto2FAEnabled = () => SSO.storage.get("auto-2fa");
+
 SSO.options.enableAuto2FA = () => {
     SSO.storage.getBool("auto-2fa").then((isAuto2FAEnabled) => {
         if (isAuto2FAEnabled) {
