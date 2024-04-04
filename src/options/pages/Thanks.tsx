@@ -16,7 +16,7 @@ export default function Thanks() {
             <Heading.h2>設定</Heading.h2>
             <p>デフォルトではすべての設定が無効化されています。</p>
             <p>
-                <Link to="/" className="link-info link">
+                <Link to="/" className="link link-info">
                     設定画面
                 </Link>
                 から設定を行えます。
@@ -27,7 +27,7 @@ export default function Thanks() {
             <p>使用技術はTypeScriptとReact、TailwindCSSです。</p>
             <p>
                 興味のある方は
-                <Link to="/wanted" className="link-info link">
+                <Link to="/wanted" className="link link-info">
                     こちら
                 </Link>
                 をご覧ください。

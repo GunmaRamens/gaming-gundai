@@ -8,7 +8,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
     "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "source.fixAll": "explicit"
     },
     "[shellscript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"

@@ -25,7 +25,7 @@ export default function Top() {
                                     {site.name}
                                 </p>
                                 {/* Todo: ここらへんをオブジェクトでいい感じにループする */}
-                                <div className="flex flex-col justify-center rounded-r-lg bg-neutral-focus child:m-2">
+                                <div className="flex flex-col justify-center rounded-r-lg bg-neutral child:m-2">
                                     <Tooltip message={"Dark Mode" + (site.configable.dark ? " (EXPERIMENTAL)" : " (disabled)")}>
                                         <div className="flex items-center justify-center child:px-1">
                                             <FaMoon className="grow" size="20px" />
@@ -77,7 +77,7 @@ export default function Top() {
 
             <ConfigSection name="開発者募集">
                 <p>
-                    <Link to="/wanted" className="link-info link">
+                    <Link to="/wanted" className="link link-info">
                         こちら
                     </Link>
                     を御覧ください。

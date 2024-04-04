@@ -143,8 +143,8 @@ module.exports = (env: Env, argv: Argv): Configuration => {
                         from: isChrome
                             ? "./public/manifest_chrome.json"
                             : isFirefox
-                            ? "./public/manifest_firefox.json"
-                            : "./public/manifest_chrome.json",
+                              ? "./public/manifest_firefox.json"
+                              : "./public/manifest_chrome.json",
                         to: "./manifest.json",
                         priority: 1,
                     },
@@ -167,7 +167,7 @@ module.exports = (env: Env, argv: Argv): Configuration => {
             maxAssetSize: 2000000,
         },
 
-        stats: env.stats ? env.stats : isProd ? "normal" : isDev ? "verbose" : "normal",
+        stats: env.stats ? env.stats : "normal",
 
         devtool: isDev ? "source-map" : false,
     };
