@@ -94,7 +94,9 @@ main() {
     done
     eval set -- "${_noopts-""}"
     _cmd="${1-""}"
-    shift 1 || true
+    if [ $# -ge 1 ]; then
+        shift 1
+    fi
     case "${_cmd-""}" in
         "init")
             init_command "$@"
