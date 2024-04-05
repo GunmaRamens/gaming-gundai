@@ -9,7 +9,7 @@ export default function Wanted() {
             <p>
                 この拡張機能はGitHub上でMITライセンスの基で公開されており、現在Contributerを募集しています。
                 以下に技術的な概要を掲載しますので、興味のある方はぜひ
-                <Link to="/about" className="link-info link">
+                <Link to="/about" className="link link-info">
                     開発者までご連絡
                 </Link>
                 ください。

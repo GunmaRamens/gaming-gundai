@@ -4,34 +4,24 @@
 
 import Browser from "webextension-polyfill";
 
-import { WebsiteIds } from "@/data/websites";
-
 import IsTrue from "../../utils/isTrue";
+import { StorageTool } from "./storage";
+import { StorageIds, StorageKeys } from "./type";
 
-export type StorageKeys =
-    | "dark"
-    | "rainbow"
-    | "enabled-hidden"
-    | "show-hidden-option"
-    | "installed"
-    | "auto-2fa"
-    | "quick-switch";
-export type StorageIds = WebsiteIds | "other";
-
-export default class StorageTool {
+export default class BrowserStorage implements StorageTool {
     id: StorageIds;
     constructor(id: StorageIds) {
         this.id = id;
     }
 
     static getChromeStorage() {
-        return Browser.storage ? Browser.storage.sync : null;
+        return Browser.storage ? Browser.storage.local : null;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async set(key: StorageKeys, value: any) {
         let newData = { [key]: value };
-        const storage = StorageTool.getChromeStorage();
+        const storage = BrowserStorage.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
             return;
@@ -43,7 +33,7 @@ export default class StorageTool {
         storage.set({ [this.id]: newData });
     }
     async getBool(key: StorageKeys) {
-        const storage = StorageTool.getChromeStorage();
+        const storage = BrowserStorage.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
             return;
@@ -54,7 +44,7 @@ export default class StorageTool {
         return IsTrue(rawdata);
     }
     async get(key: StorageKeys) {
-        const storage = StorageTool.getChromeStorage();
+        const storage = BrowserStorage.getChromeStorage();
         if (!storage) {
             console.error("Storage is not supported");
             return;
@@ -64,5 +54,19 @@ export default class StorageTool {
 
         if (rawdata === undefined) return undefined;
         return rawdata[key];
+    }
+
+    async toggle(key: StorageKeys) {
+        const storage = BrowserStorage.getChromeStorage();
+        if (!storage) {
+            console.error("Storage is not supported");
+            return;
+        }
+
+        const rawdata = await this.getBool(key);
+
+        if (rawdata === undefined) return;
+
+        await this.set(key, !rawdata ? "true" : "false");
     }
 }

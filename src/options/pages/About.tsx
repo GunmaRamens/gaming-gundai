@@ -1,4 +1,4 @@
-import Heading from "../../components/Heading";
+import Heading from "../../../lib/components/Heading";
 
 export default function About() {
     return (
@@ -13,12 +13,12 @@ export default function About() {
             <Heading.h2>筆者の連絡先</Heading.h2>
             <ul>
                 <li>
-                    <a href="https://twitter.com/Hayao0819" className="link-info link">
+                    <a href="https://twitter.com/Hayao0819" className="link link-info">
                         Twitter
                     </a>
                 </li>
                 <li>
-                    <a href="https://instagram.com/Hayao0819" className="link-info link">
+                    <a href="https://instagram.com/Hayao0819" className="link link-info">
                         Instagram
                     </a>
                 </li>

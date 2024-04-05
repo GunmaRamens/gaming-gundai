@@ -6,7 +6,7 @@ import { WebsiteIds } from "@/data/websites";
 
 import isTrue from "../../utils/isTrue";
 import { DarkApplicator, HiddenApplicator, RainbowApplicator } from "../ClassApplicator";
-import StorageTool from "../StorageTool";
+import BrowserStorage from "../Storage/browser";
 //import Storage from "../../utils/Storage";
 
 // UnivWebSiteはゲーミング化するウェブサイトを定義したクラス
@@ -15,7 +15,7 @@ export class UnivWebsite<T> {
     // 基本情報
     id: WebsiteIds;
 
-    storage: StorageTool;
+    storage: BrowserStorage;
 
     // Applicator
     rainbow: RainbowApplicator;
@@ -24,6 +24,8 @@ export class UnivWebsite<T> {
 
     // 追加情報
     options: T; // 型変数使うとかっこいいよね
+
+    // load時に実行する関数
     #funcs: (() => void)[];
     addLoader(func: () => void) {
         this.#funcs.push(func);
@@ -34,11 +36,16 @@ export class UnivWebsite<T> {
         this.id = id;
         this.options = {} as T;
         this.#funcs = [];
-        this.storage = new StorageTool(id);
+        this.storage = new BrowserStorage(id);
 
         this.rainbow = new RainbowApplicator();
         this.dark = new DarkApplicator();
         this.hidden = new HiddenApplicator();
+    }
+
+    async initilizeWebsiteDb() {
+        await this.storage.set("rainbow", "false");
+        await this.storage.set("dark", "false");
     }
 
     async isRainbowEnabled() {
@@ -52,7 +59,7 @@ export class UnivWebsite<T> {
     }
 
     async isHiddenEnabled() {
-        const otherStorage = new StorageTool("other");
+        const otherStorage = new BrowserStorage("other");
         const isHiddenEnabled = await otherStorage.getBool("enabled-hidden");
         return isTrue(isHiddenEnabled);
     }
@@ -84,14 +91,14 @@ export class UnivWebsite<T> {
             }
 
             const isHiddenEnabled = await site.isHiddenEnabled();
-            const otherStorage = new StorageTool("other");
+            const otherStorage = new BrowserStorage("other");
             if (isHiddenEnabled) {
                 document.documentElement.dataset.gaming_gundai_hidden = "true";
                 otherStorage.set("enabled-hidden", "true");
                 site.hidden.enable();
             } else {
                 document.documentElement.dataset.gaming_gundai_hidden = "false";
-                site.storage.set("enabled-hidden", "false");
+                otherStorage.set("enabled-hidden", "false");
                 site.hidden.disable();
             }
 

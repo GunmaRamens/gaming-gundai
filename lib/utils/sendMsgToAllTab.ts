@@ -4,7 +4,7 @@ export const sendMsgToAllTab = <T>(msg: T) => {
     const urls = getUrlsFromManifest();
     browser.tabs
         .query({
-            url: urls,
+            url: [...urls, `chrome-extension://${browser.runtime.id}/*`],
         })
         .then((tabs) => {
             tabs.forEach((tab) => {

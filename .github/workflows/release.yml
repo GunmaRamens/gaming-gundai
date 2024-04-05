@@ -39,6 +39,14 @@ jobs:
                   files: dist/firefox
                   dest: gaming-gundai-firefox.zip
 
+            - name: Submit
+              run: npx chrome-webstore-upload-cli@2 upload --source gaming-gundai-chrome.zip --auto-publish
+              env:
+                  EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
+                  CLIENT_ID: ${{ secrets.CLIENT_ID }}
+                  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+                  REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+
             - name: Release
               uses: softprops/action-gh-release@v1
               if: startsWith(github.ref, 'refs/tags/')

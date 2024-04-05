@@ -1,7 +1,6 @@
 import "@/styles/gaming.scss";
 
 import { DetailedHTMLProps } from "react";
-import { Collapse } from "react-daisyui";
 
 type HeaderProps = DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
 
@@ -12,15 +11,16 @@ export default function Header(props: HeaderProps) {
                 <p className="rainbow-text text-2xl">Gaming Gunma University</p>
             </div>
 
-            <Advertisement />
+            {/*<Advertisement />*/}
         </header>
     );
 }
 
+/*
 function Advertisement() {
     return (
         <>
-            <Collapse checkbox icon="arrow" className="my-5 bg-neutral-focus">
+            <Collapse checkbox icon="arrow" className="my-5 bg-neutral">
                 <Collapse.Title className="flex text-lg">
                     <span className="rainbow-text font-serif italic">NEW</span>
                     <span className="grow text-center">荒牧祭について</span>
@@ -33,3 +33,4 @@ function Advertisement() {
         </>
     );
 }
+*/
