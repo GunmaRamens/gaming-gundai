@@ -69,7 +69,7 @@ bump_command() {
     done
 
     echo "Format files" >&2
-    prettier --write "$script_path/package.json" "$script_path/public/manifest_chrome.json" "$script_path/public/manifest_firefox.json"
+    pnpm prettier --write "$script_path/package.json" "$script_path/public/manifest_chrome.json" "$script_path/public/manifest_firefox.json"
 
     return 0
 }
