@@ -1,5 +1,4 @@
-import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Tooltip } from "react-daisyui";
 import { FaGamepad, FaMoon } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -15,8 +14,8 @@ import IsTrue from "@/utils/isTrue";
 
 export default function Top() {
     return (
-        <>
-            <ConfigSection name="Websites" desc="それぞれのウェブサイトで有効化する機能を設定できます">
+        <div className="flex flex-col gap-4">
+            <ConfigSection name="基本設定" desc="それぞれのウェブサイトで有効化する機能を設定できます">
                 <div className="flex flex-wrap items-center">
                     {Array.from(Websites.values()).map((site) => {
                         return (
@@ -57,14 +56,15 @@ export default function Top() {
 
             <HiddenConfigSection />
 
-            <ConfigSection name="Quick Switch" desc="有効化するとアイコンのクリックでオンオフを一括で設定します">
-                <QuickSwitch className="child:m-2" />
-            </ConfigSection>
+            <ConfigSection name="その他">
+                <div className="flex w-fit flex-col child:items-center">
+                    <OtherConfigLayout name="一括設定モード">
+                        <ToggleWithStorage storage={new BrowserStorage("other")} dataKey="quick-switch" />
+                    </OtherConfigLayout>
 
-            <ConfigSection name="SSO">
-                <div className="flex">
-                    <p>二段階認証コードの自動送信</p>
-                    <ToggleWithStorage storage={new StorageTool("sso")} dataKey="auto-2fa" />
+                    <OtherConfigLayout name="二段階認証コードの自動送信">
+                        <ToggleWithStorage storage={new StorageTool("sso")} dataKey="auto-2fa" />
+                    </OtherConfigLayout>
                 </div>
             </ConfigSection>
 
@@ -83,9 +83,16 @@ export default function Top() {
                     を御覧ください。
                 </p>
             </ConfigSection>
-        </>
+        </div>
     );
 }
+
+const OtherConfigLayout = ({ children, name }: { children: ReactNode; name: string }): ReactNode => (
+    <div className="flex gap-2">
+        <p className="flex-1">{name}</p>
+        <div className="">{children}</div>
+    </div>
+);
 
 function ConfigSection({
     children,
@@ -100,18 +107,12 @@ function ConfigSection({
 }) {
     return (
         <div className={className}>
-            <Heading.h2>{name}</Heading.h2>
-            {desc ? <p>{desc}</p> : null}
-            {children ? children : null}
-        </div>
-    );
-}
+            <div className="flex items-center gap-2">
+                <Heading.h2 className="text-accent">{name}</Heading.h2>
+                {desc ? <p>{desc}</p> : null}
+            </div>
 
-function QuickSwitch({ className }: { className?: string }) {
-    return (
-        <div className={classNames(className, "my-5 flex")}>
-            <ToggleWithStorage storage={new BrowserStorage("other")} dataKey="quick-switch" />
-            <p>Quick Switch</p>
+            {children ? children : null}
         </div>
     );
 }

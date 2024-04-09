@@ -5,9 +5,9 @@ import Heading from "@/components/Heading";
 export default function Wanted() {
     return (
         <>
-            <Heading.h1>開発者募集</Heading.h1>
+            <Heading.h1 className=" text-accent">開発者募集</Heading.h1>
+            <p>この拡張機能はOSSとしてGitHub上に公開されており、現在Contributerを募集しています。</p>
             <p>
-                この拡張機能はGitHub上でMITライセンスの基で公開されており、現在Contributerを募集しています。
                 以下に技術的な概要を掲載しますので、興味のある方はぜひ
                 <Link to="/about" className="link link-info">
                     開発者までご連絡
@@ -15,11 +15,11 @@ export default function Wanted() {
                 ください。
             </p>
 
-            <Heading.h2>概要</Heading.h2>
-            <p>群馬大学に所属しており、ウェブ技術に興味のある人。ラーメンが好きな人大歓迎です。</p>
+            <Heading.h2 className="text-accent">概要</Heading.h2>
+            <p>群馬大学に所属しており、ウェブ技術に興味のある人やラーメンが好きな人大歓迎です。</p>
             <p>現開発者のお財布と気分次第で、報酬としてラーメンを奢るかもしれません。</p>
 
-            <Heading.h2>技術</Heading.h2>
+            <Heading.h2 className="text-accent">技術</Heading.h2>
             <div className="flex child:mx-4">
                 <div>
                     <p>現在使用しているもの</p>

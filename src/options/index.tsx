@@ -16,7 +16,6 @@ function Options() {
     );
 }
 
-//window.onload = () =>
 Browser.runtime.onMessage.addListener((message) => {
     console.log("message", message);
     if (message === "reload") {
